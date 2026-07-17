@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>At'Chef — Vivez l'expérience d'un chef à domicile à Nantes</title>
+<meta name="description" content="At'Chef réunit les cuisiniers amateurs les plus talentueux de Nantes avec des hôtes en quête d'un repas fait maison, authentique et convivial, sans se ruiner.">
+<meta name="theme-color" content="#FBF6EF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  /* ===================== TOKENS ===================== */
+  :root{
+    --cream:#FBF6EF;
+    --cream-alt:#F1E7D6;
+    --ink:#241E18;
+    --ink-soft:#6B5D53;
+    --ink-faint:#9C9086;
+    --border:#E4D8C7;
+
+    --terracotta:#E2725B;
+    --terracotta-dark:#A64A34;
+    --terracotta-deep:#7A3524;
+    --terracotta-tint:#F7E3DA;
+
+    --sage:#8CA888;
+    --sage-dark:#4F6B4C;
+    --sage-tint:#E7EEE1;
+
+    --gold:#D9A441;
+    --white:#FFFFFF;
+
+    --font-display:'Bodoni Moda', 'Big Caslon', Georgia, 'Times New Roman', serif;
+    --font-body:'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --radius-full:999px;
+
+    --shadow-sm:0 2px 10px rgba(36,30,24,0.07);
+    --shadow-md:0 10px 28px rgba(36,30,24,0.10);
+    --shadow-lg:0 24px 56px rgba(36,30,24,0.16);
+  }
+
+  /* ===================== RESET ===================== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  ul{list-style:none;}
+  input,select{font-family:inherit;color:inherit;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15;color:var(--ink);}
+  .container{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+  :focus-visible{outline:2px solid var(--terracotta-dark);outline-offset:3px;border-radius:4px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+
+  .skip-link{
+    position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--cream);
+    padding:12px 20px;border-radius:0 0 8px 0;z-index:1000;font-weight:600;
+  }
+  .skip-link:focus{left:0;}
+
+  /* ===================== BUTTONS ===================== */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 26px;border-radius:var(--radius-md);
+    font-weight:600;font-size:0.95rem;font-family:var(--font-body);
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--terracotta-dark);color:var(--white);box-shadow:0 10px 24px rgba(166,74,52,0.28);}
+  .btn-primary:hover{background:var(--terracotta-deep);transform:translateY(-2px);box-shadow:0 14px 30px rgba(122,53,36,0.32);}
+  .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;}
+  .btn-outline:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
+  .btn-outline-light{border:1.5px solid rgba(251,246,239,0.4);color:var(--cream);}
+  .btn-outline-light:hover{background:rgba(251,246,239,0.12);transform:translateY(-2px);}
+  .btn-secondary{background:var(--sage-dark);color:var(--white);}
+  .btn-secondary:hover{background:#3D5539;transform:translateY(-2px);}
+  .btn-lg{padding:16px 32px;font-size:1.02rem;}
+  .btn-sm{padding:9px 18px;font-size:0.85rem;border-radius:var(--radius-sm);}
+  .btn-block{width:100%;}
+
+  /* ===================== HEADER ===================== */
+  .site-header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,246,239,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .site-header.scrolled{border-bottom-color:var(--border);box-shadow:var(--shadow-sm);}
+  .nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:82px;gap:20px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--ink);flex-shrink:0;}
+  .logo-mark{width:38px;height:38px;flex-shrink:0;}
+  .logo-accent{color:var(--terracotta-dark);}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{font-weight:600;color:var(--ink-soft);font-size:0.94rem;position:relative;padding:6px 0;transition:color 0.2s;}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--terracotta-dark);transition:width 0.25s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-actions{display:flex;align-items:center;gap:18px;flex-shrink:0;}
+  .mobile-toggle{display:none;flex-direction:column;gap:5px;width:26px;padding:6px;}
+  .mobile-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform 0.3s ease, opacity 0.3s ease;}
+  .mobile-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .mobile-toggle.active span:nth-child(2){opacity:0;}
+  .mobile-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{max-height:0;overflow:hidden;background:var(--white);border-bottom:1px solid transparent;transition:max-height 0.35s ease;}
+  .mobile-menu.open{max-height:420px;border-bottom-color:var(--border);}
+  .mobile-menu-inner{padding:22px 24px 28px;display:flex;flex-direction:column;gap:18px;}
+  .mobile-menu-inner a{font-weight:600;font-size:1.05rem;color:var(--ink);}
+  .mobile-menu-inner .btn{margin-top:6px;}
+
+  @media (max-width:900px){
+    .nav-links, .nav-actions .btn{display:none;}
+    .mobile-toggle{display:flex;}
+  }
+
+  /* ===================== HERO ===================== */
+  .hero{padding:64px 0 88px;position:relative;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center;}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);
+    padding:8px 16px;border-radius:var(--radius-full);font-size:0.82rem;font-weight:700;color:var(--terracotta-dark);
+    box-shadow:var(--shadow-sm);margin-bottom:22px;
+  }
+  .hero h1{font-size:2.75rem;letter-spacing:-0.01em;margin-bottom:22px;}
+  @media (max-width:1100px){.hero h1{font-size:2.35rem;}}
+  .marked-phrase{position:relative;display:inline-block;font-style:italic;color:var(--terracotta-dark);}
+  .marker-stroke{position:absolute;left:-2%;bottom:-10px;width:104%;height:16px;pointer-events:none;}
+  .marker-stroke path{
+    stroke-dasharray:1000;stroke-dashoffset:1000;
+    animation:draw-stroke 1s ease-out 0.75s forwards;
+  }
+  @keyframes draw-stroke{to{stroke-dashoffset:0;}}
+
+  .hero .subtitle{font-size:1.12rem;color:var(--ink-soft);max-width:520px;margin-bottom:32px;}
+  .hero-ctas{display:flex;gap:14px;margin-bottom:26px;flex-wrap:wrap;}
+  .trust-caption{font-size:0.9rem;color:var(--ink-soft);font-weight:500;}
+  .trust-caption strong{color:var(--ink);font-weight:700;}
+
+  /* Reservation card (signature element) */
+  .reservation-wrap{display:flex;justify-content:center;}
+  .reservation-card{
+    position:relative;background:var(--white);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);padding:34px 30px 28px;width:100%;max-width:400px;
+    transform:rotate(-2deg);
+  }
+  .reservation-card::before{
+    content:'';position:absolute;top:-15px;left:50%;transform:translateX(-50%) rotate(-4deg);
+    width:76px;height:28px;background:rgba(226,114,91,0.4);border-radius:2px;box-shadow:0 3px 6px rgba(0,0,0,0.1);
+  }
+  .reservation-title{font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:4px;}
+  .reservation-subtitle{font-size:0.85rem;color:var(--ink-soft);margin-bottom:18px;}
+  .field-row{display:flex;flex-direction:column;gap:8px;padding:14px 0;border-bottom:1px solid var(--border);}
+  .field-row label{font-size:0.78rem;font-weight:700;color:var(--ink-soft);display:flex;align-items:center;gap:6px;}
+  .field-row input[type="date"]{border:none;background:transparent;font-size:1rem;font-weight:600;color:var(--ink);padding:2px 0;width:100%;}
+  .select-wrap{position:relative;}
+  .select-wrap select{
+    border:none;background:transparent;font-size:1rem;font-weight:600;color:var(--ink);width:100%;
+    appearance:none;-webkit-appearance:none;-moz-appearance:none;padding:2px 22px 2px 0;
+  }
+  .select-wrap::after{content:'▾';position:absolute;right:2px;bottom:16px;color:var(--ink-soft);font-size:0.8rem;pointer-events:none;}
+  .stepper{display:flex;align-items:center;gap:14px;}
+  .stepper button{
+    width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:var(--terracotta-dark);
+    transition:background 0.2s ease, border-color 0.2s ease;
+  }
+  .stepper button:hover:not(:disabled){background:var(--terracotta-tint);border-color:var(--terracotta-dark);}
+  .stepper button:disabled{opacity:0.3;cursor:not-allowed;}
+  .stepper span{font-weight:700;font-size:1.05rem;min-width:18px;text-align:center;}
+  .search-submit{margin-top:20px;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:2.5rem;}
+    .reservation-card{transform:rotate(0);max-width:440px;}
+  }
+  @media (max-width:480px){
+    .hero{padding:44px 0 64px;}
+    .hero h1{font-size:2.05rem;}
+    .hero-ctas{flex-direction:column;}
+    .hero-ctas .btn{width:100%;}
+  }
+
+  /* ===================== SECTION HEAD ===================== */
+  .section-head{text-align:center;max-width:640px;margin:0 auto 52px;}
+  .eyebrow{display:inline-block;color:var(--sage-dark);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-size:0.8rem;margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.5rem);margin-bottom:16px;}
+  .section-subtitle{color:var(--ink-soft);font-size:1.05rem;}
+
+  /* ===================== HOW IT WORKS ===================== */
+  .how-section{padding:104px 0;background:var(--white);scroll-margin-top:90px;}
+  .role-toggle{display:flex;justify-content:center;margin-bottom:52px;}
+  .role-toggle-inner{display:inline-flex;background:var(--cream-alt);padding:6px;border-radius:var(--radius-full);gap:4px;}
+  .role-toggle-inner button{padding:12px 26px;border-radius:var(--radius-full);font-weight:700;font-size:0.92rem;color:var(--ink-soft);transition:all 0.25s ease;}
+  .role-toggle-inner button.active{background:var(--terracotta-dark);color:var(--white);box-shadow:0 8px 18px rgba(166,74,52,0.28);}
+
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .steps-grid[hidden]{display:none;}
+  .step-card{
+    position:relative;background:var(--cream);border-radius:var(--radius-lg);
+    padding:30px 26px 32px;overflow:hidden;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .step-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .step-number{
+    display:block;font-family:var(--font-display);font-weight:700;font-size:3.6rem;
+    color:var(--border);line-height:1;margin-bottom:-14px;
+  }
+  .step-icon{
+    width:56px;height:56px;border-radius:50%;background:var(--terracotta-tint);
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;
+  }
+  .step-icon.sage{background:var(--sage-tint);}
+  .step-card h3{font-size:1.2rem;margin-bottom:10px;}
+  .step-card p{color:var(--ink-soft);font-size:0.94rem;}
+
+  @media (max-width:900px){.steps-grid{grid-template-columns:1fr;}}
+
+  /* ===================== CHEFS ===================== */
+  .chefs-section{padding:104px 0;background:var(--cream-alt);}
+  .chefs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:44px;}
+  .chef-card{
+    position:relative;background:var(--white);border-radius:var(--radius-lg);padding:30px;
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column;cursor:pointer;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .chef-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .chef-badge{
+    position:absolute;top:22px;right:22px;font-size:0.68rem;font-weight:700;color:var(--white);
+    padding:6px 13px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:0.03em;
+  }
+  .chef-badge.sage{background:var(--sage-dark);}
+  .chef-badge.terracotta{background:var(--terracotta-dark);}
+  .chef-badge.gold{background:var(--gold);color:var(--ink);}
+  .chef-badge.inline{position:static;display:inline-flex;align-items:center;gap:4px;}
+  .chef-avatar-wrap{width:76px;height:76px;border-radius:50%;position:relative;overflow:hidden;margin-bottom:18px;flex-shrink:0;}
+  .chef-avatar-fallback{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--white);
+  }
+  .chef-avatar-photo{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;}
+  .chef-card h3{font-size:1.25rem;margin-bottom:3px;}
+  .chef-specialty{color:var(--terracotta-dark);font-weight:700;font-size:0.88rem;margin-bottom:6px;}
+  .chef-location{font-size:0.82rem;color:var(--ink-faint);margin-bottom:14px;}
+  .chef-quote{color:var(--ink-soft);font-size:0.92rem;font-style:italic;margin-bottom:16px;flex-grow:1;}
+  .chef-rating{display:flex;align-items:center;gap:7px;font-size:0.9rem;margin-bottom:16px;}
+  .chef-rating .stars{color:var(--gold);letter-spacing:1px;}
+  .chef-rating .score{font-weight:700;color:var(--ink);}
+  .chef-rating .count{color:var(--ink-soft);}
+  .chef-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+  .chef-tags span{background:var(--sage-tint);color:var(--sage-dark);font-size:0.76rem;font-weight:700;padding:5px 12px;border-radius:var(--radius-full);}
+  .chef-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--border);}
+  .chef-price-tag{
+    position:relative;background:var(--terracotta-tint);color:var(--terracotta-dark);
+    font-family:var(--font-display);font-weight:700;font-size:1.02rem;
+    padding:8px 14px 8px 22px;
+    clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);
+  }
+  .chef-price-tag small{font-family:var(--font-body);font-weight:600;font-size:0.68rem;color:var(--ink-soft);}
+  .chefs-cta{text-align:center;}
+
+  @media (max-width:900px){.chefs-grid{grid-template-columns:1fr;}}
+
+  /* ===================== CLOSING (CTA + FOOTER) ===================== */
+  .closing{background:var(--ink);color:var(--cream);}
+  .closing-cta{padding:90px 0 64px;text-align:center;position:relative;}
+  .closing-cta h2{color:var(--cream);font-size:clamp(1.9rem,4vw,2.5rem);margin-bottom:16px;}
+  .closing-cta p{color:rgba(251,246,239,0.72);font-size:1.05rem;max-width:520px;margin:0 auto 32px;}
+  .closing-cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .closing-divider{border:none;border-top:1px solid rgba(251,246,239,0.12);margin:0;}
+
+  footer{padding:64px 0 0;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 0.8fr 0.8fr 0.8fr 1.2fr;gap:36px;padding-bottom:52px;}
+  .footer-brand p{color:rgba(251,246,239,0.62);font-size:0.9rem;margin:14px 0 22px;max-width:260px;}
+  .social-icons{display:flex;gap:10px;}
+  .social-icons a{
+    width:36px;height:36px;border-radius:50%;background:rgba(251,246,239,0.08);
+    display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;
+  }
+  .social-icons a svg{width:16px;height:16px;color:var(--cream);}
+  .social-icons a:hover{background:var(--terracotta-dark);}
+  .footer-col h4{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--terracotta);margin-bottom:18px;font-weight:700;}
+  .footer-col ul li{margin-bottom:11px;}
+  .footer-col ul a{color:rgba(251,246,239,0.68);font-size:0.9rem;transition:color 0.2s ease;}
+  .footer-col ul a:hover{color:var(--cream);}
+  .footer-newsletter h4{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--terracotta);margin-bottom:12px;font-weight:700;}
+  .footer-newsletter p{font-size:0.86rem;color:rgba(251,246,239,0.6);margin-bottom:16px;}
+  .footer-newsletter form{display:flex;background:rgba(251,246,239,0.08);border-radius:var(--radius-full);padding:5px;}
+  .footer-newsletter input{flex:1;min-width:0;background:transparent;border:none;padding:10px 14px;color:var(--cream);font-size:0.88rem;}
+  .footer-newsletter input::placeholder{color:rgba(251,246,239,0.4);}
+  .footer-newsletter button{
+    background:var(--terracotta-dark);width:38px;height:38px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;
+  }
+  .footer-newsletter button:hover{background:var(--terracotta-deep);}
+  .footer-newsletter button svg{width:16px;height:16px;color:var(--white);}
+  .newsletter-msg{font-size:0.82rem;color:var(--sage);margin-top:10px;min-height:1.2em;}
+
+  .footer-bottom{
+    border-top:1px solid rgba(251,246,239,0.12);padding:24px 0;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  .footer-bottom p{font-size:0.83rem;color:rgba(251,246,239,0.5);}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+  .footer-links a{font-size:0.83rem;color:rgba(251,246,239,0.5);transition:color 0.2s ease;}
+  .footer-links a:hover{color:var(--cream);}
+
+  @media (max-width:1024px){
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-brand{grid-column:span 2;}
+  }
+  @media (max-width:640px){
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-brand{grid-column:span 1;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;}
+  }
+
+  /* ===================== TOAST ===================== */
+  .toast{
+    position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(120px);
+    background:var(--ink);color:var(--cream);padding:14px 26px;border-radius:var(--radius-full);
+    font-size:0.88rem;font-weight:600;box-shadow:var(--shadow-lg);z-index:1000;opacity:0;
+    transition:transform 0.4s cubic-bezier(.2,.9,.3,1.2), opacity 0.4s ease;
+    max-width:90vw;text-align:center;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+  /* ===================== SCROLL REVEAL ===================== */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ===================== APP VIEW SWITCH ===================== */
+  .app-view[hidden]{display:none !important;}
+
+  /* ===================== QUICK FILTERS (ACCUEIL) ===================== */
+  .quick-filters{margin-top:24px;}
+  .quick-filters-label{font-size:0.78rem;font-weight:800;color:var(--ink-faint);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;}
+  .quick-filter-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .quick-filter-chip{
+    background:var(--white);border:1.5px solid var(--border);color:var(--ink-soft);
+    padding:8px 16px;border-radius:var(--radius-full);font-size:0.85rem;font-weight:700;
+    transition:border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .quick-filter-chip:hover{border-color:var(--terracotta-dark);color:var(--terracotta-dark);background:var(--terracotta-tint);transform:translateY(-2px);}
+
+  /* ===================== SEARCH VIEW ===================== */
+  .search-toolbar{padding:28px 0 4px;}
+  .back-to-home{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:0.9rem;color:var(--ink-soft);margin-bottom:20px;}
+  .back-to-home:hover{color:var(--terracotta-dark);}
+  .search-page-title{font-size:clamp(1.7rem,3.2vw,2.15rem);margin-bottom:6px;}
+  .search-page-subtitle{color:var(--ink-soft);font-size:1rem;margin-bottom:22px;max-width:620px;}
+
+  .active-filters-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:8px;}
+  .filter-chip{
+    display:inline-flex;align-items:center;gap:8px;background:var(--terracotta-tint);color:var(--terracotta-dark);
+    padding:8px 10px 8px 16px;border-radius:var(--radius-full);font-size:0.84rem;font-weight:700;
+    transition:background 0.2s ease;
+  }
+  .filter-chip:hover{background:#F2D2C4;}
+  .filter-chip .chip-x{font-size:1.05rem;line-height:1;opacity:0.65;}
+  .filter-chip:hover .chip-x{opacity:1;}
+  .no-active-filters{font-size:0.86rem;color:var(--ink-faint);font-style:italic;}
+
+  .search-layout{display:flex;gap:48px;align-items:flex-start;padding:28px 0 100px;}
+
+  .filters-panel{width:272px;flex-shrink:0;}
+  .filters-panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px;}
+  .filters-panel-header h2{font-size:1.25rem;}
+  .filters-panel-head-actions{display:flex;align-items:center;gap:14px;}
+  .filters-panel-close{display:none;font-size:1.2rem;color:var(--ink-soft);padding:4px;}
+  .reset-filters-link{font-size:0.84rem;font-weight:700;color:var(--terracotta-dark);text-decoration:underline;text-underline-offset:3px;}
+
+  .filter-group{padding:18px 0;border-bottom:1px solid var(--border);}
+  .filter-group:first-of-type{padding-top:0;}
+  .filter-group h3{font-family:var(--font-body);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:800;color:var(--ink-faint);margin-bottom:14px;}
+  .filter-option{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:0.93rem;font-weight:600;cursor:pointer;color:var(--ink);}
+  .filter-option input{accent-color:var(--terracotta-dark);width:17px;height:17px;flex-shrink:0;cursor:pointer;}
+  .filter-hint{font-size:0.76rem;color:var(--ink-faint);margin-top:10px;line-height:1.5;}
+  .filter-date-input{
+    width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+    font-size:0.92rem;font-weight:600;font-family:inherit;color:var(--ink);margin-top:2px;
+  }
+  .filters-apply-mobile{display:none;margin-top:10px;}
+
+  .filters-backdrop{
+    display:none;position:fixed;inset:0;background:rgba(36,30,24,0.45);z-index:190;
+    opacity:0;pointer-events:none;transition:opacity 0.3s ease;
+  }
+  .filters-backdrop.open{opacity:1;pointer-events:auto;}
+
+  .results-panel{flex:1;min-width:0;}
+  .results-header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+  .mobile-filters-toggle{display:none;align-items:center;gap:8px;}
+  .filter-count-badge{
+    background:var(--terracotta-dark);color:#fff;font-size:0.7rem;font-weight:800;
+    min-width:18px;height:18px;border-radius:50%;align-items:center;justify-content:center;padding:0 4px;
+    display:inline-flex;
+  }
+  .filter-count-badge:empty{display:none;}
+  .results-count{font-weight:700;font-size:1.02rem;}
+  .sort-wrap{position:relative;display:inline-block;}
+  .sort-wrap::after{content:'▾';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink-soft);font-size:0.72rem;pointer-events:none;}
+  .sort-select{
+    padding:9px 32px 9px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+    font-weight:600;font-size:0.86rem;background:var(--white);color:var(--ink);
+    appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  }
+
+  .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .results-grid .chef-card{animation:card-fade-in 0.35s ease both;}
+  @keyframes card-fade-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+  .no-results{text-align:center;padding:64px 24px;background:var(--white);border-radius:var(--radius-lg);}
+  .no-results p{font-size:1.05rem;color:var(--ink-soft);margin-bottom:20px;}
+
+  @media (max-width:1100px){.results-grid{grid-template-columns:repeat(2,1fr);}}
+
+  @media (max-width:900px){
+    .filters-panel{
+      position:fixed;top:0;left:0;bottom:0;width:min(84vw,340px);z-index:200;
+      background:var(--white);padding:24px 22px 32px;overflow-y:auto;
+      transform:translateX(-100%);transition:transform 0.32s ease;box-shadow:var(--shadow-lg);
+    }
+    .filters-panel.open{transform:translateX(0);}
+    .filters-panel-close{display:block;}
+    .filters-backdrop{display:block;}
+    .filters-apply-mobile{display:flex;}
+    .mobile-filters-toggle{display:inline-flex;}
+    .results-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:640px){
+    .results-grid{grid-template-columns:1fr;}
+    .results-header{flex-direction:column;align-items:flex-start;}
+  }
+
+  /* ===================== PROFIL CUISINIER ===================== */
+  .profile-toolbar{padding:28px 0 8px;}
+  .profile-layout{display:flex;gap:48px;align-items:flex-start;padding:20px 0 100px;}
+  .profile-main{flex:1;min-width:0;max-width:700px;}
+
+  .profile-header{display:flex;gap:24px;align-items:flex-start;margin-bottom:36px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--border);}
+  .profile-avatar-wrap{width:116px;height:116px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
+  .profile-avatar-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:#fff;}
+  .profile-avatar-photo{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;}
+  .profile-header-info{flex:1;min-width:220px;padding-top:2px;}
+  .profile-header-info h1{font-size:clamp(1.85rem,3.2vw,2.4rem);margin-bottom:8px;}
+  .profile-cuisine-tag{color:var(--terracotta-dark);font-weight:700;font-size:1rem;margin-bottom:12px;}
+  .profile-rating-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+  .profile-rating-row .stars{color:var(--gold);letter-spacing:1px;}
+  .profile-rating-row .score{font-weight:700;}
+  .profile-location{color:var(--ink-faint);font-size:0.92rem;}
+
+  .profile-section{margin-bottom:40px;}
+  .profile-section h2{font-size:1.32rem;margin-bottom:16px;}
+  .profile-bio{color:var(--ink-soft);font-size:1.02rem;line-height:1.75;}
+
+  .specialty-pills{display:flex;flex-wrap:wrap;gap:10px;}
+  .specialty-pills span{background:var(--sage-tint);color:var(--sage-dark);font-size:0.85rem;font-weight:700;padding:8px 16px;border-radius:var(--radius-full);}
+
+  .training-item{margin-bottom:12px;display:flex;flex-direction:column;gap:2px;}
+  .training-item strong{font-size:0.98rem;}
+  .training-item span{color:var(--ink-soft);font-size:0.88rem;}
+  .self-taught-note{color:var(--ink-soft);font-size:0.95rem;background:var(--sage-tint);padding:14px 18px;border-radius:var(--radius-md);}
+
+  .formulas-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+  .formula-info-card{background:var(--cream-alt);border-radius:var(--radius-lg);padding:22px;}
+  .formula-info-card h3{font-size:1.06rem;margin-bottom:4px;}
+  .formula-info-price{color:var(--terracotta-dark);font-weight:700;font-family:var(--font-display);font-size:1.18rem;margin-bottom:10px;}
+  .formula-info-desc{font-size:0.87rem;color:var(--ink-soft);margin-bottom:14px;}
+  .formula-info-includes li{font-size:0.83rem;color:var(--ink-soft);margin-bottom:5px;padding-left:18px;position:relative;list-style:none;}
+  .formula-info-includes li::before{content:'✓';position:absolute;left:0;color:var(--sage-dark);font-weight:800;}
+
+  .reviews-list{display:flex;flex-direction:column;gap:14px;}
+  .review-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;}
+  .review-item-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+  .review-author{font-weight:700;font-size:0.92rem;}
+  .review-date{font-size:0.78rem;color:var(--ink-faint);}
+  .review-stars{color:var(--gold);letter-spacing:2px;display:block;margin-bottom:8px;font-size:0.82rem;}
+  .review-comment{font-size:0.92rem;color:var(--ink-soft);}
+
+  /* ---- Module de réservation (colonne collante) ---- */
+  .profile-booking-col{width:378px;flex-shrink:0;}
+  .booking-card{position:sticky;top:104px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px;}
+  .booking-card-header{margin-bottom:20px;}
+  .booking-price-from{font-family:var(--font-display);font-size:1.28rem;font-weight:700;}
+  .booking-price-from small{font-family:var(--font-body);font-weight:500;font-size:0.78rem;color:var(--ink-soft);}
+  .booking-field{margin-bottom:20px;}
+  .booking-field > label{display:block;font-size:0.8rem;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;}
+  .required-mark{color:var(--terracotta-dark);}
+
+  .formula-options{display:flex;flex-direction:column;gap:10px;}
+  .formula-option{display:block;border:1.5px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;cursor:pointer;transition:border-color .2s ease, background .2s ease;position:relative;}
+  .formula-option input{position:absolute;opacity:0;width:1px;height:1px;}
+  .formula-option:hover{border-color:var(--terracotta-dark);}
+  .formula-option.selected{border-color:var(--terracotta-dark);background:var(--terracotta-tint);}
+  .formula-option-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .formula-option-name{font-weight:700;font-family:var(--font-display);font-size:0.98rem;}
+  .formula-option-price{font-weight:700;color:var(--terracotta-dark);white-space:nowrap;font-size:0.9rem;}
+  .formula-option-desc{font-size:0.81rem;color:var(--ink-soft);margin-top:5px;}
+
+  .price-breakdown{background:var(--cream-alt);border-radius:var(--radius-md);padding:16px 18px;margin-bottom:20px;}
+  .price-breakdown-row{display:flex;justify-content:space-between;align-items:baseline;font-size:0.85rem;color:var(--ink-soft);gap:10px;}
+  .price-breakdown-row.discount-hint{color:var(--sage-dark);font-weight:700;font-size:0.8rem;margin-top:8px;}
+  .price-original{text-decoration:line-through;color:var(--ink-faint);margin-right:6px;font-weight:500;}
+  .price-breakdown-total{display:flex;justify-content:space-between;align-items:baseline;padding-top:12px;margin-top:10px;border-top:1px solid var(--border);}
+  .price-breakdown-total .label{font-weight:700;font-size:0.9rem;}
+  .price-breakdown-total .amount{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--ink);}
+
+  .booking-field textarea{
+    width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;
+    font-family:inherit;font-size:0.9rem;color:var(--ink);resize:vertical;min-height:76px;
+  }
+  .booking-field textarea:focus{border-color:var(--terracotta-dark);}
+  .booking-field textarea.invalid{border-color:#C0392B;}
+  .gdpr-notice{font-size:0.75rem;color:var(--ink-faint);margin-top:8px;line-height:1.5;}
+  .booking-error{color:#C0392B;font-size:0.83rem;font-weight:700;margin-top:-8px;margin-bottom:16px;}
+
+  .booking-confirmation{text-align:center;padding:8px 0;}
+  .confirmation-icon{font-size:2.5rem;margin-bottom:12px;}
+  .booking-confirmation h3{font-size:1.22rem;margin-bottom:10px;}
+  .booking-confirmation > p{font-size:0.92rem;color:var(--ink-soft);margin-bottom:18px;}
+  .confirmation-summary{background:var(--cream-alt);border-radius:var(--radius-md);padding:16px 18px;margin-bottom:16px;text-align:left;}
+  .confirmation-row{display:flex;justify-content:space-between;font-size:0.87rem;padding:5px 0;}
+  .confirmation-row span{color:var(--ink-soft);}
+  .confirmation-note{font-size:0.81rem;color:var(--ink-faint);margin-bottom:18px;}
+
+  @media (max-width:1000px){
+    .profile-layout{flex-direction:column;}
+    .profile-booking-col{width:100%;}
+    .booking-card{position:static;}
+  }
+  @media (max-width:640px){
+    .profile-header{flex-direction:column;align-items:center;text-align:center;}
+    .profile-rating-row{justify-content:center;}
+  }
+
+  /* ===================== DEVENIR CUISINIER ===================== */
+  .cook-register-layout{display:flex;gap:48px;align-items:flex-start;padding:20px 0 100px;}
+  .cook-register-intro{flex:0 0 320px;}
+  .cook-register-intro h1{font-size:clamp(1.7rem,3vw,2.15rem);margin:12px 0 16px;}
+  .cook-register-intro p{color:var(--ink-soft);margin-bottom:28px;}
+  .mini-steps{display:flex;flex-direction:column;gap:16px;}
+  .mini-step{display:flex;align-items:center;gap:14px;font-weight:600;font-size:0.95rem;}
+  .mini-step span{
+    width:32px;height:32px;border-radius:50%;background:var(--terracotta-tint);color:var(--terracotta-dark);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;flex-shrink:0;
+  }
+  .cook-register-form{flex:1;min-width:0;max-width:480px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:32px;}
+  .cook-register-form input[type="text"],
+  .cook-register-form input[type="email"],
+  .cook-register-form input[type="number"],
+  .cook-register-form select,
+  .cook-register-form textarea{
+    width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;
+    font-family:inherit;font-size:0.94rem;color:var(--ink);background:var(--white);
+  }
+  .cook-register-form select{appearance:none;-webkit-appearance:none;}
+  .cook-register-form textarea{resize:vertical;}
+  .cook-register-form input:focus,.cook-register-form select:focus,.cook-register-form textarea:focus{border-color:var(--terracotta-dark);}
+  .cook-register-row{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;}
+
+  .new-cook-badge{background:var(--sage-tint);color:var(--sage-dark);font-size:0.82rem;font-weight:700;padding:5px 12px;border-radius:var(--radius-full);}
+  .no-reviews-note{color:var(--ink-faint);font-style:italic;font-size:0.92rem;}
+
+  @media (max-width:900px){
+    .cook-register-layout{flex-direction:column;}
+    .cook-register-intro{flex:none;}
+    .cook-register-form{max-width:none;width:100%;}
+  }
+  @media (max-width:480px){
+    .cook-register-row{grid-template-columns:1fr;}
+  }
+
+  /* ===================== TYPE DE RÉSERVATION ===================== */
+  .booking-type-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .booking-type-option{
+    display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;
+    border:1.5px solid var(--border);border-radius:var(--radius-md);padding:14px 10px;
+    font-size:0.82rem;font-weight:600;color:var(--ink-soft);transition:border-color .2s ease, background .2s ease;
+  }
+  .booking-type-option small{font-weight:500;color:var(--ink-faint);}
+  .booking-type-icon{font-size:1.3rem;}
+  .booking-type-option:hover{border-color:var(--terracotta-dark);}
+  .booking-type-option.active{border-color:var(--terracotta-dark);background:var(--terracotta-tint);color:var(--ink);}
+
+  .cooking-only-card{background:var(--sage-tint);border-radius:var(--radius-md);padding:16px 18px;}
+  .cooking-only-card strong{display:block;font-family:var(--font-display);font-size:1rem;margin-bottom:6px;color:var(--ink);}
+  .cooking-only-card p{font-size:0.86rem;color:var(--ink-soft);margin-bottom:10px;}
+  .cooking-only-price{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--sage-dark);}
+
+  /* ===================== CALENDRIER DE DISPONIBILITÉ ===================== */
+  .mini-calendar{background:var(--cream-alt);border-radius:var(--radius-md);padding:16px;}
+  .calendar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .calendar-header span{font-weight:700;font-family:var(--font-display);font-size:0.96rem;}
+  .calendar-header button{
+    width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;color:var(--terracotta-dark);transition:background .2s ease;
+  }
+  .calendar-header button:hover{background:var(--terracotta-tint);}
+  .calendar-weekdays{
+    display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:0.7rem;
+    font-weight:700;color:var(--ink-faint);margin-bottom:6px;text-transform:uppercase;
+  }
+  .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+  .calendar-day{
+    aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:8px;
+    font-size:0.84rem;font-weight:600;color:var(--ink);transition:background .15s ease;background:var(--white);
+  }
+  .calendar-day:not(.disabled):not(.empty):hover{background:var(--terracotta-tint);}
+  .calendar-day.disabled{color:var(--ink-faint);text-decoration:line-through;cursor:not-allowed;opacity:0.55;background:transparent;}
+  .calendar-day.empty{visibility:hidden;}
+  .calendar-day.selected{background:var(--terracotta-dark);color:#fff;}
+  .calendar-legend{display:flex;gap:16px;margin-top:10px;font-size:0.75rem;color:var(--ink-soft);}
+  .legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;}
+  .legend-dot.available{background:var(--sage);}
+  .legend-dot.unavailable{background:var(--ink-faint);}
+  .selected-date-label{margin-top:10px;font-size:0.86rem;font-weight:700;color:var(--terracotta-dark);}
+
+  /* ===================== CHECKLIST ÉQUIPEMENT ===================== */
+  .equipment-checklist{display:flex;flex-direction:column;gap:2px;}
+</style>
+</head>
+<body>
+
+<a href="#view-home" class="skip-link">Aller au contenu principal</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container nav-wrapper">
+    <a href="#" class="logo" aria-label="At'Chef, retour à l'accueil">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="24" fill="#A64A34"/>
+        <path d="M15 31.5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v2.5c0 1.1-.9 2-2 2H17c-1.1 0-2-.9-2-2v-2.5z" fill="#FBF6EF"/>
+        <path d="M24 11.5c-2.1 0-3.9 1.2-4.8 3a5.2 5.2 0 00-5.4 5.2c0 1.1.3 2.1.8 3-.5.7-.8 1.6-.8 2.5 0 2.3 1.9 4.1 4.1 4.1h12.2c2.3 0 4.1-1.9 4.1-4.1 0-.9-.3-1.8-.8-2.5.5-.9.8-1.9.8-3a5.2 5.2 0 00-5.4-5.2c-.9-1.8-2.7-3-4.8-3z" fill="#FBF6EF"/>
+      </svg>
+      At'<span class="logo-accent">Chef</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#comment-ca-marche" data-goto-section="comment-ca-marche">Comment ça marche</a>
+      <a href="#" class="go-to-cook-register">Devenir Cuisinier</a>
+      <a href="#" data-toast="🔐 L'espace de connexion arrive très bientôt !">Connexion</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button type="button" class="btn btn-primary go-to-search">Trouver un Cuisinier</button>
+      <button class="mobile-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="#comment-ca-marche" data-goto-section="comment-ca-marche">Comment ça marche</a>
+      <a href="#" class="go-to-cook-register">Devenir Cuisinier</a>
+      <a href="#" data-toast="🔐 L'espace de connexion arrive très bientôt !">Connexion</a>
+      <button type="button" class="btn btn-primary btn-block go-to-search">Trouver un Cuisinier</button>
+    </div>
+  </div>
+</header>
+
+<main id="view-home" class="app-view">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">📍 Déjà disponible à Nantes</span>
+        <h1>
+          Vivez l'expérience d'un chef à domicile,
+          <span class="marked-phrase">sans vous ruiner
+            <svg class="marker-stroke" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 15 Q 40 4, 80 12 T 160 9 T 240 14 T 296 7" fill="none" stroke="#A64A34" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </span>.
+        </h1>
+        <p class="subtitle">At'Chef connecte les gourmands aux cuisiniers amateurs les plus talentueux de Nantes, pour un repas fait maison, authentique et convivial — directement chez vous.</p>
+        <div class="hero-ctas">
+          <button type="button" class="btn btn-primary btn-lg go-to-search">Découvrir les Cuisiniers</button>
+          <a href="#comment-ca-marche" data-goto-section="comment-ca-marche" class="btn btn-outline btn-lg">Comment ça marche</a>
+        </div>
+        <p class="trust-caption">⭐ <strong>4,9/5</strong> · déjà plus de <strong>200 repas</strong> partagés entre voisins nantais</p>
+
+        <div class="quick-filters">
+          <p class="quick-filters-label">Recherches populaires</p>
+          <div class="quick-filter-chips">
+            <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Italienne">🍝 Italienne</button>
+            <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Orientale &amp; Méditerranéenne">🥘 Orientale</button>
+            <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Asiatique">🍜 Asiatique</button>
+            <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Végétarienne &amp; Vegan">🥗 Végétarien</button>
+            <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Pâtisserie &amp; Desserts">🥐 Pâtisserie</button>
+            <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Française &amp; Bistrot">🍲 Française</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="reservation-wrap">
+        <form class="reservation-card" id="searchForm">
+          <p class="reservation-title">Réserver une table</p>
+          <p class="reservation-subtitle">Trouvez le cuisinier parfait pour votre soirée</p>
+
+          <div class="field-row">
+            <label for="dateInput">📅 Quand ?</label>
+            <input type="date" id="dateInput" name="date">
+          </div>
+
+          <div class="field-row">
+            <label id="guestLabel">👥 Combien de convives ?</label>
+            <div class="stepper" role="group" aria-labelledby="guestLabel">
+              <button type="button" data-action="decrement" aria-label="Retirer un convive">−</button>
+              <span id="guestCount" aria-live="polite">2</span>
+              <button type="button" data-action="increment" aria-label="Ajouter un convive">+</button>
+            </div>
+          </div>
+
+          <div class="field-row select-wrap">
+            <label for="cuisineSelect">🍽️ Quelle envie ?</label>
+            <select id="cuisineSelect" name="cuisine">
+              <option>Toutes les cuisines</option>
+              <option>Française &amp; Bistrot</option>
+              <option>Italienne</option>
+              <option>Orientale &amp; Méditerranéenne</option>
+              <option>Asiatique</option>
+              <option>Végétarienne &amp; Vegan</option>
+              <option>Pâtisserie &amp; Desserts</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block search-submit">Rechercher un cuisinier</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMENT ÇA MARCHE ============ -->
+  <section class="how-section" id="comment-ca-marche">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2>Une expérience simple, pensée pour tous</h2>
+        <p class="section-subtitle">Que vous ayez envie de déguster un bon repas ou de partager votre talent culinaire, At'Chef rend l'expérience simple et sécurisée.</p>
+      </div>
+
+      <div class="role-toggle">
+        <div class="role-toggle-inner">
+          <button type="button" class="active" data-role="hote">Je suis un Hôte</button>
+          <button type="button" data-role="cuisinier">Je suis un Cuisinier</button>
+        </div>
+      </div>
+
+      <div class="steps-grid" data-panel="hote">
+        <div class="step-card reveal">
+          <span class="step-number">01</span>
+          <div class="step-icon">🔍</div>
+          <h3>Trouvez votre cuisinier</h3>
+          <p>Parcourez les profils vérifiés près de chez vous et filtrez selon la date, le nombre de convives et le type de cuisine.</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-number">02</span>
+          <div class="step-icon">📅</div>
+          <h3>Réservez en 2 minutes</h3>
+          <p>Choisissez votre menu, confirmez le nombre de convives et validez votre réservation en toute sécurité, en ligne.</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-number">03</span>
+          <div class="step-icon">🍽️</div>
+          <h3>Savourez votre repas</h3>
+          <p>Votre cuisinier se déplace chez vous, prépare un repas fait maison sur place et partage un moment convivial à table.</p>
+        </div>
+      </div>
+
+      <div class="steps-grid" data-panel="cuisinier" hidden>
+        <div class="step-card reveal">
+          <span class="step-number">01</span>
+          <div class="step-icon sage">👨‍🍳</div>
+          <h3>Créez votre profil</h3>
+          <p>Présentez vos spécialités, votre histoire et ce qui vous anime en cuisine pour donner envie aux hôtes de vous réserver.</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-number">02</span>
+          <div class="step-icon sage">📖</div>
+          <h3>Composez vos menus</h3>
+          <p>Fixez librement vos plats, vos tarifs et vos disponibilités selon votre emploi du temps et vos envies du moment.</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-number">03</span>
+          <div class="step-icon sage">💶</div>
+          <h3>Cuisinez et gagnez en revenu</h3>
+          <p>Rendez-vous chez vos hôtes, partagez votre passion autour d'un bon repas et repartez avec un revenu complémentaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CUISINIERS ============ -->
+  <section class="chefs-section" id="cuisiniers">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Nos talents culinaires</span>
+        <h2>Nos Cuisiniers à Nantes</h2>
+        <p class="section-subtitle">Rencontrez quelques-uns des passionnés qui font vibrer les tables nantaises, un repas fait maison à la fois.</p>
+      </div>
+
+      <div class="chefs-grid" id="featuredChefsGrid"></div>
+
+      <div class="chefs-cta">
+        <button type="button" class="btn btn-secondary go-to-search">Voir tous les cuisiniers →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOTURE : CTA + FOOTER ============ -->
+  <div class="closing">
+    <section class="closing-cta">
+      <div class="container">
+        <h2>Prêt à passer à table ?</h2>
+        <p>Rejoignez la communauté At'Chef à Nantes, que vous ayez envie de déguster un bon repas ou de partager votre talent culinaire.</p>
+        <div class="closing-cta-buttons">
+          <button type="button" class="btn btn-primary btn-lg go-to-search">Je réserve un repas</button>
+          <a href="#" class="go-to-cook-register btn btn-outline-light btn-lg">Je deviens cuisinier</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="closing-divider">
+
+    <footer>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" style="color:var(--cream);" aria-label="At'Chef, retour à l'accueil">
+            <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="24" cy="24" r="24" fill="#E2725B"/>
+              <path d="M15 31.5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v2.5c0 1.1-.9 2-2 2H17c-1.1 0-2-.9-2-2v-2.5z" fill="#241E18"/>
+              <path d="M24 11.5c-2.1 0-3.9 1.2-4.8 3a5.2 5.2 0 00-5.4 5.2c0 1.1.3 2.1.8 3-.5.7-.8 1.6-.8 2.5 0 2.3 1.9 4.1 4.1 4.1h12.2c2.3 0 4.1-1.9 4.1-4.1 0-.9-.3-1.8-.8-2.5.5-.9.8-1.9.8-3a5.2 5.2 0 00-5.4-5.2c-.9-1.8-2.7-3-4.8-3z" fill="#241E18"/>
+            </svg>
+            At'<span style="color:var(--terracotta);">Chef</span>
+          </a>
+          <p>At'Chef connecte les gourmands et les cuisiniers passionnés de Nantes pour des repas faits maison, authentiques et abordables.</p>
+          <div class="social-icons">
+            <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+            <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.53-1.5H17V3.6C16.6 3.55 15.6 3.4 14.4 3.4c-2.4 0-4 1.46-4 4.15V10H7.7v3.1h2.7V21h3.1z"/></svg>
+            </a>
+            <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !" aria-label="Partager">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Découvrir</h4>
+          <ul>
+            <li><a href="#comment-ca-marche" data-goto-section="comment-ca-marche">Comment ça marche</a></li>
+            <li><a href="#" class="go-to-search">Nos cuisiniers</a></li>
+            <li><a href="#" class="go-to-cook-register">Devenir cuisinier</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Blog culinaire</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>À propos</h4>
+          <ul>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Notre histoire</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Charte de confiance</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">At'Chef à Nantes</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Nous contacter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Aide</h4>
+          <ul>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Centre d'aide</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Sécurité &amp; paiement</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Annulation</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">CGU</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4>Recevez nos coups de cœur</h4>
+          <p>Les meilleures adresses et nouveaux cuisiniers de Nantes, une fois par mois.</p>
+          <form id="newsletterForm">
+            <input type="email" placeholder="votre@email.com" required aria-label="Adresse email">
+            <button type="submit" aria-label="S'inscrire à la newsletter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+          <p class="newsletter-msg" id="newsletterMsg" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>© 2026 At'Chef. Tous droits réservés. · Fait avec ❤️ à Nantes</p>
+        <div class="footer-links">
+          <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Mentions légales</a>
+          <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">CGU</a>
+          <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Confidentialité</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</main>
+
+<!-- ============ VUE RECHERCHE ============ -->
+<div id="view-search" class="app-view" hidden>
+  <div class="search-toolbar container">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+    <h1 class="search-page-title">Cuisiniers disponibles à Nantes</h1>
+    <p class="search-page-subtitle">Filtrez par budget, type de cuisine, date ou note pour trouver le cuisinier idéal pour votre soirée.</p>
+    <div class="active-filters-row" id="activeFiltersRow"></div>
+  </div>
+
+  <div class="container search-layout">
+    <aside class="filters-panel" id="filtersPanel">
+      <div class="filters-panel-header">
+        <h2>Filtres</h2>
+        <div class="filters-panel-head-actions">
+          <button type="button" class="reset-filters-link">Réinitialiser</button>
+          <button type="button" class="filters-panel-close" aria-label="Fermer les filtres">✕</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Budget par personne</h3>
+        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="low"> Moins de 20 €</label>
+        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="mid"> 20 € – 40 €</label>
+        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="high"> Plus de 40 €</label>
+      </div>
+
+      <div class="filter-group">
+        <h3>Type de cuisine</h3>
+        <div id="cuisineFilterOptions"></div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Date de l'événement</h3>
+        <input type="date" class="filter-date-input" id="searchDateInput">
+        <p class="filter-hint">La disponibilité exacte de chaque cuisinier est confirmée après votre demande de réservation.</p>
+      </div>
+
+      <div class="filter-group">
+        <h3>Note minimale</h3>
+        <label class="filter-option"><input type="radio" name="ratingFilter" value="0" checked> Toutes les notes</label>
+        <label class="filter-option"><input type="radio" name="ratingFilter" value="4"> 4,0 ★ et plus</label>
+        <label class="filter-option"><input type="radio" name="ratingFilter" value="4.5"> 4,5 ★ et plus</label>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block filters-apply-mobile">Voir les résultats</button>
+    </aside>
+
+    <div class="filters-backdrop" id="filtersBackdrop"></div>
+
+    <div class="results-panel">
+      <div class="results-header">
+        <button type="button" class="mobile-filters-toggle btn btn-outline btn-sm">🔍 Filtres <span id="mobileFilterCount" class="filter-count-badge"></span></button>
+        <p class="results-count" id="resultsCount"></p>
+        <div class="sort-wrap">
+          <select class="sort-select" id="sortSelect">
+            <option value="relevance">Trier : Pertinence</option>
+            <option value="rating">Trier : Meilleures notes</option>
+            <option value="price-asc">Trier : Prix croissant</option>
+            <option value="price-desc">Trier : Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="results-grid" id="resultsGrid"></div>
+
+      <div class="no-results" id="noResults" hidden>
+        <p>😕 Aucun cuisinier ne correspond à ces critères pour le moment.</p>
+        <button type="button" class="btn btn-outline reset-filters-link">Réinitialiser les filtres</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE PROFIL CUISINIER ============ -->
+<div id="view-profile" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-search">← Retour aux résultats</button>
+  </div>
+
+  <div class="container profile-layout">
+    <div class="profile-main">
+      <div class="profile-header">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar-fallback" id="profileAvatarFallback" aria-hidden="true"></div>
+          <img class="profile-avatar-photo" id="profileAvatarPhoto" src="" alt="" onerror="this.style.display='none';">
+        </div>
+        <div class="profile-header-info">
+          <h1 id="profileName"></h1>
+          <p class="profile-cuisine-tag" id="profileCuisineTag"></p>
+          <div class="profile-rating-row">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span class="score" id="profileScore"></span>
+            <span class="count" id="profileReviewCount"></span>
+            <span id="profileBadgeSlot"></span>
+          </div>
+          <p class="profile-location" id="profileLocation"></p>
+        </div>
+      </div>
+
+      <section class="profile-section">
+        <h2>À propos</h2>
+        <p class="profile-bio" id="profileBio"></p>
+      </section>
+
+      <section class="profile-section">
+        <h2>Spécialités</h2>
+        <div class="specialty-pills" id="profileSpecialties"></div>
+      </section>
+
+      <section class="profile-section" id="profileTrainingSection">
+        <h2>Formation</h2>
+        <div id="profileTrainingContent"></div>
+      </section>
+
+      <section class="profile-section">
+        <h2>Ses formules</h2>
+        <div class="formulas-info-grid" id="profileFormulasInfo"></div>
+      </section>
+
+      <section class="profile-section">
+        <h2>Avis clients</h2>
+        <div class="reviews-list" id="profileReviews"></div>
+      </section>
+    </div>
+
+    <aside class="profile-booking-col">
+      <div class="booking-card" id="bookingCard">
+        <div id="bookingFormWrap">
+          <div class="booking-card-header">
+            <span class="booking-price-from">Dès <span id="bookingBasePrice"></span> €<small> / pers.</small></span>
+          </div>
+
+          <div class="booking-field">
+            <label>Type de prestation</label>
+            <div class="booking-type-toggle">
+              <button type="button" class="booking-type-option active" data-booking-type="formula">
+                <span class="booking-type-icon">🍽️</span>
+                <span>Formule complète<br><small>Ingrédients inclus</small></span>
+              </button>
+              <button type="button" class="booking-type-option" data-booking-type="cooking_only">
+                <span class="booking-type-icon">🧊</span>
+                <span>Vos ingrédients<br><small>Moins cher</small></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="booking-field" id="formulaSelectionField">
+            <label>Choisissez une formule</label>
+            <div class="formula-options" id="formulaOptions"></div>
+          </div>
+
+          <div class="booking-field" id="cookingOnlyField" hidden>
+            <div class="cooking-only-card">
+              <strong>Le chef cuisine avec vos ingrédients</strong>
+              <p>Vous fournissez les produits, le cuisinier s'occupe de toute la préparation et de la cuisson. Tarif réduit puisque les ingrédients ne sont pas à sa charge.</p>
+              <span class="cooking-only-price" id="cookingOnlyPriceDisplay"></span>
+            </div>
+            <label for="fridgeContentsInput" style="margin-top:14px;">Ce que vous avez à disposition (optionnel)</label>
+            <textarea id="fridgeContentsInput" rows="2" placeholder="Ex : légumes de saison, poulet, riz, épices de base…"></textarea>
+          </div>
+
+          <div class="booking-field">
+            <label>Nombre de convives</label>
+            <div class="stepper" role="group" aria-label="Nombre de convives">
+              <button type="button" id="profileGuestDec" aria-label="Retirer un convive">−</button>
+              <span id="profileGuestCount" aria-live="polite">2</span>
+              <button type="button" id="profileGuestInc" aria-label="Ajouter un convive">+</button>
+            </div>
+          </div>
+
+          <div class="price-breakdown" id="priceBreakdown"></div>
+
+          <div class="booking-field">
+            <label>Choisissez une date <span class="required-mark">*</span></label>
+            <div class="mini-calendar">
+              <div class="calendar-header">
+                <button type="button" id="calendarPrevMonth" aria-label="Mois précédent">‹</button>
+                <span id="calendarMonthLabel"></span>
+                <button type="button" id="calendarNextMonth" aria-label="Mois suivant">›</button>
+              </div>
+              <div class="calendar-weekdays">
+                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+              <div class="calendar-legend">
+                <span><i class="legend-dot available"></i> Disponible</span>
+                <span><i class="legend-dot unavailable"></i> Indisponible</span>
+              </div>
+            </div>
+            <p class="selected-date-label" id="selectedDateLabel">Aucune date sélectionnée</p>
+          </div>
+
+          <div class="booking-field">
+            <label>Équipement disponible chez vous</label>
+            <div class="equipment-checklist">
+              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Four"> Four</label>
+              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Plaques de cuisson"> Plaques de cuisson</label>
+              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Réfrigérateur disponible"> Réfrigérateur disponible</label>
+              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Micro-ondes"> Micro-ondes</label>
+              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Grille-pain"> Grille-pain</label>
+              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Grand plan de travail"> Grand plan de travail</label>
+            </div>
+            <p class="filter-hint">Cochez ce qui est disponible chez vous : ça aide le cuisinier à préparer sa venue.</p>
+          </div>
+
+          <div class="booking-field">
+            <label for="allergiesInput">Allergies et restrictions alimentaires <span class="required-mark">*</span></label>
+            <textarea id="allergiesInput" rows="3" placeholder="Ex : allergie aux fruits à coque, intolérance au lactose… ou « Aucune » si sans restriction" required></textarea>
+            <p class="gdpr-notice">🔒 Ces informations relèvent de données de santé. Elles sont transmises uniquement à votre cuisinier, dans le seul but d'assurer la sécurité de votre repas, et ne sont ni conservées ni partagées à d'autres fins.</p>
+          </div>
+
+          <p class="booking-error" id="bookingError" hidden></p>
+
+          <button type="button" class="btn btn-primary btn-block" id="reserveBtn">Réserver</button>
+        </div>
+
+        <div class="booking-confirmation" id="bookingConfirmation" hidden></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ============ VUE DEVENIR CUISINIER ============ -->
+<div id="view-cook-register" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+  </div>
+
+  <div class="container cook-register-layout">
+    <div class="cook-register-intro">
+      <span class="eyebrow">Devenir Cuisinier</span>
+      <h1>Partagez votre cuisine, gagnez un revenu complémentaire</h1>
+      <p>Créez votre profil en quelques minutes. Vous configurerez ensuite vos paiements directement et en toute sécurité chez Stripe, notre partenaire de paiement.</p>
+      <div class="mini-steps">
+        <div class="mini-step"><span>1</span>Créez votre profil</div>
+        <div class="mini-step"><span>2</span>Configurez vos paiements avec Stripe</div>
+        <div class="mini-step"><span>3</span>Recevez vos premières réservations</div>
+      </div>
+    </div>
+
+    <form class="cook-register-form" id="cookRegisterForm">
+      <div class="booking-field">
+        <label for="cookName">Votre nom <span class="required-mark">*</span></label>
+        <input type="text" id="cookName" required placeholder="Ex : Amélie Rousseau">
+      </div>
+
+      <div class="booking-field">
+        <label for="cookEmail">Votre email <span class="required-mark">*</span></label>
+        <input type="email" id="cookEmail" required placeholder="vous@exemple.fr">
+      </div>
+
+      <div class="booking-field">
+        <label for="cookCuisine">Type de cuisine <span class="required-mark">*</span></label>
+        <select id="cookCuisine" required></select>
+      </div>
+
+      <div class="booking-field">
+        <label for="cookLocation">Quartier à Nantes <span class="required-mark">*</span></label>
+        <input type="text" id="cookLocation" required placeholder="Ex : Chantenay">
+      </div>
+
+      <div class="booking-field">
+        <label for="cookSpecialty">Votre spécialité phare <span class="required-mark">*</span></label>
+        <input type="text" id="cookSpecialty" required placeholder="Ex : Galettes bretonnes maison">
+      </div>
+
+      <div class="booking-field">
+        <label for="cookBio">Présentez-vous en quelques mots (optionnel)</label>
+        <textarea id="cookBio" rows="3" placeholder="Votre parcours, ce qui vous anime en cuisine…"></textarea>
+      </div>
+
+      <div class="cook-register-row">
+        <div class="booking-field">
+          <label for="cookFormulaName">Nom de votre 1ère formule <span class="required-mark">*</span></label>
+          <input type="text" id="cookFormulaName" required placeholder="Ex : Menu Découverte">
+        </div>
+        <div class="booking-field">
+          <label for="cookFormulaPrice">Prix par convive (€) <span class="required-mark">*</span></label>
+          <input type="number" id="cookFormulaPrice" required min="5" max="500" placeholder="25">
+        </div>
+      </div>
+
+      <p class="booking-error" id="cookRegisterError" hidden></p>
+
+      <button type="submit" class="btn btn-primary btn-block" id="cookRegisterSubmit">Créer mon profil et configurer mes paiements</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     🔧 À MODIFIER APRÈS AVOIR MIS LE BACKEND EN LIGNE (voir le guide)
+     Remplacez cette adresse par celle donnée par Render, par exemple :
+     const BACKEND_URL = 'https://atchef-backend.onrender.com';
+     ============================================================ */
+  const BACKEND_URL = 'https://atchef-backend.onrender.com';
+
+  // Détecte si BACKEND_URL n'a pas encore été remplacée par la vraie adresse
+  // Render. Utilisé pour afficher un message clair plutôt qu'une erreur
+  // réseau générique quand quelqu'un teste le fichier avant d'avoir déployé
+  // le backend (ou oublié cette étape après un redéploiement).
+  function isBackendConfigured(){
+    return !BACKEND_URL.includes('VOTRE-BACKEND');
+  }
+
+  /* ============================================================
+     DONNÉES CUISINIERS — source unique pour accueil + recherche
+     ============================================================ */
+  const CUISINE_TYPES = ['Française & Bistrot','Italienne','Orientale & Méditerranéenne','Asiatique','Végétarienne & Vegan','Pâtisserie & Desserts'];
+
+  const chefs = [
+    { id:1, name:'Amélie R.', cuisine:'Française & Bistrot', location:'Nantes Centre', quote:"La cuisine de ma grand-mère, revisitée avec des produits locaux et de saison.", price:25, rating:4.9, reviews:32, tags:['Fait maison','Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=47', gradient:'linear-gradient(135deg,#E2725B,#A64A34)', featured:true,
+      bio:"Après des années passées à cuisiner pour sa famille et ses amis, Amélie a décidé de partager sa passion pour la cuisine bretonne au plus grand nombre. Chaque plat raconte une histoire, souvent celle de sa grand-mère, dont elle perpétue les recettes avec des produits locaux et de saison.",
+      specialties:["Galettes bretonnes","Kig ha farz","Kouign-amann maison","Plats mijotés"],
+      training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa grand-mère, cuisinière dans une ferme du Finistère.",
+      formulas:[
+        { name:"Menu Découverte", price:25, description:"Une entrée de saison, une galette complète et un dessert breton.", includes:["Entrée de saison","Galette au choix","Dessert breton"] },
+        { name:"Menu Terroir Breton", price:32, description:"Le menu signature d'Amélie : kig ha farz, légumes du potager et kouign-amann tiède.", includes:["Entrée du potager","Kig ha farz","Kouign-amann tiède"] }
+      ],
+      discountTiers:[{minGuests:6, discountPercent:10}],
+      testimonials:[
+        { author:"Marie D.", rating:5, date:"Juin 2026", comment:"Un repas qui sent bon l'enfance, Amélie est adorable et très professionnelle." },
+        { author:"Thomas L.", rating:5, date:"Mai 2026", comment:"Le kig ha farz était incroyable, on s'est resservi trois fois !" },
+        { author:"Camille P.", rating:4, date:"Avril 2026", comment:"Très bon moment, juste un peu de retard à l'arrivée." }
+      ]
+    },
+    { id:2, name:'Karim B.', cuisine:'Orientale & Méditerranéenne', location:'Île de Nantes', quote:"Les épices et les saveurs du Maghreb, directement à votre table.", price:28, rating:5.0, reviews:18, tags:['Végétarien','Épicé'], photo:'https://i.pravatar.cc/160?img=53', gradient:'linear-gradient(135deg,#8CA888,#4F6B4C)', featured:true,
+      bio:"Karim cuisine depuis toujours aux côtés de sa mère et de ses tantes. Il propose une cuisine du Maghreb généreuse et parfumée, pensée pour être partagée en toute convivialité autour d'un plat commun.",
+      specialties:["Tajine aux pruneaux","Couscous royal","Mezzé maison","Pâtisseries orientales"],
+      training:null, selfTaughtNote:"Autodidacte — formé aux fourneaux familiaux depuis l'enfance.",
+      formulas:[
+        { name:"Menu Mezzé", price:28, description:"Une sélection de mezzés chauds et froids à partager, suivie d'un tajine au choix.", includes:["Mezzé à partager","Tajine au choix","Thé à la menthe"] },
+        { name:"Menu Fête", price:38, description:"Le couscous royal complet, généreux et copieux, comme pour une grande occasion.", includes:["Mezzé","Couscous royal","Pâtisserie orientale"] }
+      ],
+      discountTiers:[],
+      testimonials:[
+        { author:"Sophie R.", rating:5, date:"Juillet 2026", comment:"Le couscous royal était somptueux, portions généreuses et Karim est très attentionné." },
+        { author:"Nicolas B.", rating:5, date:"Juin 2026", comment:"Accueil chaleureux, plats délicieux, on recommande à 100%." }
+      ]
+    },
+    { id:3, name:'Chloé L.', cuisine:'Italienne', location:'Chantenay', quote:"Pâtes fraîches faites minute et recettes transmises par ma nonna.", price:22, rating:4.8, reviews:45, tags:['Fait maison','Végétarien'], photo:'https://i.pravatar.cc/160?img=25', gradient:'linear-gradient(135deg,#D9A441,#A64A34)', featured:true,
+      bio:"Chloé a grandi entre Nantes et l'Italie, dans la cuisine de sa nonna. Elle prépare toutes ses pâtes fraîches à la main, chaque semaine, selon les recettes transmises de génération en génération.",
+      specialties:["Tagliatelles fraîches","Tiramisu maison","Gnocchis","Sauce bolognaise mijotée 4h"],
+      training:null, selfTaughtNote:"Autodidacte — formée par sa nonna italienne dès son plus jeune âge.",
+      formulas:[
+        { name:"Menu Trattoria", price:22, description:"Antipasti, pâtes fraîches du jour et tiramisu fait maison.", includes:["Antipasti","Pâtes fraîches du jour","Tiramisu"] },
+        { name:"Menu Fusion", price:35, description:"Une carte blanche créative mêlant tradition italienne et inspirations du moment.", includes:["Antipasti revisités","Plat signature","Dessert créatif"] }
+      ],
+      discountTiers:[{minGuests:6, discountPercent:8},{minGuests:10, discountPercent:15}],
+      testimonials:[
+        { author:"Julie M.", rating:5, date:"Juillet 2026", comment:"Les meilleures pâtes fraîches mangées hors d'Italie, un vrai talent." },
+        { author:"Antoine G.", rating:5, date:"Juin 2026", comment:"Chloé est passionnée et ça se sent dans chaque assiette." },
+        { author:"Laura K.", rating:4, date:"Mai 2026", comment:"Excellent repas, tiramisu à tomber." }
+      ]
+    },
+    { id:4, name:'Thomas M.', cuisine:'Asiatique', location:'Doulon', quote:"Bo bun et currys parfumés, comme lors de mes voyages en Asie du Sud-Est.", price:18, rating:4.6, reviews:27, tags:['Fait maison','Sans lactose possible'], photo:'https://i.pravatar.cc/160?img=13', gradient:'linear-gradient(135deg,#E2725B,#4F6B4C)',
+      bio:"Après plusieurs voyages prolongés en Asie du Sud-Est, Thomas s'est pris de passion pour les cuisines vietnamienne et thaïlandaise. Il aime faire découvrir des saveurs authentiques, loin des clichés, avec des produits frais.",
+      specialties:["Bo bun maison","Curry thaï vert","Nems croustillants","Bo bun végétarien"],
+      training:[{title:"Stage cuisine asiatique", detail:"École Ferrandi Paris, 2020"}],
+      formulas:[
+        { name:"Menu Street Food", price:18, description:"Nems, bo bun et thé glacé, pour un repas simple et parfumé.", includes:["Nems","Bo bun","Thé glacé maison"] },
+        { name:"Menu Voyage", price:27, description:"Un menu plus complet inspiré de ses voyages : curry, riz parfumé et dessert exotique.", includes:["Entrée vapeur","Curry thaï au choix","Dessert exotique"] }
+      ],
+      discountTiers:[{minGuests:8, discountPercent:10}],
+      testimonials:[
+        { author:"Emma V.", rating:5, date:"Juillet 2026", comment:"Un curry thaï incroyable, aussi bon que sur place en Thaïlande." },
+        { author:"Hugo D.", rating:4, date:"Juin 2026", comment:"Très bon repas, portions un peu justes pour les gros appétits." }
+      ]
+    },
+    { id:5, name:'Sofia G.', cuisine:'Végétarienne & Vegan', location:'Hauts-Pavés', quote:"Des bowls colorés et gourmands, 100% végétal et de saison.", price:24, rating:4.3, reviews:15, tags:['Vegan','Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=32', gradient:'linear-gradient(135deg,#8CA888,#A64A34)',
+      bio:"Sofia démontre qu'une cuisine 100% végétale peut être gourmande et créative. Diététicienne de formation, elle compose des assiettes colorées et équilibrées, en circuit court autant que possible.",
+      specialties:["Bowl quinoa & légumes rôtis","Curry de légumes","Desserts vegan","Houmous maison"],
+      training:[{title:"BTS Diététique", detail:"Nantes, 2019"}],
+      formulas:[
+        { name:"Menu Bowl", price:24, description:"Un bowl généreux et coloré, composé selon les légumes de saison.", includes:["Bowl composé","Boisson maison","Dessert vegan"] },
+        { name:"Menu Découverte Végétale", price:30, description:"Une entrée surprise, un plat chaud et un dessert 100% végétal.", includes:["Entrée surprise","Plat chaud","Dessert vegan"] }
+      ],
+      discountTiers:[],
+      testimonials:[
+        { author:"Claire B.", rating:4, date:"Juin 2026", comment:"Très bon, léger et plein de saveurs. Parfait pour changer." },
+        { author:"Yann P.", rating:4, date:"Mai 2026", comment:"On ne sent pas du tout le manque de viande, très convaincant." }
+      ]
+    },
+    { id:6, name:'Julien D.', cuisine:'Pâtisserie & Desserts', location:'Graslin', quote:"Des pâtisseries françaises comme à la sortie de l'école, en plus raffiné.", price:35, rating:4.7, reviews:22, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=61', gradient:'linear-gradient(135deg,#D9A441,#7A3524)',
+      bio:"Passionné de pâtisserie depuis l'adolescence, Julien s'est formé auprès d'un chef pâtissier avant de se lancer en indépendant. Il propose des ateliers gourmands et des menus 100% sucrés pour les amateurs de belles pâtisseries.",
+      specialties:["Paris-Brest","Entremets fruits de saison","Tarte au citron meringuée","Choux à la crème"],
+      training:[{title:"CAP Pâtisserie", detail:"2017"},{title:"Stage de perfectionnement", detail:"Auprès d'un chef pâtissier nantais, 2019"}],
+      formulas:[
+        { name:"Menu Goûter Gourmand", price:35, description:"Une sélection de trois pâtisseries signature avec thé ou café.", includes:["3 pâtisseries au choix","Thé ou café","Mignardise"] },
+        { name:"Menu Atelier", price:45, description:"Un après-midi où l'on prépare ensemble un entremets, dégusté sur place.", includes:["Atelier pratique","Entremets à déguster","Recette à emporter"] }
+      ],
+      discountTiers:[{minGuests:6, discountPercent:10}],
+      testimonials:[
+        { author:"Pauline S.", rating:5, date:"Juillet 2026", comment:"L'atelier était génial, on a adoré préparer notre dessert avec Julien." },
+        { author:"Marc T.", rating:4, date:"Juin 2026", comment:"Pâtisseries magnifiques et délicieuses, un vrai artiste." }
+      ]
+    },
+    { id:7, name:'Nadia F.', cuisine:'Orientale & Méditerranéenne', location:'Bellevue', quote:"Mezzé libanais et douceurs du Levant, pour un voyage gourmand.", price:26, rating:4.9, reviews:38, tags:['Végétarien','Fait maison'], photo:'https://i.pravatar.cc/160?img=44', gradient:'linear-gradient(135deg,#E2725B,#A64A34)',
+      bio:"Originaire du Liban, Nadia partage la cuisine généreuse de son enfance : mezzé colorés, plats mijotés et douceurs orientales. Un vrai voyage culinaire vers le Levant, à quelques rues de chez vous.",
+      specialties:["Mezzé libanais","Taboulé maison","Kafta grillée","Baklava fait maison"],
+      training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa mère et ses grand-mères libanaises.",
+      formulas:[
+        { name:"Menu Mezzé Levant", price:26, description:"Une large sélection de mezzés chauds et froids à partager.", includes:["Mezzé à partager","Pain maison","Thé à la menthe"] },
+        { name:"Menu Beyrouth", price:34, description:"Mezzé, plat mijoté au choix et baklava maison pour finir en douceur.", includes:["Mezzé","Plat mijoté au choix","Baklava maison"] }
+      ],
+      discountTiers:[{minGuests:6, discountPercent:12}],
+      testimonials:[
+        { author:"Isabelle F.", rating:5, date:"Juillet 2026", comment:"Un vrai voyage au Liban, tout était délicieux et généreux." },
+        { author:"Karim D.", rating:5, date:"Juin 2026", comment:"Nadia est adorable et cuisine comme personne, on recommande vivement." },
+        { author:"Léna M.", rating:5, date:"Mai 2026", comment:"Le baklava maison est juste parfait, à refaire absolument." }
+      ]
+    },
+    { id:8, name:'Paul-Henri V.', cuisine:'Française & Bistrot', location:'Île Feydeau', quote:"Une bistronomie exigeante, entre tradition et créativité.", price:45, rating:4.5, reviews:24, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=68', gradient:'linear-gradient(135deg,#4F6B4C,#241E18)',
+      bio:"Ancien second de cuisine en restaurant gastronomique, Paul-Henri a choisi de mettre son savoir-faire au service de repas plus intimistes, chez l'habitant. Une bistronomie exigeante, entre tradition française et créativité contemporaine.",
+      specialties:["Foie gras mi-cuit maison","Ris de veau","Soufflé au Grand Marnier","Accord mets & vins"],
+      training:[{title:"BTS Hôtellerie-Restauration", detail:"Nantes, 2012"},{title:"Second de cuisine", detail:"Restaurant gastronomique, 6 ans d'expérience"}],
+      formulas:[
+        { name:"Menu Bistronomie", price:45, description:"Un menu en 3 services autour d'un produit de saison, avec accord mets & vins en option.", includes:["Entrée gastronomique","Plat signature","Dessert"] },
+        { name:"Menu Prestige", price:65, description:"Le menu dégustation complet en 5 services, pour une occasion spéciale.", includes:["Amuse-bouche","2 entrées","Plat","Fromage","Dessert"] }
+      ],
+      discountTiers:[],
+      testimonials:[
+        { author:"Véronique H.", rating:5, date:"Juillet 2026", comment:"Un niveau digne des meilleurs restaurants, dans le confort de la maison. Exceptionnel." },
+        { author:"Frédéric N.", rating:4, date:"Juin 2026", comment:"Très haut niveau, service impeccable, tarif en conséquence mais justifié." }
+      ]
+    },
+    { id:9, name:'Léa B.', cuisine:'Asiatique', location:'Zola', quote:"Sushis et cuisine japonaise maison, dans le respect des produits.", price:42, rating:4.4, reviews:19, tags:['Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=28', gradient:'linear-gradient(135deg,#8CA888,#7A3524)',
+      bio:"Formée aux techniques japonaises pendant plusieurs mois auprès d'un chef à Paris, Léa propose des sushis et sashimis préparés minute, dans le respect du produit et de la tradition japonaise.",
+      specialties:["Sushis maison","Sashimis","Makis californiens","Soupe miso"],
+      training:[{title:"Formation sushi", detail:"3 mois auprès d'un chef japonais, Paris, 2021"}],
+      formulas:[
+        { name:"Menu Sushi", price:42, description:"Une sélection de sushis, makis et sashimis préparés devant vous.", includes:["Sashimis","Sushis & makis assortis","Soupe miso"] },
+        { name:"Menu Omakase", price:58, description:"Un menu surprise composé selon l'arrivage du jour, façon omakase.", includes:["Menu surprise en 6 services"] }
+      ],
+      discountTiers:[],
+      testimonials:[
+        { author:"Chloé R.", rating:5, date:"Juin 2026", comment:"Sushis d'une fraîcheur incroyable, Léa est très minutieuse." },
+        { author:"David S.", rating:4, date:"Mai 2026", comment:"Très bon moment, un peu cher mais la qualité est là." }
+      ]
+    },
+    { id:10, name:'Marco T.', cuisine:'Italienne', location:'Malakoff', quote:"Pizzas napolitaines et antipasti, la trattoria comme à la maison.", price:19, rating:4.2, reviews:12, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=15', gradient:'linear-gradient(135deg,#D9A441,#4F6B4C)',
+      bio:"Marco a grandi dans la trattoria familiale près de Naples avant de s'installer à Nantes. Il perpétue la tradition de la pizza napolitaine, pâte longue fermentation et four maison.",
+      specialties:["Pizza napolitaine","Antipasti","Tiramisu","Focaccia maison"],
+      training:null, selfTaughtNote:"Autodidacte — formé dans la trattoria familiale près de Naples.",
+      formulas:[
+        { name:"Menu Trattoria", price:19, description:"Antipasti à partager et pizza napolitaine au choix.", includes:["Antipasti","Pizza au choix","Café"] },
+        { name:"Menu Famiglia", price:25, description:"Antipasti, pizza et tiramisu, pour un repas complet à l'italienne.", includes:["Antipasti","Pizza","Tiramisu"] }
+      ],
+      discountTiers:[{minGuests:6, discountPercent:10}],
+      testimonials:[
+        { author:"Manon L.", rating:4, date:"Juin 2026", comment:"Très bonne pizza, pâte parfaite. Accueil sympathique." },
+        { author:"Rachid B.", rating:4, date:"Mai 2026", comment:"Bon rapport qualité prix, ambiance conviviale." }
+      ]
+    },
+    { id:11, name:'Youssef K.', cuisine:'Orientale & Méditerranéenne', location:'Bottière', quote:"Couscous familial et grillades, pour un repas convivial et généreux.", price:18, rating:4.6, reviews:29, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=51', gradient:'linear-gradient(135deg,#E2725B,#7A3524)',
+      bio:"Youssef aime recevoir autour d'un couscous familial généreux, comme il l'a toujours connu en famille. Une cuisine simple, parfumée et conviviale, pensée pour être partagée à plusieurs.",
+      specialties:["Couscous familial","Grillades marinées","Chorba","Thé à la menthe"],
+      training:null, selfTaughtNote:"Autodidacte — cuisine apprise en famille, entre l'Algérie et Nantes.",
+      formulas:[
+        { name:"Menu Familial", price:18, description:"Couscous végétarien ou au poulet, généreux et parfumé.", includes:["Chorba","Couscous au choix","Thé à la menthe"] },
+        { name:"Menu Grand Couscous", price:24, description:"Le couscous royal avec merguez, agneau et poulet, pour les grandes tablées.", includes:["Chorba","Couscous royal","Pâtisserie orientale"] }
+      ],
+      discountTiers:[{minGuests:8, discountPercent:12}],
+      testimonials:[
+        { author:"Sarah M.", rating:5, date:"Juillet 2026", comment:"Couscous délicieux et copieux, Youssef est très accueillant." },
+        { author:"Julien K.", rating:4, date:"Juin 2026", comment:"Très bon moment convivial, portions généreuses." }
+      ]
+    }
+  ];
+
+  function isTopChef(chef){ return chef.rating >= 4.5 && chef.reviews >= 20; }
+  function getBudgetBucket(price){ if (price < 20) return 'low'; if (price <= 40) return 'mid'; return 'high'; }
+  const BUDGET_LABELS = { low:'Moins de 20 €', mid:'20 € – 40 €', high:'Plus de 40 €' };
+
+  function formatDateFr(dateStr){
+    try{ return new Date(dateStr + 'T00:00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' }); }
+    catch(e){ return dateStr; }
+  }
+
+  function chefCardHTML(chef, instant){
+    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
+    const tagsHTML = chef.tags.map(t => '<span>' + t + '</span>').join('');
+    const cardClass = instant ? 'chef-card' : 'chef-card reveal';
+    const ratingHTML = chef.reviews > 0
+      ? '<span class="stars" aria-hidden="true">★★★★★</span>' +
+        '<span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span>' +
+        '<span class="count">(' + chef.reviews + ' avis)</span>'
+      : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
+    return (
+      '<article class="' + cardClass + '" data-chef-id="' + chef.id + '">' +
+        badge +
+        '<div class="chef-avatar-wrap">' +
+          '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
+          '<img class="chef-avatar-photo" src="' + chef.photo + '" alt="" loading="lazy" onerror="this.style.display=\'none\';">' +
+        '</div>' +
+        '<h3>' + chef.name + '</h3>' +
+        '<p class="chef-specialty">' + chef.cuisine + '</p>' +
+        '<p class="chef-location">📍 ' + chef.location + '</p>' +
+        '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
+        '<div class="chef-rating">' + ratingHTML + '</div>' +
+        '<div class="chef-tags">' + tagsHTML + '</div>' +
+        '<div class="chef-footer">' +
+          '<span class="chef-price-tag">Dès ' + chef.price + ' €<br><small>par personne</small></span>' +
+          '<button type="button" class="btn btn-outline btn-sm">Voir le profil</button>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  /* ============================================================
+     BASCULE DE VUES (accueil / recherche) — sans rechargement
+     ============================================================ */
+  function showView(name){
+    document.querySelectorAll('.app-view').forEach(v => { v.hidden = (v.id !== 'view-' + name); });
+    window.scrollTo({ top:0, behavior:'auto' });
+  }
+
+  function goToHomeSection(sectionId, role){
+    showView('home');
+    if (role) setRole(role);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+      });
+    });
+  }
+
+  /* ============================================================
+     ÉTAT + MOTEUR DE FILTRES DE RECHERCHE
+     ============================================================ */
+  let filters = { budgets:[], cuisines:[], minRating:0, date:'' };
+  let sortBy = 'relevance';
+
+  function sortChefsList(list){
+    const sorted = list.slice();
+    if (sortBy === 'rating') sorted.sort((a,b) => b.rating - a.rating);
+    else if (sortBy === 'price-asc') sorted.sort((a,b) => a.price - b.price);
+    else if (sortBy === 'price-desc') sorted.sort((a,b) => b.price - a.price);
+    else sorted.sort((a,b) => {
+      const at = isTopChef(a) ? 1 : 0, bt = isTopChef(b) ? 1 : 0;
+      if (bt !== at) return bt - at;
+      return b.rating - a.rating;
+    });
+    return sorted;
+  }
+
+  function applyFiltersAndRender(){
+    let list = chefs.filter(c => {
+      if (filters.budgets.length && filters.budgets.indexOf(getBudgetBucket(c.price)) === -1) return false;
+      if (filters.cuisines.length && filters.cuisines.indexOf(c.cuisine) === -1) return false;
+      if (c.rating < filters.minRating) return false;
+      return true;
+    });
+    list = sortChefsList(list);
+
+    const grid = document.getElementById('resultsGrid');
+    const noResults = document.getElementById('noResults');
+    const resultsCount = document.getElementById('resultsCount');
+
+    grid.innerHTML = list.map(c => chefCardHTML(c, true)).join('');
+    noResults.hidden = list.length > 0;
+    grid.hidden = list.length === 0;
+    resultsCount.textContent = list.length + (list.length > 1 ? ' cuisiniers disponibles' : ' cuisinier disponible');
+
+    renderActiveChips();
+    updateMobileFilterCount();
+  }
+
+  function syncFilterUIFromState(){
+    document.querySelectorAll('.cuisine-checkbox').forEach(cb => { cb.checked = filters.cuisines.indexOf(cb.value) !== -1; });
+    document.querySelectorAll('.budget-checkbox').forEach(cb => { cb.checked = filters.budgets.indexOf(cb.value) !== -1; });
+    document.querySelectorAll('input[name="ratingFilter"]').forEach(r => { r.checked = (parseFloat(r.value) === filters.minRating); });
+    const searchDateInputEl = document.getElementById('searchDateInput');
+    if (searchDateInputEl) searchDateInputEl.value = filters.date || '';
+  }
+
+  function renderActiveChips(){
+    const container = document.getElementById('activeFiltersRow');
+    const chips = [];
+    filters.cuisines.forEach(c => chips.push({ label:c, remove:() => { filters.cuisines = filters.cuisines.filter(x => x !== c); } }));
+    filters.budgets.forEach(b => chips.push({ label:BUDGET_LABELS[b], remove:() => { filters.budgets = filters.budgets.filter(x => x !== b); } }));
+    if (filters.minRating > 0) chips.push({ label: filters.minRating.toFixed(1).replace('.', ',') + ' ★ et plus', remove:() => { filters.minRating = 0; } });
+    if (filters.date) chips.push({ label: formatDateFr(filters.date), remove:() => { filters.date = ''; } });
+
+    container.innerHTML = '';
+    if (chips.length === 0){
+      container.innerHTML = '<span class="no-active-filters">Aucun filtre actif — tous nos cuisiniers sont affichés</span>';
+      return;
+    }
+    chips.forEach(chip => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'filter-chip';
+      btn.innerHTML = chip.label + ' <span class="chip-x" aria-hidden="true">×</span>';
+      btn.setAttribute('aria-label', 'Retirer le filtre ' + chip.label);
+      btn.addEventListener('click', () => { chip.remove(); syncFilterUIFromState(); applyFiltersAndRender(); });
+      container.appendChild(btn);
+    });
+  }
+
+  function getActiveFilterCount(){
+    return filters.cuisines.length + filters.budgets.length + (filters.minRating > 0 ? 1 : 0) + (filters.date ? 1 : 0);
+  }
+
+  function updateMobileFilterCount(){
+    const el = document.getElementById('mobileFilterCount');
+    if (!el) return;
+    const n = getActiveFilterCount();
+    el.textContent = n > 0 ? String(n) : '';
+  }
+
+  function resetFilters(){
+    filters = { budgets:[], cuisines:[], minRating:0, date:'' };
+    sortBy = 'relevance';
+    const sortSelectEl = document.getElementById('sortSelect');
+    if (sortSelectEl) sortSelectEl.value = 'relevance';
+    syncFilterUIFromState();
+    applyFiltersAndRender();
+  }
+
+  function openSearch(opts){
+    opts = opts || {};
+    filters = { budgets:[], cuisines:[], minRating:0, date:'' };
+    if (opts.cuisine) filters.cuisines = [opts.cuisine];
+    if (opts.date) filters.date = opts.date;
+    showView('search');
+    syncFilterUIFromState();
+    applyFiltersAndRender();
+  }
+
+  /* ============================================================
+     PAGE PROFIL CUISINIER + MODULE DE RÉSERVATION INTERACTIF
+     ============================================================ */
+  let currentProfileChef = null;
+  let selectedFormulaIndex = 0;
+  let profileGuestCount = 2;
+  let bookingType = 'formula'; // 'formula' | 'cooking_only'
+  let calendarViewDate = new Date();
+  let selectedBookingDate = null;
+  const PROFILE_MIN_GUESTS = 1, PROFILE_MAX_GUESTS = 20;
+  // Réduction appliquée quand le client fournit ses propres ingrédients :
+  // le cuisinier ne facture plus que sa prestation, pas les produits.
+  // Choix commercial ajustable (ici -40%, càd 60% du prix de la formule la moins chère).
+  const COOKING_ONLY_RATIO = 0.6;
+
+  function starsHTML(rating){
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  }
+
+  function getCookingOnlyPrice(chef){
+    const cheapest = Math.min(...chef.formulas.map(f => f.price));
+    return Math.round(cheapest * COOKING_ONLY_RATIO);
+  }
+
+  function computePricing(chef, formulaIndex, guestCount, type){
+    type = type || 'formula';
+    const formula = (type === 'cooking_only')
+      ? { name: 'Le chef cuisine avec vos ingrédients', price: getCookingOnlyPrice(chef) }
+      : chef.formulas[formulaIndex];
+    let discountPercent = 0;
+    (chef.discountTiers || []).forEach(tier => {
+      if (guestCount >= tier.minGuests && tier.discountPercent > discountPercent) discountPercent = tier.discountPercent;
+    });
+    const perPerson = formula.price * (1 - discountPercent / 100);
+    return { formula:formula, perPerson:perPerson, total:perPerson * guestCount, discountPercent:discountPercent, originalPerPerson:formula.price };
+  }
+
+  // Simulation de disponibilité : aucune vraie réservation n'existe encore
+  // dans le système, donc on génère un motif pseudo-aléatoire mais STABLE
+  // par cuisinier (même résultat à chaque affichage), pour illustrer le
+  // principe visuellement. À remplacer par un vrai calendrier de
+  // réservations une fois la plateforme réellement utilisée.
+  function isDateUnavailable(chef, dateStr){
+    if (!chef) return false;
+    let hash = chef.id;
+    for (let i = 0; i < dateStr.length; i++) hash = (hash * 31 + dateStr.charCodeAt(i)) % 1000;
+    return (hash % 5 === 0);
+  }
+
+  function renderTrainingSection(chef){
+    const content = document.getElementById('profileTrainingContent');
+    if (chef.training && chef.training.length){
+      content.innerHTML = chef.training.map(t => '<div class="training-item"><strong>' + t.title + '</strong><span>' + t.detail + '</span></div>').join('');
+    } else {
+      content.innerHTML = '<p class="self-taught-note">🌿 ' + chef.selfTaughtNote + '</p>';
+    }
+  }
+
+  function renderFormulaOptions(chef){
+    const container = document.getElementById('formulaOptions');
+    container.innerHTML = chef.formulas.map((f, i) =>
+      '<label class="formula-option' + (i === selectedFormulaIndex ? ' selected' : '') + '" data-formula-index="' + i + '">' +
+        '<input type="radio" name="formulaChoice"' + (i === selectedFormulaIndex ? ' checked' : '') + '>' +
+        '<div class="formula-option-top"><span class="formula-option-name">' + f.name + '</span><span class="formula-option-price">' + f.price + ' €<small> /pers.</small></span></div>' +
+        '<p class="formula-option-desc">' + f.description + '</p>' +
+      '</label>'
+    ).join('');
+  }
+
+  function updateProfileGuestButtons(){
+    document.getElementById('profileGuestDec').disabled = profileGuestCount <= PROFILE_MIN_GUESTS;
+    document.getElementById('profileGuestInc').disabled = profileGuestCount >= PROFILE_MAX_GUESTS;
+  }
+
+  function updateBookingPriceDisplay(){
+    if (!currentProfileChef) return;
+    const pricing = computePricing(currentProfileChef, selectedFormulaIndex, profileGuestCount, bookingType);
+    let html = '<div class="price-breakdown-row"><span>' + pricing.formula.name + ' × ' + profileGuestCount + '</span>';
+    if (pricing.discountPercent > 0){
+      html += '<span><span class="price-original">' + pricing.originalPerPerson.toFixed(2).replace('.', ',') + ' €</span>' + pricing.perPerson.toFixed(2).replace('.', ',') + ' €</span></div>';
+      html += '<div class="price-breakdown-row discount-hint">🎉 Tarif dégressif appliqué : −' + pricing.discountPercent + '%</div>';
+    } else {
+      html += '<span>' + pricing.perPerson.toFixed(2).replace('.', ',') + ' €</span></div>';
+      const tiers = currentProfileChef.discountTiers || [];
+      let nextTier = null;
+      tiers.forEach(t => { if (profileGuestCount < t.minGuests && (!nextTier || t.minGuests < nextTier.minGuests)) nextTier = t; });
+      if (nextTier) html += '<div class="price-breakdown-row discount-hint">💡 −' + nextTier.discountPercent + '% à partir de ' + nextTier.minGuests + ' convives</div>';
+    }
+    html += '<div class="price-breakdown-total"><span class="label">Total estimé</span><span class="amount">' + pricing.total.toFixed(2).replace('.', ',') + ' €</span></div>';
+    document.getElementById('priceBreakdown').innerHTML = html;
+  }
+
+  function setBookingType(type){
+    bookingType = type;
+    document.querySelectorAll('.booking-type-option').forEach(btn => btn.classList.toggle('active', btn.dataset.bookingType === type));
+    document.getElementById('formulaSelectionField').hidden = (type !== 'formula');
+    document.getElementById('cookingOnlyField').hidden = (type !== 'cooking_only');
+    if (type === 'cooking_only' && currentProfileChef){
+      document.getElementById('cookingOnlyPriceDisplay').textContent = getCookingOnlyPrice(currentProfileChef) + ' € / pers.';
+    }
+    updateBookingPriceDisplay();
+  }
+
+  const CALENDAR_MONTH_NAMES = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+
+  function renderCalendar(){
+    const year = calendarViewDate.getFullYear();
+    const month = calendarViewDate.getMonth();
+    document.getElementById('calendarMonthLabel').textContent = CALENDAR_MONTH_NAMES[month] + ' ' + year;
+
+    const firstDay = new Date(year, month, 1);
+    const startWeekday = (firstDay.getDay() + 6) % 7; // lundi = 0
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    let html = '';
+    for (let i = 0; i < startWeekday; i++) html += '<span class="calendar-day empty"></span>';
+    for (let d = 1; d <= daysInMonth; d++){
+      const dateObj = new Date(year, month, d);
+      const dateStr = dateObj.getFullYear() + '-' + String(dateObj.getMonth()+1).padStart(2,'0') + '-' + String(dateObj.getDate()).padStart(2,'0');
+      const isPast = dateStr < todayStr;
+      const unavailable = !isPast && isDateUnavailable(currentProfileChef, dateStr);
+      const isSelected = dateStr === selectedBookingDate;
+      let cls = 'calendar-day';
+      if (isPast || unavailable) cls += ' disabled';
+      if (isSelected) cls += ' selected';
+      html += '<button type="button" class="' + cls + '" data-date="' + dateStr + '"' + ((isPast || unavailable) ? ' disabled' : '') + '>' + d + '</button>';
+    }
+    document.getElementById('calendarGrid').innerHTML = html;
+  }
+
+  function updateSelectedDateLabel(){
+    const label = document.getElementById('selectedDateLabel');
+    if (selectedBookingDate){
+      const d = new Date(selectedBookingDate + 'T00:00:00');
+      const formatted = d.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+      label.textContent = '📅 ' + formatted.charAt(0).toUpperCase() + formatted.slice(1);
+    } else {
+      label.textContent = 'Aucune date sélectionnée';
+    }
+  }
+
+  function renderChefProfile(chef){
+    currentProfileChef = chef;
+    selectedFormulaIndex = 0;
+    profileGuestCount = 2;
+    bookingType = 'formula';
+    calendarViewDate = new Date();
+    selectedBookingDate = null;
+
+    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const fallbackEl = document.getElementById('profileAvatarFallback');
+    fallbackEl.style.background = chef.gradient;
+    fallbackEl.textContent = initials;
+    const photoEl = document.getElementById('profileAvatarPhoto');
+    photoEl.style.display = '';
+    photoEl.src = chef.photo;
+
+    document.getElementById('profileName').textContent = chef.name;
+    document.getElementById('profileCuisineTag').textContent = chef.cuisine;
+    const starsEl = document.querySelector('#view-profile .profile-rating-row .stars');
+    if (chef.reviews > 0){
+      starsEl.style.display = '';
+      document.getElementById('profileScore').textContent = chef.rating.toFixed(1).replace('.', ',');
+      document.getElementById('profileReviewCount').innerHTML = '(' + chef.reviews + ' avis)';
+    } else {
+      starsEl.style.display = 'none';
+      document.getElementById('profileScore').textContent = '';
+      document.getElementById('profileReviewCount').innerHTML = '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
+    }
+    document.getElementById('profileLocation').textContent = '📍 ' + chef.location;
+    document.getElementById('profileBadgeSlot').innerHTML = isTopChef(chef) ? '<span class="chef-badge gold inline">★ Top Chef</span>' : '';
+    document.getElementById('profileBio').textContent = chef.bio;
+    document.getElementById('profileSpecialties').innerHTML = chef.specialties.map(s => '<span>' + s + '</span>').join('');
+
+    renderTrainingSection(chef);
+
+    document.getElementById('profileFormulasInfo').innerHTML = chef.formulas.map(f =>
+      '<div class="formula-info-card"><h3>' + f.name + '</h3><p class="formula-info-price">' + f.price + ' € <small style="font-size:0.68rem;font-weight:600;color:var(--ink-soft);">/ pers.</small></p><p class="formula-info-desc">' + f.description + '</p><ul class="formula-info-includes">' + f.includes.map(i => '<li>' + i + '</li>').join('') + '</ul></div>'
+    ).join('');
+
+    document.getElementById('profileReviews').innerHTML = chef.testimonials.length > 0
+      ? chef.testimonials.map(t =>
+          '<div class="review-item"><div class="review-item-head"><span class="review-author">' + t.author + '</span><span class="review-date">' + t.date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(t.rating) + '</span><p class="review-comment">' + t.comment + '</p></div>'
+        ).join('')
+      : '<p class="no-reviews-note">Aucun avis pour le moment — soyez le premier à réserver chez ce cuisinier !</p>';
+
+    document.getElementById('bookingBasePrice').textContent = chef.price;
+    renderFormulaOptions(chef);
+    document.getElementById('profileGuestCount').textContent = profileGuestCount;
+    updateProfileGuestButtons();
+    setBookingType('formula');
+    renderCalendar();
+    updateSelectedDateLabel();
+    updateBookingPriceDisplay();
+
+    document.getElementById('bookingFormWrap').hidden = false;
+    document.getElementById('bookingConfirmation').hidden = true;
+    const allergiesEl = document.getElementById('allergiesInput');
+    allergiesEl.value = '';
+    allergiesEl.classList.remove('invalid');
+    document.getElementById('fridgeContentsInput').value = '';
+    document.querySelectorAll('.equipment-checkbox').forEach(cb => { cb.checked = false; });
+    document.getElementById('bookingError').hidden = true;
+  }
+
+  function openChefProfile(chefId){
+    const chef = chefs.find(c => c.id === chefId);
+    if (!chef) return;
+    renderChefProfile(chef);
+    showView('profile');
+  }
+
+  function showBookingConfirmation(){
+    const pricing = computePricing(currentProfileChef, selectedFormulaIndex, profileGuestCount);
+    document.getElementById('bookingFormWrap').hidden = true;
+    const confirmEl = document.getElementById('bookingConfirmation');
+    confirmEl.hidden = false;
+    confirmEl.innerHTML =
+      '<div class="confirmation-icon">✅</div>' +
+      '<h3>Demande envoyée !</h3>' +
+      '<p>Votre demande a été transmise à <strong>' + currentProfileChef.name + '</strong>.</p>' +
+      '<div class="confirmation-summary">' +
+        '<div class="confirmation-row"><span>Formule</span><strong>' + pricing.formula.name + '</strong></div>' +
+        '<div class="confirmation-row"><span>Convives</span><strong>' + profileGuestCount + '</strong></div>' +
+        '<div class="confirmation-row"><span>Total estimé</span><strong>' + pricing.total.toFixed(2).replace('.', ',') + ' €</strong></div>' +
+      '</div>' +
+      '<p class="confirmation-note">Vous recevrez une réponse sous 24h pour confirmer la disponibilité.</p>' +
+      '<button type="button" class="btn btn-outline btn-block" id="newBookingBtn">Modifier ma demande</button>';
+  }
+
+  /* ============================================================
+     DEVENIR CUISINIER — inscription + enchaînement Stripe Connect
+     ============================================================ */
+  let lastRegisteredCookId = null;
+
+  // Appelle la route déjà prête côté backend pour obtenir un lien
+  // d'inscription Stripe hébergé, et y redirige le navigateur.
+  async function startStripeOnboarding(cookId){
+    const errorEl = document.getElementById('cookRegisterError');
+    const submitBtn = document.getElementById('cookRegisterSubmit');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/stripe-account', { method: 'POST' });
+      if (!res.ok) throw new Error('La configuration du paiement a échoué');
+      const data = await res.json();
+      window.location.href = data.url;
+    } catch (err) {
+      console.error(err);
+      errorEl.innerHTML = '❌ Votre profil a été créé, mais la configuration du paiement a échoué. ' +
+        '<button type="button" class="btn btn-outline btn-sm" id="retryStripeBtn" style="margin-top:8px;">Réessayer</button>';
+      errorEl.hidden = false;
+      if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Créer mon profil et configurer mes paiements'; }
+    }
+  }
+
+  // Récupère les cuisiniers inscrits via ce formulaire (id ≥ 1000 côté
+  // backend) et les ajoute aux 11 cuisiniers de démo déjà en dur dans ce
+  // script, pour qu'ils apparaissent réellement dans les recherches.
+  function normalizeBackendCook(bc){
+    return {
+      id: bc.id,
+      name: bc.name,
+      cuisine: bc.cuisine,
+      location: bc.location,
+      quote: bc.quote,
+      price: (bc.formulas && bc.formulas[0]) ? bc.formulas[0].price : 0,
+      rating: bc.rating || 0,
+      reviews: bc.reviews || 0,
+      tags: bc.tags || [],
+      photo: bc.photo || '/no-photo-yet.jpg',
+      gradient: bc.gradient || 'linear-gradient(135deg,#E2725B,#A64A34)',
+      bio: bc.bio || '',
+      specialties: bc.specialties || [],
+      training: bc.training || null,
+      selfTaughtNote: bc.selfTaughtNote || '',
+      formulas: bc.formulas || [],
+      discountTiers: bc.discountTiers || [],
+      testimonials: bc.testimonials || [],
+    };
+  }
+
+  async function loadRegisteredCooks(){
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks');
+      if (!res.ok) return;
+      const backendCooks = await res.json();
+      let addedAny = false;
+      backendCooks.forEach(bc => {
+        if (bc.id >= 1000 && !chefs.some(c => c.id === bc.id)){
+          chefs.push(normalizeBackendCook(bc));
+          addedAny = true;
+        }
+      });
+      if (addedAny) applyFiltersAndRender();
+    } catch (e) {
+      // Silencieux : le site doit rester utilisable même si le backend
+      // n'est pas encore joignable (BACKEND_URL pas encore renseignée, etc.)
+      console.warn('Impossible de charger les cuisiniers inscrits via le formulaire :', e);
+    }
+  }
+
+  /* ============================================================
+     RENDU INITIAL : options de filtre cuisine + cuisiniers vedettes
+     ============================================================ */
+  document.getElementById('cuisineFilterOptions').innerHTML = CUISINE_TYPES.map(c =>
+    '<label class="filter-option"><input type="checkbox" class="cuisine-checkbox" value="' + c + '"> ' + c + '</label>'
+  ).join('');
+
+  document.getElementById('cookCuisine').innerHTML = '<option value="">Choisissez…</option>' +
+    CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
+
+  document.getElementById('featuredChefsGrid').innerHTML = chefs.filter(c => c.featured).map(c => chefCardHTML(c, false)).join('');
+
+  /* ---------- Header scroll shadow ---------- */
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  mobileToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    mobileToggle.classList.toggle('active', isOpen);
+    mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    mobileToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  mobileMenu.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      mobileToggle.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---------- Toast ---------- */
+  const toast = document.getElementById('toast');
+  let toastTimeout;
+  function showToast(message){
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  /* ---------- Guest stepper (accueil) ---------- */
+  const decBtn = document.querySelector('[data-action="decrement"]');
+  const incBtn = document.querySelector('[data-action="increment"]');
+  const guestCountEl = document.getElementById('guestCount');
+  let guestCount = 2;
+  const MIN_GUESTS = 1, MAX_GUESTS = 12;
+  function updateGuestUI(){
+    guestCountEl.textContent = guestCount;
+    decBtn.disabled = guestCount <= MIN_GUESTS;
+    incBtn.disabled = guestCount >= MAX_GUESTS;
+  }
+  decBtn.addEventListener('click', () => { if (guestCount > MIN_GUESTS){ guestCount--; updateGuestUI(); }});
+  incBtn.addEventListener('click', () => { if (guestCount < MAX_GUESTS){ guestCount++; updateGuestUI(); }});
+  updateGuestUI();
+
+  /* ---------- Dates min = aujourd'hui ---------- */
+  const todayISO = new Date().toISOString().split('T')[0];
+  const dateInput = document.getElementById('dateInput');
+  if (dateInput) dateInput.min = todayISO;
+  const searchDateInputEl = document.getElementById('searchDateInput');
+  if (searchDateInputEl) searchDateInputEl.min = todayISO;
+
+  /* ---------- Formulaire de recherche (Hero) → navigation directe et filtrée ---------- */
+  const searchForm = document.getElementById('searchForm');
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cuisineVal = document.getElementById('cuisineSelect').value;
+    const dateVal = document.getElementById('dateInput').value;
+    openSearch({
+      cuisine: (cuisineVal && cuisineVal !== 'Toutes les cuisines') ? cuisineVal : null,
+      date: dateVal || null
+    });
+  });
+
+  /* ---------- Formulaire Devenir Cuisinier ---------- */
+  document.getElementById('cookRegisterForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('cookRegisterError');
+    const submitBtn = document.getElementById('cookRegisterSubmit');
+    errorEl.hidden = true;
+
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché : remplacez BACKEND_URL tout en haut du script par votre vraie adresse Render.";
+      errorEl.hidden = false;
+      return;
+    }
+
+    const payload = {
+      name: document.getElementById('cookName').value.trim(),
+      email: document.getElementById('cookEmail').value.trim(),
+      cuisine: document.getElementById('cookCuisine').value,
+      location: document.getElementById('cookLocation').value.trim(),
+      specialty: document.getElementById('cookSpecialty').value.trim(),
+      bio: document.getElementById('cookBio').value.trim(),
+      formulaName: document.getElementById('cookFormulaName').value.trim(),
+      formulaPrice: document.getElementById('cookFormulaPrice').value,
+    };
+
+    if (!payload.name || !payload.email || !payload.cuisine || !payload.location || !payload.specialty || !payload.formulaName || !payload.formulaPrice){
+      errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
+      errorEl.hidden = false;
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Création de votre profil…';
+
+    try {
+      const regRes = await fetch(BACKEND_URL + '/api/cooks/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const regData = await regRes.json();
+      if (!regRes.ok) throw new Error(regData.error || 'Erreur lors de la création du profil');
+
+      lastRegisteredCookId = regData.cookId;
+      submitBtn.textContent = 'Redirection vers Stripe…';
+      await startStripeOnboarding(lastRegisteredCookId);
+
+    } catch (err) {
+      console.error(err);
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Créer mon profil et configurer mes paiements';
+    }
+  });
+
+  /* ---------- Role toggle (Hôte / Cuisinier) ---------- */
+  const roleButtons = document.querySelectorAll('.role-toggle-inner button');
+  const panels = document.querySelectorAll('.steps-grid');
+  function setRole(role){
+    roleButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.role === role));
+    panels.forEach(panel => { panel.hidden = panel.dataset.panel !== role; });
+  }
+  roleButtons.forEach(btn => btn.addEventListener('click', () => setRole(btn.dataset.role)));
+
+  /* ---------- Newsletter fake submit ---------- */
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterMsg = document.getElementById('newsletterMsg');
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector('input[type="email"]');
+    if (input.value){
+      newsletterMsg.textContent = '✅ Merci ! Vous êtes inscrit(e) à la newsletter.';
+      input.value = '';
+    }
+  });
+
+  /* ---------- Écouteurs des filtres de recherche ---------- */
+  document.getElementById('cuisineFilterOptions').addEventListener('change', (e) => {
+    if (!e.target.classList.contains('cuisine-checkbox')) return;
+    filters.cuisines = Array.from(document.querySelectorAll('.cuisine-checkbox:checked')).map(cb => cb.value);
+    applyFiltersAndRender();
+  });
+
+  document.querySelectorAll('.budget-checkbox').forEach(cb => {
+    cb.addEventListener('change', () => {
+      filters.budgets = Array.from(document.querySelectorAll('.budget-checkbox:checked')).map(c => c.value);
+      applyFiltersAndRender();
+    });
+  });
+
+  document.querySelectorAll('input[name="ratingFilter"]').forEach(r => {
+    r.addEventListener('change', () => {
+      filters.minRating = parseFloat(r.value);
+      applyFiltersAndRender();
+    });
+  });
+
+  if (searchDateInputEl){
+    searchDateInputEl.addEventListener('change', () => {
+      filters.date = searchDateInputEl.value;
+      applyFiltersAndRender();
+    });
+  }
+
+  const sortSelectEl = document.getElementById('sortSelect');
+  sortSelectEl.addEventListener('change', () => {
+    sortBy = sortSelectEl.value;
+    applyFiltersAndRender();
+  });
+
+  const filtersPanel = document.getElementById('filtersPanel');
+  const filtersBackdrop = document.getElementById('filtersBackdrop');
+  function openFiltersDrawer(){ filtersPanel.classList.add('open'); filtersBackdrop.classList.add('open'); }
+  function closeFiltersDrawer(){ filtersPanel.classList.remove('open'); filtersBackdrop.classList.remove('open'); }
+
+  /* ---------- Module de réservation (page profil) ---------- */
+  document.getElementById('formulaOptions').addEventListener('click', (e) => {
+    const option = e.target.closest('.formula-option');
+    if (!option || !currentProfileChef) return;
+    selectedFormulaIndex = parseInt(option.dataset.formulaIndex, 10);
+    renderFormulaOptions(currentProfileChef);
+    updateBookingPriceDisplay();
+  });
+
+  document.getElementById('profileGuestDec').addEventListener('click', () => {
+    if (profileGuestCount > PROFILE_MIN_GUESTS){
+      profileGuestCount--;
+      document.getElementById('profileGuestCount').textContent = profileGuestCount;
+      updateProfileGuestButtons();
+      updateBookingPriceDisplay();
+    }
+  });
+  document.getElementById('profileGuestInc').addEventListener('click', () => {
+    if (profileGuestCount < PROFILE_MAX_GUESTS){
+      profileGuestCount++;
+      document.getElementById('profileGuestCount').textContent = profileGuestCount;
+      updateProfileGuestButtons();
+      updateBookingPriceDisplay();
+    }
+  });
+
+  document.querySelectorAll('.booking-type-option').forEach(btn => {
+    btn.addEventListener('click', () => setBookingType(btn.dataset.bookingType));
+  });
+
+  document.getElementById('calendarPrevMonth').addEventListener('click', () => {
+    calendarViewDate.setMonth(calendarViewDate.getMonth() - 1);
+    renderCalendar();
+  });
+  document.getElementById('calendarNextMonth').addEventListener('click', () => {
+    calendarViewDate.setMonth(calendarViewDate.getMonth() + 1);
+    renderCalendar();
+  });
+  document.getElementById('calendarGrid').addEventListener('click', (e) => {
+    const dayBtn = e.target.closest('.calendar-day:not(.disabled):not(.empty)');
+    if (!dayBtn) return;
+    selectedBookingDate = dayBtn.dataset.date;
+    renderCalendar();
+    updateSelectedDateLabel();
+    document.getElementById('bookingError').hidden = true;
+  });
+
+  document.getElementById('reserveBtn').addEventListener('click', async () => {
+    const allergiesEl = document.getElementById('allergiesInput');
+    const errorEl = document.getElementById('bookingError');
+    const btn = document.getElementById('reserveBtn');
+
+    if (!selectedBookingDate){
+      errorEl.textContent = '⚠️ Merci de choisir une date dans le calendrier.';
+      errorEl.hidden = false;
+      return;
+    }
+
+    if (!allergiesEl.value.trim()){
+      errorEl.textContent = "⚠️ Merci de renseigner ce champ (indiquez « Aucune » si vous n'avez pas de restriction).";
+      errorEl.hidden = false;
+      allergiesEl.classList.add('invalid');
+      allergiesEl.focus();
+      return;
+    }
+    errorEl.hidden = true;
+    allergiesEl.classList.remove('invalid');
+
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché : remplacez BACKEND_URL tout en haut du script par votre vraie adresse Render.";
+      errorEl.hidden = false;
+      return;
+    }
+
+    const equipment = Array.from(document.querySelectorAll('.equipment-checkbox:checked')).map(cb => cb.value);
+    const fridgeContents = document.getElementById('fridgeContentsInput').value.trim();
+
+    // Appel réel au backend : on envoie uniquement des références
+    // (jamais un montant), le serveur recalcule le prix lui-même.
+    btn.disabled = true;
+    btn.textContent = 'Redirection vers le paiement…';
+    try {
+      const response = await fetch(BACKEND_URL + '/api/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cookId: currentProfileChef.id,
+          formulaIndex: selectedFormulaIndex,
+          guestCount: profileGuestCount,
+          allergies: allergiesEl.value.trim(),
+          bookingType: bookingType,
+          fridgeContents: fridgeContents,
+          equipment: equipment,
+          eventDate: selectedBookingDate,
+        }),
+      });
+      if (!response.ok) throw new Error(await response.text());
+      const data = await response.json();
+      window.location.href = data.checkoutUrl; // redirection vers la page Stripe hébergée
+    } catch (err) {
+      console.error(err);
+      btn.disabled = false;
+      btn.textContent = 'Réserver';
+      errorEl.textContent = '❌ Une erreur est survenue, merci de réessayer.';
+      errorEl.hidden = false;
+    }
+  });
+
+  // Au retour de Stripe (après paiement ou annulation), on affiche un message adapté.
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('payment') === 'success') {
+    showToast('✅ Paiement réussi ! Votre réservation est confirmée.');
+    window.history.replaceState({}, '', window.location.pathname);
+  } else if (urlParams.get('payment') === 'cancelled') {
+    showToast('❌ Paiement annulé, vous pouvez réessayer quand vous voulez.');
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+
+  // Au retour de Stripe après l'inscription d'un cuisinier (configuration
+  // des paiements) : message de succès, ou reprise automatique si le lien
+  // avait expiré avant que le cuisinier ait terminé (onboarding=refresh).
+  if (urlParams.get('onboarding') === 'complete') {
+    showToast('✅ Votre profil cuisinier est prêt ! Vous êtes visible dans les recherches.');
+    window.history.replaceState({}, '', window.location.pathname);
+    loadRegisteredCooks();
+  } else if (urlParams.get('onboarding') === 'refresh') {
+    const refreshCookId = urlParams.get('cookId');
+    window.history.replaceState({}, '', window.location.pathname);
+    if (refreshCookId) startStripeOnboarding(refreshCookId);
+  }
+
+  document.getElementById('allergiesInput').addEventListener('input', () => {
+    document.getElementById('allergiesInput').classList.remove('invalid');
+    document.getElementById('bookingError').hidden = true;
+  });
+
+  /* ============================================================
+     ÉCOUTEUR DÉLÉGUÉ GLOBAL — couvre aussi le contenu généré en JS
+     ============================================================ */
+  document.addEventListener('click', (e) => {
+    const toastTarget = e.target.closest('[data-toast]');
+    if (toastTarget){ e.preventDefault(); showToast(toastTarget.getAttribute('data-toast')); return; }
+
+    const chefCardTarget = e.target.closest('.chef-card[data-chef-id]');
+    if (chefCardTarget){ openChefProfile(parseInt(chefCardTarget.dataset.chefId, 10)); return; }
+
+    const searchTarget = e.target.closest('.go-to-search');
+    if (searchTarget){ e.preventDefault(); openSearch({ cuisine: searchTarget.dataset.cuisine || null }); return; }
+
+    const cookRegisterTarget = e.target.closest('.go-to-cook-register');
+    if (cookRegisterTarget){ e.preventDefault(); showView('cook-register'); return; }
+
+    const retryStripeTarget = e.target.closest('#retryStripeBtn');
+    if (retryStripeTarget){ if (lastRegisteredCookId) startStripeOnboarding(lastRegisteredCookId); return; }
+
+    const roleTarget = e.target.closest('[data-goto-role]');
+    if (roleTarget){ e.preventDefault(); goToHomeSection('comment-ca-marche', roleTarget.dataset.gotoRole); return; }
+
+    const sectionTarget = e.target.closest('[data-goto-section]');
+    if (sectionTarget){ e.preventDefault(); goToHomeSection(sectionTarget.dataset.gotoSection); return; }
+
+    const backHomeTarget = e.target.closest('.back-to-home');
+    if (backHomeTarget){ e.preventDefault(); showView('home'); return; }
+
+    const backSearchTarget = e.target.closest('.back-to-search');
+    if (backSearchTarget){ e.preventDefault(); showView('search'); return; }
+
+    const logoTarget = e.target.closest('.logo');
+    if (logoTarget){ e.preventDefault(); showView('home'); return; }
+
+    const mobileFilterToggleTarget = e.target.closest('.mobile-filters-toggle');
+    if (mobileFilterToggleTarget){ openFiltersDrawer(); return; }
+
+    const closeFilterTarget = e.target.closest('.filters-panel-close, .filters-apply-mobile');
+    if (closeFilterTarget){ closeFiltersDrawer(); return; }
+
+    if (e.target.id === 'filtersBackdrop'){ closeFiltersDrawer(); return; }
+
+    const resetTarget = e.target.closest('.reset-filters-link');
+    if (resetTarget){ resetFilters(); return; }
+
+    const newBookingTarget = e.target.closest('#newBookingBtn');
+    if (newBookingTarget){
+      document.getElementById('bookingConfirmation').hidden = true;
+      document.getElementById('bookingFormWrap').hidden = false;
+      return;
+    }
+  });
+
+  /* ---------- Scroll reveal (accueil) ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  /* ---------- État initial de la recherche (prêt avant même la première visite) ---------- */
+  syncFilterUIFromState();
+  applyFiltersAndRender();
+  loadRegisteredCooks();
+
+});
+</script>
+</body>
+</html>
