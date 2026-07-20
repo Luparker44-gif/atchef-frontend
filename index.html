@@ -2269,6 +2269,17 @@ document.addEventListener('DOMContentLoaded', () => {
   applyFiltersAndRender();
   loadRegisteredCooks();
 
+  // Le plan gratuit de Render met le serveur en veille après 15 minutes
+  // sans requête, ce qui efface la base de données en mémoire. Tant que
+  // cette page reste ouverte, on envoie un petit signal discret toutes les
+  // 4 minutes pour garder le serveur éveillé (utile pendant un parcours
+  // Stripe qui peut prendre du temps).
+  if (isBackendConfigured()){
+    setInterval(() => {
+      fetch(BACKEND_URL + '/api/cooks').catch(() => {});
+    }, 4 * 60 * 1000);
+  }
+
 });
 </script>
 </body>
