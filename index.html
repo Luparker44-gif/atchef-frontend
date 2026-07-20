@@ -640,6 +640,35 @@
 
   /* ===================== CHECKLIST ÉQUIPEMENT ===================== */
   .equipment-checklist{display:flex;flex-direction:column;gap:2px;}
+
+  /* ===================== CONTACT ===================== */
+  .contact-layout{padding:20px 0 100px;max-width:680px;}
+
+  /* ===================== ADMINISTRATION ===================== */
+  .admin-login-layout{display:flex;justify-content:center;padding:100px 24px;}
+  .admin-login-card{max-width:400px;width:100%;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:36px;}
+  .admin-login-card h1{font-size:1.45rem;margin:8px 0 24px;}
+  .admin-back-link{margin-top:18px;}
+
+  .admin-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:28px 0 8px;}
+  .admin-toolbar h1{font-size:1.55rem;}
+  .admin-tabs{display:flex;gap:8px;padding:16px 24px;border-bottom:1px solid var(--border);margin-bottom:28px;flex-wrap:wrap;}
+  .admin-tab{padding:10px 22px;border-radius:var(--radius-full);font-weight:700;font-size:0.88rem;color:var(--ink-soft);transition:background .2s ease,color .2s ease;}
+  .admin-tab:hover{background:var(--cream-alt);}
+  .admin-tab.active{background:var(--terracotta-dark);color:#fff;}
+  .admin-panel{padding-bottom:90px;}
+  .admin-list{display:flex;flex-direction:column;gap:12px;}
+  .admin-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 22px;}
+  .admin-item-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
+  .admin-item-title{font-weight:700;font-family:var(--font-display);font-size:1.02rem;}
+  .admin-item-meta{font-size:0.82rem;color:var(--ink-faint);margin-bottom:8px;}
+  .admin-item-body{font-size:0.9rem;color:var(--ink-soft);margin-bottom:12px;}
+  .admin-status{font-size:0.72rem;font-weight:800;padding:4px 12px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
+  .admin-status.ouvert,.admin-status.pending_payment{background:var(--terracotta-tint);color:var(--terracotta-dark);}
+  .admin-status.en_cours{background:#FDF0D5;color:#96690D;}
+  .admin-status.resolu,.admin-status.confirmed{background:var(--sage-tint);color:var(--sage-dark);}
+  .admin-item-actions select{padding:7px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.82rem;font-family:inherit;color:var(--ink);background:var(--white);}
+  .admin-empty-note{color:var(--ink-faint);font-style:italic;text-align:center;padding:50px 20px;}
 </style>
 </head>
 <body>
@@ -888,14 +917,14 @@
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Notre histoire</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Charte de confiance</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">At'Chef à Nantes</a></li>
-            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Nous contacter</a></li>
+            <li><a href="#" class="go-to-contact">Nous contacter</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Aide</h4>
           <ul>
-            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Centre d'aide</a></li>
+            <li><a href="#" class="go-to-contact">Centre d'aide</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Sécurité &amp; paiement</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Annulation</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">CGU</a></li>
@@ -921,6 +950,7 @@
           <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Mentions légales</a>
           <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">CGU</a>
           <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Confidentialité</a>
+          <a href="#" class="go-to-admin-login" style="opacity:0.45;">Administration</a>
         </div>
       </div>
     </footer>
@@ -1214,6 +1244,96 @@
 
       <button type="submit" class="btn btn-primary btn-block" id="cookRegisterSubmit">Créer mon profil et configurer mes paiements</button>
     </form>
+  </div>
+</div>
+
+<!-- ============ VUE CONTACT / SIGNALER UN PROBLÈME ============ -->
+<div id="view-contact" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+  </div>
+  <div class="container contact-layout">
+    <span class="eyebrow">Besoin d'aide ?</span>
+    <h1>Contactez-nous</h1>
+    <p class="section-subtitle" style="margin-bottom:32px;">Une question, un souci avec une réservation ou un paiement ? Décrivez-nous la situation, notre équipe revient vers vous rapidement.</p>
+
+    <form class="cook-register-form" id="contactForm" style="max-width:560px;">
+      <div class="booking-field">
+        <label for="contactName">Votre nom <span class="required-mark">*</span></label>
+        <input type="text" id="contactName" required>
+      </div>
+      <div class="booking-field">
+        <label for="contactEmail">Votre email <span class="required-mark">*</span></label>
+        <input type="email" id="contactEmail" required>
+      </div>
+      <div class="booking-field">
+        <label for="contactRole">Vous êtes…</label>
+        <select id="contactRole">
+          <option value="hote">Hôte</option>
+          <option value="cuisinier">Cuisinier</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <div class="booking-field">
+        <label for="contactSubject">Sujet <span class="required-mark">*</span></label>
+        <input type="text" id="contactSubject" required placeholder="Ex : Problème avec ma réservation">
+      </div>
+      <div class="booking-field">
+        <label for="contactMessage">Votre message <span class="required-mark">*</span></label>
+        <textarea id="contactMessage" rows="5" required placeholder="Décrivez votre situation en détail…"></textarea>
+      </div>
+      <p class="booking-error" id="contactError" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ VUE CONNEXION ADMINISTRATEUR ============ -->
+<div id="view-admin-login" class="app-view" hidden>
+  <div class="container admin-login-layout">
+    <div class="admin-login-card">
+      <span class="eyebrow">Espace réservé</span>
+      <h1>Connexion administrateur</h1>
+      <form id="adminLoginForm">
+        <div class="booking-field">
+          <label for="adminEmail">Email</label>
+          <input type="email" id="adminEmail" required autocomplete="username">
+        </div>
+        <div class="booking-field">
+          <label for="adminPassword">Mot de passe</label>
+          <input type="password" id="adminPassword" required autocomplete="current-password">
+        </div>
+        <p class="booking-error" id="adminLoginError" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+      </form>
+      <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE TABLEAU DE BORD ADMINISTRATEUR ============ -->
+<div id="view-admin-dashboard" class="app-view" hidden>
+  <div class="container admin-toolbar">
+    <h1>Tableau de bord administrateur</h1>
+    <button type="button" class="btn btn-outline btn-sm" id="adminLogoutBtn">Se déconnecter</button>
+  </div>
+
+  <div class="container admin-tabs">
+    <button type="button" class="admin-tab active" data-admin-tab="bookings">Réservations</button>
+    <button type="button" class="admin-tab" data-admin-tab="cooks">Cuisiniers</button>
+    <button type="button" class="admin-tab" data-admin-tab="tickets">Tickets SAV</button>
+  </div>
+
+  <div class="container">
+    <div class="admin-panel" data-admin-panel="bookings">
+      <div class="admin-list" id="adminBookingsList"></div>
+    </div>
+    <div class="admin-panel" data-admin-panel="cooks" hidden>
+      <div class="admin-list" id="adminCooksList"></div>
+    </div>
+    <div class="admin-panel" data-admin-panel="tickets" hidden>
+      <div class="admin-list" id="adminTicketsList"></div>
+    </div>
   </div>
 </div>
 
@@ -2211,6 +2331,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cookRegisterTarget = e.target.closest('.go-to-cook-register');
     if (cookRegisterTarget){ e.preventDefault(); showView('cook-register'); return; }
 
+    const contactTarget = e.target.closest('.go-to-contact');
+    if (contactTarget){ e.preventDefault(); showView('contact'); return; }
+
+    const adminLoginTarget = e.target.closest('.go-to-admin-login');
+    if (adminLoginTarget){ e.preventDefault(); showView('admin-login'); return; }
+
     const retryStripeTarget = e.target.closest('#retryStripeBtn');
     if (retryStripeTarget){ if (lastRegisteredCookId) startStripeOnboarding(lastRegisteredCookId); return; }
 
@@ -2263,6 +2389,198 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealEls.forEach(el => el.classList.add('visible'));
   }
+
+  /* ============================================================
+     ADMINISTRATION — connexion sécurisée + SAV
+     ============================================================ */
+  let adminToken = null;
+
+  function adminAuthHeaders(){
+    return { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken };
+  }
+
+  function handleAdminAuthError(){
+    adminToken = null;
+    showView('admin-login');
+    const errorEl = document.getElementById('adminLoginError');
+    errorEl.textContent = '⚠️ Votre session a expiré, merci de vous reconnecter.';
+    errorEl.hidden = false;
+  }
+
+  document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('adminLoginError');
+    errorEl.hidden = true;
+
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById('adminEmail').value.trim(),
+          password: document.getElementById('adminPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Connexion refusée');
+      adminToken = data.token;
+      document.getElementById('adminLoginForm').reset();
+      showView('admin-dashboard');
+      loadAdminData();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('adminLogoutBtn').addEventListener('click', () => {
+    adminToken = null;
+    showView('home');
+  });
+
+  document.querySelectorAll('.admin-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.admin-panel').forEach(p => { p.hidden = p.dataset.adminPanel !== tab.dataset.adminTab; });
+    });
+  });
+
+  async function loadAdminData(){
+    await Promise.all([loadAdminBookings(), loadAdminCooks(), loadAdminTickets()]);
+  }
+
+  async function loadAdminBookings(){
+    const listEl = document.getElementById('adminBookingsList');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/bookings', { headers: adminAuthHeaders() });
+      if (res.status === 401) return handleAdminAuthError();
+      const bookingsData = await res.json();
+      if (!bookingsData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucune réservation pour le moment.</p>'; return; }
+      listEl.innerHTML = bookingsData.map(b =>
+        '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">Réservation #' + b.id + '</span>' +
+            '<span class="admin-status ' + b.status + '">' + (b.status === 'confirmed' ? 'Payée' : 'En attente de paiement') + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">Cuisinier #' + b.cookId + ' · ' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') + '</div>' +
+          '<div class="admin-item-body">Allergies : ' + (b.allergies || '—') + (b.bookingType === 'cooking_only' ? ' · Ingrédients fournis par l\u2019hôte' : '') + '</div>' +
+        '</div>'
+      ).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les réservations.</p>';
+    }
+  }
+
+  async function loadAdminCooks(){
+    const listEl = document.getElementById('adminCooksList');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/cooks', { headers: adminAuthHeaders() });
+      if (res.status === 401) return handleAdminAuthError();
+      const cooksData = await res.json();
+      if (!cooksData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucun cuisinier.</p>'; return; }
+      listEl.innerHTML = cooksData.map(c =>
+        '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">' + c.name + '</span>' +
+            '<span class="admin-status ' + (c.stripeAccountId ? 'resolu' : 'ouvert') + '">' + (c.stripeAccountId ? 'Paiements configurés' : 'Paiements non configurés') + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">' + (c.email || '—') + ' · ' + c.cuisine + ' · ' + c.location + '</div>' +
+        '</div>'
+      ).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les cuisiniers.</p>';
+    }
+  }
+
+  async function loadAdminTickets(){
+    const listEl = document.getElementById('adminTicketsList');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/tickets', { headers: adminAuthHeaders() });
+      if (res.status === 401) return handleAdminAuthError();
+      const ticketsData = await res.json();
+      if (!ticketsData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucun ticket pour le moment.</p>'; return; }
+      listEl.innerHTML = ticketsData.map(t =>
+        '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">' + t.subject + '</span>' +
+            '<span class="admin-status ' + t.status + '">' + (t.status === 'ouvert' ? 'Ouvert' : t.status === 'en_cours' ? 'En cours' : 'Résolu') + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">' + t.name + ' (' + t.email + ') · ' + t.role + '</div>' +
+          '<div class="admin-item-body">' + t.message + '</div>' +
+          '<div class="admin-item-actions">' +
+            '<select class="ticket-status-select" data-ticket-id="' + t.id + '">' +
+              '<option value="ouvert"' + (t.status==='ouvert'?' selected':'') + '>Ouvert</option>' +
+              '<option value="en_cours"' + (t.status==='en_cours'?' selected':'') + '>En cours</option>' +
+              '<option value="resolu"' + (t.status==='resolu'?' selected':'') + '>Résolu</option>' +
+            '</select>' +
+          '</div>' +
+        '</div>'
+      ).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les tickets.</p>';
+    }
+  }
+
+  document.getElementById('adminTicketsList').addEventListener('change', async (e) => {
+    if (!e.target.classList.contains('ticket-status-select')) return;
+    const ticketId = e.target.dataset.ticketId;
+    const newStatus = e.target.value;
+    try {
+      await fetch(BACKEND_URL + '/api/admin/tickets/' + ticketId, {
+        method: 'PATCH',
+        headers: adminAuthHeaders(),
+        body: JSON.stringify({ status: newStatus }),
+      });
+      loadAdminTickets();
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
+  /* ---------- Formulaire de contact / ticket public ---------- */
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('contactError');
+    errorEl.hidden = true;
+
+    const payload = {
+      name: document.getElementById('contactName').value.trim(),
+      email: document.getElementById('contactEmail').value.trim(),
+      role: document.getElementById('contactRole').value,
+      subject: document.getElementById('contactSubject').value.trim(),
+      message: document.getElementById('contactMessage').value.trim(),
+    };
+    if (!payload.name || !payload.email || !payload.subject || !payload.message){
+      errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
+      document.getElementById('contactForm').reset();
+      showToast('✅ Votre message a bien été envoyé, nous revenons vers vous rapidement.');
+      showView('home');
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
 
   /* ---------- État initial de la recherche (prêt avant même la première visite) ---------- */
   syncFilterUIFromState();
