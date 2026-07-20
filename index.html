@@ -2162,7 +2162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error(err);
       btn.disabled = false;
       btn.textContent = 'Réserver';
-      errorEl.textContent = '❌ Une erreur est survenue, merci de réessayer.';
+      errorEl.textContent = '❌ ' + err.message;
       errorEl.hidden = false;
     }
   });
