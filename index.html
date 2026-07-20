@@ -669,6 +669,16 @@
   .admin-status.resolu,.admin-status.confirmed{background:var(--sage-tint);color:var(--sage-dark);}
   .admin-item-actions select{padding:7px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.82rem;font-family:inherit;color:var(--ink);background:var(--white);}
   .admin-empty-note{color:var(--ink-faint);font-style:italic;text-align:center;padding:50px 20px;}
+
+  /* ===================== VÉRIFICATION D'IDENTITÉ ===================== */
+  .identity-box{background:var(--cream-alt);border-radius:var(--radius-md);padding:16px 18px;}
+  .identity-status-text{font-size:0.83rem;color:var(--ink-soft);margin-bottom:12px;line-height:1.5;}
+  .identity-box.verified{background:var(--sage-tint);}
+  .identity-box.verified .identity-status-text{color:var(--sage-dark);font-weight:700;}
+  .identity-verified-badge{
+    display:inline-flex;align-items:center;gap:5px;background:var(--sage-tint);color:var(--sage-dark);
+    font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:var(--radius-full);
+  }
 </style>
 </head>
 <body>
@@ -1169,6 +1179,19 @@
             <p class="gdpr-notice">🔒 Ces informations relèvent de données de santé. Elles sont transmises uniquement à votre cuisinier, dans le seul but d'assurer la sécurité de votre repas, et ne sont ni conservées ni partagées à d'autres fins.</p>
           </div>
 
+          <div class="booking-field">
+            <label for="hostEmailInput">Votre email <span class="required-mark">*</span></label>
+            <input type="email" id="hostEmailInput" required placeholder="vous@exemple.fr">
+          </div>
+
+          <div class="booking-field">
+            <label>Vérification d'identité <span class="required-mark">*</span></label>
+            <div class="identity-box" id="identityBox">
+              <p class="identity-status-text" id="identityStatusText">🔒 Obligatoire avant de réserver, pour la sécurité de votre cuisinier. Pièce d'identité + selfie, sur une page Stripe sécurisée — At'Chef ne reçoit jamais vos documents.</p>
+              <button type="button" class="btn btn-outline btn-block btn-sm" id="verifyIdentityBtn">Vérifier mon identité</button>
+            </div>
+          </div>
+
           <p class="booking-error" id="bookingError" hidden></p>
 
           <button type="button" class="btn btn-primary btn-block" id="reserveBtn">Réserver</button>
@@ -1553,6 +1576,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '<p class="chef-location">📍 ' + chef.location + '</p>' +
         '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
         '<div class="chef-rating">' + ratingHTML + '</div>' +
+        (chef.identityVerified ? '<div style="margin-bottom:14px;"><span class="identity-verified-badge">✅ Identité vérifiée</span></div>' : '') +
         '<div class="chef-tags">' + tagsHTML + '</div>' +
         '<div class="chef-footer">' +
           '<span class="chef-price-tag">Dès ' + chef.price + ' €<br><small>par personne</small></span>' +
@@ -1693,6 +1717,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let bookingType = 'formula'; // 'formula' | 'cooking_only'
   let calendarViewDate = new Date();
   let selectedBookingDate = null;
+  let hostIdentityVerified = false;
   const PROFILE_MIN_GUESTS = 1, PROFILE_MAX_GUESTS = 20;
   // Réduction appliquée quand le client fournit ses propres ingrédients :
   // le cuisinier ne facture plus que sa prestation, pas les produits.
@@ -1855,7 +1880,9 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('profileReviewCount').innerHTML = '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
     }
     document.getElementById('profileLocation').textContent = '📍 ' + chef.location;
-    document.getElementById('profileBadgeSlot').innerHTML = isTopChef(chef) ? '<span class="chef-badge gold inline">★ Top Chef</span>' : '';
+    document.getElementById('profileBadgeSlot').innerHTML =
+      (isTopChef(chef) ? '<span class="chef-badge gold inline">★ Top Chef</span> ' : '') +
+      (chef.identityVerified ? '<span class="identity-verified-badge">✅ Identité vérifiée</span>' : '');
     document.getElementById('profileBio').textContent = chef.bio;
     document.getElementById('profileSpecialties').innerHTML = chef.specialties.map(s => '<span>' + s + '</span>').join('');
 
@@ -1888,6 +1915,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('fridgeContentsInput').value = '';
     document.querySelectorAll('.equipment-checkbox').forEach(cb => { cb.checked = false; });
     document.getElementById('bookingError').hidden = true;
+
+    hostIdentityVerified = false;
+    document.getElementById('hostEmailInput').value = '';
+    resetIdentityStatusUI();
   }
 
   function openChefProfile(chefId){
@@ -1962,6 +1993,7 @@ document.addEventListener('DOMContentLoaded', () => {
       formulas: bc.formulas || [],
       discountTiers: bc.discountTiers || [],
       testimonials: bc.testimonials || [],
+      identityVerified: !!bc.identityVerified,
     };
   }
 
@@ -2226,10 +2258,90 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('bookingError').hidden = true;
   });
 
+  /* ---------- Vérification d'identité de l'hôte (Stripe Identity) ---------- */
+  function resetIdentityStatusUI(){
+    hostIdentityVerified = false;
+    const box = document.getElementById('identityBox');
+    box.classList.remove('verified');
+    document.getElementById('identityStatusText').textContent =
+      "🔒 Obligatoire avant de réserver, pour la sécurité de votre cuisinier. Pièce d'identité + selfie, sur une page Stripe sécurisée — At'Chef ne reçoit jamais vos documents.";
+    const btn = document.getElementById('verifyIdentityBtn');
+    btn.hidden = false;
+    btn.disabled = false;
+    btn.textContent = 'Vérifier mon identité';
+  }
+
+  function setIdentityVerifiedUI(){
+    hostIdentityVerified = true;
+    const box = document.getElementById('identityBox');
+    box.classList.add('verified');
+    document.getElementById('identityStatusText').textContent = '✅ Identité vérifiée, merci !';
+    document.getElementById('verifyIdentityBtn').hidden = true;
+  }
+
+  async function checkHostIdentityStatus(email){
+    try {
+      const res = await fetch(BACKEND_URL + '/api/identity/host-status?email=' + encodeURIComponent(email));
+      const data = await res.json();
+      if (data.verified) setIdentityVerifiedUI();
+      return data.verified;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  document.getElementById('verifyIdentityBtn').addEventListener('click', async () => {
+    const email = document.getElementById('hostEmailInput').value.trim();
+    const errorEl = document.getElementById('bookingError');
+    errorEl.hidden = true;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      errorEl.textContent = '⚠️ Merci de renseigner un email valide avant de vérifier votre identité.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+
+    const btn = document.getElementById('verifyIdentityBtn');
+    btn.disabled = true;
+    btn.textContent = 'Vérification…';
+
+    try {
+      // On vérifie d'abord si cet email est déjà vérifié (évite de refaire
+      // toute la vérification à chaque nouvelle réservation du même hôte).
+      const alreadyVerified = await checkHostIdentityStatus(email);
+      if (alreadyVerified) return;
+
+      const res = await fetch(BACKEND_URL + '/api/identity/verify-host', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur lors du démarrage de la vérification');
+
+      if (data.alreadyVerified){
+        setIdentityVerifiedUI();
+        return;
+      }
+      window.location.href = data.url; // redirection vers Stripe Identity
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Vérifier mon identité';
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
   document.getElementById('reserveBtn').addEventListener('click', async () => {
     const allergiesEl = document.getElementById('allergiesInput');
     const errorEl = document.getElementById('bookingError');
     const btn = document.getElementById('reserveBtn');
+    const hostEmail = document.getElementById('hostEmailInput').value.trim();
 
     if (!selectedBookingDate){
       errorEl.textContent = '⚠️ Merci de choisir une date dans le calendrier.';
@@ -2246,6 +2358,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     errorEl.hidden = true;
     allergiesEl.classList.remove('invalid');
+
+    if (!hostEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(hostEmail)){
+      errorEl.textContent = '⚠️ Merci de renseigner un email valide.';
+      errorEl.hidden = false;
+      return;
+    }
+
+    if (!hostIdentityVerified){
+      errorEl.textContent = '⚠️ Merci de vérifier votre identité avant de réserver (bouton ci-dessus).';
+      errorEl.hidden = false;
+      return;
+    }
 
     if (!isBackendConfigured()){
       errorEl.textContent = "⚙️ Le backend n'est pas encore branché : remplacez BACKEND_URL tout en haut du script par votre vraie adresse Render.";
@@ -2273,6 +2397,7 @@ document.addEventListener('DOMContentLoaded', () => {
           fridgeContents: fridgeContents,
           equipment: equipment,
           eventDate: selectedBookingDate,
+          hostEmail: hostEmail,
         }),
       });
       if (!response.ok) throw new Error(await response.text());
@@ -2308,6 +2433,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshCookId = urlParams.get('cookId');
     window.history.replaceState({}, '', window.location.pathname);
     if (refreshCookId) startStripeOnboarding(refreshCookId);
+  }
+
+  // Au retour de Stripe Identity (vérification d'identité de l'hôte) : on
+  // vérifie le statut final (le webhook peut prendre quelques instants à
+  // traiter le résultat, d'où un message encourageant à réessayer si besoin).
+  if (urlParams.get('identity') === 'complete') {
+    const identityEmail = urlParams.get('email');
+    window.history.replaceState({}, '', window.location.pathname);
+    if (identityEmail && isBackendConfigured()){
+      checkHostIdentityStatus(identityEmail).then(verified => {
+        showToast(verified
+          ? '✅ Identité vérifiée ! Vous pouvez maintenant réserver.'
+          : '⏳ Vérification en cours de traitement, réessayez dans un instant sur la page du cuisinier.');
+      });
+    }
   }
 
   document.getElementById('allergiesInput').addEventListener('input', () => {
