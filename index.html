@@ -679,6 +679,12 @@
     display:inline-flex;align-items:center;gap:5px;background:var(--sage-tint);color:var(--sage-dark);
     font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:var(--radius-full);
   }
+
+  /* ===================== MON ESPACE ===================== */
+  .my-space-section{padding:24px 0 40px;}
+  .my-space-section h2{font-size:1.2rem;margin-bottom:16px;}
+  .my-profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;}
+  .my-profile-card p{font-size:0.92rem;}
 </style>
 </head>
 <body>
@@ -700,7 +706,7 @@
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="#comment-ca-marche" data-goto-section="comment-ca-marche">Comment ça marche</a>
       <a href="#" class="go-to-cook-register">Devenir Cuisinier</a>
-      <a href="#" data-toast="🔐 L'espace de connexion arrive très bientôt !">Connexion</a>
+      <a href="#" class="auth-nav-link go-to-login">Connexion</a>
     </nav>
 
     <div class="nav-actions">
@@ -715,7 +721,7 @@
     <div class="mobile-menu-inner">
       <a href="#comment-ca-marche" data-goto-section="comment-ca-marche">Comment ça marche</a>
       <a href="#" class="go-to-cook-register">Devenir Cuisinier</a>
-      <a href="#" data-toast="🔐 L'espace de connexion arrive très bientôt !">Connexion</a>
+      <a href="#" class="auth-nav-link go-to-login">Connexion</a>
       <button type="button" class="btn btn-primary btn-block go-to-search">Trouver un Cuisinier</button>
     </div>
   </div>
@@ -1229,7 +1235,12 @@
 
       <div class="booking-field">
         <label for="cookEmail">Votre email <span class="required-mark">*</span></label>
-        <input type="email" id="cookEmail" required placeholder="vous@exemple.fr">
+        <input type="email" id="cookEmail" required placeholder="vous@exemple.fr" autocomplete="username">
+      </div>
+
+      <div class="booking-field">
+        <label for="cookPassword">Mot de passe (8 caractères minimum) <span class="required-mark">*</span></label>
+        <input type="password" id="cookPassword" required minlength="8" placeholder="••••••••" autocomplete="new-password">
       </div>
 
       <div class="booking-field">
@@ -1358,6 +1369,67 @@
       <div class="admin-list" id="adminTicketsList"></div>
     </div>
   </div>
+</div>
+
+<!-- ============ VUE CONNEXION ============ -->
+<div id="view-login" class="app-view" hidden>
+  <div class="container admin-login-layout">
+    <div class="admin-login-card">
+      <span class="eyebrow">Content de vous revoir</span>
+      <h1>Connexion</h1>
+      <form id="userLoginForm">
+        <div class="booking-field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required autocomplete="username">
+        </div>
+        <div class="booking-field">
+          <label for="loginPassword">Mot de passe</label>
+          <input type="password" id="loginPassword" required autocomplete="current-password">
+        </div>
+        <p class="booking-error" id="loginError" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+      </form>
+      <p style="margin-top:18px;font-size:0.88rem;color:var(--ink-soft);">Pas encore de compte hôte ? <a href="#" class="go-to-host-register" style="color:var(--terracotta-dark);font-weight:700;">Créer un compte</a></p>
+      <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE CRÉER UN COMPTE HÔTE ============ -->
+<div id="view-host-register" class="app-view" hidden>
+  <div class="container admin-login-layout">
+    <div class="admin-login-card">
+      <span class="eyebrow">Nouveau sur At'Chef</span>
+      <h1>Créer un compte</h1>
+      <form id="hostRegisterForm">
+        <div class="booking-field">
+          <label for="hostRegisterName">Votre nom</label>
+          <input type="text" id="hostRegisterName" required>
+        </div>
+        <div class="booking-field">
+          <label for="hostRegisterEmail">Votre email</label>
+          <input type="email" id="hostRegisterEmail" required autocomplete="username">
+        </div>
+        <div class="booking-field">
+          <label for="hostRegisterPassword">Mot de passe (8 caractères minimum)</label>
+          <input type="password" id="hostRegisterPassword" required minlength="8" autocomplete="new-password">
+        </div>
+        <p class="booking-error" id="hostRegisterError" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Créer mon compte</button>
+      </form>
+      <p style="margin-top:18px;font-size:0.88rem;color:var(--ink-soft);">Déjà un compte ? <a href="#" class="go-to-login" style="color:var(--terracotta-dark);font-weight:700;">Se connecter</a></p>
+      <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE MON ESPACE ============ -->
+<div id="view-my-space" class="app-view" hidden>
+  <div class="container admin-toolbar">
+    <h1 id="mySpaceTitle">Mon espace</h1>
+    <button type="button" class="btn btn-outline btn-sm" id="userLogoutBtn">Se déconnecter</button>
+  </div>
+  <div class="container" id="mySpaceContent"></div>
 </div>
 
 <div class="toast" id="toast" role="status"></div>
@@ -1917,8 +1989,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('bookingError').hidden = true;
 
     hostIdentityVerified = false;
-    document.getElementById('hostEmailInput').value = '';
     resetIdentityStatusUI();
+    if (userRole === 'host' && userEmail){
+      document.getElementById('hostEmailInput').value = userEmail;
+      checkHostIdentityStatus(userEmail);
+    } else {
+      document.getElementById('hostEmailInput').value = '';
+    }
   }
 
   function openChefProfile(chefId){
@@ -2112,6 +2189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const payload = {
       name: document.getElementById('cookName').value.trim(),
       email: document.getElementById('cookEmail').value.trim(),
+      password: document.getElementById('cookPassword').value,
       cuisine: document.getElementById('cookCuisine').value,
       location: document.getElementById('cookLocation').value.trim(),
       specialty: document.getElementById('cookSpecialty').value.trim(),
@@ -2120,8 +2198,13 @@ document.addEventListener('DOMContentLoaded', () => {
       formulaPrice: document.getElementById('cookFormulaPrice').value,
     };
 
-    if (!payload.name || !payload.email || !payload.cuisine || !payload.location || !payload.specialty || !payload.formulaName || !payload.formulaPrice){
+    if (!payload.name || !payload.email || !payload.password || !payload.cuisine || !payload.location || !payload.specialty || !payload.formulaName || !payload.formulaPrice){
       errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (payload.password.length < 8){
+      errorEl.textContent = '⚠️ Le mot de passe doit contenir au moins 8 caractères.';
       errorEl.hidden = false;
       return;
     }
@@ -2139,6 +2222,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!regRes.ok) throw new Error(regData.error || 'Erreur lors de la création du profil');
 
       lastRegisteredCookId = regData.cookId;
+
+      // Connexion automatique dès l'inscription (le serveur renvoie déjà un jeton).
+      if (regData.token){
+        userToken = regData.token;
+        userRole = 'cook';
+        userName = payload.name;
+        userEmail = payload.email;
+        userCookId = regData.cookId;
+        await saveUserSession();
+        updateAuthUI();
+      }
+
       submitBtn.textContent = 'Redirection vers Stripe…';
       await startStripeOnboarding(lastRegisteredCookId);
 
@@ -2477,6 +2572,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const adminLoginTarget = e.target.closest('.go-to-admin-login');
     if (adminLoginTarget){ e.preventDefault(); showView('admin-login'); return; }
 
+    const loginTarget = e.target.closest('.go-to-login');
+    if (loginTarget){ e.preventDefault(); showView('login'); return; }
+
+    const hostRegisterTarget = e.target.closest('.go-to-host-register');
+    if (hostRegisterTarget){ e.preventDefault(); showView('host-register'); return; }
+
+    const mySpaceTarget = e.target.closest('.go-to-my-space');
+    if (mySpaceTarget){ e.preventDefault(); showView('my-space'); loadMySpace(); return; }
+
     const retryStripeTarget = e.target.closest('#retryStripeBtn');
     if (retryStripeTarget){ if (lastRegisteredCookId) startStripeOnboarding(lastRegisteredCookId); return; }
 
@@ -2533,6 +2637,174 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ============================================================
      ADMINISTRATION — connexion sécurisée + SAV
      ============================================================ */
+  /* ============================================================
+     COMPTES HÔTES / CUISINIERS — connexion, inscription, "Mon espace"
+     ============================================================ */
+  let userToken = null;
+  let userRole = null; // 'host' | 'cook'
+  let userName = null;
+  let userEmail = null;
+  let userCookId = null; // uniquement pour les cuisiniers
+
+  // Persistance de session : localStorage est le bon outil ici puisque ce
+  // site est réellement déployé (Vercel), et non affiché dans un aperçu
+  // Claude (où localStorage serait indisponible). Chaque navigateur ne
+  // voit que sa propre session, comme il se doit.
+  async function saveUserSession(){
+    try {
+      localStorage.setItem('atchefUserSession', JSON.stringify({
+        token: userToken, role: userRole, name: userName, email: userEmail, cookId: userCookId,
+      }));
+    } catch (e) { console.warn('Impossible de sauvegarder la session utilisateur :', e); }
+  }
+
+  async function loadUserSession(){
+    try {
+      const raw = localStorage.getItem('atchefUserSession');
+      if (raw){
+        const data = JSON.parse(raw);
+        userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = data.cookId;
+        updateAuthUI();
+      }
+    } catch (e) {
+      // Pas de session sauvegardée (première visite), ou donnée corrompue : ignore.
+    }
+  }
+
+  async function clearUserSession(){
+    userToken = null; userRole = null; userName = null; userEmail = null; userCookId = null;
+    try { localStorage.removeItem('atchefUserSession'); } catch (e) {}
+    updateAuthUI();
+  }
+
+  function updateAuthUI(){
+    const loggedIn = !!userToken;
+    document.querySelectorAll('.auth-nav-link').forEach(link => {
+      link.textContent = loggedIn ? ('👋 ' + (userName ? userName.split(' ')[0] : 'Mon espace')) : 'Connexion';
+      link.classList.toggle('go-to-login', !loggedIn);
+      link.classList.toggle('go-to-my-space', loggedIn);
+    });
+  }
+
+  document.getElementById('userLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('loginError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById('loginEmail').value.trim(),
+          password: document.getElementById('loginPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Connexion refusée');
+      userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = data.cookId || null;
+      await saveUserSession();
+      updateAuthUI();
+      document.getElementById('userLoginForm').reset();
+      showToast('✅ Bienvenue, ' + userName + ' !');
+      showView('my-space');
+      loadMySpace();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('hostRegisterForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('hostRegisterError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/register-host', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('hostRegisterName').value.trim(),
+          email: document.getElementById('hostRegisterEmail').value.trim(),
+          password: document.getElementById('hostRegisterPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur lors de la création du compte');
+      userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = null;
+      await saveUserSession();
+      updateAuthUI();
+      document.getElementById('hostRegisterForm').reset();
+      showToast("✅ Bienvenue sur At'Chef, " + userName + " !");
+      showView('my-space');
+      loadMySpace();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('userLogoutBtn').addEventListener('click', async () => {
+    await clearUserSession();
+    showView('home');
+  });
+
+  async function loadMySpace(){
+    const titleEl = document.getElementById('mySpaceTitle');
+    const contentEl = document.getElementById('mySpaceContent');
+    titleEl.textContent = userRole === 'cook' ? 'Mon espace cuisinier' : 'Mon espace hôte';
+    contentEl.innerHTML = '<p class="admin-empty-note">Chargement…</p>';
+
+    try {
+      const headers = { 'Authorization': 'Bearer ' + userToken };
+      const bookingsRes = await fetch(BACKEND_URL + '/api/my/bookings', { headers });
+      if (bookingsRes.status === 401){ await clearUserSession(); showView('login'); return; }
+      const myBookings = await bookingsRes.json();
+
+      let html = '';
+
+      if (userRole === 'cook'){
+        const profileRes = await fetch(BACKEND_URL + '/api/my/profile', { headers });
+        const profile = await profileRes.json();
+        html += '<div class="my-space-section"><h2>Mon profil</h2><div class="my-profile-card">' +
+          '<p><strong>' + profile.name + '</strong> · ' + profile.cuisine + ' · ' + profile.location + '</p>' +
+          '<p style="margin-top:8px;color:var(--ink-soft);">' +
+            (profile.stripeAccountId ? '✅ Paiements configurés' : '⚠️ Paiements non configurés') +
+            ' &nbsp;·&nbsp; ' + (profile.identityVerified ? '✅ Identité vérifiée' : '⏳ Identité non vérifiée') +
+          '</p></div></div>';
+      }
+
+      html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations reçues' : 'Mes réservations') + '</h2>';
+      if (!myBookings.length){
+        html += '<p class="admin-empty-note">Aucune réservation pour le moment.</p>';
+      } else {
+        html += '<div class="admin-list">' + myBookings.map(b =>
+          '<div class="admin-item">' +
+            '<div class="admin-item-head">' +
+              '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
+              '<span class="admin-status ' + b.status + '">' + (b.status === 'confirmed' ? 'Payée' : 'En attente de paiement') + '</span>' +
+            '</div>' +
+            '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') + '</div>' +
+          '</div>'
+        ).join('') + '</div>';
+      }
+      html += '</div>';
+
+      contentEl.innerHTML = html;
+    } catch (e) {
+      contentEl.innerHTML = '<p class="admin-empty-note">Impossible de charger votre espace.</p>';
+    }
+  }
+
   let adminToken = null;
 
   function adminAuthHeaders(){
@@ -2726,6 +2998,7 @@ document.addEventListener('DOMContentLoaded', () => {
   syncFilterUIFromState();
   applyFiltersAndRender();
   loadRegisteredCooks();
+  loadUserSession();
 
   // Le plan gratuit de Render met le serveur en veille après 15 minutes
   // sans requête, ce qui efface la base de données en mémoire. Tant que
