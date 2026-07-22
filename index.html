@@ -666,6 +666,7 @@
   .admin-status{font-size:0.72rem;font-weight:800;padding:4px 12px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:0.03em;white-space:nowrap;}
   .admin-status.ouvert,.admin-status.pending_payment{background:var(--terracotta-tint);color:var(--terracotta-dark);}
   .admin-status.en_cours{background:#FDF0D5;color:#96690D;}
+  .admin-status.cancelled{background:#F1E4DE;color:#8a6a5c;}
   .admin-status.resolu,.admin-status.confirmed{background:var(--sage-tint);color:var(--sage-dark);}
   .admin-item-actions select{padding:7px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.82rem;font-family:inherit;color:var(--ink);background:var(--white);}
   .admin-empty-note{color:var(--ink-faint);font-style:italic;text-align:center;padding:50px 20px;}
@@ -1389,8 +1390,47 @@
         <p class="booking-error" id="loginError" hidden></p>
         <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
       </form>
-      <p style="margin-top:18px;font-size:0.88rem;color:var(--ink-soft);">Pas encore de compte hôte ? <a href="#" class="go-to-host-register" style="color:var(--terracotta-dark);font-weight:700;">Créer un compte</a></p>
+      <p style="margin-top:14px;font-size:0.85rem;"><a href="#" class="go-to-forgot-password" style="color:var(--ink-soft);">Mot de passe oublié ?</a></p>
+      <p style="margin-top:6px;font-size:0.88rem;color:var(--ink-soft);">Pas encore de compte hôte ? <a href="#" class="go-to-host-register" style="color:var(--terracotta-dark);font-weight:700;">Créer un compte</a></p>
       <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE MOT DE PASSE OUBLIÉ ============ -->
+<div id="view-forgot-password" class="app-view" hidden>
+  <div class="container admin-login-layout">
+    <div class="admin-login-card">
+      <span class="eyebrow">Pas de panique</span>
+      <h1>Mot de passe oublié</h1>
+      <form id="forgotPasswordForm">
+        <div class="booking-field">
+          <label for="forgotEmail">Votre email</label>
+          <input type="email" id="forgotEmail" required autocomplete="username">
+        </div>
+        <p class="booking-error" id="forgotPasswordError" hidden></p>
+        <p class="booking-error" id="forgotPasswordSuccess" hidden style="color:var(--sage-dark);"></p>
+        <button type="submit" class="btn btn-primary btn-block">Recevoir un lien de réinitialisation</button>
+      </form>
+      <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE NOUVEAU MOT DE PASSE (depuis le lien reçu par email) ============ -->
+<div id="view-reset-password" class="app-view" hidden>
+  <div class="container admin-login-layout">
+    <div class="admin-login-card">
+      <span class="eyebrow">Dernière étape</span>
+      <h1>Choisir un nouveau mot de passe</h1>
+      <form id="resetPasswordForm">
+        <div class="booking-field">
+          <label for="resetNewPassword">Nouveau mot de passe (8 caractères minimum)</label>
+          <input type="password" id="resetNewPassword" required minlength="8" autocomplete="new-password">
+        </div>
+        <p class="booking-error" id="resetPasswordError" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Valider</button>
+      </form>
     </div>
   </div>
 </div>
@@ -2545,6 +2585,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Retour depuis le lien reçu par email pour réinitialiser son mot de passe.
+  if (urlParams.get('resetToken')) {
+    pendingResetToken = urlParams.get('resetToken');
+    pendingResetEmail = urlParams.get('email');
+    window.history.replaceState({}, '', window.location.pathname);
+    showView('reset-password');
+  }
+
   document.getElementById('allergiesInput').addEventListener('input', () => {
     document.getElementById('allergiesInput').classList.remove('invalid');
     document.getElementById('bookingError').hidden = true;
@@ -2574,6 +2622,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loginTarget = e.target.closest('.go-to-login');
     if (loginTarget){ e.preventDefault(); showView('login'); return; }
+
+    const forgotPasswordTarget = e.target.closest('.go-to-forgot-password');
+    if (forgotPasswordTarget){ e.preventDefault(); showView('forgot-password'); return; }
 
     const hostRegisterTarget = e.target.closest('.go-to-host-register');
     if (hostRegisterTarget){ e.preventDefault(); showView('host-register'); return; }
@@ -2645,6 +2696,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let userName = null;
   let userEmail = null;
   let userCookId = null; // uniquement pour les cuisiniers
+  let pendingResetEmail = null; // capturé depuis le lien reçu par email pour réinitialiser le mot de passe
+  let pendingResetToken = null;
 
   // Persistance de session : localStorage est le bon outil ici puisque ce
   // site est réellement déployé (Vercel), et non affiché dans un aperçu
@@ -2719,6 +2772,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ---------- Mot de passe oublié / réinitialisation ---------- */
+  document.getElementById('forgotPasswordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('forgotPasswordError');
+    const successEl = document.getElementById('forgotPasswordSuccess');
+    errorEl.hidden = true;
+    successEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: document.getElementById('forgotEmail').value.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Une erreur est survenue');
+      successEl.textContent = '✅ ' + data.message;
+      successEl.hidden = false;
+      document.getElementById('forgotPasswordForm').reset();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('resetPasswordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('resetPasswordError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: pendingResetEmail,
+          token: pendingResetToken,
+          newPassword: document.getElementById('resetNewPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Une erreur est survenue');
+      showToast('✅ ' + data.message);
+      showView('login');
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
   document.getElementById('hostRegisterForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const errorEl = document.getElementById('hostRegisterError');
@@ -2758,6 +2869,30 @@ document.addEventListener('DOMContentLoaded', () => {
     showView('home');
   });
 
+  document.getElementById('mySpaceContent').addEventListener('click', async (e) => {
+    const btn = e.target.closest('.cancel-booking-btn');
+    if (!btn) return;
+    const bookingId = btn.dataset.bookingId;
+    if (!confirm("Confirmer l'annulation de cette réservation ? Le remboursement dépend de la date restante avant l'événement (voir notre politique d'annulation).")) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Annulation en cours…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/bookings/' + bookingId + '/cancel', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + userToken },
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'annulation");
+      showToast('✅ Réservation annulée — ' + data.refundPercent + '% remboursé.');
+      loadMySpace();
+    } catch (err) {
+      showToast('❌ ' + err.message);
+      btn.disabled = false;
+      btn.textContent = 'Annuler cette réservation';
+    }
+  });
+
   async function loadMySpace(){
     const titleEl = document.getElementById('mySpaceTitle');
     const contentEl = document.getElementById('mySpaceContent');
@@ -2787,15 +2922,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!myBookings.length){
         html += '<p class="admin-empty-note">Aucune réservation pour le moment.</p>';
       } else {
-        html += '<div class="admin-list">' + myBookings.map(b =>
-          '<div class="admin-item">' +
+        html += '<div class="admin-list">' + myBookings.map(b => {
+          const statusLabel = b.status === 'confirmed' ? 'Payée' : b.status === 'cancelled' ? 'Annulée' : 'En attente de paiement';
+          const canCancel = userRole === 'host' && b.status === 'confirmed';
+          return '<div class="admin-item">' +
             '<div class="admin-item-head">' +
               '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
-              '<span class="admin-status ' + b.status + '">' + (b.status === 'confirmed' ? 'Payée' : 'En attente de paiement') + '</span>' +
+              '<span class="admin-status ' + b.status + '">' + statusLabel + '</span>' +
             '</div>' +
-            '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') + '</div>' +
-          '</div>'
-        ).join('') + '</div>';
+            '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') +
+              (b.status === 'cancelled' && b.refundPercent !== undefined ? ' · ' + b.refundPercent + '% remboursé' : '') +
+            '</div>' +
+            (canCancel ? '<div class="admin-item-actions"><button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button></div>' : '') +
+          '</div>';
+        }).join('') + '</div>';
       }
       html += '</div>';
 
