@@ -136,7 +136,30 @@
   }
 
   /* ===================== HERO ===================== */
-  .hero{padding:64px 0 88px;position:relative;}
+  .hero{padding:64px 0 88px;position:relative;overflow:hidden;}
+
+  /* ===================== HALOS DE PROFONDEUR (parallaxe) ===================== */
+  .hero-blob{
+    position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0;
+    will-change:transform;
+  }
+  .hero-blob-1{width:420px;height:420px;top:-120px;right:-80px;background:radial-gradient(circle,rgba(226,114,91,0.35),transparent 70%);}
+  .hero-blob-2{width:340px;height:340px;bottom:-100px;left:-60px;background:radial-gradient(circle,rgba(140,168,136,0.3),transparent 70%);}
+  .hero-blob-3{width:260px;height:260px;top:40%;left:38%;background:radial-gradient(circle,rgba(217,164,65,0.25),transparent 70%);}
+  .hero .container{position:relative;z-index:1;}
+
+  /* ===================== EFFET TILT 3D (carte flottante) ===================== */
+  .tilt-card{transform-style:preserve-3d;transition:transform 0.15s ease-out;will-change:transform;}
+  .tilt-card.tilt-resting{transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);}
+  .tilt-glare{
+    position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:5;
+    background:transparent;mix-blend-mode:overlay;transition:background 0.15s ease-out;
+  }
+  @keyframes card-float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+  .tilt-card-idle{animation:card-float 5s ease-in-out infinite;}
   .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center;}
   .hero-eyebrow{
     display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);
@@ -163,7 +186,6 @@
   .reservation-card{
     position:relative;background:var(--white);border-radius:var(--radius-lg);
     box-shadow:var(--shadow-lg);padding:34px 30px 28px;width:100%;max-width:400px;
-    transform:rotate(-2deg);
   }
   .reservation-card::before{
     content:'';position:absolute;top:-15px;left:50%;transform:translateX(-50%) rotate(-4deg);
@@ -817,6 +839,9 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+    <div class="hero-blob hero-blob-1" data-speed="0.15" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" data-speed="0.28" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-3" data-speed="0.08" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="hero-eyebrow">📍 Déjà disponible à Nantes</span>
@@ -849,7 +874,8 @@
       </div>
 
       <div class="reservation-wrap">
-        <form class="reservation-card" id="searchForm">
+        <form class="reservation-card tilt-card" id="searchForm">
+          <div class="tilt-glare" aria-hidden="true"></div>
           <p class="reservation-title">Réserver une table</p>
           <p class="reservation-subtitle">Trouvez le cuisinier parfait pour votre soirée</p>
 
@@ -3154,6 +3180,83 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => revealObserver.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  /* ============================================================
+     EFFET TILT 3D — réutilisable sur n'importe quelle carte
+     ============================================================
+     La carte s'incline en suivant la position de la souris (perspective +
+     rotateX/rotateY), avec un reflet lumineux qui se déplace en même
+     temps. Au repos, la carte revient en douceur à son inclinaison de
+     base, avec une transition plus lente pour un effet "élastique" naturel
+     plutôt qu'un simple retour brutal à zéro.
+     ============================================================ */
+  function applyTiltEffect(el, opts){
+    opts = opts || {};
+    const maxTilt = opts.maxTilt || 10;
+    const restRotateX = opts.restRotateX || 0;
+    const restRotateY = opts.restRotateY || 0;
+
+    // Pas d'effet de suivi de souris sur tactile (pas de mousemove fiable) :
+    // la carte garde simplement sa légère inclinaison de repos.
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches){
+      el.style.transform = `perspective(1000px) rotateX(${restRotateX}deg) rotateY(${restRotateY}deg)`;
+      return;
+    }
+
+    const glare = el.querySelector('.tilt-glare');
+
+    el.addEventListener('mousemove', (e) => {
+      el.classList.remove('tilt-resting');
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -maxTilt;
+      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * maxTilt;
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      if (glare){
+        const px = (x / rect.width) * 100;
+        const py = (y / rect.height) * 100;
+        glare.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.45), transparent 55%)`;
+      }
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.classList.add('tilt-resting');
+      el.style.transform = `perspective(1000px) rotateX(${restRotateX}deg) rotateY(${restRotateY}deg)`;
+      if (glare) glare.style.background = 'transparent';
+    });
+
+    // Position de repos initiale
+    el.style.transform = `perspective(1000px) rotateX(${restRotateX}deg) rotateY(${restRotateY}deg)`;
+  }
+
+  const reservationCardEl = document.getElementById('searchForm');
+  if (reservationCardEl){
+    applyTiltEffect(reservationCardEl, { maxTilt: 10, restRotateX: 2, restRotateY: -4 });
+    // Petite respiration flottante en continu, appliquée au CONTENEUR parent
+    // (pas à la carte elle-même) pour ne jamais entrer en conflit avec le
+    // transform du tilt 3D, géré dynamiquement en JS sur la carte.
+    const wrapEl = reservationCardEl.closest('.reservation-wrap');
+    if (wrapEl) wrapEl.classList.add('tilt-card-idle');
+  }
+
+  /* ---------- Parallaxe des halos du Hero au défilement ---------- */
+  const parallaxBlobs = document.querySelectorAll('.hero-blob');
+  if (parallaxBlobs.length){
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        parallaxBlobs.forEach(blob => {
+          const speed = parseFloat(blob.dataset.speed) || 0.2;
+          blob.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
+        });
+        ticking = false;
+      });
+    }, { passive: true });
   }
 
   /* ============================================================
