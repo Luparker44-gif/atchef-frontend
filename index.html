@@ -2366,6 +2366,8 @@ document.addEventListener('DOMContentLoaded', () => {
      ============================================================ */
   let filters = { budgets:[], cuisines:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
   let sortBy = 'relevance';
+  let carouselChefs = [];
+  let carouselIndex = 0;
 
   function sortChefsList(list){
     const sorted = list.slice();
@@ -3518,9 +3520,6 @@ document.addEventListener('DOMContentLoaded', () => {
      CARROUSEL 3D DES CUISINIERS (coverflow, façon sélection de
      booster dans un jeu de cartes à collectionner)
      ============================================================ */
-  let carouselChefs = [];
-  let carouselIndex = 0;
-
   function carouselCardHTML(chef){
     const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
     const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
