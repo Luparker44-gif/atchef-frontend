@@ -2910,10 +2910,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const myBookings = await bookingsRes.json();
 
       let html = '';
+      let profile = null; // déclarée ici pour rester accessible après le bloc if (utilisée par wireCookProfileEditForm)
 
       if (userRole === 'cook'){
         const profileRes = await fetch(BACKEND_URL + '/api/my/profile', { headers });
-        const profile = await profileRes.json();
+        profile = await profileRes.json();
         html += '<div class="my-space-section"><h2>Mon profil</h2><div class="my-profile-card">' +
           '<p><strong>' + profile.name + '</strong> · ' + profile.cuisine + ' · ' + profile.location + '</p>' +
           '<p style="margin-top:8px;color:var(--ink-soft);">' +
