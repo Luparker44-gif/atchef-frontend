@@ -686,6 +686,10 @@
   .my-space-section h2{font-size:1.2rem;margin-bottom:16px;}
   .my-profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;}
   .my-profile-card p{font-size:0.92rem;}
+  .formula-edit-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+  .formula-edit-row .formula-name-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
+  .formula-edit-row .formula-price-input{width:100px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
+  .remove-formula-btn{background:none;border:none;color:var(--terracotta-dark);font-size:1.1rem;cursor:pointer;padding:4px 8px;}
 </style>
 </head>
 <body>
@@ -2915,7 +2919,33 @@ document.addEventListener('DOMContentLoaded', () => {
           '<p style="margin-top:8px;color:var(--ink-soft);">' +
             (profile.stripeAccountId ? '✅ Paiements configurés' : '⚠️ Paiements non configurés') +
             ' &nbsp;·&nbsp; ' + (profile.identityVerified ? '✅ Identité vérifiée' : '⏳ Identité non vérifiée') +
-          '</p></div></div>';
+          '</p>' +
+          '<button type="button" class="btn btn-outline btn-sm" id="toggleEditProfileBtn" style="margin-top:14px;">Modifier mon profil</button>' +
+          '</div>' +
+
+          '<div id="cookEditProfileWrap" hidden style="margin-top:16px;">' +
+            '<form id="cookEditProfileForm" class="cook-register-form">' +
+              '<div class="booking-field">' +
+                '<label for="editBio">Bio</label>' +
+                '<textarea id="editBio" rows="4">' + (profile.bio || '') + '</textarea>' +
+              '</div>' +
+              '<div class="booking-field">' +
+                '<label for="editSpecialties">Spécialité(s) (séparées par une virgule)</label>' +
+                '<input type="text" id="editSpecialties" value="' + (profile.specialties || []).join(', ') + '">' +
+              '</div>' +
+              '<div class="booking-field">' +
+                '<label for="editLocation">Localisation</label>' +
+                '<input type="text" id="editLocation" value="' + (profile.location || '') + '">' +
+              '</div>' +
+              '<div class="booking-field">' +
+                '<label>Mes formules</label>' +
+                '<div id="editFormulasList"></div>' +
+                '<button type="button" class="btn btn-outline btn-sm" id="addFormulaBtn" style="margin-top:8px;">+ Ajouter une formule</button>' +
+              '</div>' +
+              '<p class="booking-error" id="editProfileError" hidden></p>' +
+              '<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>' +
+            '</form>' +
+          '</div>';
       }
 
       html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations reçues' : 'Mes réservations') + '</h2>';
@@ -2940,9 +2970,94 @@ document.addEventListener('DOMContentLoaded', () => {
       html += '</div>';
 
       contentEl.innerHTML = html;
+      if (userRole === 'cook'){
+        wireCookProfileEditForm(profile, headers);
+      }
     } catch (e) {
       contentEl.innerHTML = '<p class="admin-empty-note">Impossible de charger votre espace.</p>';
     }
+  }
+
+  /**
+   * Branche le formulaire de modification de profil cuisinier : affichage
+   * des formules existantes, ajout/suppression de lignes, et sauvegarde.
+   * Appelée à chaque chargement de "Mon espace" puisque le HTML est
+   * régénéré entièrement à chaque fois.
+   */
+  function wireCookProfileEditForm(profile, headers){
+    let formulaCount = 0;
+
+    function formulaRowHTML(formula){
+      const idx = formulaCount++;
+      return '<div class="formula-edit-row" data-row="' + idx + '">' +
+        '<input type="text" class="formula-name-input" placeholder="Nom de la formule" value="' + (formula ? formula.name : '') + '">' +
+        '<input type="number" class="formula-price-input" placeholder="Prix (€)" min="1" max="500" value="' + (formula ? formula.price : '') + '">' +
+        '<button type="button" class="remove-formula-btn" aria-label="Supprimer">✕</button>' +
+      '</div>';
+    }
+
+    const listEl = document.getElementById('editFormulasList');
+    listEl.innerHTML = (profile.formulas || []).map(formulaRowHTML).join('');
+
+    document.getElementById('toggleEditProfileBtn').addEventListener('click', () => {
+      const wrap = document.getElementById('cookEditProfileWrap');
+      wrap.hidden = !wrap.hidden;
+    });
+
+    document.getElementById('addFormulaBtn').addEventListener('click', () => {
+      listEl.insertAdjacentHTML('beforeend', formulaRowHTML(null));
+    });
+
+    listEl.addEventListener('click', (e) => {
+      const removeBtn = e.target.closest('.remove-formula-btn');
+      if (!removeBtn) return;
+      removeBtn.closest('.formula-edit-row').remove();
+    });
+
+    document.getElementById('cookEditProfileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errorEl = document.getElementById('editProfileError');
+      errorEl.hidden = true;
+
+      const formulas = Array.from(listEl.querySelectorAll('.formula-edit-row')).map(row => ({
+        name: row.querySelector('.formula-name-input').value.trim(),
+        price: parseFloat(row.querySelector('.formula-price-input').value),
+      })).filter(f => f.name && f.price > 0);
+
+      if (!formulas.length){
+        errorEl.textContent = '⚠️ Merci de garder au moins une formule valide (nom + prix).';
+        errorEl.hidden = false;
+        return;
+      }
+
+      const payload = {
+        bio: document.getElementById('editBio').value.trim(),
+        specialties: document.getElementById('editSpecialties').value.split(',').map(s => s.trim()).filter(Boolean),
+        location: document.getElementById('editLocation').value.trim(),
+        formulas,
+      };
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enregistrement…';
+
+      try {
+        const res = await fetch(BACKEND_URL + '/api/my/profile', {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erreur lors de la mise à jour');
+        showToast('✅ Profil mis à jour !');
+        loadMySpace();
+      } catch (err) {
+        errorEl.textContent = '❌ ' + err.message;
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enregistrer les modifications';
+      }
+    });
   }
 
   let adminToken = null;
