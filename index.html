@@ -415,6 +415,17 @@
     width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
     font-size:0.92rem;font-weight:600;font-family:inherit;color:var(--ink);margin-top:2px;
   }
+  .location-filter-row{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+  .location-filter-row input{
+    width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+    font-size:0.92rem;font-family:inherit;color:var(--ink);box-sizing:border-box;
+  }
+  .location-filter-row .btn{white-space:nowrap;}
+  #radiusSelect{
+    width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+    font-size:0.88rem;font-weight:600;font-family:inherit;color:var(--ink);background:var(--white);
+  }
+  #locationStatusHint{margin-top:8px;min-height:1em;}
   .filters-apply-mobile{display:none;margin-top:10px;}
 
   .filters-backdrop{
@@ -1032,6 +1043,22 @@
           <button type="button" class="reset-filters-link">Réinitialiser</button>
           <button type="button" class="filters-panel-close" aria-label="Fermer les filtres">✕</button>
         </div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Lieu</h3>
+        <div class="location-filter-row">
+          <input type="text" id="locationInput" placeholder="Ville, quartier...">
+          <button type="button" class="btn btn-outline btn-sm" id="useMyLocationBtn" title="Utiliser ma position actuelle">📍 Autour de moi</button>
+        </div>
+        <select id="radiusSelect">
+          <option value="">Rayon : toute la ville</option>
+          <option value="2">2 km</option>
+          <option value="5">5 km</option>
+          <option value="10">10 km</option>
+          <option value="25">25 km</option>
+        </select>
+        <p class="filter-hint" id="locationStatusHint"></p>
       </div>
 
       <div class="filter-group">
@@ -1761,7 +1788,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const CUISINE_TYPES = ['Française & Bistrot','Italienne','Orientale & Méditerranéenne','Asiatique','Végétarienne & Vegan','Pâtisserie & Desserts'];
 
   const chefs = [
-    { id:1, name:'Amélie R.', cuisine:'Française & Bistrot', location:'Nantes Centre', quote:"La cuisine de ma grand-mère, revisitée avec des produits locaux et de saison.", price:25, rating:4.9, reviews:32, tags:['Fait maison','Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=47', gradient:'linear-gradient(135deg,#E2725B,#A64A34)', featured:true,
+    { id:1, name:'Amélie R.', cuisine:'Française & Bistrot', location:'Nantes Centre', lat:47.2184, lng:-1.5536, quote:"La cuisine de ma grand-mère, revisitée avec des produits locaux et de saison.", price:25, rating:4.9, reviews:32, tags:['Fait maison','Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=47', gradient:'linear-gradient(135deg,#E2725B,#A64A34)', featured:true,
       bio:"Après des années passées à cuisiner pour sa famille et ses amis, Amélie a décidé de partager sa passion pour la cuisine bretonne au plus grand nombre. Chaque plat raconte une histoire, souvent celle de sa grand-mère, dont elle perpétue les recettes avec des produits locaux et de saison.",
       specialties:["Galettes bretonnes","Kig ha farz","Kouign-amann maison","Plats mijotés"],
       training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa grand-mère, cuisinière dans une ferme du Finistère.",
@@ -1776,7 +1803,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Camille P.", rating:4, date:"Avril 2026", comment:"Très bon moment, juste un peu de retard à l'arrivée." }
       ]
     },
-    { id:2, name:'Karim B.', cuisine:'Orientale & Méditerranéenne', location:'Île de Nantes', quote:"Les épices et les saveurs du Maghreb, directement à votre table.", price:28, rating:5.0, reviews:18, tags:['Végétarien','Épicé'], photo:'https://i.pravatar.cc/160?img=53', gradient:'linear-gradient(135deg,#8CA888,#4F6B4C)', featured:true,
+    { id:2, name:'Karim B.', cuisine:'Orientale & Méditerranéenne', location:'Île de Nantes', lat:47.2065, lng:-1.549, quote:"Les épices et les saveurs du Maghreb, directement à votre table.", price:28, rating:5.0, reviews:18, tags:['Végétarien','Épicé'], photo:'https://i.pravatar.cc/160?img=53', gradient:'linear-gradient(135deg,#8CA888,#4F6B4C)', featured:true,
       bio:"Karim cuisine depuis toujours aux côtés de sa mère et de ses tantes. Il propose une cuisine du Maghreb généreuse et parfumée, pensée pour être partagée en toute convivialité autour d'un plat commun.",
       specialties:["Tajine aux pruneaux","Couscous royal","Mezzé maison","Pâtisseries orientales"],
       training:null, selfTaughtNote:"Autodidacte — formé aux fourneaux familiaux depuis l'enfance.",
@@ -1790,7 +1817,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Nicolas B.", rating:5, date:"Juin 2026", comment:"Accueil chaleureux, plats délicieux, on recommande à 100%." }
       ]
     },
-    { id:3, name:'Chloé L.', cuisine:'Italienne', location:'Chantenay', quote:"Pâtes fraîches faites minute et recettes transmises par ma nonna.", price:22, rating:4.8, reviews:45, tags:['Fait maison','Végétarien'], photo:'https://i.pravatar.cc/160?img=25', gradient:'linear-gradient(135deg,#D9A441,#A64A34)', featured:true,
+    { id:3, name:'Chloé L.', cuisine:'Italienne', location:'Chantenay', lat:47.2135, lng:-1.585, quote:"Pâtes fraîches faites minute et recettes transmises par ma nonna.", price:22, rating:4.8, reviews:45, tags:['Fait maison','Végétarien'], photo:'https://i.pravatar.cc/160?img=25', gradient:'linear-gradient(135deg,#D9A441,#A64A34)', featured:true,
       bio:"Chloé a grandi entre Nantes et l'Italie, dans la cuisine de sa nonna. Elle prépare toutes ses pâtes fraîches à la main, chaque semaine, selon les recettes transmises de génération en génération.",
       specialties:["Tagliatelles fraîches","Tiramisu maison","Gnocchis","Sauce bolognaise mijotée 4h"],
       training:null, selfTaughtNote:"Autodidacte — formée par sa nonna italienne dès son plus jeune âge.",
@@ -1805,7 +1832,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Laura K.", rating:4, date:"Mai 2026", comment:"Excellent repas, tiramisu à tomber." }
       ]
     },
-    { id:4, name:'Thomas M.', cuisine:'Asiatique', location:'Doulon', quote:"Bo bun et currys parfumés, comme lors de mes voyages en Asie du Sud-Est.", price:18, rating:4.6, reviews:27, tags:['Fait maison','Sans lactose possible'], photo:'https://i.pravatar.cc/160?img=13', gradient:'linear-gradient(135deg,#E2725B,#4F6B4C)',
+    { id:4, name:'Thomas M.', cuisine:'Asiatique', location:'Doulon', lat:47.228, lng:-1.51, quote:"Bo bun et currys parfumés, comme lors de mes voyages en Asie du Sud-Est.", price:18, rating:4.6, reviews:27, tags:['Fait maison','Sans lactose possible'], photo:'https://i.pravatar.cc/160?img=13', gradient:'linear-gradient(135deg,#E2725B,#4F6B4C)',
       bio:"Après plusieurs voyages prolongés en Asie du Sud-Est, Thomas s'est pris de passion pour les cuisines vietnamienne et thaïlandaise. Il aime faire découvrir des saveurs authentiques, loin des clichés, avec des produits frais.",
       specialties:["Bo bun maison","Curry thaï vert","Nems croustillants","Bo bun végétarien"],
       training:[{title:"Stage cuisine asiatique", detail:"École Ferrandi Paris, 2020"}],
@@ -1819,7 +1846,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Hugo D.", rating:4, date:"Juin 2026", comment:"Très bon repas, portions un peu justes pour les gros appétits." }
       ]
     },
-    { id:5, name:'Sofia G.', cuisine:'Végétarienne & Vegan', location:'Hauts-Pavés', quote:"Des bowls colorés et gourmands, 100% végétal et de saison.", price:24, rating:4.3, reviews:15, tags:['Vegan','Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=32', gradient:'linear-gradient(135deg,#8CA888,#A64A34)',
+    { id:5, name:'Sofia G.', cuisine:'Végétarienne & Vegan', location:'Hauts-Pavés', lat:47.228, lng:-1.565, quote:"Des bowls colorés et gourmands, 100% végétal et de saison.", price:24, rating:4.3, reviews:15, tags:['Vegan','Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=32', gradient:'linear-gradient(135deg,#8CA888,#A64A34)',
       bio:"Sofia démontre qu'une cuisine 100% végétale peut être gourmande et créative. Diététicienne de formation, elle compose des assiettes colorées et équilibrées, en circuit court autant que possible.",
       specialties:["Bowl quinoa & légumes rôtis","Curry de légumes","Desserts vegan","Houmous maison"],
       training:[{title:"BTS Diététique", detail:"Nantes, 2019"}],
@@ -1833,7 +1860,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Yann P.", rating:4, date:"Mai 2026", comment:"On ne sent pas du tout le manque de viande, très convaincant." }
       ]
     },
-    { id:6, name:'Julien D.', cuisine:'Pâtisserie & Desserts', location:'Graslin', quote:"Des pâtisseries françaises comme à la sortie de l'école, en plus raffiné.", price:35, rating:4.7, reviews:22, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=61', gradient:'linear-gradient(135deg,#D9A441,#7A3524)',
+    { id:6, name:'Julien D.', cuisine:'Pâtisserie & Desserts', location:'Graslin', lat:47.214, lng:-1.56, quote:"Des pâtisseries françaises comme à la sortie de l'école, en plus raffiné.", price:35, rating:4.7, reviews:22, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=61', gradient:'linear-gradient(135deg,#D9A441,#7A3524)',
       bio:"Passionné de pâtisserie depuis l'adolescence, Julien s'est formé auprès d'un chef pâtissier avant de se lancer en indépendant. Il propose des ateliers gourmands et des menus 100% sucrés pour les amateurs de belles pâtisseries.",
       specialties:["Paris-Brest","Entremets fruits de saison","Tarte au citron meringuée","Choux à la crème"],
       training:[{title:"CAP Pâtisserie", detail:"2017"},{title:"Stage de perfectionnement", detail:"Auprès d'un chef pâtissier nantais, 2019"}],
@@ -1847,7 +1874,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Marc T.", rating:4, date:"Juin 2026", comment:"Pâtisseries magnifiques et délicieuses, un vrai artiste." }
       ]
     },
-    { id:7, name:'Nadia F.', cuisine:'Orientale & Méditerranéenne', location:'Bellevue', quote:"Mezzé libanais et douceurs du Levant, pour un voyage gourmand.", price:26, rating:4.9, reviews:38, tags:['Végétarien','Fait maison'], photo:'https://i.pravatar.cc/160?img=44', gradient:'linear-gradient(135deg,#E2725B,#A64A34)',
+    { id:7, name:'Nadia F.', cuisine:'Orientale & Méditerranéenne', location:'Bellevue', lat:47.24, lng:-1.575, quote:"Mezzé libanais et douceurs du Levant, pour un voyage gourmand.", price:26, rating:4.9, reviews:38, tags:['Végétarien','Fait maison'], photo:'https://i.pravatar.cc/160?img=44', gradient:'linear-gradient(135deg,#E2725B,#A64A34)',
       bio:"Originaire du Liban, Nadia partage la cuisine généreuse de son enfance : mezzé colorés, plats mijotés et douceurs orientales. Un vrai voyage culinaire vers le Levant, à quelques rues de chez vous.",
       specialties:["Mezzé libanais","Taboulé maison","Kafta grillée","Baklava fait maison"],
       training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa mère et ses grand-mères libanaises.",
@@ -1862,7 +1889,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Léna M.", rating:5, date:"Mai 2026", comment:"Le baklava maison est juste parfait, à refaire absolument." }
       ]
     },
-    { id:8, name:'Paul-Henri V.', cuisine:'Française & Bistrot', location:'Île Feydeau', quote:"Une bistronomie exigeante, entre tradition et créativité.", price:45, rating:4.5, reviews:24, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=68', gradient:'linear-gradient(135deg,#4F6B4C,#241E18)',
+    { id:8, name:'Paul-Henri V.', cuisine:'Française & Bistrot', location:'Île Feydeau', lat:47.216, lng:-1.552, quote:"Une bistronomie exigeante, entre tradition et créativité.", price:45, rating:4.5, reviews:24, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=68', gradient:'linear-gradient(135deg,#4F6B4C,#241E18)',
       bio:"Ancien second de cuisine en restaurant gastronomique, Paul-Henri a choisi de mettre son savoir-faire au service de repas plus intimistes, chez l'habitant. Une bistronomie exigeante, entre tradition française et créativité contemporaine.",
       specialties:["Foie gras mi-cuit maison","Ris de veau","Soufflé au Grand Marnier","Accord mets & vins"],
       training:[{title:"BTS Hôtellerie-Restauration", detail:"Nantes, 2012"},{title:"Second de cuisine", detail:"Restaurant gastronomique, 6 ans d'expérience"}],
@@ -1876,7 +1903,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Frédéric N.", rating:4, date:"Juin 2026", comment:"Très haut niveau, service impeccable, tarif en conséquence mais justifié." }
       ]
     },
-    { id:9, name:'Léa B.', cuisine:'Asiatique', location:'Zola', quote:"Sushis et cuisine japonaise maison, dans le respect des produits.", price:42, rating:4.4, reviews:19, tags:['Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=28', gradient:'linear-gradient(135deg,#8CA888,#7A3524)',
+    { id:9, name:'Léa B.', cuisine:'Asiatique', location:'Zola', lat:47.223, lng:-1.548, quote:"Sushis et cuisine japonaise maison, dans le respect des produits.", price:42, rating:4.4, reviews:19, tags:['Sans gluten possible'], photo:'https://i.pravatar.cc/160?img=28', gradient:'linear-gradient(135deg,#8CA888,#7A3524)',
       bio:"Formée aux techniques japonaises pendant plusieurs mois auprès d'un chef à Paris, Léa propose des sushis et sashimis préparés minute, dans le respect du produit et de la tradition japonaise.",
       specialties:["Sushis maison","Sashimis","Makis californiens","Soupe miso"],
       training:[{title:"Formation sushi", detail:"3 mois auprès d'un chef japonais, Paris, 2021"}],
@@ -1890,7 +1917,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"David S.", rating:4, date:"Mai 2026", comment:"Très bon moment, un peu cher mais la qualité est là." }
       ]
     },
-    { id:10, name:'Marco T.', cuisine:'Italienne', location:'Malakoff', quote:"Pizzas napolitaines et antipasti, la trattoria comme à la maison.", price:19, rating:4.2, reviews:12, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=15', gradient:'linear-gradient(135deg,#D9A441,#4F6B4C)',
+    { id:10, name:'Marco T.', cuisine:'Italienne', location:'Malakoff', lat:47.202, lng:-1.543, quote:"Pizzas napolitaines et antipasti, la trattoria comme à la maison.", price:19, rating:4.2, reviews:12, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=15', gradient:'linear-gradient(135deg,#D9A441,#4F6B4C)',
       bio:"Marco a grandi dans la trattoria familiale près de Naples avant de s'installer à Nantes. Il perpétue la tradition de la pizza napolitaine, pâte longue fermentation et four maison.",
       specialties:["Pizza napolitaine","Antipasti","Tiramisu","Focaccia maison"],
       training:null, selfTaughtNote:"Autodidacte — formé dans la trattoria familiale près de Naples.",
@@ -1904,7 +1931,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { author:"Rachid B.", rating:4, date:"Mai 2026", comment:"Bon rapport qualité prix, ambiance conviviale." }
       ]
     },
-    { id:11, name:'Youssef K.', cuisine:'Orientale & Méditerranéenne', location:'Bottière', quote:"Couscous familial et grillades, pour un repas convivial et généreux.", price:18, rating:4.6, reviews:29, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=51', gradient:'linear-gradient(135deg,#E2725B,#7A3524)',
+    { id:11, name:'Youssef K.', cuisine:'Orientale & Méditerranéenne', location:'Bottière', lat:47.235, lng:-1.525, quote:"Couscous familial et grillades, pour un repas convivial et généreux.", price:18, rating:4.6, reviews:29, tags:['Fait maison'], photo:'https://i.pravatar.cc/160?img=51', gradient:'linear-gradient(135deg,#E2725B,#7A3524)',
       bio:"Youssef aime recevoir autour d'un couscous familial généreux, comme il l'a toujours connu en famille. Une cuisine simple, parfumée et conviviale, pensée pour être partagée à plusieurs.",
       specialties:["Couscous familial","Grillades marinées","Chorba","Thé à la menthe"],
       training:null, selfTaughtNote:"Autodidacte — cuisine apprise en famille, entre l'Algérie et Nantes.",
@@ -1983,7 +2010,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ============================================================
      ÉTAT + MOTEUR DE FILTRES DE RECHERCHE
      ============================================================ */
-  let filters = { budgets:[], cuisines:[], minRating:0, date:'' };
+  let filters = { budgets:[], cuisines:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
   let sortBy = 'relevance';
 
   function sortChefsList(list){
@@ -1999,11 +2026,24 @@ document.addEventListener('DOMContentLoaded', () => {
     return sorted;
   }
 
+  /** Distance à vol d'oiseau entre 2 points GPS, en kilomètres (formule de Haversine). */
+  function haversineDistanceKm(lat1, lng1, lat2, lng2){
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  }
+
   function applyFiltersAndRender(){
     let list = chefs.filter(c => {
       if (filters.budgets.length && filters.budgets.indexOf(getBudgetBucket(c.price)) === -1) return false;
       if (filters.cuisines.length && filters.cuisines.indexOf(c.cuisine) === -1) return false;
       if (c.rating < filters.minRating) return false;
+      if (filters.userLat != null && filters.radiusKm){
+        if (c.lat == null || c.lng == null) return false; // pas de coordonnées connues -> exclu d'une recherche par rayon
+        if (haversineDistanceKm(filters.userLat, filters.userLng, c.lat, c.lng) > filters.radiusKm) return false;
+      }
       return true;
     });
     list = sortChefsList(list);
@@ -2027,6 +2067,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[name="ratingFilter"]').forEach(r => { r.checked = (parseFloat(r.value) === filters.minRating); });
     const searchDateInputEl = document.getElementById('searchDateInput');
     if (searchDateInputEl) searchDateInputEl.value = filters.date || '';
+    const locationInputEl = document.getElementById('locationInput');
+    if (locationInputEl) locationInputEl.value = filters.locationLabel || '';
+    const radiusSelectEl = document.getElementById('radiusSelect');
+    if (radiusSelectEl) radiusSelectEl.value = filters.radiusKm || '';
+    const hintEl = document.getElementById('locationStatusHint');
+    if (hintEl) hintEl.textContent = '';
   }
 
   function renderActiveChips(){
@@ -2036,6 +2082,10 @@ document.addEventListener('DOMContentLoaded', () => {
     filters.budgets.forEach(b => chips.push({ label:BUDGET_LABELS[b], remove:() => { filters.budgets = filters.budgets.filter(x => x !== b); } }));
     if (filters.minRating > 0) chips.push({ label: filters.minRating.toFixed(1).replace('.', ',') + ' ★ et plus', remove:() => { filters.minRating = 0; } });
     if (filters.date) chips.push({ label: formatDateFr(filters.date), remove:() => { filters.date = ''; } });
+    if (filters.userLat != null && filters.radiusKm){
+      const label = (filters.locationLabel ? filters.locationLabel : 'Ma position') + ' (' + filters.radiusKm + ' km)';
+      chips.push({ label, remove:() => { filters.userLat = null; filters.userLng = null; filters.radiusKm = null; filters.locationLabel = ''; } });
+    }
 
     container.innerHTML = '';
     if (chips.length === 0){
@@ -2054,7 +2104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getActiveFilterCount(){
-    return filters.cuisines.length + filters.budgets.length + (filters.minRating > 0 ? 1 : 0) + (filters.date ? 1 : 0);
+    return filters.cuisines.length + filters.budgets.length + (filters.minRating > 0 ? 1 : 0) + (filters.date ? 1 : 0) + ((filters.userLat != null && filters.radiusKm) ? 1 : 0);
   }
 
   function updateMobileFilterCount(){
@@ -2065,7 +2115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resetFilters(){
-    filters = { budgets:[], cuisines:[], minRating:0, date:'' };
+    filters = { budgets:[], cuisines:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
     sortBy = 'relevance';
     const sortSelectEl = document.getElementById('sortSelect');
     if (sortSelectEl) sortSelectEl.value = 'relevance';
@@ -2075,7 +2125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openSearch(opts){
     opts = opts || {};
-    filters = { budgets:[], cuisines:[], minRating:0, date:'' };
+    filters = { budgets:[], cuisines:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
     if (opts.cuisine) filters.cuisines = [opts.cuisine];
     if (opts.date) filters.date = opts.date;
     showView('search');
@@ -2374,6 +2424,8 @@ document.addEventListener('DOMContentLoaded', () => {
       discountTiers: bc.discountTiers || [],
       testimonials: bc.testimonials || [],
       identityVerified: !!bc.identityVerified,
+      lat: (typeof bc.lat === 'number') ? bc.lat : null,
+      lng: (typeof bc.lng === 'number') ? bc.lng : null,
     };
   }
 
@@ -2583,6 +2635,80 @@ document.addEventListener('DOMContentLoaded', () => {
       applyFiltersAndRender();
     });
   });
+
+  /* ---------- Filtre géographique : lieu, autour de moi, rayon ---------- */
+  const useMyLocationBtn = document.getElementById('useMyLocationBtn');
+  if (useMyLocationBtn){
+    useMyLocationBtn.addEventListener('click', () => {
+      const hint = document.getElementById('locationStatusHint');
+      if (!navigator.geolocation){
+        hint.textContent = "⚠️ Votre navigateur ne supporte pas la géolocalisation.";
+        return;
+      }
+      hint.textContent = '📍 Localisation en cours…';
+      useMyLocationBtn.disabled = true;
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          filters.userLat = pos.coords.latitude;
+          filters.userLng = pos.coords.longitude;
+          filters.locationLabel = 'Ma position';
+          if (!filters.radiusKm) filters.radiusKm = 10;
+          document.getElementById('locationInput').value = '';
+          document.getElementById('radiusSelect').value = String(filters.radiusKm);
+          hint.textContent = '📍 Position détectée';
+          useMyLocationBtn.disabled = false;
+          applyFiltersAndRender();
+        },
+        () => {
+          hint.textContent = "⚠️ Impossible d'accéder à votre position (vérifiez les autorisations de votre navigateur).";
+          useMyLocationBtn.disabled = false;
+        }
+      );
+    });
+  }
+
+  const locationInput = document.getElementById('locationInput');
+  if (locationInput){
+    locationInput.addEventListener('change', async () => {
+      const query = locationInput.value.trim();
+      const hint = document.getElementById('locationStatusHint');
+      if (!query){
+        filters.userLat = null; filters.userLng = null; filters.locationLabel = '';
+        hint.textContent = '';
+        applyFiltersAndRender();
+        return;
+      }
+      if (!isBackendConfigured()){
+        hint.textContent = "⚙️ Le backend n'est pas encore branché.";
+        return;
+      }
+      hint.textContent = '🔎 Recherche du lieu…';
+      try {
+        const res = await fetch(BACKEND_URL + '/api/geocode?q=' + encodeURIComponent(query));
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Lieu introuvable');
+        filters.userLat = data.lat;
+        filters.userLng = data.lng;
+        filters.locationLabel = query;
+        if (!filters.radiusKm){
+          filters.radiusKm = 10;
+          document.getElementById('radiusSelect').value = '10';
+        }
+        hint.textContent = '📍 Lieu trouvé';
+        applyFiltersAndRender();
+      } catch (err) {
+        hint.textContent = '⚠️ ' + err.message;
+      }
+    });
+  }
+
+  const radiusSelect = document.getElementById('radiusSelect');
+  if (radiusSelect){
+    radiusSelect.addEventListener('change', () => {
+      filters.radiusKm = radiusSelect.value ? parseFloat(radiusSelect.value) : null;
+      applyFiltersAndRender();
+    });
+  }
 
   document.querySelectorAll('input[name="ratingFilter"]').forEach(r => {
     r.addEventListener('change', () => {
