@@ -266,6 +266,36 @@
   /* ===================== CHEFS ===================== */
   .chefs-section{padding:104px 0;background:var(--cream-alt);}
   .chefs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:44px;}
+
+  /* ===================== CARROUSEL 3D (coverflow) ===================== */
+  .chef-carousel{position:relative;height:520px;margin-bottom:8px;}
+  .carousel-track{
+    position:relative;width:100%;height:100%;perspective:1500px;
+    display:flex;align-items:center;justify-content:center;
+    touch-action:pan-y; /* laisse le scroll vertical de la page passer, seul le swipe horizontal est intercepté */
+    user-select:none;-webkit-user-select:none;
+  }
+  .carousel-card.carousel-card{position:absolute;top:50%;left:50%;width:300px;will-change:transform,opacity;
+    transition:transform 0.5s cubic-bezier(0.25,0.8,0.3,1), opacity 0.5s ease;
+  }
+  .carousel-card.is-active{cursor:pointer;}
+  .carousel-card:not(.is-active){cursor:pointer;}
+  .carousel-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:20;
+    width:46px;height:46px;border-radius:50%;background:var(--white);box-shadow:var(--shadow-md);
+    font-size:1.6rem;color:var(--terracotta-dark);display:flex;align-items:center;justify-content:center;
+    transition:background 0.2s ease,transform 0.2s ease;
+  }
+  .carousel-arrow:hover{background:var(--terracotta-tint);transform:translateY(-50%) scale(1.08);}
+  .carousel-arrow-left{left:0;}
+  .carousel-arrow-right{right:0;}
+  .carousel-hint{text-align:center;font-size:0.85rem;color:var(--ink-faint);margin-bottom:44px;}
+  @media (min-width:761px){.carousel-hint{display:none;}} /* l'indice de glissement n'a de sens que sur tactile */
+
+  @media (max-width:900px){
+    .chef-carousel{height:auto;padding:20px 0 40px;}
+    .carousel-arrow{display:none;}
+  }
   .chef-card{
     position:relative;background:var(--white);border-radius:var(--radius-lg);padding:30px;
     box-shadow:var(--shadow-sm);display:flex;flex-direction:column;cursor:pointer;
@@ -1158,7 +1188,12 @@
         <p class="section-subtitle">Rencontrez quelques-uns des passionnés qui font vibrer les tables nantaises, un repas fait maison à la fois.</p>
       </div>
 
-      <div class="chefs-grid" id="featuredChefsGrid"></div>
+      <div class="chef-carousel" id="chefCarousel">
+        <button type="button" class="carousel-arrow carousel-arrow-left" id="carouselPrevBtn" aria-label="Cuisinier précédent">‹</button>
+        <div class="carousel-track" id="carouselTrack"></div>
+        <button type="button" class="carousel-arrow carousel-arrow-right" id="carouselNextBtn" aria-label="Cuisinier suivant">›</button>
+      </div>
+      <p class="carousel-hint">👆 Glissez pour découvrir les autres cuisiniers</p>
 
       <div class="chefs-cta">
         <button type="button" class="btn btn-secondary go-to-search">Voir tous les cuisiniers →</button>
@@ -2800,8 +2835,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('boosterCuisine').innerHTML = '<option value="">Surprenez-moi</option>' +
     CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
 
-  document.getElementById('featuredChefsGrid').innerHTML = chefs.filter(c => c.featured).map(c => chefCardHTML(c, false)).join('');
-  wireCardTilts('#featuredChefsGrid .chef-card', { maxTilt: 6, lift: 8 });
+  initChefCarousel();
   wireCardTilts('.step-card', { maxTilt: 8, lift: 4 });
 
   /* ---------- Header scroll shadow ---------- */
@@ -3480,6 +3514,126 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /** Applique le tilt à toutes les cartes correspondant à un sélecteur (grille de cuisiniers, étapes...). */
+  /* ============================================================
+     CARROUSEL 3D DES CUISINIERS (coverflow, façon sélection de
+     booster dans un jeu de cartes à collectionner)
+     ============================================================ */
+  let carouselChefs = [];
+  let carouselIndex = 0;
+
+  function carouselCardHTML(chef){
+    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
+    const ratingHTML = chef.reviews > 0
+      ? '<span class="stars" aria-hidden="true">★★★★★</span><span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span><span class="count">(' + chef.reviews + ' avis)</span>'
+      : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
+    return (
+      '<article class="chef-card carousel-card" data-chef-id="' + chef.id + '">' +
+        badge +
+        '<div class="chef-avatar-wrap">' +
+          '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
+          '<img class="chef-avatar-photo" src="' + chef.photo + '" alt="" loading="lazy" onerror="this.style.display=\'none\';">' +
+        '</div>' +
+        '<h3>' + chef.name + '</h3>' +
+        '<p class="chef-specialty">' + chef.cuisine + '</p>' +
+        '<p class="chef-location">📍 ' + chef.location + '</p>' +
+        '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
+        '<div class="chef-rating">' + ratingHTML + '</div>' +
+        '<div class="chef-footer">' +
+          '<span class="chef-price-tag">Dès ' + chef.price + ' €<br><small>par personne</small></span>' +
+          '<button type="button" class="btn btn-outline btn-sm">Voir le profil</button>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function initChefCarousel(){
+    carouselChefs = chefs.slice();
+    if (!carouselChefs.length) return;
+    const track = document.getElementById('carouselTrack');
+    track.innerHTML = carouselChefs.map(carouselCardHTML).join('');
+
+    // Démarre sur un cuisinier "vedette" si possible, sinon le premier.
+    const featuredIdx = carouselChefs.findIndex(c => c.featured);
+    carouselIndex = featuredIdx !== -1 ? featuredIdx : 0;
+    updateCarouselPositions();
+
+    document.querySelectorAll('.carousel-card').forEach((card, i) => {
+      card.addEventListener('click', () => {
+        if (i === carouselIndex){
+          const chef = carouselChefs[i];
+          renderChefProfile(chef);
+          showView('profile');
+        } else {
+          goToCarouselIndex(i);
+        }
+      });
+    });
+
+    document.getElementById('carouselPrevBtn').addEventListener('click', () => goToCarouselIndex(carouselIndex - 1));
+    document.getElementById('carouselNextBtn').addEventListener('click', () => goToCarouselIndex(carouselIndex + 1));
+
+    /* ---------- Glissement (souris + tactile, via Pointer Events) ---------- */
+    let dragStartX = null;
+    let dragging = false;
+    track.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      dragStartX = e.clientX;
+    });
+    track.addEventListener('pointerup', (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const deltaX = e.clientX - dragStartX;
+      if (deltaX < -40) goToCarouselIndex(carouselIndex + 1); // glissé vers la gauche → suivant
+      else if (deltaX > 40) goToCarouselIndex(carouselIndex - 1); // glissé vers la droite → précédent
+    });
+    track.addEventListener('pointercancel', () => { dragging = false; });
+
+    // Clavier : flèches gauche/droite quand le carrousel a le focus
+    track.setAttribute('tabindex', '0');
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goToCarouselIndex(carouselIndex - 1);
+      if (e.key === 'ArrowRight') goToCarouselIndex(carouselIndex + 1);
+    });
+  }
+
+  function goToCarouselIndex(newIndex){
+    const n = carouselChefs.length;
+    carouselIndex = ((newIndex % n) + n) % n; // repli circulaire (boucle infinie dans les deux sens)
+    updateCarouselPositions();
+  }
+
+  function updateCarouselPositions(){
+    const cards = document.querySelectorAll('.carousel-card');
+    const n = cards.length;
+    cards.forEach((card, i) => {
+      let offset = i - carouselIndex;
+      if (offset > n / 2) offset -= n;
+      if (offset < -n / 2) offset += n;
+      const abs = Math.abs(offset);
+
+      let transform, opacity, zIndex, pointerEvents;
+      if (abs === 0){
+        transform = 'translate(-50%,-50%) translateX(0) translateZ(0) rotateY(0deg) scale(1)';
+        opacity = 1; zIndex = 10; pointerEvents = 'auto';
+      } else if (abs === 1){
+        transform = 'translate(-50%,-50%) translateX(' + (offset * 230) + 'px) translateZ(-140px) rotateY(' + (-offset * 38) + 'deg) scale(0.82)';
+        opacity = 0.8; zIndex = 5; pointerEvents = 'auto';
+      } else if (abs === 2){
+        transform = 'translate(-50%,-50%) translateX(' + (offset * 200) + 'px) translateZ(-280px) rotateY(' + (-offset * 44) + 'deg) scale(0.62)';
+        opacity = 0.4; zIndex = 2; pointerEvents = 'auto';
+      } else {
+        transform = 'translate(-50%,-50%) translateX(' + (offset > 0 ? 380 : -380) + 'px) translateZ(-380px) scale(0.4)';
+        opacity = 0; zIndex = 0; pointerEvents = 'none';
+      }
+      card.style.transform = transform;
+      card.style.opacity = opacity;
+      card.style.zIndex = zIndex;
+      card.style.pointerEvents = pointerEvents;
+      card.classList.toggle('is-active', abs === 0);
+    });
+  }
+
   function wireCardTilts(selector, opts){
     document.querySelectorAll(selector).forEach(el => {
       if (el.dataset.tiltWired) return; // évite de rebrancher deux fois la même carte
