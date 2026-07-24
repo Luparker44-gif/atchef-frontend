@@ -660,6 +660,9 @@
   .legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;}
   .legend-dot.available{background:var(--sage);}
   .legend-dot.unavailable{background:var(--ink-faint);}
+  .legend-dot.booked{background:var(--terracotta-dark);}
+  .calendar-day.marked-unavailable{background:var(--ink-faint);color:#fff;border-radius:50%;}
+  .calendar-day.booked{background:var(--terracotta-dark);color:#fff;border-radius:50%;cursor:not-allowed;}
   .selected-date-label{margin-top:10px;font-size:0.86rem;font-weight:700;color:var(--terracotta-dark);}
 
   /* ===================== CHECKLIST ÉQUIPEMENT ===================== */
@@ -2225,11 +2228,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // par cuisinier (même résultat à chaque affichage), pour illustrer le
   // principe visuellement. À remplacer par un vrai calendrier de
   // réservations une fois la plateforme réellement utilisée.
+  let currentProfileUnavailableDates = [];
+
   function isDateUnavailable(chef, dateStr){
     if (!chef) return false;
-    let hash = chef.id;
-    for (let i = 0; i < dateStr.length; i++) hash = (hash * 31 + dateStr.charCodeAt(i)) % 1000;
-    return (hash % 5 === 0);
+    return currentProfileUnavailableDates.indexOf(dateStr) !== -1;
+  }
+
+  async function loadProfileAvailability(cookId){
+    currentProfileUnavailableDates = [];
+    if (!isBackendConfigured()) return;
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/availability');
+      if (!res.ok) return;
+      const data = await res.json();
+      currentProfileUnavailableDates = data.unavailableDates || [];
+      renderCalendar();
+    } catch (e) {
+      // Si la disponibilité ne peut pas être chargée, on laisse simplement
+      // le calendrier sans jour grisé plutôt que de bloquer la page.
+    }
   }
 
   function renderTrainingSection(chef){
@@ -2334,6 +2352,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedBookingDate = null;
 
     document.getElementById('contactCookBtn').hidden = (userRole === 'cook');
+    loadProfileAvailability(chef.id);
 
     const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
     const fallbackEl = document.getElementById('profileAvatarFallback');
@@ -3534,6 +3553,24 @@ document.addEventListener('DOMContentLoaded', () => {
               '<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>' +
             '</form>' +
           '</div>';
+
+        html += '<div class="my-space-section"><h2>Mon calendrier de disponibilité</h2>' +
+          '<p class="filter-hint">Cliquez sur un jour futur pour le marquer indisponible (ou le rendre à nouveau disponible). Les jours déjà réservés sont automatiquement bloqués.</p>' +
+          '<div class="mini-calendar" style="max-width:360px;">' +
+            '<div class="calendar-header">' +
+              '<button type="button" id="availPrevMonth" aria-label="Mois précédent">‹</button>' +
+              '<span id="availMonthLabel"></span>' +
+              '<button type="button" id="availNextMonth" aria-label="Mois suivant">›</button>' +
+            '</div>' +
+            '<div class="calendar-weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>' +
+            '<div class="calendar-grid" id="availabilityCalendarGrid"></div>' +
+            '<div class="calendar-legend">' +
+              '<span><i class="legend-dot available"></i> Disponible</span>' +
+              '<span><i class="legend-dot unavailable"></i> Indisponible</span>' +
+              '<span><i class="legend-dot booked"></i> Réservé</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
       }
 
       html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations reçues' : 'Mes réservations') + '</h2>';
@@ -3560,6 +3597,8 @@ document.addEventListener('DOMContentLoaded', () => {
       contentEl.innerHTML = html;
       if (userRole === 'cook'){
         wireCookProfileEditForm(profile, headers);
+        const bookedDates = myBookings.filter(b => b.status === 'confirmed' && b.eventDate).map(b => b.eventDate);
+        wireCookAvailabilityCalendar(profile, headers, bookedDates);
       }
     } catch (e) {
       contentEl.innerHTML = '<p class="admin-empty-note">Impossible de charger votre espace.</p>';
@@ -3646,6 +3685,78 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.textContent = 'Enregistrer les modifications';
       }
     });
+  }
+
+  /**
+   * Branche le calendrier de disponibilité du cuisinier : navigation par
+   * mois, clic sur un jour futur pour basculer disponible/indisponible,
+   * sauvegarde automatique côté serveur à chaque changement. Les jours
+   * déjà réservés (confirmés et payés) sont affichés à part et non cliquables.
+   */
+  function wireCookAvailabilityCalendar(profile, headers, bookedDates){
+    let viewDate = new Date();
+    let unavailableDates = (profile.unavailableDates || []).slice();
+
+    function renderAvailCalendar(){
+      const year = viewDate.getFullYear();
+      const month = viewDate.getMonth();
+      document.getElementById('availMonthLabel').textContent = CALENDAR_MONTH_NAMES[month] + ' ' + year;
+
+      const firstDay = new Date(year, month, 1);
+      const startWeekday = (firstDay.getDay() + 6) % 7;
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const todayStr = new Date().toISOString().split('T')[0];
+
+      let html = '';
+      for (let i = 0; i < startWeekday; i++) html += '<span class="calendar-day empty"></span>';
+      for (let d = 1; d <= daysInMonth; d++){
+        const dateObj = new Date(year, month, d);
+        const dateStr = dateObj.getFullYear() + '-' + String(dateObj.getMonth()+1).padStart(2,'0') + '-' + String(dateObj.getDate()).padStart(2,'0');
+        const isPast = dateStr < todayStr;
+        const isBooked = bookedDates.indexOf(dateStr) !== -1;
+        const isMarkedUnavailable = unavailableDates.indexOf(dateStr) !== -1;
+
+        let cls = 'calendar-day';
+        if (isPast) cls += ' disabled';
+        else if (isBooked) cls += ' booked';
+        else if (isMarkedUnavailable) cls += ' marked-unavailable';
+
+        const disabledAttr = (isPast || isBooked) ? ' disabled' : '';
+        html += '<button type="button" class="' + cls + '" data-date="' + dateStr + '"' + disabledAttr + '>' + d + '</button>';
+      }
+      document.getElementById('availabilityCalendarGrid').innerHTML = html;
+    }
+
+    document.getElementById('availPrevMonth').addEventListener('click', () => {
+      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+      renderAvailCalendar();
+    });
+    document.getElementById('availNextMonth').addEventListener('click', () => {
+      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+      renderAvailCalendar();
+    });
+
+    document.getElementById('availabilityCalendarGrid').addEventListener('click', async (e) => {
+      const btn = e.target.closest('.calendar-day:not(.empty):not([disabled])');
+      if (!btn) return;
+      const dateStr = btn.dataset.date;
+      const idx = unavailableDates.indexOf(dateStr);
+      if (idx === -1) unavailableDates.push(dateStr);
+      else unavailableDates.splice(idx, 1);
+      renderAvailCalendar();
+
+      try {
+        await fetch(BACKEND_URL + '/api/my/availability', {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ unavailableDates }),
+        });
+      } catch (err) {
+        showToast('❌ Impossible de sauvegarder ce changement de disponibilité.');
+      }
+    });
+
+    renderAvailCalendar();
   }
 
   let adminToken = null;
