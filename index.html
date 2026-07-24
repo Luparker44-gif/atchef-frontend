@@ -802,6 +802,20 @@
   /* ============================================================
      MODE BOOSTER CUISINIER (Mode Surprise)
      ============================================================ */
+  .booster-overlay[hidden]{display:none !important;}
+  .booster-trigger-btn{
+    position:relative;width:100%;margin-bottom:20px;padding:13px 18px;border-radius:var(--radius-md);
+    background:linear-gradient(135deg,#E2725B,#A64A34);color:#fff;font-weight:800;font-size:0.95rem;
+    border:none;overflow:visible;box-shadow:0 4px 16px rgba(166,74,52,0.35);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .booster-trigger-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 22px rgba(166,74,52,0.45);}
+  .booster-trigger-glow{
+    position:absolute;inset:-3px;border-radius:inherit;z-index:-1;
+    background:linear-gradient(135deg,#E2725B,#D9A441,#E2725B);
+    filter:blur(10px);opacity:0.7;animation:booster-btn-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes booster-btn-pulse{0%,100%{opacity:0.5;}50%{opacity:0.9;}}
   .booster-overlay{
     position:fixed;inset:0;z-index:500;
     background:radial-gradient(circle at 50% 30%, #3a2418 0%, #1c1108 100%);
@@ -1260,6 +1274,11 @@
 
   <div class="container search-layout">
     <aside class="filters-panel" id="filtersPanel">
+      <button type="button" class="booster-trigger-btn" id="openBoosterBtn">
+        <span class="booster-trigger-glow"></span>
+        🎁 Mode Surprise
+      </button>
+
       <div class="filters-panel-header">
         <h2>Filtres</h2>
         <div class="filters-panel-head-actions">
@@ -1318,8 +1337,7 @@
       <div class="results-header">
         <button type="button" class="mobile-filters-toggle btn btn-outline btn-sm">🔍 Filtres <span id="mobileFilterCount" class="filter-count-badge"></span></button>
         <p class="results-count" id="resultsCount"></p>
-        <div class="sort-wrap" style="display:flex;gap:10px;align-items:center;">
-          <button type="button" class="btn btn-primary btn-sm" id="openBoosterBtn">🎁 Mode Surprise</button>
+        <div class="sort-wrap">
           <select class="sort-select" id="sortSelect">
             <option value="relevance">Trier : Pertinence</option>
             <option value="rating">Trier : Meilleures notes</option>
