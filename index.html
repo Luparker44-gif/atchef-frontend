@@ -644,6 +644,29 @@
   /* ===================== CONTACT ===================== */
   .contact-layout{padding:20px 0 100px;max-width:680px;}
 
+  /* ===================== PAGES LÉGALES ===================== */
+  .legal-layout{padding:20px 0 100px;max-width:760px;}
+  .legal-draft-banner{
+    background:#FDF0D5;color:#7a5a1a;border-radius:var(--radius-md);padding:14px 18px;
+    font-size:0.88rem;line-height:1.5;margin:14px 0 32px;
+  }
+  .legal-content{font-size:0.95rem;line-height:1.7;color:var(--ink);}
+  .legal-content h1{font-family:var(--font-display);font-size:1.7rem;margin-bottom:16px;}
+  .legal-content h2{font-family:var(--font-display);font-size:1.25rem;margin:32px 0 12px;color:var(--terracotta-dark);}
+  .legal-content h3{font-size:1.05rem;margin:20px 0 8px;font-weight:700;}
+  .legal-content p{margin-bottom:14px;}
+  .legal-content ul,.legal-content ol{margin:0 0 14px 22px;}
+  .legal-content li{margin-bottom:6px;}
+  .legal-content strong{font-weight:700;}
+  .legal-content hr{border:none;border-top:1px solid var(--border);margin:28px 0;}
+  .legal-content blockquote{
+    background:var(--cream-alt);border-left:3px solid var(--terracotta-dark);
+    padding:12px 18px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:0 0 18px;font-size:0.88rem;color:var(--ink-soft);
+  }
+  .legal-content table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:0.9rem;}
+  .legal-content th,.legal-content td{border:1px solid var(--border);padding:10px 14px;text-align:left;}
+  .legal-content th{background:var(--cream-alt);font-weight:700;}
+
   /* ===================== ADMINISTRATION ===================== */
   .admin-login-layout{display:flex;justify-content:center;padding:100px 24px;}
   .admin-login-card{max-width:400px;width:100%;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:36px;}
@@ -947,8 +970,8 @@
           <ul>
             <li><a href="#" class="go-to-contact">Centre d'aide</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Sécurité &amp; paiement</a></li>
-            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Annulation</a></li>
-            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">CGU</a></li>
+            <li><a href="#" class="go-to-cancellation">Annulation</a></li>
+            <li><a href="#" class="go-to-cgu">CGU</a></li>
           </ul>
         </div>
 
@@ -969,8 +992,8 @@
         <p>© 2026 At'Chef. Tous droits réservés. · Fait avec ❤️ à Nantes</p>
         <div class="footer-links">
           <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Mentions légales</a>
-          <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">CGU</a>
-          <a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Confidentialité</a>
+          <a href="#" class="go-to-cgu">CGU</a>
+          <a href="#" class="go-to-privacy">Confidentialité</a>
           <a href="#" class="go-to-admin-login" style="opacity:0.45;">Administration</a>
         </div>
       </div>
@@ -1474,6 +1497,229 @@
     <button type="button" class="btn btn-outline btn-sm" id="userLogoutBtn">Se déconnecter</button>
   </div>
   <div class="container" id="mySpaceContent"></div>
+</div>
+
+<!-- ============ VUE LÉGALE : CGU ============ -->
+<div id="view-cgu" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+  </div>
+  <div class="container legal-layout">
+    <span class="eyebrow">Cadre juridique</span>
+    <div class="legal-draft-banner">
+      ⚠️ <strong>Document provisoire, en cours de validation juridique.</strong> Ce texte n'a pas encore été relu par un avocat et ne doit pas être considéré comme définitif.
+    </div>
+    <div class="legal-content">
+<h1>Conditions Générales d'Utilisation — At'Chef</h1>
+<p><strong>Version brouillon — à faire valider par un avocat avant publication</strong>
+<em>Dernière révision du brouillon : 16 juillet 2026</em></p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>Note interne (à supprimer avant publication) :</strong> ce document est une ébauche de travail rédigée pour poser une structure et un positionnement juridique cohérents. Les passages entre crochets <code>[...]</code> doivent être complétés avec les informations réelles de la société (dénomination, forme juridique, SIREN, siège social, capital social, etc.). L'ensemble doit être validé par un avocat spécialisé en droit du numérique et de la consommation avant toute mise en ligne.</p>
+</blockquote>
+<hr />
+<h2>Préambule</h2>
+<p>At'Chef est une plateforme numérique (le « <strong>Site</strong> » ou la « <strong>Plateforme</strong> ») éditée par <strong>[Dénomination sociale à compléter]</strong>, <strong>[forme juridique, ex. SAS]</strong> au capital de <strong>[montant]</strong> €, immatriculée au RCS de Nantes sous le numéro <strong>[SIREN/SIRET]</strong>, dont le siège social est situé <strong>[adresse]</strong> (ci-après « <strong>At'Chef</strong> »).</p>
+<p>At'Chef met en relation, dans la région nantaise, des particuliers souhaitant organiser un repas fait maison à domicile (les « <strong>Hôtes</strong> ») avec des cuisiniers amateurs indépendants proposant leurs services culinaires (les « <strong>Cuisiniers</strong> »).</p>
+<p><strong>At'Chef ne prépare, ne vend, ne sert et ne fournit elle-même aucun repas.</strong> At'Chef est un intermédiaire technique : elle ne cuisine pas et n'est pas partie au contrat de prestation culinaire qui se forme directement entre l'Hôte et le Cuisinier à l'occasion de chaque réservation.</p>
+<hr />
+<h2>Article 1 — Objet</h2>
+<p>Les présentes Conditions Générales d'Utilisation (les « <strong>CGU</strong> ») ont pour objet de définir les modalités et conditions d'accès et d'utilisation de la Plateforme, ainsi que les droits et obligations de l'ensemble des utilisateurs dans ce cadre.</p>
+<p>Toute utilisation de la Plateforme, y compris la simple consultation, implique l'acceptation pleine et entière des présentes CGU.</p>
+<h2>Article 2 — Définitions</h2>
+<ul>
+<li><strong>Utilisateur</strong> : toute personne physique majeure utilisant la Plateforme, qu'elle agisse en qualité d'Hôte ou de Cuisinier.</li>
+<li><strong>Hôte</strong> : Utilisateur qui recherche, réserve et paie une prestation culinaire proposée par un Cuisinier.</li>
+<li><strong>Cuisinier</strong> : Utilisateur indépendant qui crée un profil sur la Plateforme afin de proposer des Formules culinaires à des Hôtes, contre rémunération.</li>
+<li><strong>Formule</strong> : offre culinaire définie librement par un Cuisinier (composition, prix par convive, nombre de convives, etc.).</li>
+<li><strong>Réservation</strong> : demande de prestation effectuée par un Hôte auprès d'un Cuisinier via la Plateforme, donnant lieu à un paiement.</li>
+<li><strong>Prestation culinaire</strong> : ensemble des services rendus directement par le Cuisinier à l'Hôte (préparation et service du repas), formant un contrat distinct des présentes CGU.</li>
+</ul>
+<h2>Article 3 — Accès à la Plateforme et création de compte</h2>
+<p>L'accès à certaines fonctionnalités (réservation, création d'un profil Cuisinier) nécessite la création d'un compte. L'Utilisateur doit être majeur, disposer de la pleine capacité juridique, et garantit l'exactitude des informations fournies lors de son inscription.</p>
+<p>Chaque Utilisateur est responsable de la confidentialité de ses identifiants et de toute activité réalisée depuis son compte.</p>
+<h2>Article 4 — Statut du Cuisinier : prestataire indépendant</h2>
+<p><strong>4.1.</strong> Le Cuisinier exerce son activité culinaire de manière <strong>indépendante</strong>, en son nom propre (le cas échéant sous statut de micro-entrepreneur/auto-entrepreneur ou toute autre forme adaptée à son activité). Il n'est ni salarié, ni mandataire, ni représentant d'At'Chef, et ne dispose d'aucun lien de subordination avec At'Chef. At'Chef ne fixe ni ses menus, ni ses prix, ni ses horaires : ces éléments relèvent de la seule décision du Cuisinier.</p>
+<p><strong>4.2.</strong> Le Cuisinier est seul responsable :</p>
+<ul>
+<li><strong>du respect de la réglementation applicable en matière d'hygiène et de sécurité alimentaire</strong>, notamment la méthode HACCP (<em>Hazard Analysis Critical Control Point</em>) et les dispositions du « Paquet Hygiène » européen (règlement (CE) n° 852/2004 relatif à l'hygiène des denrées alimentaires et textes subséquents), y compris pour la préparation de repas à titre non professionnel ou occasionnel à domicile ;</li>
+<li>de toute <strong>déclaration ou enregistrement de son activité</strong> requis auprès des autorités compétentes (notamment la Direction Départementale en charge de la Protection des Populations) préalablement à toute vente de denrées alimentaires, même occasionnelle ;</li>
+<li>de la souscription et du maintien en vigueur d'une <strong>assurance Responsabilité Civile Professionnelle</strong> couvrant son activité culinaire, notamment les dommages corporels, matériels et immatériels susceptibles de résulter de la préparation ou du service d'un repas (intoxication alimentaire, réaction allergique, incident domestique, etc.) ;</li>
+<li>de l'exactitude et de la sincérité des informations qu'il communique sur son profil, ses Formules, la composition de ses plats et la présence d'allergènes ;</li>
+<li>de la bonne exécution de la Prestation culinaire, dans le respect des informations transmises par l'Hôte (notamment au titre des allergies et restrictions alimentaires, voir Article 9).</li>
+</ul>
+<p><strong>4.3.</strong> At'Chef se réserve le droit de demander au Cuisinier, à tout moment, un justificatif de son assurance Responsabilité Civile Professionnelle en cours de validité, et de suspendre son profil en l'absence de réponse ou en cas de justificatif manifestement insuffisant. Cette faculté de contrôle ne saurait constituer une garantie apportée par At'Chef quant à la couverture effective du Cuisinier, ni engager la responsabilité d'At'Chef à ce titre.</p>
+<h2>Article 5 — Rôle et responsabilité limitée d'At'Chef</h2>
+<p><strong>5.1. At'Chef, simple intermédiaire technique.</strong> At'Chef fournit une plateforme technique de mise en relation : présentation des profils, moteur de recherche et de filtres, prise de réservation, encaissement sécurisé et répartition des paiements entre l'Hôte et le Cuisinier. <strong>At'Chef n'est pas partie au contrat de Prestation culinaire</strong>, lequel se forme exclusivement entre l'Hôte et le Cuisinier au moment de la Réservation.</p>
+<p><strong>5.2. Absence de contrôle sur la Prestation culinaire.</strong> At'Chef ne prépare aucun repas, ne contrôle pas la qualité, l'hygiène ou l'innocuité des plats préparés par les Cuisiniers, et ne garantit ni les qualifications culinaires du Cuisinier ni le respect effectif des informations relatives aux allergènes. En conséquence, <strong>At'Chef ne peut être tenue responsable</strong> de tout dommage, préjudice ou incident résultant de la préparation, de la composition ou du service d'un repas, notamment en cas d'intoxication alimentaire, de réaction allergique, ou de manquement du Cuisinier à ses obligations légales ou réglementaires.</p>
+<p><strong>5.3. Obligation de moyens.</strong> At'Chef s'engage à mettre en œuvre des moyens raisonnables (obligation de moyens et non de résultat) pour assurer le bon fonctionnement technique de la Plateforme, la fiabilité du service de paiement, et la mise en œuvre des mesures de vérification décrites dans sa Charte de confiance. Ces mesures ne sauraient constituer une garantie de résultat quant au comportement des Utilisateurs ou à la bonne exécution des Prestations culinaires.</p>
+<p><strong>5.4. Litige entre Hôte et Cuisinier.</strong> Tout litige relatif à l'exécution de la Prestation culinaire (qualité, conformité aux allergènes déclarés, retard, absence, etc.) relève de la seule relation contractuelle entre l'Hôte et le Cuisinier. At'Chef peut, à titre commercial et sans y être tenue juridiquement, proposer une médiation ou un geste commercial.</p>
+<h2>Article 6 — Réservation et paiement</h2>
+<p><strong>6.1.</strong> L'Hôte sélectionne une Formule, un nombre de convives et une date, renseigne les informations requises (notamment ses allergies et restrictions alimentaires, voir Article 9) et procède au paiement sécurisé via le prestataire Stripe.</p>
+<p><strong>6.2.</strong> Le prix affiché est TTC et inclut la rémunération du Cuisinier ainsi que les frais de service At'Chef, correspondant à une commission de <strong>10 %</strong> du montant de la Prestation, prélevée automatiquement sur chaque transaction. Le solde est reversé directement au Cuisinier.</p>
+<p><strong>6.3.</strong> At'Chef agit uniquement en qualité de prestataire technique de paiement au sens de son partenariat avec Stripe (Stripe Connect) ; elle n'est dépositaire des fonds qu'à titre transitoire dans le cadre strict de cette répartition automatisée.</p>
+<h2>Article 7 — Annulation et remboursement</h2>
+<p>Les conditions d'annulation et de remboursement applicables à chaque Réservation sont définies dans la <strong>Politique d'Annulation</strong> d'At'Chef, document contractuel distinct accessible sur la Plateforme et réputé accepté lors de toute Réservation.</p>
+<h2>Article 8 — Obligations de l'Hôte</h2>
+<p>L'Hôte s'engage à :</p>
+<ul>
+<li>fournir des informations exactes, notamment sur le nombre de convives et <strong>les allergies ou restrictions alimentaires de l'ensemble des convives</strong>, ces informations étant transmises au seul Cuisinier concerné et étant essentielles à la sécurité du repas (voir la notice d'information RGPD dédiée) ;</li>
+<li>accueillir le Cuisinier dans des conditions raisonnables permettant l'exécution de la Prestation lorsque celle-ci a lieu à son domicile ;</li>
+<li>adopter un comportement respectueux envers le Cuisinier ;</li>
+<li>s'acquitter du prix convenu selon les modalités prévues à l'Article 6.</li>
+</ul>
+<h2>Article 9 — Traitement des informations relatives aux allergies</h2>
+<p>Les informations relatives aux allergies et restrictions alimentaires constituent des données de santé au sens du Règlement Général sur la Protection des Données (RGPD). Leur collecte, leur finalité, leur durée de conservation et les droits de l'Utilisateur à cet égard sont détaillés dans la <strong>Notice d'Information RGPD — Allergies alimentaires</strong>, document distinct accessible depuis le formulaire de réservation.</p>
+<h2>Article 10 — Avis et évaluations</h2>
+<p>Les Hôtes peuvent laisser un avis et une note après chaque Prestation. At'Chef se réserve le droit de retirer tout avis manifestement mensonger, diffamatoire ou sans rapport avec une Réservation réelle, sans que cela ne constitue une obligation de modération systématique et préalable.</p>
+<h2>Article 11 — Propriété intellectuelle</h2>
+<p>L'ensemble des éléments de la Plateforme (structure, textes, logo, charte graphique, base de données) est protégé au titre du droit de la propriété intellectuelle et demeure la propriété exclusive d'At'Chef ou de ses concédants. Toute reproduction non autorisée est interdite.</p>
+<h2>Article 12 — Données personnelles</h2>
+<p>At'Chef traite des données à caractère personnel dans les conditions décrites dans sa <strong>Politique de Confidentialité</strong> [document à rédiger séparément, hors du périmètre de cette ébauche] et, s'agissant spécifiquement des données relatives aux allergies, dans la notice mentionnée à l'Article 9.</p>
+<h2>Article 13 — Limitation générale de responsabilité</h2>
+<p>Dans les limites permises par la loi, la responsabilité d'At'Chef ne saurait être engagée en cas de dysfonctionnement technique temporaire de la Plateforme, d'indisponibilité du service, ou de fait imprévisible et insurmontable d'un tiers ou d'un cas de force majeure. Rien dans le présent article ne saurait exclure la responsabilité d'At'Chef pour faute prouvée dans l'exécution de ses propres obligations d'intermédiaire technique (notamment en matière de paiement).</p>
+<h2>Article 14 — Durée et résiliation</h2>
+<p>Les présentes CGU s'appliquent pour toute la durée d'utilisation de la Plateforme. At'Chef peut suspendre ou résilier l'accès d'un Utilisateur en cas de manquement grave aux présentes CGU, notamment en cas de fausses déclarations relatives aux assurances ou à l'hygiène alimentaire, sans préjudice de tout recours.</p>
+<h2>Article 15 — Réclamation et médiation de la consommation</h2>
+<p>Conformément aux articles L.616-1 et suivants du Code de la consommation, tout Hôte agissant en qualité de consommateur dispose, après réclamation écrite préalable restée infructueuse, du droit de recourir gratuitement à un médiateur de la consommation. At'Chef communiquera les coordonnées du médiateur compétent <strong>[nom et coordonnées du médiateur à désigner et faire enregistrer]</strong> sur la Plateforme.</p>
+<h2>Article 16 — Droit applicable et juridiction</h2>
+<p>Les présentes CGU sont soumises au droit français. En cas de litige, et à défaut de résolution amiable ou de médiation, les tribunaux compétents seront ceux déterminés selon les règles de droit commun applicables, sans préjudice des dispositions protectrices d'ordre public applicables aux consommateurs.</p>
+<h2>Article 17 — Contact</h2>
+<p>Pour toute question relative aux présentes CGU : <strong>[adresse email de contact à compléter]</strong>.</p>
+<hr />
+<p><em>Fin de l'ébauche de CGU. Document à faire relire par un avocat avant publication — voir en particulier les Articles 4, 5 et 15.</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE LÉGALE : CANCELLATION ============ -->
+<div id="view-cancellation" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+  </div>
+  <div class="container legal-layout">
+    <span class="eyebrow">Cadre juridique</span>
+    <div class="legal-draft-banner">
+      ⚠️ <strong>Document provisoire, en cours de validation juridique.</strong> Ce texte n'a pas encore été relu par un avocat et ne doit pas être considéré comme définitif.
+    </div>
+    <div class="legal-content">
+<h1>Politique d'Annulation — At'Chef</h1>
+<p><strong>Version brouillon — à faire valider par un avocat avant publication</strong>
+<em>Dernière révision du brouillon : 16 juillet 2026</em></p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>Note interne (à supprimer avant publication) :</strong> les pourcentages ci-dessous (100 % / 50 % / 0 %) sont des seuils proposés à titre de point de départ raisonnable et courant dans ce type de marketplace — ce sont des choix commerciaux qui appartiennent à At'Chef, pas des obligations légales. Ce document complète les CGU (Article 7) et doit rester cohérent avec elles.</p>
+</blockquote>
+<hr />
+<h2>Préambule</h2>
+<p>La présente Politique d'Annulation s'applique à toute Réservation effectuée sur At'Chef. Elle est acceptée par l'Hôte au moment de la Réservation et fait partie intégrante des Conditions Générales d'Utilisation.</p>
+<p>Elle est <strong>distincte du droit de rétractation prévu par le Code de la consommation</strong> pour les achats à distance : celui-ci ne s'applique pas ici, les prestations de restauration devant être fournies à une date déterminée étant expressément exclues de ce droit (article L.221-28, 4° du Code de la consommation, applicable aux prestations d'hébergement et de restauration à date fixe). C'est la raison pour laquelle At'Chef propose son propre barème contractuel d'annulation, décrit ci-dessous.</p>
+<h2>Article 1 — Annulation à l'initiative de l'Hôte</h2>
+<p>Le montant remboursé à l'Hôte dépend du délai entre le moment de l'annulation et la date et l'heure prévues de la Prestation :</p>
+<table>
+<thead>
+<tr>
+<th>Délai avant la Prestation</th>
+<th>Montant remboursé à l'Hôte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3 jours ou plus</strong> (J-3 et au-delà)</td>
+<td><strong>100 %</strong> — annulation gratuite</td>
+</tr>
+<tr>
+<td><strong>Entre 3 jours et 24 heures</strong> avant</td>
+<td><strong>50 %</strong> — remboursement partiel</td>
+</tr>
+<tr>
+<td><strong>Moins de 24 heures</strong> avant, ou non-présentation de l'Hôte</td>
+<td><strong>0 %</strong> — aucun remboursement</td>
+</tr>
+</tbody>
+</table>
+<p>Le délai est calculé à partir de l'horodatage de la demande d'annulation effectuée depuis la Plateforme, comparé à la date et l'heure du repas indiquées lors de la Réservation.</p>
+<h2>Article 2 — Sort de la commission At'Chef</h2>
+<p>Les frais de service At'Chef (commission de 10 %) suivent le même taux de remboursement que le montant de la Prestation : si l'Hôte est remboursé à 50 %, la commission correspondante est également remboursée à 50 %, et ainsi de suite selon le barème de l'Article 1.</p>
+<h2>Article 3 — Annulation à l'initiative du Cuisinier</h2>
+<p>Si le Cuisinier annule une Réservation confirmée, quel que soit le délai, <strong>l'Hôte est intégralement remboursé à 100 %</strong>, y compris la commission At'Chef, l'annulation n'étant en rien imputable à l'Hôte.</p>
+<p>At'Chef peut, à sa discrétion et sans y être tenue contractuellement envers le Cuisinier :</p>
+<ul>
+<li>proposer à l'Hôte une aide à la recherche d'un autre Cuisinier disponible sur le même créneau ;</li>
+<li>tenir compte des annulations répétées ou tardives du Cuisinier dans l'évaluation de son profil, pouvant aller jusqu'à la suspension de son compte en cas de manquements réitérés.</li>
+</ul>
+<h2>Article 4 — Circonstances exceptionnelles</h2>
+<p>En cas d'circonstance grave et imprévisible rendant impossible l'exécution ou la présence à la Prestation (hospitalisation, décès d'un proche, sinistre majeur, empêchement administratif, etc.), l'Hôte ou le Cuisinier concerné peut solliciter, justificatifs à l'appui, un examen dérogatoire de sa situation auprès du support At'Chef <strong>[adresse de contact à compléter]</strong>. Cet examen est réalisé au cas par cas et ne constitue pas un droit automatique à un remboursement intégral.</p>
+<h2>Article 5 — Modalités de remboursement</h2>
+<p>Tout remboursement est effectué sur le même moyen de paiement que celui utilisé lors de la Réservation, via l'infrastructure Stripe. Le délai de traitement usuel est de 5 à 10 jours ouvrés à compter de la validation de l'annulation, ce délai pouvant varier selon l'établissement bancaire de l'Hôte.</p>
+<h2>Article 6 — Comment annuler une Réservation</h2>
+<p>L'annulation s'effectue directement depuis l'espace personnel de l'Hôte sur la Plateforme, dans la section correspondant à la Réservation concernée. L'horodatage de la demande fait foi pour l'application du barème de l'Article 1.</p>
+<hr />
+<p><em>Fin de l'ébauche. Document à faire relire par un avocat avant publication, en particulier au regard de l'articulation avec le droit de rétractation (Article L.221-28 du Code de la consommation) et du traitement de la commission At'Chef en cas de remboursement partiel.</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ VUE LÉGALE : PRIVACY ============ -->
+<div id="view-privacy" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+  </div>
+  <div class="container legal-layout">
+    <span class="eyebrow">Cadre juridique</span>
+    <div class="legal-draft-banner">
+      ⚠️ <strong>Document provisoire, en cours de validation juridique.</strong> Ce texte n'a pas encore été relu par un avocat et ne doit pas être considéré comme définitif.
+    </div>
+    <div class="legal-content">
+<h1>Notice d'Information RGPD — Allergies alimentaires et restrictions</h1>
+<p><strong>Version brouillon — à faire valider par un avocat / DPO avant publication</strong>
+<em>Dernière révision du brouillon : 16 juillet 2026</em></p>
+<hr />
+<blockquote>
+<p>⚠️ <strong>Note interne (à supprimer avant publication) :</strong> cette notice correspond à l'information exigée par l'article 13 du RGPD. Les informations sur les allergies sont des <strong>données de santé</strong>, catégorie particulière au sens de l'article 9 du RGPD, qui nécessitent en principe le <strong>consentement explicite</strong> de la personne. Recommandation : faire valider ce champ par une <strong>case à cocher de consentement explicite et distincte</strong> (« J'autorise la transmission de ces informations à mon cuisinier pour la sécurité de mon repas »), en plus du texte libre actuel, plutôt qu'un simple champ obligatoire — c'est plus robuste juridiquement qu'un champ texte seul.</p>
+</blockquote>
+<hr />
+<p>Cette notice s'applique au champ <strong>« Allergies et restrictions alimentaires »</strong> présent dans le module de réservation d'At'Chef. Elle complète la Politique de Confidentialité générale d'At'Chef.</p>
+<h2>1. Qui est responsable de ce traitement ?</h2>
+<p>Le responsable de traitement est <strong>[Dénomination sociale d'At'Chef à compléter]</strong>, <strong>[adresse du siège social]</strong>, joignable à l'adresse <strong>[email de contact vie privée, ex. confidentialite@atchef.fr]</strong>.</p>
+<h2>2. Quelles données collectons-nous ?</h2>
+<p>Le texte que vous saisissez librement dans le champ « Allergies et restrictions alimentaires » lors d'une Réservation. Cette information est qualifiée de <strong>donnée de santé</strong> dès lors qu'elle révèle des informations sur votre état de santé ou celui des convives pour lesquels vous réservez (par exemple : allergie aux fruits à coque, intolérance au lactose, maladie cœliaque).</p>
+<h2>3. Pourquoi collectons-nous cette information ?</h2>
+<p><strong>Uniquement pour assurer la sécurité alimentaire du repas que le Cuisinier va préparer.</strong> Cette information lui permet d'adapter sa recette, d'éviter certains ingrédients ou d'alerter sur un risque de contamination croisée. Elle n'est utilisée à aucune autre fin : ni marketing, ni profilage, ni statistiques, ni décision automatisée.</p>
+<h2>4. Sur quelle base légale ?</h2>
+<p>Le traitement de cette donnée de santé repose sur votre <strong>consentement explicite</strong> (article 9, 2, a) du RGPD), donné librement lors de la saisie de ce champ avant chaque Réservation. Vous pouvez retirer ce consentement à tout moment dans les conditions décrites au point 7, ce qui n'affecte pas la licéité d'un traitement déjà effectué avant ce retrait.</p>
+<h2>5. Qui a accès à cette information ?</h2>
+<p><strong>Le seul Cuisinier concerné par la Réservation en cours</strong>, et ce uniquement pour la durée nécessaire à la préparation du repas concerné. Cette information :</p>
+<ul>
+<li>n'est <strong>jamais</strong> visible par les autres Cuisiniers de la Plateforme ;</li>
+<li>n'est <strong>jamais</strong> partagée à des fins commerciales, publicitaires ou avec des tiers non impliqués dans la Réservation ;</li>
+<li>n'est accessible en interne chez At'Chef qu'aux personnels strictement nécessaires au support technique, en cas d'incident lié à une Réservation.</li>
+</ul>
+<h2>6. Combien de temps conservons-nous cette information ?</h2>
+<p>Cette donnée est conservée le temps strictement nécessaire à la réalisation du repas concerné, puis supprimée de nos bases actives <strong>au plus tard 30 jours après la date de la Prestation</strong>, sauf litige en cours nécessitant sa conservation temporaire à titre de preuve.</p>
+<h2>7. Quels sont vos droits ?</h2>
+<p>Conformément au RGPD, vous disposez des droits suivants sur cette donnée comme sur l'ensemble de vos données personnelles :</p>
+<ul>
+<li><strong>Droit d'accès</strong> : obtenir la confirmation que cette donnée est traitée et en obtenir une copie ;</li>
+<li><strong>Droit de rectification</strong> : corriger une information inexacte ou incomplète ;</li>
+<li><strong>Droit à l'effacement (« droit à l'oubli »)</strong> : demander la suppression de cette information, y compris avant l'échéance de conservation prévue au point 6 ;</li>
+<li><strong>Droit à la limitation du traitement</strong> ;</li>
+<li><strong>Droit d'opposition et de retrait du consentement</strong>, à tout moment ;</li>
+<li><strong>Droit à la portabilité</strong> des données que vous avez fournies.</li>
+</ul>
+<h2>8. Comment exercer ces droits, notamment demander la suppression de vos données ?</h2>
+<p>Vous pouvez exercer l'ensemble de ces droits, et en particulier demander la suppression immédiate de vos informations relatives aux allergies :</p>
+<ul>
+<li>directement depuis votre espace personnel At'Chef, section « Confidentialité et données » <strong>[à intégrer à l'interface]</strong> ;</li>
+<li>ou par email à <strong>[email de contact vie privée]</strong>, en précisant votre demande ; une réponse vous sera apportée dans un délai maximum d'un mois conformément au RGPD.</li>
+</ul>
+<p>Une pièce d'identité pourra vous être demandée en cas de doute raisonnable sur votre identité.</p>
+<h2>9. Droit de réclamation auprès de la CNIL</h2>
+<p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) : <a href="https://www.cnil.fr">www.cnil.fr</a>, 3 place de Fontenoy, 75007 Paris.</p>
+<hr />
+<p><em>Fin de l'ébauche. Document à faire valider par un avocat ou un DPO avant publication — voir en particulier la recommandation d'ajouter une case de consentement explicite (point 4) et la confirmation du délai de conservation retenu (point 6), qui restent des décisions à valider par At'Chef.</em></p>
+    </div>
+  </div>
 </div>
 
 <div class="toast" id="toast" role="status"></div>
@@ -2620,6 +2866,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const contactTarget = e.target.closest('.go-to-contact');
     if (contactTarget){ e.preventDefault(); showView('contact'); return; }
+
+    const cguTarget = e.target.closest('.go-to-cgu');
+    if (cguTarget){ e.preventDefault(); showView('cgu'); return; }
+
+    const cancellationTarget = e.target.closest('.go-to-cancellation');
+    if (cancellationTarget){ e.preventDefault(); showView('cancellation'); return; }
+
+    const privacyTarget = e.target.closest('.go-to-privacy');
+    if (privacyTarget){ e.preventDefault(); showView('privacy'); return; }
 
     const adminLoginTarget = e.target.closest('.go-to-admin-login');
     if (adminLoginTarget){ e.preventDefault(); showView('admin-login'); return; }
