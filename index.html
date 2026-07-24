@@ -245,7 +245,7 @@
     padding:30px 26px 32px;overflow:hidden;
     transition:transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .step-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .step-card:hover{box-shadow:var(--shadow-md);}
   .step-card:hover .step-icon{transform:scale(1.08) rotate(-4deg);}
   .step-number{
     display:block;font-family:var(--font-display);font-weight:700;font-size:3.6rem;
@@ -271,7 +271,7 @@
     box-shadow:var(--shadow-sm);display:flex;flex-direction:column;cursor:pointer;
     transition:transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .chef-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .chef-card:hover{box-shadow:var(--shadow-lg);}
   .chef-badge{
     position:absolute;top:22px;right:22px;font-size:0.68rem;font-weight:700;color:var(--white);
     padding:6px 13px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:0.03em;
@@ -420,7 +420,12 @@
 
   .search-layout{display:flex;gap:48px;align-items:flex-start;padding:28px 0 100px;}
 
-  .filters-panel{width:272px;flex-shrink:0;}
+  .filters-panel{
+    width:272px;flex-shrink:0;position:sticky;top:100px;align-self:flex-start;
+    background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.6);border-radius:var(--radius-lg);
+    box-shadow:0 8px 32px rgba(122,53,36,0.08);padding:22px 22px 26px;
+  }
   .filters-panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px;}
   .filters-panel-header h2{font-size:1.25rem;}
   .filters-panel-head-actions{display:flex;align-items:center;gap:14px;}
@@ -929,19 +934,19 @@
       </div>
 
       <div class="steps-grid" data-panel="hote">
-        <div class="step-card reveal">
+        <div class="step-card tilt-card reveal"><div class="tilt-glare" aria-hidden="true"></div>
           <span class="step-number">01</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="3"/><line x1="29" y1="29" x2="39" y2="39" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
           <h3>Trouvez votre cuisinier</h3>
           <p>Parcourez les profils vérifiés près de chez vous et filtrez selon la date, le nombre de convives et le type de cuisine.</p>
         </div>
-        <div class="step-card reveal">
+        <div class="step-card tilt-card reveal"><div class="tilt-glare" aria-hidden="true"></div>
           <span class="step-number">02</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="12" width="32" height="27" rx="4" stroke="currentColor" stroke-width="3"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="3"/><line x1="16" y1="8" x2="16" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="8" x2="32" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 29 L21 34 L32 22" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Réservez en 2 minutes</h3>
           <p>Choisissez votre menu, confirmez le nombre de convives et validez votre réservation en toute sécurité, en ligne.</p>
         </div>
-        <div class="step-card reveal">
+        <div class="step-card tilt-card reveal"><div class="tilt-glare" aria-hidden="true"></div>
           <span class="step-number">03</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="34" rx="16" ry="6" stroke="currentColor" stroke-width="3"/><path d="M17 27 C14 21, 20 17, 17 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M31 27 C28 21, 34 17, 31 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
           <h3>Savourez votre repas</h3>
@@ -950,19 +955,19 @@
       </div>
 
       <div class="steps-grid" data-panel="cuisinier" hidden>
-        <div class="step-card reveal">
+        <div class="step-card tilt-card reveal"><div class="tilt-glare" aria-hidden="true"></div>
           <span class="step-number">01</span>
           <div class="step-icon sage"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="17" y="28" width="14" height="9" rx="2" fill="currentColor"/><path d="M11 26 C11 15, 18 8, 24 8 C30 8, 37 15, 37 26 C37 32, 30 27, 24 27 C18 27, 11 32, 11 26 Z" fill="currentColor"/></svg></div>
           <h3>Créez votre profil</h3>
           <p>Présentez vos spécialités, votre histoire et ce qui vous anime en cuisine pour donner envie aux hôtes de vous réserver.</p>
         </div>
-        <div class="step-card reveal">
+        <div class="step-card tilt-card reveal"><div class="tilt-glare" aria-hidden="true"></div>
           <span class="step-number">02</span>
           <div class="step-icon sage"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 15 C20 11, 12 11, 8 13 L8 35 C12 33, 20 33, 24 37 C28 33, 36 33, 40 35 L40 13 C36 11, 28 11, 24 15 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="24" y1="15" x2="24" y2="37" stroke="currentColor" stroke-width="3"/></svg></div>
           <h3>Composez vos menus</h3>
           <p>Fixez librement vos plats, vos tarifs et vos disponibilités selon votre emploi du temps et vos envies du moment.</p>
         </div>
-        <div class="step-card reveal">
+        <div class="step-card tilt-card reveal"><div class="tilt-glare" aria-hidden="true"></div>
           <span class="step-number">03</span>
           <div class="step-icon sage"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="15" stroke="currentColor" stroke-width="3"/><path d="M28 16 C22 16, 19 20, 19 24 C19 28, 22 32, 28 32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="15" y1="21" x2="26" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="26" x2="26" y2="26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
           <h3>Cuisinez et gagnez en revenu</h3>
@@ -2038,7 +2043,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
     const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
     const tagsHTML = chef.tags.map(t => '<span>' + t + '</span>').join('');
-    const cardClass = instant ? 'chef-card' : 'chef-card reveal';
+    const cardClass = instant ? 'chef-card tilt-card' : 'chef-card tilt-card reveal';
     const ratingHTML = chef.reviews > 0
       ? '<span class="stars" aria-hidden="true">★★★★★</span>' +
         '<span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span>' +
@@ -2046,6 +2051,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
     return (
       '<article class="' + cardClass + '" data-chef-id="' + chef.id + '">' +
+        '<div class="tilt-glare" aria-hidden="true"></div>' +
         badge +
         '<div class="chef-avatar-wrap">' +
           '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
@@ -2131,6 +2137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsCount = document.getElementById('resultsCount');
 
     grid.innerHTML = list.map(c => chefCardHTML(c, true)).join('');
+    wireCardTilts('#resultsGrid .chef-card', { maxTilt: 6, lift: 8 });
     noResults.hidden = list.length > 0;
     grid.hidden = list.length === 0;
     resultsCount.textContent = list.length + (list.length > 1 ? ' cuisiniers disponibles' : ' cuisinier disponible');
@@ -2556,6 +2563,8 @@ document.addEventListener('DOMContentLoaded', () => {
     CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
 
   document.getElementById('featuredChefsGrid').innerHTML = chefs.filter(c => c.featured).map(c => chefCardHTML(c, false)).join('');
+  wireCardTilts('#featuredChefsGrid .chef-card', { maxTilt: 6, lift: 8 });
+  wireCardTilts('.step-card', { maxTilt: 8, lift: 4 });
 
   /* ---------- Header scroll shadow ---------- */
   const header = document.querySelector('.site-header');
@@ -3196,6 +3205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxTilt = opts.maxTilt || 10;
     const restRotateX = opts.restRotateX || 0;
     const restRotateY = opts.restRotateY || 0;
+    const lift = opts.lift || 0; // légère élévation (translateY négatif) pendant le survol
 
     // Pas d'effet de suivi de souris sur tactile (pas de mousemove fiable) :
     // la carte garde simplement sa légère inclinaison de repos.
@@ -3213,7 +3223,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = e.clientY - rect.top;
       const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -maxTilt;
       const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * maxTilt;
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${-lift}px)`;
       if (glare){
         const px = (x / rect.width) * 100;
         const py = (y / rect.height) * 100;
@@ -3229,6 +3239,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Position de repos initiale
     el.style.transform = `perspective(1000px) rotateX(${restRotateX}deg) rotateY(${restRotateY}deg)`;
+  }
+
+  /** Applique le tilt à toutes les cartes correspondant à un sélecteur (grille de cuisiniers, étapes...). */
+  function wireCardTilts(selector, opts){
+    document.querySelectorAll(selector).forEach(el => {
+      if (el.dataset.tiltWired) return; // évite de rebrancher deux fois la même carte
+      el.dataset.tiltWired = '1';
+      applyTiltEffect(el, opts);
+    });
   }
 
   const reservationCardEl = document.getElementById('searchForm');
