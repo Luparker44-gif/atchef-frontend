@@ -733,6 +733,37 @@
   .my-space-section h2{font-size:1.2rem;margin-bottom:16px;}
   .my-profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;}
   .my-profile-card p{font-size:0.92rem;}
+
+  /* ===================== MESSAGERIE ===================== */
+  .messages-layout{display:grid;grid-template-columns:280px 1fr;gap:24px;padding-bottom:60px;min-height:60vh;}
+  .conversations-list{display:flex;flex-direction:column;gap:8px;}
+  .conversation-item{
+    background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:14px 16px;cursor:pointer;transition:border-color .2s ease,background .2s ease;text-align:left;
+  }
+  .conversation-item:hover{border-color:var(--terracotta-dark);}
+  .conversation-item.active{background:var(--terracotta-tint);border-color:var(--terracotta-dark);}
+  .conversation-item .conv-name{font-weight:700;font-family:var(--font-display);font-size:1rem;margin-bottom:3px;}
+  .conversation-item .conv-preview{font-size:0.82rem;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .conversation-thread{
+    background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);
+    display:flex;flex-direction:column;min-height:60vh;max-height:70vh;
+  }
+  .thread-header{padding:16px 20px;border-bottom:1px solid var(--border);font-weight:700;font-family:var(--font-display);font-size:1.1rem;}
+  .thread-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px;}
+  .msg-bubble{max-width:70%;padding:10px 16px;border-radius:16px;font-size:0.92rem;line-height:1.45;}
+  .msg-bubble.mine{align-self:flex-end;background:var(--terracotta-dark);color:#fff;border-bottom-right-radius:4px;}
+  .msg-bubble.theirs{align-self:flex-start;background:var(--cream-alt);color:var(--ink);border-bottom-left-radius:4px;}
+  .msg-time{font-size:0.7rem;opacity:0.7;margin-top:4px;display:block;}
+  .thread-send-row{display:flex;gap:10px;padding:16px 20px;border-top:1px solid var(--border);}
+  .thread-send-row input{
+    flex:1;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:0.92rem;
+  }
+  @media (max-width: 760px){
+    .messages-layout{grid-template-columns:1fr;}
+    .conversations-list{flex-direction:row;overflow-x:auto;}
+    .conversation-item{min-width:200px;}
+  }
   .formula-edit-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
   .formula-edit-row .formula-name-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .formula-edit-row .formula-price-input{width:100px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
@@ -1138,6 +1169,7 @@
             <span id="profileBadgeSlot"></span>
           </div>
           <p class="profile-location" id="profileLocation"></p>
+          <button type="button" class="btn btn-outline btn-sm" id="contactCookBtn" style="margin-top:14px;">💬 Contacter ce cuisinier</button>
         </div>
       </div>
 
@@ -1534,9 +1566,26 @@
 <div id="view-my-space" class="app-view" hidden>
   <div class="container admin-toolbar">
     <h1 id="mySpaceTitle">Mon espace</h1>
-    <button type="button" class="btn btn-outline btn-sm" id="userLogoutBtn">Se déconnecter</button>
+    <div style="display:flex;gap:10px;">
+      <button type="button" class="btn btn-outline btn-sm go-to-messages">💬 Messagerie</button>
+      <button type="button" class="btn btn-outline btn-sm" id="userLogoutBtn">Se déconnecter</button>
+    </div>
   </div>
   <div class="container" id="mySpaceContent"></div>
+</div>
+
+<!-- ============ VUE MESSAGERIE ============ -->
+<div id="view-messages" class="app-view" hidden>
+  <div class="container admin-toolbar">
+    <h1>Messagerie</h1>
+    <button type="button" class="back-to-home btn btn-outline btn-sm">← Retour au site</button>
+  </div>
+  <div class="container messages-layout">
+    <div class="conversations-list" id="conversationsList"></div>
+    <div class="conversation-thread" id="conversationThread">
+      <p class="admin-empty-note">Sélectionnez une conversation dans la liste.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ============ VUE LÉGALE : CGU ============ -->
@@ -2284,6 +2333,8 @@ document.addEventListener('DOMContentLoaded', () => {
     calendarViewDate = new Date();
     selectedBookingDate = null;
 
+    document.getElementById('contactCookBtn').hidden = (userRole === 'cook');
+
     const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
     const fallbackEl = document.getElementById('profileAvatarFallback');
     fallbackEl.style.background = chef.gradient;
@@ -3030,6 +3081,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mySpaceTarget = e.target.closest('.go-to-my-space');
     if (mySpaceTarget){ e.preventDefault(); showView('my-space'); loadMySpace(); return; }
 
+    const messagesTarget = e.target.closest('.go-to-messages');
+    if (messagesTarget){ e.preventDefault(); showView('messages'); loadConversationsList(); return; }
+
     const retryStripeTarget = e.target.closest('#retryStripeBtn');
     if (retryStripeTarget){ if (lastRegisteredCookId) startStripeOnboarding(lastRegisteredCookId); return; }
 
@@ -3288,6 +3342,145 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('❌ ' + err.message);
       btn.disabled = false;
       btn.textContent = 'Annuler cette réservation';
+    }
+  });
+
+  /* ============================================================
+     MESSAGERIE
+     ============================================================ */
+  let currentConversationId = null;
+  let conversationPollInterval = null;
+
+  function conversationDisplayName(conv){
+    return userRole === 'cook' ? conv.hostName : conv.cookName;
+  }
+
+  async function loadConversationsList(){
+    const listEl = document.getElementById('conversationsList');
+    if (!userToken){
+      listEl.innerHTML = '<p class="admin-empty-note">Connectez-vous pour accéder à vos messages.</p>';
+      return;
+    }
+    listEl.innerHTML = '<p class="admin-empty-note">Chargement…</p>';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/conversations', { headers: { 'Authorization': 'Bearer ' + userToken } });
+      if (res.status === 401){ await clearUserSession(); showView('login'); return; }
+      const conversations = await res.json();
+      if (!conversations.length){
+        listEl.innerHTML = '<p class="admin-empty-note">Aucune conversation pour le moment.</p>';
+        return;
+      }
+      listEl.innerHTML = conversations.map(conv => {
+        const lastMsg = conv.messages[conv.messages.length - 1];
+        return '<div class="conversation-item" data-conv-id="' + conv.id + '">' +
+          '<div class="conv-name">' + conversationDisplayName(conv) + '</div>' +
+          '<div class="conv-preview">' + (lastMsg ? lastMsg.text : 'Aucun message pour le moment') + '</div>' +
+        '</div>';
+      }).join('');
+      // Ouvre automatiquement la première conversation si aucune n'est déjà affichée
+      if (!currentConversationId) openConversation(conversations[0].id);
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger vos conversations.</p>';
+    }
+  }
+
+  async function openConversation(id){
+    currentConversationId = id;
+    document.querySelectorAll('.conversation-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.convId === String(id));
+    });
+
+    const threadEl = document.getElementById('conversationThread');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/conversations/' + id, { headers: { 'Authorization': 'Bearer ' + userToken } });
+      if (res.status === 401){ await clearUserSession(); showView('login'); return; }
+      const conv = await res.json();
+      if (!res.ok) throw new Error(conv.error || 'Conversation introuvable');
+
+      threadEl.innerHTML =
+        '<div class="thread-header">' + conversationDisplayName(conv) + '</div>' +
+        '<div class="thread-messages" id="threadMessages">' +
+          conv.messages.map(m => {
+            const mine = m.sender === userRole;
+            const time = new Date(m.createdAt).toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+            return '<div class="msg-bubble ' + (mine ? 'mine' : 'theirs') + '">' + escapeHtml(m.text) + '<span class="msg-time">' + time + '</span></div>';
+          }).join('') +
+        '</div>' +
+        '<form class="thread-send-row" id="sendMessageForm">' +
+          '<input type="text" id="messageInput" placeholder="Écrivez votre message…" required maxlength="2000">' +
+          '<button type="submit" class="btn btn-primary btn-sm">Envoyer</button>' +
+        '</form>';
+
+      const messagesEl = document.getElementById('threadMessages');
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      document.getElementById('sendMessageForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = document.getElementById('messageInput');
+        const text = input.value.trim();
+        if (!text) return;
+        input.disabled = true;
+        try {
+          await fetch(BACKEND_URL + '/api/conversations/' + id + '/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+            body: JSON.stringify({ text }),
+          });
+          input.value = '';
+          await openConversation(id);
+          loadConversationsList();
+        } finally {
+          input.disabled = false;
+          document.getElementById('messageInput').focus();
+        }
+      });
+    } catch (e) {
+      threadEl.innerHTML = '<p class="admin-empty-note">' + e.message + '</p>';
+    }
+  }
+
+  document.getElementById('conversationsList').addEventListener('click', (e) => {
+    const item = e.target.closest('.conversation-item');
+    if (item) openConversation(item.dataset.convId);
+  });
+
+  // Petit rafraîchissement discret toutes les 6 secondes tant que la
+  // messagerie est ouverte, pour un effet "quasi temps réel" sans avoir
+  // besoin de websockets.
+  setInterval(() => {
+    const messagesView = document.getElementById('view-messages');
+    if (!messagesView.hidden && currentConversationId){
+      openConversation(currentConversationId);
+    }
+  }, 6000);
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  document.getElementById('contactCookBtn').addEventListener('click', async () => {
+    if (!userToken || userRole !== 'host'){
+      showToast('⚠️ Connectez-vous en tant qu\'hôte pour contacter un cuisinier.');
+      showView('login');
+      return;
+    }
+    if (!currentProfileChef) return;
+    try {
+      const res = await fetch(BACKEND_URL + '/api/conversations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+        body: JSON.stringify({ cookId: currentProfileChef.id }),
+      });
+      const conv = await res.json();
+      if (!res.ok) throw new Error(conv.error || 'Erreur lors de la création de la conversation');
+      currentConversationId = null;
+      showView('messages');
+      await loadConversationsList();
+      openConversation(conv.id);
+    } catch (err) {
+      showToast('❌ ' + err.message);
     }
   });
 
