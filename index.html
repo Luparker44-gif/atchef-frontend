@@ -798,6 +798,164 @@
   .formula-edit-row .formula-name-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .formula-edit-row .formula-price-input{width:100px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .remove-formula-btn{background:none;border:none;color:var(--terracotta-dark);font-size:1.1rem;cursor:pointer;padding:4px 8px;}
+
+  /* ============================================================
+     MODE BOOSTER CUISINIER (Mode Surprise)
+     ============================================================ */
+  .booster-overlay{
+    position:fixed;inset:0;z-index:500;
+    background:radial-gradient(circle at 50% 30%, #3a2418 0%, #1c1108 100%);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    padding:40px 20px;overflow-y:auto;
+    animation:booster-fade-in 0.4s ease;
+  }
+  @keyframes booster-fade-in{from{opacity:0;}to{opacity:1;}}
+  .booster-close{
+    position:absolute;top:24px;right:24px;width:40px;height:40px;border-radius:50%;
+    background:rgba(255,255,255,0.1);color:#fff;font-size:1.2rem;z-index:10;
+    display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;
+  }
+  .booster-close:hover{background:rgba(255,255,255,0.2);}
+  .booster-step{text-align:center;color:#fff;max-width:640px;}
+  .booster-eyebrow{
+    display:inline-block;background:rgba(217,164,65,0.18);color:var(--gold,#D9A441);
+    padding:7px 16px;border-radius:var(--radius-full);font-size:0.8rem;font-weight:700;margin-bottom:18px;
+  }
+  .booster-step h2{font-family:var(--font-display);font-size:2rem;color:#fff;margin-bottom:12px;}
+  .booster-subtitle{color:rgba(255,255,255,0.7);margin-bottom:32px;}
+  .booster-filters-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
+  .booster-field{text-align:left;}
+  .booster-field label{display:block;font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.6);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;}
+  .booster-field select{
+    padding:12px 16px;border-radius:var(--radius-sm);border:1.5px solid rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.08);color:#fff;font-family:inherit;font-size:0.95rem;font-weight:600;min-width:200px;
+  }
+  .booster-field select option{color:#2B2320;}
+
+  /* ---------- La marmite ---------- */
+  .cauldron-scene{position:relative;width:320px;height:280px;margin:0 auto 24px;display:flex;align-items:flex-end;justify-content:center;}
+  .cauldron-glow{
+    position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);
+    width:300px;height:300px;border-radius:50%;filter:blur(30px);
+    background:radial-gradient(circle,rgba(226,114,91,0.45),transparent 70%);
+    animation:glow-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes glow-pulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.18);}}
+
+  .cauldron{position:relative;width:200px;height:150px;}
+  .cauldron.shaking{animation:cauldron-shake 0.4s ease-in-out infinite;}
+  @keyframes cauldron-shake{
+    0%,100%{transform:translateX(0) rotate(0);}
+    10%{transform:translateX(-5px) rotate(-1.2deg);}
+    20%{transform:translateX(5px) rotate(1.2deg);}
+    30%{transform:translateX(-4px) rotate(-1deg);}
+    40%{transform:translateX(4px) rotate(1deg);}
+    50%{transform:translateX(-3px) rotate(-0.6deg);}
+    60%{transform:translateX(3px) rotate(0.6deg);}
+    70%,100%{transform:translateX(0) rotate(0);}
+  }
+  .cauldron-body{
+    position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+    width:200px;height:140px;border-radius:50% 50% 46% 46% / 55% 55% 100% 100%;
+    background:linear-gradient(160deg,#4a3527,#241609);
+    box-shadow:inset 0 -25px 35px rgba(0,0,0,0.5), 0 14px 30px rgba(0,0,0,0.4);
+  }
+  .cauldron-rim{
+    position:absolute;bottom:118px;left:50%;transform:translateX(-50%);
+    width:216px;height:26px;border-radius:50%;
+    background:linear-gradient(180deg,#5a4230,#332111);
+    box-shadow:0 4px 8px rgba(0,0,0,0.3);
+  }
+  .cauldron-liquid{
+    position:absolute;bottom:126px;left:50%;transform:translateX(-50%);
+    width:180px;height:22px;border-radius:50%;
+    background:radial-gradient(ellipse at center,#E2725B 0%,#A64A34 55%,#7A3524 100%);
+    overflow:visible;z-index:2;
+  }
+  .bubble{
+    position:absolute;bottom:2px;width:8px;height:8px;border-radius:50%;
+    background:rgba(255,222,180,0.9);animation:bubble-rise 1.6s ease-in infinite;
+  }
+  .bubble.b1{left:12%;animation-delay:0s;}
+  .bubble.b2{left:30%;animation-delay:0.3s;width:6px;height:6px;}
+  .bubble.b3{left:50%;animation-delay:0.6s;}
+  .bubble.b4{left:68%;animation-delay:0.9s;width:5px;height:5px;}
+  .bubble.b5{left:85%;animation-delay:1.2s;}
+  @keyframes bubble-rise{
+    0%{transform:translateY(0) scale(0.5);opacity:0;}
+    25%{opacity:1;}
+    100%{transform:translateY(-46px) scale(1.3);opacity:0;}
+  }
+  .cauldron-particles{position:absolute;inset:0;pointer-events:none;}
+  .cauldron-particles span{
+    position:absolute;width:5px;height:5px;border-radius:50%;background:var(--gold,#D9A441);
+    opacity:0;animation:particle-float 2.6s ease-in infinite;
+  }
+  .cauldron-particles span:nth-child(1){left:30%;bottom:40%;animation-delay:0s;}
+  .cauldron-particles span:nth-child(2){left:65%;bottom:35%;animation-delay:0.4s;}
+  .cauldron-particles span:nth-child(3){left:45%;bottom:50%;animation-delay:0.8s;}
+  .cauldron-particles span:nth-child(4){left:75%;bottom:45%;animation-delay:1.2s;}
+  .cauldron-particles span:nth-child(5){left:20%;bottom:48%;animation-delay:1.6s;}
+  .cauldron-particles span:nth-child(6){left:55%;bottom:38%;animation-delay:2s;}
+  @keyframes particle-float{
+    0%{transform:translateY(0) scale(0.6);opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-120px) scale(1.1);opacity:0;}
+  }
+  .cauldron-caption{color:rgba(255,255,255,0.75);font-size:0.95rem;font-weight:600;letter-spacing:0.02em;}
+
+  /* ---------- Cartes en éventail ---------- */
+  .booster-cards-arc{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    min-height:340px;perspective:1400px;margin-bottom:20px;
+  }
+  .booster-card{
+    position:absolute;width:170px;height:250px;cursor:pointer;
+    opacity:0;transform:scale(0.3) translateY(40px);
+    transition:transform 0.7s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s ease;
+  }
+  .booster-card.dealt{opacity:1;}
+  .booster-card-inner{
+    position:relative;width:100%;height:100%;transform-style:preserve-3d;
+    transition:transform 0.6s cubic-bezier(0.4,0.1,0.2,1);
+  }
+  .booster-card.flipped .booster-card-inner{transform:rotateY(180deg);}
+  .booster-card-face{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.35);
+  }
+  .booster-card-back{
+    background:linear-gradient(135deg,#A64A34,#5c2a1a);
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid rgba(217,164,65,0.5);
+  }
+  .booster-card-back .back-mark{font-size:2.6rem;opacity:0.85;}
+  .booster-card-front{
+    transform:rotateY(180deg);background:var(--white);padding:16px 14px;
+    display:flex;flex-direction:column;text-align:center;
+  }
+  .booster-card.rare .booster-card-back{border-color:var(--gold,#D9A441);box-shadow:0 0 24px rgba(217,164,65,0.55), 0 12px 30px rgba(0,0,0,0.35);}
+  .card-shine{
+    position:absolute;top:-60%;left:-70%;width:45%;height:220%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.55),transparent);
+    transform:rotate(20deg);animation:shine-sweep 2.4s ease-in-out infinite;pointer-events:none;
+  }
+  @keyframes shine-sweep{0%{left:-70%;}55%,100%{left:150%;}}
+  .booster-card-front .front-avatar{
+    width:56px;height:56px;border-radius:50%;margin:0 auto 10px;object-fit:cover;
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+    font-weight:700;color:#fff;font-size:1.2rem;
+  }
+  .booster-card-front h4{font-family:var(--font-display);font-size:1rem;margin-bottom:2px;}
+  .booster-card-front .front-cuisine{color:var(--terracotta-dark);font-size:0.78rem;font-weight:700;margin-bottom:6px;}
+  .booster-card-front .front-rating{font-size:0.82rem;color:var(--ink-soft);margin-bottom:10px;}
+  .booster-card-front .front-see-btn{margin-top:auto;}
+  .booster-reveal-actions{margin-top:16px;}
+
+  @media (max-width:760px){
+    .booster-cards-arc{flex-wrap:wrap;min-height:auto;gap:16px;}
+    .booster-card{position:relative;}
+  }
 </style>
 </head>
 <body>
@@ -1160,7 +1318,8 @@
       <div class="results-header">
         <button type="button" class="mobile-filters-toggle btn btn-outline btn-sm">🔍 Filtres <span id="mobileFilterCount" class="filter-count-badge"></span></button>
         <p class="results-count" id="resultsCount"></p>
-        <div class="sort-wrap">
+        <div class="sort-wrap" style="display:flex;gap:10px;align-items:center;">
+          <button type="button" class="btn btn-primary btn-sm" id="openBoosterBtn">🎁 Mode Surprise</button>
           <select class="sort-select" id="sortSelect">
             <option value="relevance">Trier : Pertinence</option>
             <option value="rating">Trier : Meilleures notes</option>
@@ -1841,6 +2000,64 @@
 <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) : <a href="https://www.cnil.fr">www.cnil.fr</a>, 3 place de Fontenoy, 75007 Paris.</p>
 <hr />
 <p><em>Fin de l'ébauche. Document à faire valider par un avocat ou un DPO avant publication — voir en particulier la recommandation d'ajouter une case de consentement explicite (point 4) et la confirmation du délai de conservation retenu (point 6), qui restent des décisions à valider par At'Chef.</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODE BOOSTER CUISINIER (Mode Surprise) ============ -->
+<div id="boosterOverlay" class="booster-overlay" hidden>
+  <button type="button" class="booster-close" id="boosterCloseBtn" aria-label="Fermer le mode surprise">✕</button>
+
+  <!-- Étape 1 : choix des critères -->
+  <div class="booster-step" id="boosterStepFilters">
+    <span class="booster-eyebrow">🎁 Mode Surprise</span>
+    <h2>Laissez la magie choisir votre cuisinier</h2>
+    <p class="booster-subtitle">Indiquez vos envies, et regardez la marmite faire son tour...</p>
+    <div class="booster-filters-row">
+      <div class="booster-field">
+        <label for="boosterCuisine">Type de cuisine</label>
+        <select id="boosterCuisine">
+          <option value="">Surprenez-moi</option>
+        </select>
+      </div>
+      <div class="booster-field">
+        <label for="boosterBudget">Budget par personne</label>
+        <select id="boosterBudget">
+          <option value="">Tous les budgets</option>
+          <option value="low">Moins de 20 €</option>
+          <option value="mid">20 € – 40 €</option>
+          <option value="high">Plus de 40 €</option>
+        </select>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg" id="boosterOpenBtn">✨ Ouvrir la marmite</button>
+  </div>
+
+  <!-- Étape 2 : animation de la marmite -->
+  <div class="booster-step" id="boosterStepCauldron" hidden>
+    <div class="cauldron-scene">
+      <div class="cauldron-glow"></div>
+      <div class="cauldron-particles">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="cauldron" id="cauldronEl">
+        <div class="cauldron-liquid">
+          <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+          <span class="bubble b4"></span><span class="bubble b5"></span>
+        </div>
+        <div class="cauldron-body"></div>
+        <div class="cauldron-rim"></div>
+      </div>
+    </div>
+    <p class="cauldron-caption" id="cauldronCaption">La marmite mijote...</p>
+  </div>
+
+  <!-- Étape 3 : révélation des cartes -->
+  <div class="booster-step" id="boosterStepReveal" hidden>
+    <span class="booster-eyebrow">✨ Voici votre tirage</span>
+    <div class="booster-cards-arc" id="boosterCardsArc"></div>
+    <div class="booster-reveal-actions">
+      <button type="button" class="btn btn-outline" id="boosterRetryBtn">🔄 Retenter ma chance</button>
     </div>
   </div>
 </div>
@@ -2562,6 +2779,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('cookCuisine').innerHTML = '<option value="">Choisissez…</option>' +
     CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
 
+  document.getElementById('boosterCuisine').innerHTML = '<option value="">Surprenez-moi</option>' +
+    CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
+
   document.getElementById('featuredChefsGrid').innerHTML = chefs.filter(c => c.featured).map(c => chefCardHTML(c, false)).join('');
   wireCardTilts('#featuredChefsGrid .chef-card', { maxTilt: 6, lift: 8 });
   wireCardTilts('.step-card', { maxTilt: 8, lift: 4 });
@@ -3249,6 +3469,122 @@ document.addEventListener('DOMContentLoaded', () => {
       applyTiltEffect(el, opts);
     });
   }
+
+  /* ============================================================
+     MODE BOOSTER CUISINIER (Mode Surprise)
+     ============================================================ */
+  function pickBoosterChefs(){
+    const cuisine = document.getElementById('boosterCuisine').value;
+    const budget = document.getElementById('boosterBudget').value;
+    let pool = chefs.filter(c => {
+      if (cuisine && c.cuisine !== cuisine) return false;
+      if (budget && getBudgetBucket(c.price) !== budget) return false;
+      return true;
+    });
+    // Si trop peu de cuisiniers correspondent exactement, on élargit plutôt
+    // que d'afficher un tirage vide ou trop pauvre.
+    if (pool.length < 3) pool = chefs.slice();
+
+    const shuffled = pool.slice();
+    for (let i = shuffled.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = tmp;
+    }
+    const count = Math.min(shuffled.length, Math.floor(Math.random() * 3) + 3); // 3 à 5
+    return shuffled.slice(0, count);
+  }
+
+  function renderBoosterCards(selectedChefs){
+    const arc = document.getElementById('boosterCardsArc');
+    const n = selectedChefs.length;
+
+    arc.innerHTML = selectedChefs.map((chef, i) => {
+      const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+      const rareClass = isTopChef(chef) ? ' rare' : '';
+      const ratingLabel = chef.reviews > 0
+        ? '★ ' + chef.rating.toFixed(1).replace('.', ',') + ' (' + chef.reviews + ')'
+        : '🌱 Nouveau cuisinier';
+      return '<div class="booster-card' + rareClass + '" data-chef-id="' + chef.id + '">' +
+        '<div class="booster-card-inner">' +
+          '<div class="booster-card-face booster-card-back">' +
+            '<div class="card-shine"></div>' +
+            '<span class="back-mark">🍳</span>' +
+          '</div>' +
+          '<div class="booster-card-face booster-card-front">' +
+            '<div class="front-avatar" style="background:' + chef.gradient + ';">' + initials + '</div>' +
+            '<h4>' + chef.name + '</h4>' +
+            '<p class="front-cuisine">' + chef.cuisine + '</p>' +
+            '<p class="front-rating">' + ratingLabel + '</p>' +
+            '<button type="button" class="btn btn-primary btn-sm front-see-btn">Voir le profil</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    const cardEls = arc.querySelectorAll('.booster-card');
+    cardEls.forEach((card, i) => {
+      const offset = i - (n - 1) / 2;
+      const rotateDeg = offset * 12;
+      const translateX = offset * 130;
+      const translateY = Math.abs(offset) * 18;
+      setTimeout(() => {
+        card.classList.add('dealt');
+        card.style.transform = 'translateX(' + translateX + 'px) translateY(' + translateY + 'px) rotate(' + rotateDeg + 'deg) scale(1)';
+      }, i * 150);
+
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.front-see-btn')){
+          const chefId = parseInt(card.dataset.chefId, 10);
+          const chef = chefs.find(c => c.id === chefId);
+          closeBoosterOverlay();
+          if (chef){ renderChefProfile(chef); showView('profile'); }
+          return;
+        }
+        card.classList.toggle('flipped');
+      });
+    });
+  }
+
+  function openBoosterOverlay(){
+    document.getElementById('boosterOverlay').hidden = false;
+    document.getElementById('boosterStepFilters').hidden = false;
+    document.getElementById('boosterStepCauldron').hidden = true;
+    document.getElementById('boosterStepReveal').hidden = true;
+    document.getElementById('cauldronEl').classList.remove('shaking');
+  }
+
+  function closeBoosterOverlay(){
+    document.getElementById('boosterOverlay').hidden = true;
+  }
+
+  const openBoosterBtn = document.getElementById('openBoosterBtn');
+  if (openBoosterBtn) openBoosterBtn.addEventListener('click', openBoosterOverlay);
+  document.getElementById('boosterCloseBtn').addEventListener('click', closeBoosterOverlay);
+  document.getElementById('boosterRetryBtn').addEventListener('click', openBoosterOverlay);
+
+  document.getElementById('boosterOpenBtn').addEventListener('click', () => {
+    document.getElementById('boosterStepFilters').hidden = true;
+    document.getElementById('boosterStepCauldron').hidden = false;
+    const cauldronEl = document.getElementById('cauldronEl');
+    cauldronEl.classList.add('shaking');
+
+    const captionEl = document.getElementById('cauldronCaption');
+    const captions = ['La marmite mijote…', 'Ça bouillonne…', 'La magie opère…', 'Presque prêt…'];
+    let capIndex = 0;
+    captionEl.textContent = captions[0];
+    const captionInterval = setInterval(() => {
+      capIndex = (capIndex + 1) % captions.length;
+      captionEl.textContent = captions[capIndex];
+    }, 600);
+
+    setTimeout(() => {
+      clearInterval(captionInterval);
+      cauldronEl.classList.remove('shaking');
+      document.getElementById('boosterStepCauldron').hidden = true;
+      document.getElementById('boosterStepReveal').hidden = false;
+      renderBoosterCards(pickBoosterChefs());
+    }, 2400);
+  });
 
   const reservationCardEl = document.getElementById('searchForm');
   if (reservationCardEl){
