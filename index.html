@@ -88,8 +88,14 @@
     transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     white-space:nowrap;
   }
-  .btn-primary{background:var(--terracotta-dark);color:var(--white);box-shadow:0 10px 24px rgba(166,74,52,0.28);}
+  .btn-primary{background:var(--terracotta-dark);color:var(--white);box-shadow:0 10px 24px rgba(166,74,52,0.28);position:relative;overflow:hidden;}
   .btn-primary:hover{background:var(--terracotta-deep);transform:translateY(-2px);box-shadow:0 14px 30px rgba(122,53,36,0.32);}
+  .btn-primary::after{
+    content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent);
+    transform:skewX(-20deg);transition:left 0.6s ease;pointer-events:none;
+  }
+  .btn-primary:hover::after{left:125%;}
   .btn-outline{border:1.5px solid var(--ink);color:var(--ink);background:transparent;}
   .btn-outline:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
   .btn-outline-light{border:1.5px solid rgba(251,246,239,0.4);color:var(--cream);}
@@ -543,6 +549,11 @@
 
   .profile-header{display:flex;gap:24px;align-items:flex-start;margin-bottom:36px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--border);}
   .profile-avatar-wrap{width:116px;height:116px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
+  .profile-avatar-wrap::before{
+    content:'';position:absolute;inset:-10px;border-radius:50%;z-index:-1;
+    background:radial-gradient(circle,rgba(226,114,91,0.35),transparent 70%);
+    filter:blur(10px);animation:avatar-glow-pulse 3s ease-in-out infinite;
+  }
   .profile-avatar-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:#fff;}
   .profile-avatar-photo{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;}
   .profile-header-info{flex:1;min-width:220px;padding-top:2px;}
@@ -583,7 +594,12 @@
 
   /* ---- Module de réservation (colonne collante) ---- */
   .profile-booking-col{width:378px;flex-shrink:0;}
-  .booking-card{position:sticky;top:104px;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px;}
+  .booking-card{
+    position:sticky;top:104px;
+    background:rgba(255,255,255,0.65);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.6);border-radius:var(--radius-lg);
+    box-shadow:0 10px 40px rgba(122,53,36,0.1);padding:28px;
+  }
   .booking-card-header{margin-bottom:20px;}
   .booking-price-from{font-family:var(--font-display);font-size:1.28rem;font-weight:700;}
   .booking-price-from small{font-family:var(--font-body);font-weight:500;font-size:0.78rem;color:var(--ink-soft);}
@@ -885,6 +901,7 @@
     animation:glow-pulse 1.8s ease-in-out infinite;
   }
   @keyframes glow-pulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.18);}}
+  @keyframes avatar-glow-pulse{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
 
   .cauldron{position:relative;width:200px;height:150px;}
   .cauldron.shaking{animation:cauldron-shake 0.4s ease-in-out infinite;}
@@ -4202,25 +4219,35 @@ document.addEventListener('DOMContentLoaded', () => {
         '</div>';
       }
 
-      html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations reçues' : 'Mes réservations') + '</h2>';
-      if (!myBookings.length){
-        html += '<p class="admin-empty-note">Aucune réservation pour le moment.</p>';
-      } else {
-        html += '<div class="admin-list">' + myBookings.map(b => {
-          const statusLabel = b.status === 'confirmed' ? 'Payée' : b.status === 'cancelled' ? 'Annulée' : 'En attente de paiement';
-          const canCancel = userRole === 'host' && b.status === 'confirmed';
-          return '<div class="admin-item">' +
-            '<div class="admin-item-head">' +
-              '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
-              '<span class="admin-status ' + b.status + '">' + statusLabel + '</span>' +
-            '</div>' +
-            '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') +
-              (b.status === 'cancelled' && b.refundPercent !== undefined ? ' · ' + b.refundPercent + '% remboursé' : '') +
-            '</div>' +
-            (canCancel ? '<div class="admin-item-actions"><button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button></div>' : '') +
-          '</div>';
-        }).join('') + '</div>';
+      const todayStr = new Date().toISOString().split('T')[0];
+      const upcomingBookings = myBookings.filter(b => b.status !== 'cancelled' && b.eventDate && b.eventDate >= todayStr);
+      const historyBookings = myBookings.filter(b => b.status === 'cancelled' || !b.eventDate || b.eventDate < todayStr);
+
+      function bookingItemHTML(b){
+        const statusLabel = b.status === 'confirmed' ? 'Payée' : b.status === 'cancelled' ? 'Annulée' : 'En attente de paiement';
+        const canCancel = userRole === 'host' && b.status === 'confirmed' && b.eventDate >= todayStr;
+        return '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
+            '<span class="admin-status ' + b.status + '">' + statusLabel + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') +
+            (b.status === 'cancelled' && b.refundPercent !== undefined ? ' · ' + b.refundPercent + '% remboursé' : '') +
+          '</div>' +
+          (canCancel ? '<div class="admin-item-actions"><button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button></div>' : '') +
+        '</div>';
       }
+
+      html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations à venir' : 'Mes réservations à venir') + '</h2>';
+      html += upcomingBookings.length
+        ? '<div class="admin-list">' + upcomingBookings.map(bookingItemHTML).join('') + '</div>'
+        : '<p class="admin-empty-note">Aucune réservation à venir pour le moment.</p>';
+      html += '</div>';
+
+      html += '<div class="my-space-section"><h2>📜 Historique des repas</h2>';
+      html += historyBookings.length
+        ? '<div class="admin-list">' + historyBookings.map(bookingItemHTML).join('') + '</div>'
+        : '<p class="admin-empty-note">Votre historique est vide pour le moment.</p>';
       html += '</div>';
 
       contentEl.innerHTML = html;
