@@ -771,6 +771,24 @@
   .admin-panel{padding-bottom:90px;}
   .admin-list{display:flex;flex-direction:column;gap:12px;}
   .admin-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 22px;}
+  .admin-item-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+  .host-reputation-badge{
+    display:inline-block;padding:3px 10px;border-radius:var(--radius-full);font-size:0.78rem;font-weight:700;
+    background:var(--sage-tint);color:var(--sage-dark);
+  }
+  .host-reputation-badge.low{background:#FBE4DE;color:var(--terracotta-dark);}
+  .host-reputation-badge.new{background:var(--cream-alt);color:var(--ink-faint);}
+  .review-form-wrap:not([hidden]){margin-top:14px;padding-top:14px;border-top:1px solid var(--border);}
+  .review-form{display:flex;flex-direction:column;gap:10px;}
+  .review-form-label{font-size:0.85rem;font-weight:700;margin:0;}
+  .star-picker{display:flex;gap:6px;}
+  .star-pick-btn{font-size:1.5rem;color:var(--border);line-height:1;padding:0;background:none;border:none;transition:color 0.15s ease,transform 0.15s ease;}
+  .star-pick-btn:hover{transform:scale(1.15);}
+  .star-pick-btn.active{color:#D9A441;}
+  .review-comment-input{
+    width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+    font-family:inherit;font-size:0.9rem;resize:vertical;min-height:70px;box-sizing:border-box;
+  }
   .admin-item-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
   .admin-item-title{font-weight:700;font-family:var(--font-display);font-size:1.02rem;}
   .admin-item-meta{font-size:0.82rem;color:var(--ink-faint);margin-bottom:8px;}
@@ -798,6 +816,28 @@
   .my-space-section h2{font-size:1.2rem;margin-bottom:16px;}
   .my-profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;}
   .my-profile-card p{font-size:0.92rem;}
+
+  /* ===================== FEED DE PHOTOS DE PLATS ===================== */
+  .dish-photos-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-bottom:20px;
+  }
+  .dish-photo-item{position:relative;border-radius:var(--radius-md);overflow:hidden;aspect-ratio:1/1;background:var(--cream-alt);}
+  .dish-photo-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  .dish-photo-caption{
+    position:absolute;left:0;right:0;bottom:0;padding:8px 10px 6px;
+    background:linear-gradient(0deg,rgba(0,0,0,0.65),transparent);color:#fff;font-size:0.76rem;line-height:1.3;
+  }
+  .dish-photo-remove-btn{
+    position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;
+    background:rgba(0,0,0,0.55);color:#fff;font-size:0.85rem;line-height:1;
+    display:flex;align-items:center;justify-content:center;transition:background 0.2s ease;
+  }
+  .dish-photo-remove-btn:hover{background:rgba(166,74,52,0.9);}
+  .dish-photo-upload-form{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .dish-photo-upload-form input[type="text"]{
+    flex:1;min-width:160px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;
+  }
+  .dish-photo-upload-form input[type="file"]{font-size:0.85rem;max-width:220px;}
 
   /* ===================== MESSAGERIE ===================== */
   .messages-layout{display:grid;grid-template-columns:280px 1fr;gap:24px;padding-bottom:60px;min-height:60vh;}
@@ -833,6 +873,29 @@
   .formula-edit-row .formula-name-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .formula-edit-row .formula-price-input{width:100px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .remove-formula-btn{background:none;border:none;color:var(--terracotta-dark);font-size:1.1rem;cursor:pointer;padding:4px 8px;}
+
+  /* ===================== SIGNALEMENT PRIORITAIRE ===================== */
+  .report-issue-overlay[hidden]{display:none !important;}
+  .report-issue-overlay{
+    position:fixed;inset:0;z-index:500;background:rgba(36,20,14,0.55);
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .report-issue-modal{
+    position:relative;background:var(--white);border-radius:var(--radius-lg);
+    max-width:480px;width:100%;padding:34px 30px;box-shadow:var(--shadow-lg);
+  }
+  .report-issue-badge{
+    display:inline-block;background:#FBE4DE;color:var(--terracotta-dark);
+    padding:6px 14px;border-radius:var(--radius-full);font-size:0.8rem;font-weight:800;margin-bottom:14px;
+  }
+  .report-issue-modal h2{font-family:var(--font-display);font-size:1.4rem;margin-bottom:12px;}
+  .report-issue-intro{font-size:0.88rem;color:var(--ink-soft);margin-bottom:20px;line-height:1.5;}
+  #reportIssueForm label{display:block;font-size:0.82rem;font-weight:700;margin:14px 0 6px;}
+  #reportIssueForm textarea, #reportIssueForm input{
+    width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+    font-family:inherit;font-size:0.92rem;box-sizing:border-box;resize:vertical;
+  }
+  #reportIssueForm button[type="submit"]{width:100%;margin-top:18px;}
 </style>
 </head>
 <body>
@@ -1088,7 +1151,7 @@
           <h4>À propos</h4>
           <ul>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Notre histoire</a></li>
-            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Charte de confiance</a></li>
+            <li><a href="#" class="go-to-safety-charter">Charte de confiance</a></li>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">At'Chef à Nantes</a></li>
             <li><a href="#" class="go-to-contact">Nous contacter</a></li>
           </ul>
@@ -1255,6 +1318,11 @@
       <section class="profile-section">
         <h2>Spécialités</h2>
         <div class="specialty-pills" id="profileSpecialties"></div>
+      </section>
+
+      <section class="profile-section" id="profileDishPhotosSection" hidden>
+        <h2>Ses plats</h2>
+        <div class="dish-photos-grid dish-photos-grid-public" id="profileDishPhotos"></div>
       </section>
 
       <section class="profile-section" id="profileTrainingSection">
@@ -1885,6 +1953,88 @@
   </div>
 </div>
 
+<!-- ============ VUE LÉGALE : CHARTE DE CONFIANCE ET SÉCURITÉ ============ -->
+<div id="view-safety-charter" class="app-view" hidden>
+  <div class="container profile-toolbar">
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
+  </div>
+  <div class="container legal-layout">
+    <span class="eyebrow">Confiance & sécurité</span>
+    <div class="legal-draft-banner">
+      ⚠️ <strong>Document provisoire.</strong> Les engagements ci-dessous reflètent notre politique actuelle ; certains détails (coordonnées, moyens précis) restent à compléter avant publication définitive.
+    </div>
+    <div class="legal-content">
+<h1>Charte de confiance et de sécurité</h1>
+<p><em>Dernière révision du brouillon : 30 juillet 2026</em></p>
+<hr />
+<p>At'Chef met en relation des Hôtes et des Cuisiniers pour un moment qui se déroule <strong>chez l'Hôte</strong>. Cette proximité est ce qui rend l'expérience chaleureuse — et c'est aussi pourquoi nous prenons la sécurité de chacun très au sérieux. Cette charte explique concrètement ce que nous mettons en place, et ce que nous attendons de chaque Utilisateur.</p>
+
+<h2>1. Une identité vérifiée des deux côtés</h2>
+<p>Avant de pouvoir réserver, chaque Hôte doit vérifier son identité (pièce d'identité officielle). Chaque Cuisinier passe par le même processus de vérification lors de son inscription bancaire. <strong>L'anonymat total n'existe pas sur At'Chef</strong> : derrière chaque compte se trouve une personne identifiée, ce qui dissuade fortement les comportements abusifs et permet d'agir rapidement en cas de problème avéré.</p>
+
+<h2>2. Un droit absolu de refuser ou d'interrompre</h2>
+<p>Un Cuisinier peut refuser une réservation sans avoir à se justifier. Plus important encore : <strong>un Cuisinier a le droit de mettre fin à une prestation à tout moment s'il se sent en danger, humilié ou mal à l'aise</strong>, sans pénalité financière de sa part et sans que cela ne lui soit reproché. At'Chef examinera systématiquement le contexte avant toute décision concernant l'Hôte impliqué.</p>
+
+<h2>3. Des avis dans les deux sens</h2>
+<p>Contrairement à beaucoup de plateformes, l'avis ne va pas que dans un sens : <strong>le Cuisinier note aussi l'Hôte</strong> après chaque prestation. Ces avis ne sont jamais rendus publics, mais ils permettent à un futur Cuisinier sollicité par ce même Hôte de voir immédiatement s'il a déjà posé problème par le passé, avant même d'accepter la réservation.</p>
+
+<h2>4. Un signalement prioritaire, à tout moment</h2>
+<p>Depuis son espace personnel, tout Utilisateur peut signaler un problème en cours sur une réservation via un formulaire prioritaire, distinct du support classique. Ce signalement est traité en priorité absolue par notre équipe.</p>
+<p><strong>En cas de danger immédiat, contactez d'abord les services d'urgence (17 pour la police, 112 numéro d'urgence européen) — le signalement sur At'Chef vient en complément, jamais à la place.</strong></p>
+
+<h2>5. Tolérance zéro</h2>
+<p>Tout comportement de harcèlement, d'intimidation, de violence ou d'atteinte à la dignité — sous quelque forme que ce soit — donne lieu, une fois le signalement examiné :</p>
+<ul>
+<li>à la <strong>suspension immédiate</strong> du compte concerné le temps de l'examen des faits ;</li>
+<li>à un <strong>bannissement définitif</strong> en cas de comportement confirmé, sans remboursement pour la personne à l'origine du comportement signalé ;</li>
+<li>à un signalement aux autorités compétentes pour tout fait pouvant relever d'une infraction pénale.</li>
+</ul>
+<p>Cette règle s'applique aussi bien aux Hôtes qu'aux Cuisiniers : la confiance se construit dans les deux sens.</p>
+
+<h2>6. Ce que nous attendons de chaque Hôte</h2>
+<ul>
+<li>Traiter le Cuisinier avec le respect dû à toute personne qui entre dans votre foyer pour travailler ;</li>
+<li>Ne jamais mettre le Cuisinier dans une situation d'inconfort, de pression ou de danger ;</li>
+<li>Indiquer sincèrement le nombre de convives réel lors de la réservation.</li>
+</ul>
+
+<h2>7. Ce que nous attendons de chaque Cuisinier</h2>
+<ul>
+<li>Respecter les règles d'hygiène alimentaire de base ;</li>
+<li>Traiter l'Hôte et ses convives avec professionnalisme ;</li>
+<li>Signaler sans attendre tout comportement problématique, même mineur en apparence.</li>
+</ul>
+
+<h2>8. Une démarche en amélioration continue</h2>
+<p>Cette charte n'est pas figée : elle évoluera avec les retours de notre communauté et les situations rencontrées. At'Chef reste une jeune plateforme, humble sur le sujet — nous préférons le dire clairement plutôt que de promettre une sécurité absolue qu'aucune plateforme ne peut garantir. Ce que nous garantissons, c'est notre vigilance et notre réactivité.</p>
+<hr />
+<p><em>Pour toute question sur cette charte, ou pour signaler une situation passée non couverte par le formulaire prioritaire, contactez-nous via notre page de contact.</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODALE : SIGNALER UN PROBLÈME (prioritaire) ============ -->
+<div id="reportIssueOverlay" class="report-issue-overlay" hidden>
+  <div class="report-issue-modal">
+    <button type="button" class="booster-close" id="reportIssueCloseBtn" aria-label="Fermer">✕</button>
+    <span class="report-issue-badge">🚨 Signalement prioritaire</span>
+    <h2>Un problème pendant une prestation ?</h2>
+    <p class="report-issue-intro">
+      Décrivez ce qui se passe. Ce signalement remonte immédiatement et en priorité à notre équipe.
+      <strong>Si vous êtes en danger immédiat, contactez d'abord le 17 (police) ou le 112.</strong>
+    </p>
+    <form id="reportIssueForm">
+      <input type="hidden" id="reportIssueBookingId">
+      <label for="reportIssueMessage">Que se passe-t-il ?</label>
+      <textarea id="reportIssueMessage" rows="5" required maxlength="1000" placeholder="Décrivez la situation le plus précisément possible…"></textarea>
+      <label for="reportIssuePhone">Un numéro où vous joindre tout de suite (facultatif)</label>
+      <input type="tel" id="reportIssuePhone" placeholder="06 12 34 56 78">
+      <p class="booking-error" id="reportIssueError" hidden></p>
+      <button type="submit" class="btn btn-primary">Envoyer le signalement</button>
+    </form>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -2323,6 +2473,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  async function loadRealReviews(cookId){
+    if (!isBackendConfigured()) return;
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/reviews');
+      if (!res.ok) return;
+      const reviews = await res.json();
+      if (!reviews.length) return;
+
+      const container = document.getElementById('profileReviews');
+      const emptyNote = container.querySelector('.no-reviews-note');
+      if (emptyNote) emptyNote.remove();
+
+      const realReviewsHTML = reviews.map(r => {
+        const date = new Date(r.createdAt).toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' });
+        return '<div class="review-item"><div class="review-item-head"><span class="review-author">Hôte vérifié</span><span class="review-date">' + date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(r.rating) + '</span>' +
+          (r.comment ? '<p class="review-comment">' + r.comment.replace(/</g, '&lt;') + '</p>' : '') +
+        '</div>';
+      }).join('');
+      container.innerHTML = realReviewsHTML + container.innerHTML;
+    } catch (e) {
+      // Si les avis ne peuvent pas être chargés, la page reste utilisable
+      // (avec simplement les témoignages de démonstration déjà affichés).
+    }
+  }
+
   function renderTrainingSection(chef){
     const content = document.getElementById('profileTrainingContent');
     if (chef.training && chef.training.length){
@@ -2454,6 +2629,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('profileBio').textContent = chef.bio;
     document.getElementById('profileSpecialties').innerHTML = chef.specialties.map(s => '<span>' + s + '</span>').join('');
 
+    const dishPhotosSection = document.getElementById('profileDishPhotosSection');
+    if (chef.dishPhotos && chef.dishPhotos.length){
+      dishPhotosSection.hidden = false;
+      document.getElementById('profileDishPhotos').innerHTML = chef.dishPhotos.map(p =>
+        '<div class="dish-photo-item">' +
+          '<img src="' + p.url + '" alt="' + (p.caption ? p.caption.replace(/"/g, '&quot;') : 'Plat de ' + chef.name) + '" loading="lazy">' +
+          (p.caption ? '<p class="dish-photo-caption">' + p.caption + '</p>' : '') +
+        '</div>'
+      ).join('');
+    } else {
+      dishPhotosSection.hidden = true;
+    }
+
     renderTrainingSection(chef);
 
     document.getElementById('profileFormulasInfo').innerHTML = chef.formulas.map(f =>
@@ -2465,6 +2653,7 @@ document.addEventListener('DOMContentLoaded', () => {
           '<div class="review-item"><div class="review-item-head"><span class="review-author">' + t.author + '</span><span class="review-date">' + t.date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(t.rating) + '</span><p class="review-comment">' + t.comment + '</p></div>'
         ).join('')
       : '<p class="no-reviews-note">Aucun avis pour le moment — soyez le premier à réserver chez ce cuisinier !</p>';
+    loadRealReviews(chef.id);
 
     document.getElementById('bookingBasePrice').textContent = chef.price;
     renderFormulaOptions(chef);
@@ -2569,6 +2758,7 @@ document.addEventListener('DOMContentLoaded', () => {
       identityVerified: !!bc.identityVerified,
       lat: (typeof bc.lat === 'number') ? bc.lat : null,
       lng: (typeof bc.lng === 'number') ? bc.lng : null,
+      dishPhotos: bc.dishPhotos || [],
     };
   }
 
@@ -3158,6 +3348,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const privacyTarget = e.target.closest('.go-to-privacy');
     if (privacyTarget){ e.preventDefault(); showView('privacy'); return; }
 
+    const safetyCharterTarget = e.target.closest('.go-to-safety-charter');
+    if (safetyCharterTarget){ e.preventDefault(); showView('safety-charter'); return; }
+
     const adminLoginTarget = e.target.closest('.go-to-admin-login');
     if (adminLoginTarget){ e.preventDefault(); showView('admin-login'); return; }
 
@@ -3640,6 +3833,131 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ---------- Avis à double sens (hôte ↔ cuisinier) ---------- */
+  document.getElementById('mySpaceContent').addEventListener('click', (e) => {
+    const openBtn = e.target.closest('.open-review-btn');
+    if (openBtn){
+      const bookingId = openBtn.dataset.bookingId;
+      const wrap = document.getElementById('reviewForm-' + bookingId);
+      const alreadyOpen = !wrap.hidden;
+      // Referme tous les autres formulaires ouverts, pour n'en garder qu'un a la fois
+      document.querySelectorAll('.review-form-wrap').forEach(w => { w.hidden = true; w.innerHTML = ''; });
+      if (alreadyOpen) return;
+
+      wrap.hidden = false;
+      wrap.innerHTML =
+        '<div class="review-form">' +
+          '<p class="review-form-label">Votre note :</p>' +
+          '<div class="star-picker" data-rating="0" data-booking-id="' + bookingId + '">' +
+            [1,2,3,4,5].map(n => '<button type="button" class="star-pick-btn" data-value="' + n + '">★</button>').join('') +
+          '</div>' +
+          '<textarea class="review-comment-input" placeholder="Un commentaire (facultatif)" maxlength="500"></textarea>' +
+          '<button type="button" class="btn btn-primary btn-sm submit-review-btn" data-booking-id="' + bookingId + '">Envoyer mon avis</button>' +
+        '</div>';
+      return;
+    }
+
+    const starBtn = e.target.closest('.star-pick-btn');
+    if (starBtn){
+      const picker = starBtn.closest('.star-picker');
+      const value = parseInt(starBtn.dataset.value, 10);
+      picker.dataset.rating = value;
+      picker.querySelectorAll('.star-pick-btn').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.value, 10) <= value);
+      });
+      return;
+    }
+  });
+
+  document.getElementById('mySpaceContent').addEventListener('click', async (e) => {
+    const submitBtn = e.target.closest('.submit-review-btn');
+    if (!submitBtn) return;
+
+    const bookingId = submitBtn.dataset.bookingId;
+    const wrap = document.getElementById('reviewForm-' + bookingId);
+    const picker = wrap.querySelector('.star-picker');
+    const rating = parseInt(picker.dataset.rating, 10);
+    const comment = wrap.querySelector('.review-comment-input').value.trim();
+
+    if (!rating){
+      showToast('⚠️ Choisissez une note (étoiles) avant d\'envoyer.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/bookings/' + bookingId + '/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+        body: JSON.stringify({ rating, comment }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi de l'avis");
+      showToast('✅ Merci pour votre avis !');
+      loadMySpace();
+    } catch (err) {
+      showToast('❌ ' + err.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer mon avis';
+    }
+  });
+
+  /* ---------- Signalement prioritaire (sécurité pendant une prestation) ---------- */
+  document.getElementById('mySpaceContent').addEventListener('click', (e) => {
+    const btn = e.target.closest('.report-issue-btn');
+    if (!btn) return;
+    document.getElementById('reportIssueBookingId').value = btn.dataset.bookingId;
+    document.getElementById('reportIssueMessage').value = '';
+    document.getElementById('reportIssuePhone').value = '';
+    document.getElementById('reportIssueError').hidden = true;
+    document.getElementById('reportIssueOverlay').hidden = false;
+    document.getElementById('reportIssueMessage').focus();
+  });
+
+  document.getElementById('reportIssueCloseBtn').addEventListener('click', () => {
+    document.getElementById('reportIssueOverlay').hidden = true;
+  });
+
+  document.getElementById('reportIssueForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('reportIssueError');
+    errorEl.hidden = true;
+
+    const bookingId = document.getElementById('reportIssueBookingId').value;
+    const message = document.getElementById('reportIssueMessage').value.trim();
+    const phone = document.getElementById('reportIssuePhone').value.trim();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+
+    try {
+      const res = await fetch(BACKEND_URL + '/api/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: userName || 'Utilisateur connecté',
+          email: userEmail || 'non renseigné',
+          role: userRole,
+          subject: '🚨 SIGNALEMENT PRIORITAIRE — Réservation #' + bookingId,
+          message: message + (phone ? '\n\nNuméro de contact immédiat : ' + phone : ''),
+          priority: 'urgent',
+          bookingId,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
+      document.getElementById('reportIssueOverlay').hidden = true;
+      showToast('✅ Signalement envoyé — notre équipe a été alertée en priorité.');
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le signalement';
+    }
+  });
+
   /* ============================================================
      MESSAGERIE
      ============================================================ */
@@ -3830,6 +4148,17 @@ document.addEventListener('DOMContentLoaded', () => {
             '</form>' +
           '</div>';
 
+        html += '<div class="my-space-section"><h2>Mes plats</h2>' +
+          '<p class="filter-hint">Ajoutez des photos de vos réalisations pour donner envie aux futurs hôtes — 12 photos maximum.</p>' +
+          '<div class="dish-photos-grid" id="dishPhotosGrid"></div>' +
+          '<form id="dishPhotoUploadForm" class="dish-photo-upload-form">' +
+            '<input type="file" id="dishPhotoInput" accept="image/jpeg,image/png,image/webp" required>' +
+            '<input type="text" id="dishPhotoCaption" placeholder="Légende (facultatif)" maxlength="140">' +
+            '<button type="submit" class="btn btn-primary btn-sm">Ajouter cette photo</button>' +
+          '</form>' +
+          '<p class="booking-error" id="dishPhotoError" hidden></p>' +
+        '</div>';
+
         html += '<div class="my-space-section"><h2>Mon calendrier de disponibilité</h2>' +
           '<p class="filter-hint">Cliquez sur un jour futur pour le marquer indisponible (ou le rendre à nouveau disponible). Les jours déjà réservés sont automatiquement bloqués.</p>' +
           '<div class="mini-calendar" style="max-width:360px;">' +
@@ -3856,6 +4185,14 @@ document.addEventListener('DOMContentLoaded', () => {
       function bookingItemHTML(b){
         const statusLabel = b.status === 'confirmed' ? 'Payée' : b.status === 'cancelled' ? 'Annulée' : 'En attente de paiement';
         const canCancel = userRole === 'host' && b.status === 'confirmed' && b.eventDate >= todayStr;
+        const canReview = b.status === 'confirmed' && b.eventDate && b.eventDate <= todayStr;
+
+        // Côté cuisinier : la réputation de l'hôte (avis laissés par d'autres
+        // cuisiniers), pour repérer un hôte à risque avant même la prestation.
+        const hostReputationHTML = (userRole === 'cook' && b.hostReviewsCount > 0)
+          ? '<span class="host-reputation-badge' + (b.hostRating < 3 ? ' low' : '') + '">★ ' + b.hostRating.toFixed(1).replace('.', ',') + ' (avis cuisiniers)</span>'
+          : (userRole === 'cook' ? '<span class="host-reputation-badge new">🆕 Premier avis pour cet hôte</span>' : '');
+
         return '<div class="admin-item">' +
           '<div class="admin-item-head">' +
             '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
@@ -3864,7 +4201,13 @@ document.addEventListener('DOMContentLoaded', () => {
           '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') +
             (b.status === 'cancelled' && b.refundPercent !== undefined ? ' · ' + b.refundPercent + '% remboursé' : '') +
           '</div>' +
-          (canCancel ? '<div class="admin-item-actions"><button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button></div>' : '') +
+          (hostReputationHTML ? '<div class="admin-item-meta">' + hostReputationHTML + '</div>' : '') +
+          '<div class="admin-item-actions">' +
+            (canCancel ? '<button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button>' : '') +
+            (canReview ? '<button type="button" class="btn btn-outline btn-sm open-review-btn" data-booking-id="' + b.id + '">' + (userRole === 'cook' ? "Noter l'hôte" : 'Noter le cuisinier') + '</button>' : '') +
+            '<button type="button" class="btn btn-outline btn-sm report-issue-btn" data-booking-id="' + b.id + '" data-booking-title="' + (b.formulaName || 'Réservation') + '">🚨 Signaler un problème</button>' +
+          '</div>' +
+          '<div class="review-form-wrap" id="reviewForm-' + b.id + '" hidden></div>' +
         '</div>';
       }
 
@@ -3883,6 +4226,7 @@ document.addEventListener('DOMContentLoaded', () => {
       contentEl.innerHTML = html;
       if (userRole === 'cook'){
         wireCookProfileEditForm(profile, headers);
+        wireDishPhotosManager(profile, headers);
         const bookedDates = myBookings.filter(b => b.status === 'confirmed' && b.eventDate).map(b => b.eventDate);
         wireCookAvailabilityCalendar(profile, headers, bookedDates);
       }
@@ -3969,6 +4313,92 @@ document.addEventListener('DOMContentLoaded', () => {
         errorEl.hidden = false;
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enregistrer les modifications';
+      }
+    });
+  }
+
+  /**
+   * Branche la gestion du feed de photos de plats : affichage en grille,
+   * envoi d'une nouvelle photo (upload réel de fichier vers le serveur),
+   * suppression d'une photo existante.
+   */
+  function wireDishPhotosManager(profile, headers){
+    let currentPhotos = profile.dishPhotos || [];
+
+    function renderGrid(){
+      const grid = document.getElementById('dishPhotosGrid');
+      if (!currentPhotos.length){
+        grid.innerHTML = '<p class="admin-empty-note">Aucune photo pour le moment — ajoutez-en une ci-dessous !</p>';
+        return;
+      }
+      grid.innerHTML = currentPhotos.map((p, i) =>
+        '<div class="dish-photo-item">' +
+          '<img src="' + p.url + '" alt="' + (p.caption ? p.caption.replace(/"/g, '&quot;') : 'Plat du cuisinier') + '" loading="lazy">' +
+          (p.caption ? '<p class="dish-photo-caption">' + p.caption + '</p>' : '') +
+          '<button type="button" class="dish-photo-remove-btn" data-index="' + i + '" aria-label="Supprimer cette photo">✕</button>' +
+        '</div>'
+      ).join('');
+    }
+    renderGrid();
+
+    document.getElementById('dishPhotosGrid').addEventListener('click', async (e) => {
+      const btn = e.target.closest('.dish-photo-remove-btn');
+      if (!btn) return;
+      btn.disabled = true;
+      try {
+        const res = await fetch(BACKEND_URL + '/api/my/dish-photos/' + btn.dataset.index, {
+          method: 'DELETE',
+          headers: { 'Authorization': headers.Authorization },
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erreur lors de la suppression');
+        currentPhotos = data.dishPhotos;
+        renderGrid();
+      } catch (err) {
+        showToast('❌ ' + err.message);
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById('dishPhotoUploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errorEl = document.getElementById('dishPhotoError');
+      errorEl.hidden = true;
+
+      const fileInput = document.getElementById('dishPhotoInput');
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('photo', file);
+      formData.append('caption', document.getElementById('dishPhotoCaption').value.trim());
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+
+      try {
+        // Important : PAS de 'Content-Type' ici — le navigateur doit fixer
+        // lui-même l'en-tête multipart/form-data avec sa "boundary", ce
+        // qu'on empêcherait en le définissant nous-mêmes.
+        const res = await fetch(BACKEND_URL + '/api/my/dish-photos', {
+          method: 'POST',
+          headers: { 'Authorization': headers.Authorization },
+          body: formData,
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
+        currentPhotos = data.dishPhotos;
+        renderGrid();
+        fileInput.value = '';
+        document.getElementById('dishPhotoCaption').value = '';
+        showToast('✅ Photo ajoutée !');
+      } catch (err) {
+        errorEl.textContent = '❌ ' + err.message;
+        errorEl.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Ajouter cette photo';
       }
     });
   }
