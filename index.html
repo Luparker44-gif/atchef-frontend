@@ -1,9 +1,3 @@
-bash
-rm -f /home/claude/atchef-site/test.txt
-mkdir -p /home/claude/atchef-site
-echo "Dossier prêt"
-bash
-cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -35,8 +29,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
     --font-display:'Bodoni Moda', 'Big Caslon', Georgia, 'Times New Roman', serif;
     --font-body:'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --radius-sm:8px;
-
-   --radius-md:14px;
+    --radius-md:14px;
     --radius-lg:22px;
     --radius-full:999px;
     --shadow-sm:0 2px 10px rgba(36,30,24,0.07);
@@ -68,8 +61,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .btn-lg{padding:16px 32px;font-size:1.02rem;}
   .btn-sm{padding:9px 18px;font-size:0.85rem;border-radius:var(--radius-sm);}
   .btn-block{width:100%;}
-
- .site-header{position:sticky;top:0;z-index:100;background:rgba(251,246,239,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color 0.3s ease, box-shadow 0.3s ease;}
+  .site-header{position:sticky;top:0;z-index:100;background:rgba(251,246,239,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color 0.3s ease, box-shadow 0.3s ease;}
   .site-header.scrolled{border-bottom-color:var(--border);box-shadow:var(--shadow-sm);}
   .nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:82px;gap:20px;}
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--ink);flex-shrink:0;}
@@ -101,8 +93,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .tilt-card{transform-style:preserve-3d;transition:transform 0.15s ease-out;will-change:transform;}
   .tilt-card.tilt-resting{transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);}
   .tilt-glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:5;background:transparent;mix-blend-mode:overlay;transition:background 0.15s ease-out;}
-
- @keyframes card-float{0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); }}
+  @keyframes card-float{0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); }}
   .tilt-card-idle{animation:card-float 5s ease-in-out infinite;}
   .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center;}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);padding:8px 16px;border-radius:var(--radius-full);font-size:0.82rem;font-weight:700;color:var(--terracotta-dark);box-shadow:var(--shadow-sm);margin-bottom:22px;}
@@ -134,8 +125,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .stepper span{font-weight:700;font-size:1.05rem;min-width:18px;text-align:center;}
   .search-submit{margin-top:20px;}
   @media (max-width:900px){.hero-grid{grid-template-columns:1fr;} .hero h1{font-size:2.5rem;} .reservation-card{transform:rotate(0);max-width:440px;}}
-
- @media (max-width:480px){.hero{padding:44px 0 64px;} .hero h1{font-size:2.05rem;} .hero-ctas{flex-direction:column;} .hero-ctas .btn{width:100%;}}
+  @media (max-width:480px){.hero{padding:44px 0 64px;} .hero h1{font-size:2.05rem;} .hero-ctas{flex-direction:column;} .hero-ctas .btn{width:100%;}}
   .section-head{text-align:center;max-width:640px;margin:0 auto 52px;}
   .eyebrow{display:inline-block;color:var(--sage-dark);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-size:0.8rem;margin-bottom:14px;}
   .section-head h2{font-size:clamp(1.9rem,4vw,2.5rem);margin-bottom:16px;}
@@ -167,8 +157,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:46px;height:46px;border-radius:50%;background:var(--white);box-shadow:var(--shadow-md);font-size:1.6rem;color:var(--terracotta-dark);display:flex;align-items:center;justify-content:center;transition:background 0.2s ease,transform 0.2s ease;}
   .carousel-arrow:hover{background:var(--terracotta-tint);transform:translateY(-50%) scale(1.08);}
   .carousel-arrow-left{left:0;}
-
- .carousel-arrow-right{right:0;}
+  .carousel-arrow-right{right:0;}
   .carousel-hint{text-align:center;font-size:0.85rem;color:var(--ink-faint);margin-bottom:44px;}
   @media (min-width:761px){.carousel-hint{display:none;}}
   @media (max-width:900px){.chef-carousel{height:auto;padding:20px 0 40px;} .carousel-arrow{display:none;}}
@@ -200,8 +189,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .closing{background:var(--ink);color:var(--cream);}
   .closing-cta{padding:90px 0 64px;text-align:center;position:relative;}
   .closing-cta h2{color:var(--cream);font-size:clamp(1.9rem,4vw,2.5rem);margin-bottom:16px;}
-
- .closing-cta p{color:rgba(251,246,239,0.72);font-size:1.05rem;max-width:520px;margin:0 auto 32px;}
+  .closing-cta p{color:rgba(251,246,239,0.72);font-size:1.05rem;max-width:520px;margin:0 auto 32px;}
   .closing-cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
   .closing-divider{border:none;border-top:1px solid rgba(251,246,239,0.12);margin:0;}
   footer{padding:64px 0 0;}
@@ -233,8 +221,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   @media (max-width:640px){.footer-grid{grid-template-columns:1fr;} .footer-brand{grid-column:span 1;} .footer-bottom{flex-direction:column;align-items:flex-start;}}
   .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:var(--cream);padding:14px 26px;border-radius:var(--radius-full);font-size:0.88rem;font-weight:600;box-shadow:var(--shadow-lg);z-index:1000;opacity:0;transition:transform 0.4s cubic-bezier(.2,.9,.3,1.2), opacity 0.4s ease;max-width:90vw;text-align:center;}
   .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
-
- .reveal{opacity:0;transform:translateY(28px) scale(0.98);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);}
+  .reveal{opacity:0;transform:translateY(28px) scale(0.98);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);}
   .reveal.visible{opacity:1;transform:translateY(0) scale(1);}
   .steps-grid .step-card:nth-child(1){transition-delay:0s;}
   .steps-grid .step-card:nth-child(2){transition-delay:0.12s;}
@@ -266,8 +253,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .filters-panel-head-actions{display:flex;align-items:center;gap:14px;}
   .filters-panel-close{display:none;font-size:1.2rem;color:var(--ink-soft);padding:4px;}
   .reset-filters-link{font-size:0.84rem;font-weight:700;color:var(--terracotta-dark);text-decoration:underline;text-underline-offset:3px;}
-
- .filter-group{padding:18px 0;border-bottom:1px solid var(--border);}
+  .filter-group{padding:18px 0;border-bottom:1px solid var(--border);}
   .filter-group:first-of-type{padding-top:0;}
   .filter-group h3{font-family:var(--font-body);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:800;color:var(--ink-faint);margin-bottom:14px;}
   .filter-option{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:0.93rem;font-weight:600;cursor:pointer;color:var(--ink);}
@@ -299,8 +285,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   @media (max-width:1100px){.results-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:900px){.filters-panel{position:fixed;top:0;left:0;bottom:0;width:min(84vw,340px);z-index:200;background:var(--white);padding:24px 22px 32px;overflow-y:auto;transform:translateX(-100%);transition:transform 0.32s ease;box-shadow:var(--shadow-lg);} .filters-panel.open{transform:translateX(0);} .filters-panel-close{display:block;} .filters-backdrop{display:block;} .filters-apply-mobile{display:flex;} .mobile-filters-toggle{display:inline-flex;} .results-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:640px){.results-grid{grid-template-columns:1fr;} .results-header{flex-direction:column;align-items:flex-start;}}
-
- .profile-toolbar{padding:28px 0 8px;}
+  .profile-toolbar{padding:28px 0 8px;}
   .profile-layout{display:flex;gap:48px;align-items:flex-start;padding:20px 0 100px;}
   .profile-main{flex:1;min-width:0;max-width:700px;}
   .profile-header{display:flex;gap:24px;align-items:flex-start;margin-bottom:36px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid var(--border);}
@@ -332,8 +317,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .formula-info-includes li::before{content:'✓';position:absolute;left:0;color:var(--sage-dark);font-weight:800;}
   .reviews-list{display:flex;flex-direction:column;gap:14px;}
   .review-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px 20px;}
-
- .review-item-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+  .review-item-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
   .review-author{font-weight:700;font-size:0.92rem;}
   .review-date{font-size:0.78rem;color:var(--ink-faint);}
   .review-stars{color:var(--gold);letter-spacing:2px;display:block;margin-bottom:8px;font-size:0.82rem;}
@@ -365,8 +349,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .booking-field textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-family:inherit;font-size:0.9rem;color:var(--ink);resize:vertical;min-height:76px;}
   .booking-field textarea:focus{border-color:var(--terracotta-dark);}
   .booking-field textarea.invalid{border-color:#C0392B;}
-
- .gdpr-notice{font-size:0.75rem;color:var(--ink-faint);margin-top:8px;line-height:1.5;}
+  .gdpr-notice{font-size:0.75rem;color:var(--ink-faint);margin-top:8px;line-height:1.5;}
   .booking-error{color:#C0392B;font-size:0.83rem;font-weight:700;margin-top:-8px;margin-bottom:16px;}
   .booking-confirmation{text-align:center;padding:8px 0;}
   .confirmation-icon{font-size:2.5rem;margin-bottom:12px;}
@@ -398,8 +381,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .booking-type-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .booking-type-option{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;border:1.5px solid var(--border);border-radius:var(--radius-md);padding:14px 10px;font-size:0.82rem;font-weight:600;color:var(--ink-soft);transition:border-color .2s ease, background .2s ease;}
   .booking-type-option small{font-weight:500;color:var(--ink-faint);}
-
- .booking-type-icon{font-size:1.3rem;}
+  .booking-type-icon{font-size:1.3rem;}
   .booking-type-option:hover{border-color:var(--terracotta-dark);}
   .booking-type-option.active{border-color:var(--terracotta-dark);background:var(--terracotta-tint);color:var(--ink);}
   .cooking-only-card{background:var(--sage-tint);border-radius:var(--radius-md);padding:16px 18px;}
@@ -431,8 +413,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .weekly-slot-item span{font-weight:600;font-size:0.9rem;}
   .weekly-slot-remove-btn{background:none;border:none;color:var(--terracotta-dark);font-size:1.1rem;cursor:pointer;padding:2px 6px;}
   .weekly-slot-add-row{display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:8px;align-items:end;margin-top:12px;}
-
- .weekly-slot-add-row label{display:block;font-size:0.72rem;font-weight:700;color:var(--ink-soft);margin-bottom:5px;}
+  .weekly-slot-add-row label{display:block;font-size:0.72rem;font-weight:700;color:var(--ink-soft);margin-bottom:5px;}
   .weekly-slot-add-row select,.weekly-slot-add-row input[type="time"]{width:100%;padding:9px 10px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:0.88rem;color:var(--ink);background:var(--white);box-sizing:border-box;}
   .regime-checkbox-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
   .regime-checkbox-grid label{display:flex;align-items:center;gap:7px;background:var(--sage-tint);color:var(--sage-dark);padding:8px 14px;border-radius:var(--radius-full);font-size:0.85rem;font-weight:700;cursor:pointer;}
@@ -464,8 +445,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .admin-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:28px 0 8px;}
   .admin-toolbar h1{font-size:1.55rem;}
   .admin-tabs{display:flex;gap:8px;padding:16px 24px;border-bottom:1px solid var(--border);margin-bottom:28px;flex-wrap:wrap;}
-
- .admin-tab{padding:10px 22px;border-radius:var(--radius-full);font-weight:700;font-size:0.88rem;color:var(--ink-soft);transition:background .2s ease,color .2s ease;}
+  .admin-tab{padding:10px 22px;border-radius:var(--radius-full);font-weight:700;font-size:0.88rem;color:var(--ink-soft);transition:background .2s ease,color .2s ease;}
   .admin-tab:hover{background:var(--cream-alt);}
   .admin-tab.active{background:var(--terracotta-dark);color:#fff;}
   .admin-panel{padding-bottom:90px;}
@@ -497,8 +477,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .identity-box{background:var(--cream-alt);border-radius:var(--radius-md);padding:16px 18px;}
   .identity-status-text{font-size:0.83rem;color:var(--ink-soft);margin-bottom:12px;line-height:1.5;}
   .identity-box.verified{background:var(--sage-tint);}
-
- .identity-box.verified .identity-status-text{color:var(--sage-dark);font-weight:700;}
+  .identity-box.verified .identity-status-text{color:var(--sage-dark);font-weight:700;}
   .identity-verified-badge{display:inline-flex;align-items:center;gap:5px;background:var(--sage-tint);color:var(--sage-dark);font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:var(--radius-full);}
   .my-space-section{padding:24px 0 40px;}
   .my-space-section h2{font-size:1.2rem;margin-bottom:16px;}
@@ -530,8 +509,7 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
   .thread-send-row{display:flex;gap:10px;padding:16px 20px;border-top:1px solid var(--border);}
   .thread-send-row input{flex:1;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:0.92rem;}
   @media (max-width: 760px){.messages-layout{grid-template-columns:1fr;} .conversations-list{flex-direction:row;overflow-x:auto;} .conversation-item{min-width:200px;}}
-
- .formula-edit-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+  .formula-edit-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
   .formula-edit-row .formula-name-input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .formula-edit-row .formula-price-input{width:100px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;}
   .remove-formula-btn{background:none;border:none;color:var(--terracotta-dark);font-size:1.1rem;cursor:pointer;padding:4px 8px;}
@@ -547,12 +525,6 @@ cat > /home/claude/atchef-site/part1.html << 'CLAUDE_MARKER_END'
 </style>
 </head>
 <body>
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part1.html
-Sortie
-527 /home/claude/atchef-site/part1.html
-bash
-cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
 <a href="#view-home" class="skip-link">Aller au contenu principal</a>
 <header class="site-header">
   <div class="container nav-wrapper">
@@ -584,7 +556,6 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
       <button type="button" class="btn btn-primary btn-block go-to-search">Trouver un Cuisinier</button>
     </div>
   </div>
-
 </header>
 <main id="view-home" class="app-view">
   <section class="hero">
@@ -617,8 +588,7 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
             <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Végétarienne &amp; Vegan">Végétarien</button>
             <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Pâtisserie &amp; Desserts">Pâtisserie</button>
             <button type="button" class="quick-filter-chip go-to-search" data-cuisine="Française &amp; Bistrot">Française</button>
-
-         </div>
+          </div>
         </div>
       </div>
       <div class="reservation-wrap">
@@ -650,8 +620,7 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
               <option>Pâtisserie &amp; Desserts</option>
             </select>
           </div>
-
-         <button type="submit" class="btn btn-primary btn-block search-submit">Rechercher un cuisinier</button>
+          <button type="submit" class="btn btn-primary btn-block search-submit">Rechercher un cuisinier</button>
         </form>
       </div>
     </div>
@@ -683,8 +652,7 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
           <p>Choisissez votre menu, confirmez le nombre de convives et validez votre réservation en toute sécurité, en ligne.</p>
         </div>
         <div class="step-card reveal">
-
-         <span class="step-number">03</span>
+          <span class="step-number">03</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="34" rx="16" ry="6" stroke="currentColor" stroke-width="3"/><path d="M17 27 C14 21, 20 17, 17 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M31 27 C28 21, 34 17, 31 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
           <h3>Savourez votre repas</h3>
           <p>Votre cuisinier se déplace chez vous, prépare un repas fait maison sur place et partage un moment convivial à table.</p>
@@ -716,8 +684,7 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Nos talents culinaires</span>
-
-       <h2>Nos Cuisiniers à Nantes</h2>
+        <h2>Nos Cuisiniers à Nantes</h2>
         <p class="section-subtitle">Rencontrez quelques-uns des passionnés qui font vibrer les tables nantaises, un repas fait maison à la fois.</p>
       </div>
       <div class="chef-carousel" id="chefCarousel">
@@ -749,8 +716,7 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
           <a href="#" class="logo" style="color:var(--cream);" aria-label="At'Chef, retour à l'accueil">
             <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="24" cy="24" r="24" fill="#E2725B"/>
-
-             <path d="M15 31.5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v2.5c0 1.1-.9 2-2 2H17c-1.1 0-2-.9-2-2v-2.5z" fill="#241E18"/>
+              <path d="M15 31.5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v2.5c0 1.1-.9 2-2 2H17c-1.1 0-2-.9-2-2v-2.5z" fill="#241E18"/>
               <path d="M24 11.5c-2.1 0-3.9 1.2-4.8 3a5.2 5.2 0 00-5.4 5.2c0 1.1.3 2.1.8 3-.5.7-.8 1.6-.8 2.5 0 2.3 1.9 4.1 4.1 4.1h12.2c2.3 0 4.1-1.9 4.1-4.1 0-.9-.3-1.8-.8-2.5.5-.9.8-1.9.8-3a5.2 5.2 0 00-5.4-5.2c-.9-1.8-2.7-3-4.8-3z" fill="#241E18"/>
             </svg>
             At'<span style="color:var(--terracotta);">Chef</span>
@@ -782,8 +748,7 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
           <ul>
             <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">Notre histoire</a></li>
             <li><a href="#" class="go-to-safety-charter">Charte de confiance</a></li>
-
-           <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">At'Chef à Nantes</a></li>
+            <li><a href="#" data-toast="🚧 Cette fonctionnalité arrive bientôt !">At'Chef à Nantes</a></li>
             <li><a href="#" class="go-to-contact">Nous contacter</a></li>
           </ul>
         </div>
@@ -815,18 +780,11 @@ cat > /home/claude/atchef-site/part2.html << 'CLAUDE_MARKER_END'
           <a href="#" class="go-to-cgu">CGU</a>
           <a href="#" class="go-to-privacy">Confidentialité</a>
           <a href="#" class="go-to-admin-login" style="opacity:0.45;">Administration</a>
-
-       </div>
+        </div>
       </div>
     </footer>
   </div>
 </main>
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part2.html
-Sortie
-260 /home/claude/atchef-site/part2.html
-bash
-cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
 <div id="view-search" class="app-view" hidden>
   <div class="search-toolbar container">
     <button type="button" class="back-to-home">← Retour à l'accueil</button>
@@ -858,8 +816,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
         </select>
         <p class="filter-hint" id="locationStatusHint"></p>
       </div>
-
-     <div class="filter-group">
+      <div class="filter-group">
         <h3>Budget par personne</h3>
         <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="low"> Moins de 20 €</label>
         <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="mid"> 20 € – 40 €</label>
@@ -891,8 +848,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
     <div class="results-panel">
       <div class="results-header">
         <button type="button" class="mobile-filters-toggle btn btn-outline btn-sm">Filtres <span id="mobileFilterCount" class="filter-count-badge"></span></button>
-
-       <p class="results-count" id="resultsCount"></p>
+        <p class="results-count" id="resultsCount"></p>
         <div class="sort-wrap">
           <select class="sort-select" id="sortSelect">
             <option value="relevance">Trier : Pertinence</option>
@@ -924,8 +880,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
         <div class="profile-header-info">
           <h1 id="profileName"></h1>
           <p class="profile-cuisine-tag" id="profileCuisineTag"></p>
-
-         <div class="profile-rating-row">
+          <div class="profile-rating-row">
             <span class="stars" aria-hidden="true">★★★★★</span>
             <span class="score" id="profileScore"></span>
             <span class="count" id="profileReviewCount"></span>
@@ -957,8 +912,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
       </section>
       <section class="profile-section">
         <h2>Avis clients</h2>
-
-       <div class="reviews-list" id="profileReviews"></div>
+        <div class="reviews-list" id="profileReviews"></div>
       </section>
     </div>
     <aside class="profile-booking-col">
@@ -990,8 +944,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
               <p>Vous fournissez les produits, le cuisinier s'occupe de toute la préparation et de la cuisson. Tarif réduit puisque les ingrédients ne sont pas à sa charge.</p>
               <span class="cooking-only-price" id="cookingOnlyPriceDisplay"></span>
             </div>
-
-           <label for="fridgeContentsInput" style="margin-top:14px;">Ce que vous avez à disposition (optionnel)</label>
+            <label for="fridgeContentsInput" style="margin-top:14px;">Ce que vous avez à disposition (optionnel)</label>
             <textarea id="fridgeContentsInput" rows="2" placeholder="Ex : légumes de saison, poulet, riz, épices de base…"></textarea>
           </div>
           <div class="booking-field">
@@ -1023,8 +976,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
             <p class="selected-date-label" id="selectedDateLabel">Aucune date sélectionnée</p>
           </div>
           <div class="booking-field">
-
-           <label>Équipement disponible chez vous</label>
+            <label>Équipement disponible chez vous</label>
             <div class="equipment-checklist">
               <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Four"> Four</label>
               <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Plaques de cuisson"> Plaques de cuisson</label>
@@ -1056,8 +1008,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
         </div>
         <div class="booking-confirmation" id="bookingConfirmation" hidden></div>
       </div>
-
-   </aside>
+    </aside>
   </div>
 </div>
 <div id="view-cook-register" class="app-view" hidden>
@@ -1089,8 +1040,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
         <input type="password" id="cookPassword" required minlength="8" placeholder="••••••••" autocomplete="new-password">
       </div>
       <div class="booking-field">
-
-       <label for="cookCuisine">Type de cuisine <span class="required-mark">*</span></label>
+        <label for="cookCuisine">Type de cuisine <span class="required-mark">*</span></label>
         <select id="cookCuisine" required></select>
       </div>
       <div class="booking-field">
@@ -1122,8 +1072,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
 </div>
 <div id="view-contact" class="app-view" hidden>
   <div class="container profile-toolbar">
-
-   <button type="button" class="back-to-home">← Retour à l'accueil</button>
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
   </div>
   <div class="container contact-layout">
     <span class="eyebrow">Besoin d'aide ?</span>
@@ -1155,8 +1104,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
         <textarea id="contactMessage" rows="5" required placeholder="Décrivez votre situation en détail…"></textarea>
       </div>
       <p class="booking-error" id="contactError" hidden></p>
-
-     <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+      <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
     </form>
   </div>
 </div>
@@ -1188,8 +1136,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
   </div>
   <div class="container admin-tabs">
     <button type="button" class="admin-tab active" data-admin-tab="bookings">Réservations</button>
-
-   <button type="button" class="admin-tab" data-admin-tab="cooks">Cuisiniers</button>
+    <button type="button" class="admin-tab" data-admin-tab="cooks">Cuisiniers</button>
     <button type="button" class="admin-tab" data-admin-tab="tickets">Tickets SAV</button>
   </div>
   <div class="container">
@@ -1221,8 +1168,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
         <p class="booking-error" id="loginError" hidden></p>
         <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
       </form>
-
-     <p style="margin-top:14px;font-size:0.85rem;"><a href="#" class="go-to-forgot-password" style="color:var(--ink-soft);">Mot de passe oublié ?</a></p>
+      <p style="margin-top:14px;font-size:0.85rem;"><a href="#" class="go-to-forgot-password" style="color:var(--ink-soft);">Mot de passe oublié ?</a></p>
       <p style="margin-top:6px;font-size:0.88rem;color:var(--ink-soft);">Pas encore de compte hôte ? <a href="#" class="go-to-host-register" style="color:var(--terracotta-dark);font-weight:700;">Créer un compte</a></p>
       <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
     </div>
@@ -1254,8 +1200,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
       <form id="resetPasswordForm">
         <div class="booking-field">
           <label for="resetNewPassword">Nouveau mot de passe (8 caractères minimum)</label>
-
-         <input type="password" id="resetNewPassword" required minlength="8" autocomplete="new-password">
+          <input type="password" id="resetNewPassword" required minlength="8" autocomplete="new-password">
         </div>
         <p class="booking-error" id="resetPasswordError" hidden></p>
         <button type="submit" class="btn btn-primary btn-block">Valider</button>
@@ -1287,8 +1232,7 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
       <p style="margin-top:18px;font-size:0.88rem;color:var(--ink-soft);">Déjà un compte ? <a href="#" class="go-to-login" style="color:var(--terracotta-dark);font-weight:700;">Se connecter</a></p>
       <button type="button" class="back-to-home admin-back-link">← Retour au site</button>
     </div>
-
- </div>
+  </div>
 </div>
 <div id="view-my-space" class="app-view" hidden>
   <div class="container admin-toolbar">
@@ -1312,12 +1256,6 @@ cat > /home/claude/atchef-site/part3.html << 'CLAUDE_MARKER_END'
     </div>
   </div>
 </div>
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part3.html
-Sortie
-471 /home/claude/atchef-site/part3.html
-bash
-cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 <div id="view-cgu" class="app-view" hidden>
   <div class="container profile-toolbar">
     <button type="button" class="back-to-home">← Retour à l'accueil</button>
@@ -1349,7 +1287,6 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 <li><strong>Utilisateur</strong> : toute personne physique majeure utilisant la Plateforme, qu'elle agisse en qualité d'Hôte ou de Cuisinier.</li>
 <li><strong>Hôte</strong> : Utilisateur qui recherche, réserve et paie une prestation culinaire proposée par un Cuisinier.</li>
 <li><strong>Cuisinier</strong> : Utilisateur indépendant qui crée un profil sur la Plateforme afin de proposer des Formules culinaires à des Hôtes, contre rémunération.</li>
-
 <li><strong>Formule</strong> : offre culinaire définie librement par un Cuisinier (composition, prix par convive, nombre de convives, etc.).</li>
 <li><strong>Réservation</strong> : demande de prestation effectuée par un Hôte auprès d'un Cuisinier via la Plateforme, donnant lieu à un paiement.</li>
 <li><strong>Prestation culinaire</strong> : ensemble des services rendus directement par le Cuisinier à l'Hôte (préparation et service du repas), formant un contrat distinct des présentes CGU.</li>
@@ -1382,7 +1319,6 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 <h2>Article 8 — Obligations de l'Hôte</h2>
 <p>L'Hôte s'engage à :</p>
 <ul>
-
 <li>fournir des informations exactes, notamment sur le nombre de convives et <strong>les allergies ou restrictions alimentaires de l'ensemble des convives</strong>, ces informations étant transmises au seul Cuisinier concerné et étant essentielles à la sécurité du repas (voir la notice d'information RGPD dédiée) ;</li>
 <li>accueillir le Cuisinier dans des conditions raisonnables permettant l'exécution de la Prestation lorsque celle-ci a lieu à son domicile ;</li>
 <li>adopter un comportement respectueux envers le Cuisinier ;</li>
@@ -1415,8 +1351,7 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
   <div class="container profile-toolbar">
     <button type="button" class="back-to-home">← Retour à l'accueil</button>
   </div>
-
- <div class="container legal-layout">
+  <div class="container legal-layout">
     <span class="eyebrow">Cadre juridique</span>
     <div class="legal-draft-banner">
       ⚠️ <strong>Document provisoire, en cours de validation juridique.</strong> Ce texte n'a pas encore été relu par un avocat et ne doit pas être considéré comme définitif.
@@ -1448,7 +1383,6 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 <td><strong>100 %</strong> — annulation gratuite</td>
 </tr>
 <tr>
-
 <td><strong>Entre 3 jours et 24 heures</strong> avant</td>
 <td><strong>50 %</strong> — remboursement partiel</td>
 </tr>
@@ -1481,8 +1415,7 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 </div>
 <div id="view-privacy" class="app-view" hidden>
   <div class="container profile-toolbar">
-
-   <button type="button" class="back-to-home">← Retour à l'accueil</button>
+    <button type="button" class="back-to-home">← Retour à l'accueil</button>
   </div>
   <div class="container legal-layout">
     <span class="eyebrow">Cadre juridique</span>
@@ -1514,7 +1447,6 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 <li>n'est <strong>jamais</strong> partagée à des fins commerciales, publicitaires ou avec des tiers non impliqués dans la Réservation ;</li>
 <li>n'est accessible en interne chez At'Chef qu'aux personnels strictement nécessaires au support technique, en cas d'incident lié à une Réservation.</li>
 </ul>
-
 <h2>6. Combien de temps conservons-nous cette information ?</h2>
 <p>Cette donnée est conservée le temps strictement nécessaire à la réalisation du repas concerné, puis supprimée de nos bases actives <strong>au plus tard 30 jours après la date de la Prestation</strong>, sauf litige en cours nécessitant sa conservation temporaire à titre de preuve.</p>
 <h2>7. Quels sont vos droits ?</h2>
@@ -1547,8 +1479,7 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
   </div>
   <div class="container legal-layout">
     <span class="eyebrow">Confiance & sécurité</span>
-
-   <div class="legal-draft-banner">
+    <div class="legal-draft-banner">
       ⚠️ <strong>Document provisoire.</strong> Les engagements ci-dessous reflètent notre politique actuelle ; certains détails (coordonnées, moyens précis) restent à compléter avant publication définitive.
     </div>
     <div class="legal-content">
@@ -1580,7 +1511,6 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
 <li>Indiquer sincèrement le nombre de convives réel lors de la réservation.</li>
 </ul>
 <h2>7. Ce que nous attendons de chaque Cuisinier</h2>
-
 <ul>
 <li>Respecter les règles d'hygiène alimentaire de base ;</li>
 <li>Traiter l'Hôte et ses convives avec professionnalisme ;</li>
@@ -1613,2743 +1543,4 @@ cat > /home/claude/atchef-site/part4.html << 'CLAUDE_MARKER_END'
     </form>
   </div>
 </div>
-
 <div class="toast" id="toast" role="status"></div>
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part4.html
-Sortie
-288 /home/claude/atchef-site/part4.html
-bash
-cat > /home/claude/atchef-site/part5.js << 'CLAUDE_MARKER_END'
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  const BACKEND_URL = 'https://atchef-backend.onrender.com';
-
-  function isBackendConfigured(){
-    return !BACKEND_URL.includes('VOTRE-BACKEND');
-  }
-
-  const CUISINE_TYPES = ['Française & Bistrot','Italienne','Orientale & Méditerranéenne','Asiatique','Végétarienne & Vegan','Pâtisserie & Desserts'];
-  const REGIME_TAGS = ['vegan','vegetarien','sans_gluten','sans_lactose','proteine_sportif'];
-  const REGIME_LABELS = { vegan:'Vegan', vegetarien:'Végétarien', sans_gluten:'Sans gluten', sans_lactose:'Sans lactose', proteine_sportif:'Sportif / protéiné' };
-
-  const chefs = [
-    { id:1, name:'Amélie R.', cuisine:'Française & Bistrot', location:'Nantes Centre', lat:47.2184, lng:-1.5536, quote:"La cuisine de ma grand-mère, revisitée avec des produits locaux et de saison.", price:25, rating:4.9, reviews:32, tags:['Fait maison','Sans gluten possible'], regimes:['sans_gluten'], photo:'https://i.pravatar.cc/160?img=47', gradient:'linear-gradient(135deg,#E2725B,#A64A34)', featured:true,
-      bio:"Après des années passées à cuisiner pour sa famille et ses amis, Amélie a décidé de partager sa passion pour la cuisine bretonne au plus grand nombre. Chaque plat raconte une histoire, souvent celle de sa grand-mère, dont elle perpétue les recettes avec des produits locaux et de saison.",
-      specialties:["Galettes bretonnes","Kig ha farz","Kouign-amann maison","Plats mijotés"],
-      training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa grand-mère, cuisinière dans une ferme du Finistère.",
-      formulas:[
-        { name:"Menu Découverte", price:25, description:"Une entrée de saison, une galette complète et un dessert breton.", includes:["Entrée de saison","Galette au choix","Dessert breton"] },
-        { name:"Menu Terroir Breton", price:32, description:"Le menu signature d'Amélie : kig ha farz, légumes du potager et kouign-amann tiède.", includes:["Entrée du potager","Kig ha farz","Kouign-amann tiède"] }
-      ],
-      discountTiers:[{minGuests:6, discountPercent:10}],
-      testimonials:[
-        { author:"Marie D.", rating:5, date:"Juin 2026", comment:"Un repas qui sent bon l'enfance, Amélie est adorable et très professionnelle." },
-        { author:"Thomas L.", rating:5, date:"Mai 2026", comment:"Le kig ha farz était incroyable, on s'est resservi trois fois !" },
-        { author:"Camille P.", rating:4, date:"Avril 2026", comment:"Très bon moment, juste un peu de retard à l'arrivée." }
-      ]
-    },
-    { id:2, name:'Karim B.', cuisine:'Orientale & Méditerranéenne', location:'Île de Nantes', lat:47.2065, lng:-1.549, quote:"Les épices et les saveurs du Maghreb, directement à votre table.", price:28, rating:5.0, reviews:18, tags:['Végétarien','Épicé'], regimes:['vegetarien'], photo:'https://i.pravatar.cc/160?img=53', gradient:'linear-gradient(135deg,#8CA888,#4F6B4C)', featured:true,
-      bio:"Karim cuisine depuis toujours aux côtés de sa mère et de ses tantes. Il propose une cuisine du Maghreb généreuse et parfumée, pensée pour être partagée en toute convivialité autour d'un plat commun.",
-
-     specialties:["Tajine aux pruneaux","Couscous royal","Mezzé maison","Pâtisseries orientales"],
-      training:null, selfTaughtNote:"Autodidacte — formé aux fourneaux familiaux depuis l'enfance.",
-      formulas:[
-        { name:"Menu Mezzé", price:28, description:"Une sélection de mezzés chauds et froids à partager, suivie d'un tajine au choix.", includes:["Mezzé à partager","Tajine au choix","Thé à la menthe"] },
-        { name:"Menu Fête", price:38, description:"Le couscous royal complet, généreux et copieux, comme pour une grande occasion.", includes:["Mezzé","Couscous royal","Pâtisserie orientale"] }
-      ],
-      discountTiers:[],
-      testimonials:[
-        { author:"Sophie R.", rating:5, date:"Juillet 2026", comment:"Le couscous royal était somptueux, portions généreuses et Karim est très attentionné." },
-        { author:"Nicolas B.", rating:5, date:"Juin 2026", comment:"Accueil chaleureux, plats délicieux, on recommande à 100%." }
-      ]
-    },
-    { id:3, name:'Chloé L.', cuisine:'Italienne', location:'Chantenay', lat:47.2135, lng:-1.585, quote:"Pâtes fraîches faites minute et recettes transmises par ma nonna.", price:22, rating:4.8, reviews:45, tags:['Fait maison','Végétarien'], regimes:['vegetarien'], photo:'https://i.pravatar.cc/160?img=25', gradient:'linear-gradient(135deg,#D9A441,#A64A34)', featured:true,
-      bio:"Chloé a grandi entre Nantes et l'Italie, dans la cuisine de sa nonna. Elle prépare toutes ses pâtes fraîches à la main, chaque semaine, selon les recettes transmises de génération en génération.",
-      specialties:["Tagliatelles fraîches","Tiramisu maison","Gnocchis","Sauce bolognaise mijotée 4h"],
-      training:null, selfTaughtNote:"Autodidacte — formée par sa nonna italienne dès son plus jeune âge.",
-      formulas:[
-        { name:"Menu Trattoria", price:22, description:"Antipasti, pâtes fraîches du jour et tiramisu fait maison.", includes:["Antipasti","Pâtes fraîches du jour","Tiramisu"] },
-        { name:"Menu Fusion", price:35, description:"Une carte blanche créative mêlant tradition italienne et inspirations du moment.", includes:["Antipasti revisités","Plat signature","Dessert créatif"] }
-      ],
-      discountTiers:[{minGuests:6, discountPercent:8},{minGuests:10, discountPercent:15}],
-      testimonials:[
-        { author:"Julie M.", rating:5, date:"Juillet 2026", comment:"Les meilleures pâtes fraîches mangées hors d'Italie, un vrai talent." },
-        { author:"Antoine G.", rating:5, date:"Juin 2026", comment:"Chloé est passionnée et ça se sent dans chaque assiette." },
-        { author:"Laura K.", rating:4, date:"Mai 2026", comment:"Excellent repas, tiramisu à tomber." }
-      ]
-    },
-    { id:4, name:'Thomas M.', cuisine:'Asiatique', location:'Doulon', lat:47.228, lng:-1.51, quote:"Bo bun et currys parfumés, comme lors de mes voyages en Asie du Sud-Est.", price:18, rating:4.6, reviews:27, tags:['Fait maison','Sans lactose possible'], regimes:['sans_lactose','vegetarien'], photo:'https://i.pravatar.cc/160?img=13', gradient:'linear-gradient(135deg,#E2725B,#4F6B4C)',
-      bio:"Après plusieurs voyages prolongés en Asie du Sud-Est, Thomas s'est pris de passion pour les cuisines vietnamienne et thaïlandaise. Il aime faire découvrir des saveurs authentiques, loin des clichés, avec des produits frais.",
-      specialties:["Bo bun maison","Curry thaï vert","Nems croustillants","Bo bun végétarien"],
-      training:[{title:"Stage cuisine asiatique", detail:"École Ferrandi Paris, 2020"}],
-      formulas:[
-
-       { name:"Menu Street Food", price:18, description:"Nems, bo bun et thé glacé, pour un repas simple et parfumé.", includes:["Nems","Bo bun","Thé glacé maison"] },
-        { name:"Menu Voyage", price:27, description:"Un menu plus complet inspiré de ses voyages : curry, riz parfumé et dessert exotique.", includes:["Entrée vapeur","Curry thaï au choix","Dessert exotique"] }
-      ],
-      discountTiers:[{minGuests:8, discountPercent:10}],
-      testimonials:[
-        { author:"Emma V.", rating:5, date:"Juillet 2026", comment:"Un curry thaï incroyable, aussi bon que sur place en Thaïlande." },
-        { author:"Hugo D.", rating:4, date:"Juin 2026", comment:"Très bon repas, portions un peu justes pour les gros appétits." }
-      ]
-    },
-    { id:5, name:'Sofia G.', cuisine:'Végétarienne & Vegan', location:'Hauts-Pavés', lat:47.228, lng:-1.565, quote:"Des bowls colorés et gourmands, 100% végétal et de saison.", price:24, rating:4.3, reviews:15, tags:['Vegan','Sans gluten possible'], regimes:['vegan','vegetarien','sans_gluten','proteine_sportif'], photo:'https://i.pravatar.cc/160?img=32', gradient:'linear-gradient(135deg,#8CA888,#A64A34)',
-      bio:"Sofia démontre qu'une cuisine 100% végétale peut être gourmande et créative. Diététicienne de formation, elle compose des assiettes colorées et équilibrées, en circuit court autant que possible.",
-      specialties:["Bowl quinoa & légumes rôtis","Curry de légumes","Desserts vegan","Houmous maison"],
-      training:[{title:"BTS Diététique", detail:"Nantes, 2019"}],
-      formulas:[
-        { name:"Menu Bowl", price:24, description:"Un bowl généreux et coloré, composé selon les légumes de saison.", includes:["Bowl composé","Boisson maison","Dessert vegan"] },
-        { name:"Menu Découverte Végétale", price:30, description:"Une entrée surprise, un plat chaud et un dessert 100% végétal.", includes:["Entrée surprise","Plat chaud","Dessert vegan"] }
-      ],
-      discountTiers:[],
-      testimonials:[
-        { author:"Claire B.", rating:4, date:"Juin 2026", comment:"Très bon, léger et plein de saveurs. Parfait pour changer." },
-        { author:"Yann P.", rating:4, date:"Mai 2026", comment:"On ne sent pas du tout le manque de viande, très convaincant." }
-      ]
-    },
-    { id:6, name:'Julien D.', cuisine:'Pâtisserie & Desserts', location:'Graslin', lat:47.214, lng:-1.56, quote:"Des pâtisseries françaises comme à la sortie de l'école, en plus raffiné.", price:35, rating:4.7, reviews:22, tags:['Fait maison'], regimes:[], photo:'https://i.pravatar.cc/160?img=61', gradient:'linear-gradient(135deg,#D9A441,#7A3524)',
-      bio:"Passionné de pâtisserie depuis l'adolescence, Julien s'est formé auprès d'un chef pâtissier avant de se lancer en indépendant. Il propose des ateliers gourmands et des menus 100% sucrés pour les amateurs de belles pâtisseries.",
-      specialties:["Paris-Brest","Entremets fruits de saison","Tarte au citron meringuée","Choux à la crème"],
-      training:[{title:"CAP Pâtisserie", detail:"2017"},{title:"Stage de perfectionnement", detail:"Auprès d'un chef pâtissier nantais, 2019"}],
-      formulas:[
-        { name:"Menu Goûter Gourmand", price:35, description:"Une sélection de trois pâtisseries signature avec thé ou café.", includes:["3 pâtisseries au choix","Thé ou café","Mignardise"] },
-        { name:"Menu Atelier", price:45, description:"Un après-midi où l'on prépare ensemble un entremets, dégusté sur place.", includes:["Atelier pratique","Entremets à déguster","Recette à emporter"] }
-      ],
-      discountTiers:[{minGuests:6, discountPercent:10}],
-
-     testimonials:[
-        { author:"Pauline S.", rating:5, date:"Juillet 2026", comment:"L'atelier était génial, on a adoré préparer notre dessert avec Julien." },
-        { author:"Marc T.", rating:4, date:"Juin 2026", comment:"Pâtisseries magnifiques et délicieuses, un vrai artiste." }
-      ]
-    },
-    { id:7, name:'Nadia F.', cuisine:'Orientale & Méditerranéenne', location:'Bellevue', lat:47.24, lng:-1.575, quote:"Mezzé libanais et douceurs du Levant, pour un voyage gourmand.", price:26, rating:4.9, reviews:38, tags:['Végétarien','Fait maison'], regimes:['vegetarien'], photo:'https://i.pravatar.cc/160?img=44', gradient:'linear-gradient(135deg,#E2725B,#A64A34)',
-      bio:"Originaire du Liban, Nadia partage la cuisine généreuse de son enfance : mezzé colorés, plats mijotés et douceurs orientales. Un vrai voyage culinaire vers le Levant, à quelques rues de chez vous.",
-      specialties:["Mezzé libanais","Taboulé maison","Kafta grillée","Baklava fait maison"],
-      training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa mère et ses grand-mères libanaises.",
-      formulas:[
-        { name:"Menu Mezzé Levant", price:26, description:"Une large sélection de mezzés chauds et froids à partager.", includes:["Mezzé à partager","Pain maison","Thé à la menthe"] },
-        { name:"Menu Beyrouth", price:34, description:"Mezzé, plat mijoté au choix et baklava maison pour finir en douceur.", includes:["Mezzé","Plat mijoté au choix","Baklava maison"] }
-      ],
-      discountTiers:[{minGuests:6, discountPercent:12}],
-      testimonials:[
-        { author:"Isabelle F.", rating:5, date:"Juillet 2026", comment:"Un vrai voyage au Liban, tout était délicieux et généreux." },
-        { author:"Karim D.", rating:5, date:"Juin 2026", comment:"Nadia est adorable et cuisine comme personne, on recommande vivement." },
-        { author:"Léna M.", rating:5, date:"Mai 2026", comment:"Le baklava maison est juste parfait, à refaire absolument." }
-      ]
-    },
-    { id:8, name:'Paul-Henri V.', cuisine:'Française & Bistrot', location:'Île Feydeau', lat:47.216, lng:-1.552, quote:"Une bistronomie exigeante, entre tradition et créativité.", price:45, rating:4.5, reviews:24, tags:['Fait maison'], regimes:['proteine_sportif'], photo:'https://i.pravatar.cc/160?img=68', gradient:'linear-gradient(135deg,#4F6B4C,#241E18)',
-      bio:"Ancien second de cuisine en restaurant gastronomique, Paul-Henri a choisi de mettre son savoir-faire au service de repas plus intimistes, chez l'habitant. Une bistronomie exigeante, entre tradition française et créativité contemporaine.",
-      specialties:["Foie gras mi-cuit maison","Ris de veau","Soufflé au Grand Marnier","Accord mets & vins"],
-      training:[{title:"BTS Hôtellerie-Restauration", detail:"Nantes, 2012"},{title:"Second de cuisine", detail:"Restaurant gastronomique, 6 ans d'expérience"}],
-      formulas:[
-        { name:"Menu Bistronomie", price:45, description:"Un menu en 3 services autour d'un produit de saison, avec accord mets & vins en option.", includes:["Entrée gastronomique","Plat signature","Dessert"] },
-        { name:"Menu Prestige", price:65, description:"Le menu dégustation complet en 5 services, pour une occasion spéciale.", includes:["Amuse-bouche","2 entrées","Plat","Fromage","Dessert"] }
-      ],
-      discountTiers:[],
-      testimonials:[
-        { author:"Véronique H.", rating:5, date:"Juillet 2026", comment:"Un niveau digne des meilleurs restaurants, dans le confort de la maison. Exceptionnel." },
-        { author:"Frédéric N.", rating:4, date:"Juin 2026", comment:"Très haut niveau, service impeccable, tarif en conséquence mais justifié." }
-
-     ]
-    },
-    { id:9, name:'Léa B.', cuisine:'Asiatique', location:'Zola', lat:47.223, lng:-1.548, quote:"Sushis et cuisine japonaise maison, dans le respect des produits.", price:42, rating:4.4, reviews:19, tags:['Sans gluten possible'], regimes:['sans_gluten','proteine_sportif'], photo:'https://i.pravatar.cc/160?img=28', gradient:'linear-gradient(135deg,#8CA888,#7A3524)',
-      bio:"Formée aux techniques japonaises pendant plusieurs mois auprès d'un chef à Paris, Léa propose des sushis et sashimis préparés minute, dans le respect du produit et de la tradition japonaise.",
-      specialties:["Sushis maison","Sashimis","Makis californiens","Soupe miso"],
-      training:[{title:"Formation sushi", detail:"3 mois auprès d'un chef japonais, Paris, 2021"}],
-      formulas:[
-        { name:"Menu Sushi", price:42, description:"Une sélection de sushis, makis et sashimis préparés devant vous.", includes:["Sashimis","Sushis & makis assortis","Soupe miso"] },
-        { name:"Menu Omakase", price:58, description:"Un menu surprise composé selon l'arrivage du jour, façon omakase.", includes:["Menu surprise en 6 services"] }
-      ],
-      discountTiers:[],
-      testimonials:[
-        { author:"Chloé R.", rating:5, date:"Juin 2026", comment:"Sushis d'une fraîcheur incroyable, Léa est très minutieuse." },
-        { author:"David S.", rating:4, date:"Mai 2026", comment:"Très bon moment, un peu cher mais la qualité est là." }
-      ]
-    },
-    { id:10, name:'Marco T.', cuisine:'Italienne', location:'Malakoff', lat:47.202, lng:-1.543, quote:"Pizzas napolitaines et antipasti, la trattoria comme à la maison.", price:19, rating:4.2, reviews:12, tags:['Fait maison'], regimes:[], photo:'https://i.pravatar.cc/160?img=15', gradient:'linear-gradient(135deg,#D9A441,#4F6B4C)',
-      bio:"Marco a grandi dans la trattoria familiale près de Naples avant de s'installer à Nantes. Il perpétue la tradition de la pizza napolitaine, pâte longue fermentation et four maison.",
-      specialties:["Pizza napolitaine","Antipasti","Tiramisu","Focaccia maison"],
-      training:null, selfTaughtNote:"Autodidacte — formé dans la trattoria familiale près de Naples.",
-      formulas:[
-        { name:"Menu Trattoria", price:19, description:"Antipasti à partager et pizza napolitaine au choix.", includes:["Antipasti","Pizza au choix","Café"] },
-        { name:"Menu Famiglia", price:25, description:"Antipasti, pizza et tiramisu, pour un repas complet à l'italienne.", includes:["Antipasti","Pizza","Tiramisu"] }
-      ],
-      discountTiers:[{minGuests:6, discountPercent:10}],
-      testimonials:[
-        { author:"Manon L.", rating:4, date:"Juin 2026", comment:"Très bonne pizza, pâte parfaite. Accueil sympathique." },
-        { author:"Rachid B.", rating:4, date:"Mai 2026", comment:"Bon rapport qualité prix, ambiance conviviale." }
-      ]
-    },
-    { id:11, name:'Youssef K.', cuisine:'Orientale & Méditerranéenne', location:'Bottière', lat:47.235, lng:-1.525, quote:"Couscous familial et grillades, pour un repas convivial et généreux.", price:18, rating:4.6, reviews:29, tags:['Fait maison'], regimes:['vegetarien'], photo:'https://i.pravatar.cc/160?img=51', gradient:'linear-gradient(135deg,#E2725B,#7A3524)',
-      bio:"Youssef aime recevoir autour d'un couscous familial généreux, comme il l'a toujours connu en famille. Une cuisine simple, parfumée et conviviale, pensée pour être partagée à plusieurs.",
-
-     specialties:["Couscous familial","Grillades marinées","Chorba","Thé à la menthe"],
-      training:null, selfTaughtNote:"Autodidacte — cuisine apprise en famille, entre l'Algérie et Nantes.",
-      formulas:[
-        { name:"Menu Familial", price:18, description:"Couscous végétarien ou au poulet, généreux et parfumé.", includes:["Chorba","Couscous au choix","Thé à la menthe"] },
-        { name:"Menu Grand Couscous", price:24, description:"Le couscous royal avec merguez, agneau et poulet, pour les grandes tablées.", includes:["Chorba","Couscous royal","Pâtisserie orientale"] }
-      ],
-      discountTiers:[{minGuests:8, discountPercent:12}],
-      testimonials:[
-        { author:"Sarah M.", rating:5, date:"Juillet 2026", comment:"Couscous délicieux et copieux, Youssef est très accueillant." },
-        { author:"Julien K.", rating:4, date:"Juin 2026", comment:"Très bon moment convivial, portions généreuses." }
-      ]
-    }
-  ];
-
-  function isTopChef(chef){ return chef.rating >= 4.5 && chef.reviews >= 20; }
-  function getBudgetBucket(price){ if (price < 20) return 'low'; if (price <= 40) return 'mid'; return 'high'; }
-  const BUDGET_LABELS = { low:'Moins de 20 €', mid:'20 € – 40 €', high:'Plus de 40 €' };
-
-  function formatDateFr(dateStr){
-    try{ return new Date(dateStr + 'T00:00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' }); }
-    catch(e){ return dateStr; }
-  }
-
-  function chefCardHTML(chef, instant){
-    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
-    const tagsHTML = chef.tags.map(t => '<span>' + t + '</span>').join('');
-    const cardClass = instant ? 'chef-card' : 'chef-card reveal';
-    const ratingHTML = chef.reviews > 0
-      ? '<span class="stars" aria-hidden="true">★★★★★</span>' +
-        '<span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span>' +
-        '<span class="count">(' + chef.reviews + ' avis)</span>'
-
-     : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
-    return (
-      '<article class="' + cardClass + '" data-chef-id="' + chef.id + '">' +
-        badge +
-        '<div class="chef-avatar-wrap">' +
-          '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
-          '<img class="chef-avatar-photo" src="' + chef.photo + '" alt="" loading="lazy" onerror="this.style.display=\'none\';">' +
-        '</div>' +
-        '<h3>' + chef.name + '</h3>' +
-        '<p class="chef-specialty">' + chef.cuisine + '</p>' +
-        '<p class="chef-location">📍 ' + chef.location + '</p>' +
-        '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
-        '<div class="chef-rating">' + ratingHTML + '</div>' +
-        (chef.identityVerified ? '<div style="margin-bottom:14px;"><span class="identity-verified-badge">✅ Identité vérifiée</span></div>' : '') +
-        '<div class="chef-tags">' + tagsHTML + '</div>' +
-        '<div class="chef-footer">' +
-          '<span class="chef-price-tag">Dès ' + chef.price + ' €<br><small>par personne</small></span>' +
-          '<button type="button" class="btn btn-outline btn-sm">Voir le profil</button>' +
-        '</div>' +
-      '</article>'
-    );
-  }
-
-  function showView(name){
-    document.querySelectorAll('.app-view').forEach(v => { v.hidden = (v.id !== 'view-' + name); });
-    window.scrollTo({ top:0, behavior:'auto' });
-  }
-
-  function goToHomeSection(sectionId, role){
-    showView('home');
-    if (role) setRole(role);
-    requestAnimationFrame(() => {
-
-     requestAnimationFrame(() => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
-      });
-    });
-  }
-
-  let filters = { budgets:[], cuisines:[], regimes:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
-  let sortBy = 'relevance';
-  let carouselChefs = [];
-  let carouselIndex = 0;
-
-  function sortChefsList(list){
-    const sorted = list.slice();
-    if (sortBy === 'rating') sorted.sort((a,b) => b.rating - a.rating);
-    else if (sortBy === 'price-asc') sorted.sort((a,b) => a.price - b.price);
-    else if (sortBy === 'price-desc') sorted.sort((a,b) => b.price - a.price);
-    else sorted.sort((a,b) => {
-      const at = isTopChef(a) ? 1 : 0, bt = isTopChef(b) ? 1 : 0;
-      if (bt !== at) return bt - at;
-      return b.rating - a.rating;
-    });
-    return sorted;
-  }
-
-  function haversineDistanceKm(lat1, lng1, lat2, lng2){
-    const R = 6371;
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
-    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  }
-
-
-  function applyFiltersAndRender(){
-    let list = chefs.filter(c => {
-      if (filters.budgets.length && filters.budgets.indexOf(getBudgetBucket(c.price)) === -1) return false;
-      if (filters.cuisines.length && filters.cuisines.indexOf(c.cuisine) === -1) return false;
-      if (filters.regimes.length){
-        const chefRegimes = c.regimes || [];
-        if (!filters.regimes.some(r => chefRegimes.indexOf(r) !== -1)) return false;
-      }
-      if (c.rating < filters.minRating) return false;
-      if (filters.userLat != null && filters.radiusKm){
-        if (c.lat == null || c.lng == null) return false;
-        if (haversineDistanceKm(filters.userLat, filters.userLng, c.lat, c.lng) > filters.radiusKm) return false;
-      }
-      return true;
-    });
-    list = sortChefsList(list);
-
-    const grid = document.getElementById('resultsGrid');
-    const noResults = document.getElementById('noResults');
-    const resultsCount = document.getElementById('resultsCount');
-
-    grid.innerHTML = list.map(c => chefCardHTML(c, true)).join('');
-    noResults.hidden = list.length > 0;
-    grid.hidden = list.length === 0;
-    resultsCount.textContent = list.length + (list.length > 1 ? ' cuisiniers disponibles' : ' cuisinier disponible');
-
-    renderActiveChips();
-    updateMobileFilterCount();
-  }
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part5.js
-Sortie
-285 /home/claude/atchef-site/part5.js
-bash
-cat > /home/claude/atchef-site/part6.js << 'CLAUDE_MARKER_END'
-  function syncFilterUIFromState(){
-    document.querySelectorAll('.cuisine-checkbox').forEach(cb => { cb.checked = filters.cuisines.indexOf(cb.value) !== -1; });
-    document.querySelectorAll('.budget-checkbox').forEach(cb => { cb.checked = filters.budgets.indexOf(cb.value) !== -1; });
-    document.querySelectorAll('.regime-checkbox').forEach(cb => { cb.checked = filters.regimes.indexOf(cb.value) !== -1; });
-    document.querySelectorAll('input[name="ratingFilter"]').forEach(r => { r.checked = (parseFloat(r.value) === filters.minRating); });
-    const searchDateInputEl = document.getElementById('searchDateInput');
-    if (searchDateInputEl) searchDateInputEl.value = filters.date || '';
-    const locationInputEl = document.getElementById('locationInput');
-    if (locationInputEl) locationInputEl.value = filters.locationLabel || '';
-    const radiusSelectEl = document.getElementById('radiusSelect');
-    if (radiusSelectEl) radiusSelectEl.value = filters.radiusKm || '';
-    const hintEl = document.getElementById('locationStatusHint');
-    if (hintEl) hintEl.textContent = '';
-  }
-
-  function renderActiveChips(){
-    const container = document.getElementById('activeFiltersRow');
-    const chips = [];
-    filters.cuisines.forEach(c => chips.push({ label:c, remove:() => { filters.cuisines = filters.cuisines.filter(x => x !== c); } }));
-    filters.budgets.forEach(b => chips.push({ label:BUDGET_LABELS[b], remove:() => { filters.budgets = filters.budgets.filter(x => x !== b); } }));
-    filters.regimes.forEach(r => chips.push({ label:REGIME_LABELS[r] || r, remove:() => { filters.regimes = filters.regimes.filter(x => x !== r); } }));
-    if (filters.minRating > 0) chips.push({ label: filters.minRating.toFixed(1).replace('.', ',') + ' ★ et plus', remove:() => { filters.minRating = 0; } });
-    if (filters.date) chips.push({ label: formatDateFr(filters.date), remove:() => { filters.date = ''; } });
-    if (filters.userLat != null && filters.radiusKm){
-      const label = (filters.locationLabel ? filters.locationLabel : 'Ma position') + ' (' + filters.radiusKm + ' km)';
-      chips.push({ label, remove:() => { filters.userLat = null; filters.userLng = null; filters.radiusKm = null; filters.locationLabel = ''; } });
-    }
-    container.innerHTML = '';
-    if (chips.length === 0){
-      container.innerHTML = '<span class="no-active-filters">Aucun filtre actif — tous nos cuisiniers sont affichés</span>';
-      return;
-
-   }
-    chips.forEach(chip => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'filter-chip';
-      btn.innerHTML = chip.label + ' <span class="chip-x" aria-hidden="true">×</span>';
-      btn.setAttribute('aria-label', 'Retirer le filtre ' + chip.label);
-      btn.addEventListener('click', () => { chip.remove(); syncFilterUIFromState(); applyFiltersAndRender(); });
-      container.appendChild(btn);
-    });
-  }
-
-  function getActiveFilterCount(){
-    return filters.cuisines.length + filters.budgets.length + filters.regimes.length + (filters.minRating > 0 ? 1 : 0) + (filters.date ? 1 : 0) + ((filters.userLat != null && filters.radiusKm) ? 1 : 0);
-  }
-
-  function updateMobileFilterCount(){
-    const el = document.getElementById('mobileFilterCount');
-    if (!el) return;
-    const n = getActiveFilterCount();
-    el.textContent = n > 0 ? String(n) : '';
-  }
-
-  function resetFilters(){
-    filters = { budgets:[], cuisines:[], regimes:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
-    sortBy = 'relevance';
-    const sortSelectEl = document.getElementById('sortSelect');
-    if (sortSelectEl) sortSelectEl.value = 'relevance';
-    syncFilterUIFromState();
-    applyFiltersAndRender();
-  }
-
-
- function openSearch(opts){
-    opts = opts || {};
-    filters = { budgets:[], cuisines:[], regimes:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
-    if (opts.cuisine) filters.cuisines = [opts.cuisine];
-    if (opts.date) filters.date = opts.date;
-    showView('search');
-    syncFilterUIFromState();
-    applyFiltersAndRender();
-  }
-
-  let currentProfileChef = null;
-  let selectedFormulaIndex = 0;
-  let profileGuestCount = 2;
-  let bookingType = 'formula';
-  let calendarViewDate = new Date();
-  let selectedBookingDate = null;
-  let hostIdentityVerified = false;
-  const PROFILE_MIN_GUESTS = 1, PROFILE_MAX_GUESTS = 20;
-  const COOKING_ONLY_RATIO = 0.6;
-
-  function starsHTML(rating){
-    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
-  }
-
-  function getCookingOnlyPrice(chef){
-    const cheapest = Math.min.apply(null, chef.formulas.map(f => f.price));
-    return Math.round(cheapest * COOKING_ONLY_RATIO);
-  }
-
-  function computePricing(chef, formulaIndex, guestCount, type){
-    type = type || 'formula';
-    const formula = (type === 'cooking_only')
-
-     ? { name: 'Le chef cuisine avec vos ingrédients', price: getCookingOnlyPrice(chef) }
-      : chef.formulas[formulaIndex];
-    let discountPercent = 0;
-    (chef.discountTiers || []).forEach(tier => {
-      if (guestCount >= tier.minGuests && tier.discountPercent > discountPercent) discountPercent = tier.discountPercent;
-    });
-    const perPerson = formula.price * (1 - discountPercent / 100);
-    return { formula:formula, perPerson:perPerson, total:perPerson * guestCount, discountPercent:discountPercent, originalPerPerson:formula.price };
-  }
-
-  let currentProfileUnavailableDates = [];
-
-  function isDateUnavailable(chef, dateStr){
-    if (!chef) return false;
-    return currentProfileUnavailableDates.indexOf(dateStr) !== -1;
-  }
-
-  async function loadProfileAvailability(cookId){
-    currentProfileUnavailableDates = [];
-    if (!isBackendConfigured()) return;
-    try {
-      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/availability');
-      if (!res.ok) return;
-      const data = await res.json();
-      currentProfileUnavailableDates = data.unavailableDates || [];
-      renderCalendar();
-    } catch (e) {}
-  }
-
-  async function loadRealReviews(cookId){
-    if (!isBackendConfigured()) return;
-    try {
-
-     const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/reviews');
-      if (!res.ok) return;
-      const reviews = await res.json();
-      if (!reviews.length) return;
-      const container = document.getElementById('profileReviews');
-      const emptyNote = container.querySelector('.no-reviews-note');
-      if (emptyNote) emptyNote.remove();
-      const realReviewsHTML = reviews.map(r => {
-        const date = new Date(r.createdAt).toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' });
-        return '<div class="review-item"><div class="review-item-head"><span class="review-author">Hôte vérifié</span><span class="review-date">' + date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(r.rating) + '</span>' +
-          (r.comment ? '<p class="review-comment">' + r.comment.replace(/</g, '&lt;') + '</p>' : '') +
-        '</div>';
-      }).join('');
-      container.innerHTML = realReviewsHTML + container.innerHTML;
-    } catch (e) {}
-  }
-
-  function renderTrainingSection(chef){
-    const content = document.getElementById('profileTrainingContent');
-    if (chef.training && chef.training.length){
-      content.innerHTML = chef.training.map(t => '<div class="training-item"><strong>' + t.title + '</strong><span>' + t.detail + '</span></div>').join('');
-    } else {
-      content.innerHTML = '<p class="self-taught-note">🌿 ' + chef.selfTaughtNote + '</p>';
-    }
-  }
-
-  function renderFormulaOptions(chef){
-    const container = document.getElementById('formulaOptions');
-    container.innerHTML = chef.formulas.map((f, i) =>
-      '<label class="formula-option' + (i === selectedFormulaIndex ? ' selected' : '') + '" data-formula-index="' + i + '">' +
-        '<input type="radio" name="formulaChoice"' + (i === selectedFormulaIndex ? ' checked' : '') + '>' +
-        '<div class="formula-option-top"><span class="formula-option-name">' + f.name + '</span><span class="formula-option-price">' + f.price + ' €<small> /pers.</small></span></div>' +
-
-       '<p class="formula-option-desc">' + f.description + '</p>' +
-      '</label>'
-    ).join('');
-  }
-
-  function updateProfileGuestButtons(){
-    document.getElementById('profileGuestDec').disabled = profileGuestCount <= PROFILE_MIN_GUESTS;
-    document.getElementById('profileGuestInc').disabled = profileGuestCount >= PROFILE_MAX_GUESTS;
-  }
-
-  function updateBookingPriceDisplay(){
-    if (!currentProfileChef) return;
-    const pricing = computePricing(currentProfileChef, selectedFormulaIndex, profileGuestCount, bookingType);
-    let html = '<div class="price-breakdown-row"><span>' + pricing.formula.name + ' × ' + profileGuestCount + '</span>';
-    if (pricing.discountPercent > 0){
-      html += '<span><span class="price-original">' + pricing.originalPerPerson.toFixed(2).replace('.', ',') + ' €</span>' + pricing.perPerson.toFixed(2).replace('.', ',') + ' €</span></div>';
-      html += '<div class="price-breakdown-row discount-hint">🎉 Tarif dégressif appliqué : −' + pricing.discountPercent + '%</div>';
-    } else {
-      html += '<span>' + pricing.perPerson.toFixed(2).replace('.', ',') + ' €</span></div>';
-      const tiers = currentProfileChef.discountTiers || [];
-      let nextTier = null;
-      tiers.forEach(t => { if (profileGuestCount < t.minGuests && (!nextTier || t.minGuests < nextTier.minGuests)) nextTier = t; });
-      if (nextTier) html += '<div class="price-breakdown-row discount-hint">💡 −' + nextTier.discountPercent + '% à partir de ' + nextTier.minGuests + ' convives</div>';
-    }
-    html += '<div class="price-breakdown-total"><span class="label">Total estimé</span><span class="amount">' + pricing.total.toFixed(2).replace('.', ',') + ' €</span></div>';
-    document.getElementById('priceBreakdown').innerHTML = html;
-  }
-
-  function setBookingType(type){
-    bookingType = type;
-    document.querySelectorAll('.booking-type-option').forEach(btn => btn.classList.toggle('active', btn.dataset.bookingType === type));
-    document.getElementById('formulaSelectionField').hidden = (type !== 'formula');
-
-   document.getElementById('cookingOnlyField').hidden = (type !== 'cooking_only');
-    if (type === 'cooking_only' && currentProfileChef){
-      document.getElementById('cookingOnlyPriceDisplay').textContent = getCookingOnlyPrice(currentProfileChef) + ' € / pers.';
-    }
-    updateBookingPriceDisplay();
-  }
-
-  const CALENDAR_MONTH_NAMES = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-
-  function renderCalendar(){
-    const year = calendarViewDate.getFullYear();
-    const month = calendarViewDate.getMonth();
-    document.getElementById('calendarMonthLabel').textContent = CALENDAR_MONTH_NAMES[month] + ' ' + year;
-    const firstDay = new Date(year, month, 1);
-    const startWeekday = (firstDay.getDay() + 6) % 7;
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const todayStr = new Date().toISOString().split('T')[0];
-    let html = '';
-    for (let i = 0; i < startWeekday; i++) html += '<span class="calendar-day empty"></span>';
-    for (let d = 1; d <= daysInMonth; d++){
-      const dateObj = new Date(year, month, d);
-      const dateStr = dateObj.getFullYear() + '-' + String(dateObj.getMonth()+1).padStart(2,'0') + '-' + String(dateObj.getDate()).padStart(2,'0');
-      const isPast = dateStr < todayStr;
-      const unavailable = !isPast && isDateUnavailable(currentProfileChef, dateStr);
-      const isSelected = dateStr === selectedBookingDate;
-      let cls = 'calendar-day';
-      if (isPast || unavailable) cls += ' disabled';
-      if (isSelected) cls += ' selected';
-      html += '<button type="button" class="' + cls + '" data-date="' + dateStr + '"' + ((isPast || unavailable) ? ' disabled' : '') + '>' + d + '</button>';
-    }
-    document.getElementById('calendarGrid').innerHTML = html;
-  }
-
-
-  function updateSelectedDateLabel(){
-    const label = document.getElementById('selectedDateLabel');
-    if (selectedBookingDate){
-      const d = new Date(selectedBookingDate + 'T00:00:00');
-      const formatted = d.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-      label.textContent = '📅 ' + formatted.charAt(0).toUpperCase() + formatted.slice(1);
-    } else {
-      label.textContent = 'Aucune date sélectionnée';
-    }
-  }
-
-  function renderChefProfile(chef){
-    currentProfileChef = chef;
-    selectedFormulaIndex = 0;
-    profileGuestCount = 2;
-    bookingType = 'formula';
-    calendarViewDate = new Date();
-    selectedBookingDate = null;
-    document.getElementById('contactCookBtn').hidden = (userRole === 'cook');
-    loadProfileAvailability(chef.id);
-    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    const fallbackEl = document.getElementById('profileAvatarFallback');
-    fallbackEl.style.background = chef.gradient;
-    fallbackEl.textContent = initials;
-    const photoEl = document.getElementById('profileAvatarPhoto');
-    photoEl.style.display = '';
-    photoEl.src = chef.photo;
-    document.getElementById('profileName').textContent = chef.name;
-    document.getElementById('profileCuisineTag').textContent = chef.cuisine;
-    const starsEl = document.querySelector('#view-profile .profile-rating-row .stars');
-    if (chef.reviews > 0){
-
-     starsEl.style.display = '';
-      document.getElementById('profileScore').textContent = chef.rating.toFixed(1).replace('.', ',');
-      document.getElementById('profileReviewCount').innerHTML = '(' + chef.reviews + ' avis)';
-    } else {
-      starsEl.style.display = 'none';
-      document.getElementById('profileScore').textContent = '';
-      document.getElementById('profileReviewCount').innerHTML = '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
-    }
-    document.getElementById('profileLocation').textContent = '📍 ' + chef.location;
-    document.getElementById('profileBadgeSlot').innerHTML =
-      (isTopChef(chef) ? '<span class="chef-badge gold inline">★ Top Chef</span> ' : '') +
-      (chef.identityVerified ? '<span class="identity-verified-badge">✅ Identité vérifiée</span>' : '');
-    document.getElementById('profileBio').textContent = chef.bio;
-    document.getElementById('profileSpecialties').innerHTML = chef.specialties.map(s => '<span>' + s + '</span>').join('');
-    const dishPhotosSection = document.getElementById('profileDishPhotosSection');
-    if (chef.dishPhotos && chef.dishPhotos.length){
-      dishPhotosSection.hidden = false;
-      document.getElementById('profileDishPhotos').innerHTML = chef.dishPhotos.map(p =>
-        '<div class="dish-photo-item">' +
-          '<img src="' + p.url + '" alt="' + (p.caption ? p.caption.replace(/"/g, '&quot;') : 'Plat de ' + chef.name) + '" loading="lazy">' +
-          (p.caption ? '<p class="dish-photo-caption">' + p.caption + '</p>' : '') +
-        '</div>'
-      ).join('');
-    } else {
-      dishPhotosSection.hidden = true;
-    }
-    renderTrainingSection(chef);
-    document.getElementById('profileFormulasInfo').innerHTML = chef.formulas.map(f =>
-      '<div class="formula-info-card"><h3>' + f.name + '</h3><p class="formula-info-price">' + f.price + ' € <small style="font-size:0.68rem;font-weight:600;color:var(--ink-soft);">/ pers.</small></p><p class="formula-info-desc">' + f.description + '</p><ul class="formula-info-includes">' + f.includes.map(i => '<li>' + i + '</li>').join('') + '</ul></div>'
-    ).join('');
-    document.getElementById('profileReviews').innerHTML = chef.testimonials.length > 0
-      ? chef.testimonials.map(t =>
-
-         '<div class="review-item"><div class="review-item-head"><span class="review-author">' + t.author + '</span><span class="review-date">' + t.date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(t.rating) + '</span><p class="review-comment">' + t.comment + '</p></div>'
-        ).join('')
-      : '<p class="no-reviews-note">Aucun avis pour le moment — soyez le premier à réserver chez ce cuisinier !</p>';
-    loadRealReviews(chef.id);
-    document.getElementById('bookingBasePrice').textContent = chef.price;
-    renderFormulaOptions(chef);
-    document.getElementById('profileGuestCount').textContent = profileGuestCount;
-    updateProfileGuestButtons();
-    setBookingType('formula');
-    renderCalendar();
-    updateSelectedDateLabel();
-    updateBookingPriceDisplay();
-    document.getElementById('bookingFormWrap').hidden = false;
-    document.getElementById('bookingConfirmation').hidden = true;
-    const allergiesEl = document.getElementById('allergiesInput');
-    allergiesEl.value = '';
-    allergiesEl.classList.remove('invalid');
-    document.getElementById('fridgeContentsInput').value = '';
-    document.querySelectorAll('.equipment-checkbox').forEach(cb => { cb.checked = false; });
-    document.getElementById('bookingError').hidden = true;
-    hostIdentityVerified = false;
-    resetIdentityStatusUI();
-    if (userRole === 'host' && userEmail){
-      document.getElementById('hostEmailInput').value = userEmail;
-      checkHostIdentityStatus(userEmail);
-    } else {
-      document.getElementById('hostEmailInput').value = '';
-    }
-  }
-
-  function openChefProfile(chefId){
-    const chef = chefs.find(c => c.id === chefId);
-
-   if (!chef) return;
-    renderChefProfile(chef);
-    showView('profile');
-  }
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part6.js
-Sortie
-323 /home/claude/atchef-site/part6.js
-bash
-cat > /home/claude/atchef-site/part7.js << 'CLAUDE_MARKER_END'
-  function showBookingConfirmation(){
-    const pricing = computePricing(currentProfileChef, selectedFormulaIndex, profileGuestCount);
-    document.getElementById('bookingFormWrap').hidden = true;
-    const confirmEl = document.getElementById('bookingConfirmation');
-    confirmEl.hidden = false;
-    confirmEl.innerHTML =
-      '<div class="confirmation-icon">✅</div>' +
-      '<h3>Demande envoyée !</h3>' +
-      '<p>Votre demande a été transmise à <strong>' + currentProfileChef.name + '</strong>.</p>' +
-      '<div class="confirmation-summary">' +
-        '<div class="confirmation-row"><span>Formule</span><strong>' + pricing.formula.name + '</strong></div>' +
-        '<div class="confirmation-row"><span>Convives</span><strong>' + profileGuestCount + '</strong></div>' +
-        '<div class="confirmation-row"><span>Total estimé</span><strong>' + pricing.total.toFixed(2).replace('.', ',') + ' €</strong></div>' +
-      '</div>' +
-      '<p class="confirmation-note">Vous recevrez une réponse sous 24h pour confirmer la disponibilité.</p>' +
-      '<button type="button" class="btn btn-outline btn-block" id="newBookingBtn">Modifier ma demande</button>';
-  }
-
-  let lastRegisteredCookId = null;
-
-  async function startStripeOnboarding(cookId){
-    const errorEl = document.getElementById('cookRegisterError');
-    const submitBtn = document.getElementById('cookRegisterSubmit');
-    try {
-      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/stripe-account', { method: 'POST' });
-      if (!res.ok) throw new Error('La configuration du paiement a échoué');
-      const data = await res.json();
-      window.location.href = data.url;
-    } catch (err) {
-      console.error(err);
-      errorEl.innerHTML = '❌ Votre profil a été créé, mais la configuration du paiement a échoué. ' +
-
-       '<button type="button" class="btn btn-outline btn-sm" id="retryStripeBtn" style="margin-top:8px;">Réessayer</button>';
-      errorEl.hidden = false;
-      if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Créer mon profil et configurer mes paiements'; }
-    }
-  }
-
-  function normalizeBackendCook(bc){
-    return {
-      id: bc.id,
-      name: bc.name,
-      cuisine: bc.cuisine,
-      location: bc.location,
-      quote: bc.quote,
-      price: (bc.formulas && bc.formulas[0]) ? bc.formulas[0].price : 0,
-      rating: bc.rating || 0,
-      reviews: bc.reviews || 0,
-      tags: bc.tags || [],
-      regimes: bc.regimes || [],
-      photo: bc.photo || '/no-photo-yet.jpg',
-      gradient: bc.gradient || 'linear-gradient(135deg,#E2725B,#A64A34)',
-      bio: bc.bio || '',
-      specialties: bc.specialties || [],
-      training: bc.training || null,
-      selfTaughtNote: bc.selfTaughtNote || '',
-      formulas: bc.formulas || [],
-      discountTiers: bc.discountTiers || [],
-      testimonials: bc.testimonials || [],
-      identityVerified: !!bc.identityVerified,
-      lat: (typeof bc.lat === 'number') ? bc.lat : null,
-      lng: (typeof bc.lng === 'number') ? bc.lng : null,
-      dishPhotos: bc.dishPhotos || [],
-    };
-
- }
-
-  async function loadRegisteredCooks(){
-    try {
-      const res = await fetch(BACKEND_URL + '/api/cooks');
-      if (!res.ok) return;
-      const backendCooks = await res.json();
-      let addedAny = false;
-      backendCooks.forEach(bc => {
-        if (bc.id >= 1000 && !chefs.some(c => c.id === bc.id)){
-          chefs.push(normalizeBackendCook(bc));
-          addedAny = true;
-        }
-      });
-      if (addedAny) applyFiltersAndRender();
-    } catch (e) {
-      console.warn('Impossible de charger les cuisiniers inscrits via le formulaire :', e);
-    }
-  }
-
-  document.getElementById('cuisineFilterOptions').innerHTML = CUISINE_TYPES.map(c =>
-    '<label class="filter-option"><input type="checkbox" class="cuisine-checkbox" value="' + c + '"> ' + c + '</label>'
-  ).join('');
-
-  document.getElementById('regimeFilterOptions').innerHTML = REGIME_TAGS.map(r =>
-    '<label class="filter-option"><input type="checkbox" class="regime-checkbox" value="' + r + '"> ' + REGIME_LABELS[r] + '</label>'
-  ).join('');
-
-  document.getElementById('cookCuisine').innerHTML = '<option value="">Choisissez…</option>' +
-    CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
-
-  initChefCarousel();
-
-
-  const header = document.querySelector('.site-header');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive:true });
-  onScroll();
-
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  mobileToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    mobileToggle.classList.toggle('active', isOpen);
-    mobileToggle.setAttribute('aria-expanded', String(isOpen));
-    mobileToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-  mobileMenu.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      mobileToggle.classList.remove('active');
-      mobileToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  const toast = document.getElementById('toast');
-  let toastTimeout;
-  function showToast(message){
-    toast.textContent = message;
-    toast.classList.add('show');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => toast.classList.remove('show'), 3200);
-  }
-
-  const decBtn = document.querySelector('[data-action="decrement"]');
-
- const incBtn = document.querySelector('[data-action="increment"]');
-  const guestCountEl = document.getElementById('guestCount');
-  let guestCount = 2;
-  const MIN_GUESTS = 1, MAX_GUESTS = 12;
-  function updateGuestUI(){
-    guestCountEl.textContent = guestCount;
-    decBtn.disabled = guestCount <= MIN_GUESTS;
-    incBtn.disabled = guestCount >= MAX_GUESTS;
-  }
-  decBtn.addEventListener('click', () => { if (guestCount > MIN_GUESTS){ guestCount--; updateGuestUI(); }});
-  incBtn.addEventListener('click', () => { if (guestCount < MAX_GUESTS){ guestCount++; updateGuestUI(); }});
-  updateGuestUI();
-
-  const todayISO = new Date().toISOString().split('T')[0];
-  const dateInput = document.getElementById('dateInput');
-  if (dateInput) dateInput.min = todayISO;
-  const searchDateInputEl = document.getElementById('searchDateInput');
-  if (searchDateInputEl) searchDateInputEl.min = todayISO;
-
-  const searchForm = document.getElementById('searchForm');
-  searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const cuisineVal = document.getElementById('cuisineSelect').value;
-    const dateVal = document.getElementById('dateInput').value;
-    openSearch({
-      cuisine: (cuisineVal && cuisineVal !== 'Toutes les cuisines') ? cuisineVal : null,
-      date: dateVal || null
-    });
-  });
-
-  document.getElementById('cookRegisterForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-   const errorEl = document.getElementById('cookRegisterError');
-    const submitBtn = document.getElementById('cookRegisterSubmit');
-    errorEl.hidden = true;
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché : remplacez BACKEND_URL tout en haut du script par votre vraie adresse Render.";
-      errorEl.hidden = false;
-      return;
-    }
-    const payload = {
-      name: document.getElementById('cookName').value.trim(),
-      email: document.getElementById('cookEmail').value.trim(),
-      password: document.getElementById('cookPassword').value,
-      cuisine: document.getElementById('cookCuisine').value,
-      location: document.getElementById('cookLocation').value.trim(),
-      specialty: document.getElementById('cookSpecialty').value.trim(),
-      bio: document.getElementById('cookBio').value.trim(),
-      formulaName: document.getElementById('cookFormulaName').value.trim(),
-      formulaPrice: document.getElementById('cookFormulaPrice').value,
-    };
-    if (!payload.name || !payload.email || !payload.password || !payload.cuisine || !payload.location || !payload.specialty || !payload.formulaName || !payload.formulaPrice){
-      errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
-      errorEl.hidden = false;
-      return;
-    }
-    if (payload.password.length < 8){
-      errorEl.textContent = '⚠️ Le mot de passe doit contenir au moins 8 caractères.';
-      errorEl.hidden = false;
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Création de votre profil…';
-    try {
-
-     const regRes = await fetch(BACKEND_URL + '/api/cooks/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const regData = await regRes.json();
-      if (!regRes.ok) throw new Error(regData.error || 'Erreur lors de la création du profil');
-      lastRegisteredCookId = regData.cookId;
-      if (regData.token){
-        userToken = regData.token;
-        userRole = 'cook';
-        userName = payload.name;
-        userEmail = payload.email;
-        userCookId = regData.cookId;
-        await saveUserSession();
-        updateAuthUI();
-      }
-      submitBtn.textContent = 'Redirection vers Stripe…';
-      await startStripeOnboarding(lastRegisteredCookId);
-    } catch (err) {
-      console.error(err);
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Créer mon profil et configurer mes paiements';
-    }
-  });
-
-  const roleButtons = document.querySelectorAll('.role-toggle-inner button');
-  const panels = document.querySelectorAll('.steps-grid');
-  function setRole(role){
-    roleButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.role === role));
-
-   panels.forEach(panel => { panel.hidden = panel.dataset.panel !== role; });
-  }
-  roleButtons.forEach(btn => btn.addEventListener('click', () => setRole(btn.dataset.role)));
-
-  const newsletterForm = document.getElementById('newsletterForm');
-  const newsletterMsg = document.getElementById('newsletterMsg');
-  newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = newsletterForm.querySelector('input[type="email"]');
-    if (input.value){
-      newsletterMsg.textContent = '✅ Merci ! Vous êtes inscrit(e) à la newsletter.';
-      input.value = '';
-    }
-  });
-
-  document.getElementById('cuisineFilterOptions').addEventListener('change', (e) => {
-    if (!e.target.classList.contains('cuisine-checkbox')) return;
-    filters.cuisines = Array.from(document.querySelectorAll('.cuisine-checkbox:checked')).map(cb => cb.value);
-    applyFiltersAndRender();
-  });
-
-  document.getElementById('regimeFilterOptions').addEventListener('change', (e) => {
-    if (!e.target.classList.contains('regime-checkbox')) return;
-    filters.regimes = Array.from(document.querySelectorAll('.regime-checkbox:checked')).map(cb => cb.value);
-    applyFiltersAndRender();
-  });
-
-  document.querySelectorAll('.budget-checkbox').forEach(cb => {
-    cb.addEventListener('change', () => {
-      filters.budgets = Array.from(document.querySelectorAll('.budget-checkbox:checked')).map(c => c.value);
-      applyFiltersAndRender();
-    });
-
- });
-
-  const useMyLocationBtn = document.getElementById('useMyLocationBtn');
-  if (useMyLocationBtn){
-    useMyLocationBtn.addEventListener('click', () => {
-      const hint = document.getElementById('locationStatusHint');
-      if (!navigator.geolocation){
-        hint.textContent = "⚠️ Votre navigateur ne supporte pas la géolocalisation.";
-        return;
-      }
-      hint.textContent = '📍 Localisation en cours…';
-      useMyLocationBtn.disabled = true;
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          filters.userLat = pos.coords.latitude;
-          filters.userLng = pos.coords.longitude;
-          filters.locationLabel = 'Ma position';
-          if (!filters.radiusKm) filters.radiusKm = 10;
-          document.getElementById('locationInput').value = '';
-          document.getElementById('radiusSelect').value = String(filters.radiusKm);
-          hint.textContent = '📍 Position détectée';
-          useMyLocationBtn.disabled = false;
-          applyFiltersAndRender();
-        },
-        () => {
-          hint.textContent = "⚠️ Impossible d'accéder à votre position (vérifiez les autorisations de votre navigateur).";
-          useMyLocationBtn.disabled = false;
-        }
-      );
-    });
-  }
-
-
- const locationInput = document.getElementById('locationInput');
-  if (locationInput){
-    locationInput.addEventListener('change', async () => {
-      const query = locationInput.value.trim();
-      const hint = document.getElementById('locationStatusHint');
-      if (!query){
-        filters.userLat = null; filters.userLng = null; filters.locationLabel = '';
-        hint.textContent = '';
-        applyFiltersAndRender();
-        return;
-      }
-      if (!isBackendConfigured()){
-        hint.textContent = "⚙️ Le backend n'est pas encore branché.";
-        return;
-      }
-      hint.textContent = '🔎 Recherche du lieu…';
-      try {
-        const res = await fetch(BACKEND_URL + '/api/geocode?q=' + encodeURIComponent(query));
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Lieu introuvable');
-        filters.userLat = data.lat;
-        filters.userLng = data.lng;
-        filters.locationLabel = query;
-        if (!filters.radiusKm){
-          filters.radiusKm = 10;
-          document.getElementById('radiusSelect').value = '10';
-        }
-        hint.textContent = '📍 Lieu trouvé';
-        applyFiltersAndRender();
-      } catch (err) {
-        hint.textContent = '⚠️ ' + err.message;
-      }
-
-   });
-  }
-
-  const radiusSelect = document.getElementById('radiusSelect');
-  if (radiusSelect){
-    radiusSelect.addEventListener('change', () => {
-      filters.radiusKm = radiusSelect.value ? parseFloat(radiusSelect.value) : null;
-      applyFiltersAndRender();
-    });
-  }
-
-  document.querySelectorAll('input[name="ratingFilter"]').forEach(r => {
-    r.addEventListener('change', () => {
-      filters.minRating = parseFloat(r.value);
-      applyFiltersAndRender();
-    });
-  });
-
-  if (searchDateInputEl){
-    searchDateInputEl.addEventListener('change', () => {
-      filters.date = searchDateInputEl.value;
-      applyFiltersAndRender();
-    });
-  }
-
-  const sortSelectEl = document.getElementById('sortSelect');
-  sortSelectEl.addEventListener('change', () => {
-    sortBy = sortSelectEl.value;
-    applyFiltersAndRender();
-  });
-
-  const filtersPanel = document.getElementById('filtersPanel');
-
- const filtersBackdrop = document.getElementById('filtersBackdrop');
-  function openFiltersDrawer(){ filtersPanel.classList.add('open'); filtersBackdrop.classList.add('open'); }
-  function closeFiltersDrawer(){ filtersPanel.classList.remove('open'); filtersBackdrop.classList.remove('open'); }
-
-  document.getElementById('formulaOptions').addEventListener('click', (e) => {
-    const option = e.target.closest('.formula-option');
-    if (!option || !currentProfileChef) return;
-    selectedFormulaIndex = parseInt(option.dataset.formulaIndex, 10);
-    renderFormulaOptions(currentProfileChef);
-    updateBookingPriceDisplay();
-  });
-
-  document.getElementById('profileGuestDec').addEventListener('click', () => {
-    if (profileGuestCount > PROFILE_MIN_GUESTS){
-      profileGuestCount--;
-      document.getElementById('profileGuestCount').textContent = profileGuestCount;
-      updateProfileGuestButtons();
-      updateBookingPriceDisplay();
-    }
-  });
-  document.getElementById('profileGuestInc').addEventListener('click', () => {
-    if (profileGuestCount < PROFILE_MAX_GUESTS){
-      profileGuestCount++;
-      document.getElementById('profileGuestCount').textContent = profileGuestCount;
-      updateProfileGuestButtons();
-      updateBookingPriceDisplay();
-    }
-  });
-
-  document.querySelectorAll('.booking-type-option').forEach(btn => {
-    btn.addEventListener('click', () => setBookingType(btn.dataset.bookingType));
-  });
-
-
-  document.getElementById('calendarPrevMonth').addEventListener('click', () => {
-    calendarViewDate.setMonth(calendarViewDate.getMonth() - 1);
-    renderCalendar();
-  });
-  document.getElementById('calendarNextMonth').addEventListener('click', () => {
-    calendarViewDate.setMonth(calendarViewDate.getMonth() + 1);
-    renderCalendar();
-  });
-  document.getElementById('calendarGrid').addEventListener('click', (e) => {
-    const dayBtn = e.target.closest('.calendar-day:not(.disabled):not(.empty)');
-    if (!dayBtn) return;
-    selectedBookingDate = dayBtn.dataset.date;
-    renderCalendar();
-    updateSelectedDateLabel();
-    document.getElementById('bookingError').hidden = true;
-  });
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part7.js
-Sortie
-400 /home/claude/atchef-site/part7.js
-bash
-cat > /home/claude/atchef-site/part8.js << 'CLAUDE_MARKER_END'
-  function resetIdentityStatusUI(){
-    hostIdentityVerified = false;
-    const box = document.getElementById('identityBox');
-    box.classList.remove('verified');
-    document.getElementById('identityStatusText').textContent =
-      "🔒 Obligatoire avant de réserver, pour la sécurité de votre cuisinier. Pièce d'identité + selfie, sur une page Stripe sécurisée — At'Chef ne reçoit jamais vos documents.";
-    const btn = document.getElementById('verifyIdentityBtn');
-    btn.hidden = false;
-    btn.disabled = false;
-    btn.textContent = 'Vérifier mon identité';
-  }
-
-  function setIdentityVerifiedUI(){
-    hostIdentityVerified = true;
-    const box = document.getElementById('identityBox');
-    box.classList.add('verified');
-    document.getElementById('identityStatusText').textContent = '✅ Identité vérifiée, merci !';
-    document.getElementById('verifyIdentityBtn').hidden = true;
-  }
-
-  async function checkHostIdentityStatus(email){
-    try {
-      const res = await fetch(BACKEND_URL + '/api/identity/host-status?email=' + encodeURIComponent(email));
-      const data = await res.json();
-      if (data.verified) setIdentityVerifiedUI();
-      return data.verified;
-    } catch (e) {
-      return false;
-    }
-  }
-
-
- document.getElementById('verifyIdentityBtn').addEventListener('click', async () => {
-    const email = document.getElementById('hostEmailInput').value.trim();
-    const errorEl = document.getElementById('bookingError');
-    errorEl.hidden = true;
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      errorEl.textContent = '⚠️ Merci de renseigner un email valide avant de vérifier votre identité.';
-      errorEl.hidden = false;
-      return;
-    }
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    const btn = document.getElementById('verifyIdentityBtn');
-    btn.disabled = true;
-    btn.textContent = 'Vérification…';
-    try {
-      const alreadyVerified = await checkHostIdentityStatus(email);
-      if (alreadyVerified) return;
-      const res = await fetch(BACKEND_URL + '/api/identity/verify-host', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Erreur lors du démarrage de la vérification');
-      if (data.alreadyVerified){
-        setIdentityVerifiedUI();
-        return;
-      }
-      window.location.href = data.url;
-
-   } catch (err) {
-      btn.disabled = false;
-      btn.textContent = 'Vérifier mon identité';
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  document.getElementById('reserveBtn').addEventListener('click', async () => {
-    const allergiesEl = document.getElementById('allergiesInput');
-    const errorEl = document.getElementById('bookingError');
-    const btn = document.getElementById('reserveBtn');
-    const hostEmail = document.getElementById('hostEmailInput').value.trim();
-    if (!selectedBookingDate){
-      errorEl.textContent = '⚠️ Merci de choisir une date dans le calendrier.';
-      errorEl.hidden = false;
-      return;
-    }
-    if (!allergiesEl.value.trim()){
-      errorEl.textContent = "⚠️ Merci de renseigner ce champ (indiquez « Aucune » si vous n'avez pas de restriction).";
-      errorEl.hidden = false;
-      allergiesEl.classList.add('invalid');
-      allergiesEl.focus();
-      return;
-    }
-    errorEl.hidden = true;
-    allergiesEl.classList.remove('invalid');
-    if (!hostEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(hostEmail)){
-      errorEl.textContent = '⚠️ Merci de renseigner un email valide.';
-      errorEl.hidden = false;
-      return;
-    }
-
-   if (!hostIdentityVerified){
-      errorEl.textContent = '⚠️ Merci de vérifier votre identité avant de réserver (bouton ci-dessus).';
-      errorEl.hidden = false;
-      return;
-    }
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché : remplacez BACKEND_URL tout en haut du script par votre vraie adresse Render.";
-      errorEl.hidden = false;
-      return;
-    }
-    const equipment = Array.from(document.querySelectorAll('.equipment-checkbox:checked')).map(cb => cb.value);
-    const fridgeContents = document.getElementById('fridgeContentsInput').value.trim();
-    btn.disabled = true;
-    btn.textContent = 'Redirection vers le paiement…';
-    try {
-      const response = await fetch(BACKEND_URL + '/api/checkout/create-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          cookId: currentProfileChef.id,
-          formulaIndex: selectedFormulaIndex,
-          guestCount: profileGuestCount,
-          allergies: allergiesEl.value.trim(),
-          bookingType: bookingType,
-          fridgeContents: fridgeContents,
-          equipment: equipment,
-          eventDate: selectedBookingDate,
-          hostEmail: hostEmail,
-        }),
-      });
-      if (!response.ok) throw new Error(await response.text());
-      const data = await response.json();
-
-     window.location.href = data.checkoutUrl;
-    } catch (err) {
-      console.error(err);
-      btn.disabled = false;
-      btn.textContent = 'Réserver';
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('payment') === 'success') {
-    showToast('✅ Paiement réussi ! Votre réservation est confirmée.');
-    window.history.replaceState({}, '', window.location.pathname);
-  } else if (urlParams.get('payment') === 'cancelled') {
-    showToast('❌ Paiement annulé, vous pouvez réessayer quand vous voulez.');
-    window.history.replaceState({}, '', window.location.pathname);
-  }
-
-  if (urlParams.get('onboarding') === 'complete') {
-    showToast('✅ Votre profil cuisinier est prêt ! Vous êtes visible dans les recherches.');
-    window.history.replaceState({}, '', window.location.pathname);
-    loadRegisteredCooks();
-  } else if (urlParams.get('onboarding') === 'refresh') {
-    const refreshCookId = urlParams.get('cookId');
-    window.history.replaceState({}, '', window.location.pathname);
-    if (refreshCookId) startStripeOnboarding(refreshCookId);
-  }
-
-  if (urlParams.get('identity') === 'complete') {
-    const identityEmail = urlParams.get('email');
-    window.history.replaceState({}, '', window.location.pathname);
-
-   if (identityEmail && isBackendConfigured()){
-      checkHostIdentityStatus(identityEmail).then(verified => {
-        showToast(verified
-          ? '✅ Identité vérifiée ! Vous pouvez maintenant réserver.'
-          : '⏳ Vérification en cours de traitement, réessayez dans un instant sur la page du cuisinier.');
-      });
-    }
-  }
-
-  if (urlParams.get('resetToken')) {
-    pendingResetToken = urlParams.get('resetToken');
-    pendingResetEmail = urlParams.get('email');
-    window.history.replaceState({}, '', window.location.pathname);
-    showView('reset-password');
-  }
-
-  document.getElementById('allergiesInput').addEventListener('input', () => {
-    document.getElementById('allergiesInput').classList.remove('invalid');
-    document.getElementById('bookingError').hidden = true;
-  });
-
-  document.addEventListener('click', (e) => {
-    const toastTarget = e.target.closest('[data-toast]');
-    if (toastTarget){ e.preventDefault(); showToast(toastTarget.getAttribute('data-toast')); return; }
-    const chefCardTarget = e.target.closest('.chef-card[data-chef-id]');
-    if (chefCardTarget){ openChefProfile(parseInt(chefCardTarget.dataset.chefId, 10)); return; }
-    const searchTarget = e.target.closest('.go-to-search');
-    if (searchTarget){ e.preventDefault(); openSearch({ cuisine: searchTarget.dataset.cuisine || null }); return; }
-    const cookRegisterTarget = e.target.closest('.go-to-cook-register');
-    if (cookRegisterTarget){ e.preventDefault(); showView('cook-register'); return; }
-    const contactTarget = e.target.closest('.go-to-contact');
-    if (contactTarget){ e.preventDefault(); showView('contact'); return; }
-
-   const cguTarget = e.target.closest('.go-to-cgu');
-    if (cguTarget){ e.preventDefault(); showView('cgu'); return; }
-    const cancellationTarget = e.target.closest('.go-to-cancellation');
-    if (cancellationTarget){ e.preventDefault(); showView('cancellation'); return; }
-    const privacyTarget = e.target.closest('.go-to-privacy');
-    if (privacyTarget){ e.preventDefault(); showView('privacy'); return; }
-    const safetyCharterTarget = e.target.closest('.go-to-safety-charter');
-    if (safetyCharterTarget){ e.preventDefault(); showView('safety-charter'); return; }
-    const adminLoginTarget = e.target.closest('.go-to-admin-login');
-    if (adminLoginTarget){ e.preventDefault(); showView('admin-login'); return; }
-    const loginTarget = e.target.closest('.go-to-login');
-    if (loginTarget){ e.preventDefault(); showView('login'); return; }
-    const forgotPasswordTarget = e.target.closest('.go-to-forgot-password');
-    if (forgotPasswordTarget){ e.preventDefault(); showView('forgot-password'); return; }
-    const hostRegisterTarget = e.target.closest('.go-to-host-register');
-    if (hostRegisterTarget){ e.preventDefault(); showView('host-register'); return; }
-    const mySpaceTarget = e.target.closest('.go-to-my-space');
-    if (mySpaceTarget){ e.preventDefault(); showView('my-space'); loadMySpace(); return; }
-    const messagesTarget = e.target.closest('.go-to-messages');
-    if (messagesTarget){ e.preventDefault(); showView('messages'); loadConversationsList(); return; }
-    const retryStripeTarget = e.target.closest('#retryStripeBtn');
-    if (retryStripeTarget){ if (lastRegisteredCookId) startStripeOnboarding(lastRegisteredCookId); return; }
-    const roleTarget = e.target.closest('[data-goto-role]');
-    if (roleTarget){ e.preventDefault(); goToHomeSection('comment-ca-marche', roleTarget.dataset.gotoRole); return; }
-    const sectionTarget = e.target.closest('[data-goto-section]');
-    if (sectionTarget){ e.preventDefault(); goToHomeSection(sectionTarget.dataset.gotoSection); return; }
-    const backHomeTarget = e.target.closest('.back-to-home');
-    if (backHomeTarget){ e.preventDefault(); showView('home'); return; }
-    const backSearchTarget = e.target.closest('.back-to-search');
-    if (backSearchTarget){ e.preventDefault(); showView('search'); return; }
-    const logoTarget = e.target.closest('.logo');
-    if (logoTarget){ e.preventDefault(); showView('home'); return; }
-
-   const mobileFilterToggleTarget = e.target.closest('.mobile-filters-toggle');
-    if (mobileFilterToggleTarget){ openFiltersDrawer(); return; }
-    const closeFilterTarget = e.target.closest('.filters-panel-close, .filters-apply-mobile');
-    if (closeFilterTarget){ closeFiltersDrawer(); return; }
-    if (e.target.id === 'filtersBackdrop'){ closeFiltersDrawer(); return; }
-    const resetTarget = e.target.closest('.reset-filters-link');
-    if (resetTarget){ resetFilters(); return; }
-    const newBookingTarget = e.target.closest('#newBookingBtn');
-    if (newBookingTarget){
-      document.getElementById('bookingConfirmation').hidden = true;
-      document.getElementById('bookingFormWrap').hidden = false;
-      return;
-    }
-  });
-
-  const revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window){
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting){
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold:0.15 });
-    revealEls.forEach(el => revealObserver.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('visible'));
-  }
-
-  function applyTiltEffect(el, opts){
-    opts = opts || {};
-
-   const maxTilt = opts.maxTilt || 10;
-    const restRotateX = opts.restRotateX || 0;
-    const restRotateY = opts.restRotateY || 0;
-    const lift = opts.lift || 0;
-    if (window.matchMedia && window.matchMedia('(hover: none)').matches){
-      el.style.transform = 'perspective(1000px) rotateX(' + restRotateX + 'deg) rotateY(' + restRotateY + 'deg)';
-      return;
-    }
-    const glare = el.querySelector('.tilt-glare');
-    el.addEventListener('mousemove', (e) => {
-      el.classList.remove('tilt-resting');
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -maxTilt;
-      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * maxTilt;
-      el.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(' + (-lift) + 'px)';
-      if (glare){
-        const px = (x / rect.width) * 100;
-        const py = (y / rect.height) * 100;
-        glare.style.background = 'radial-gradient(circle at ' + px + '% ' + py + '%, rgba(255,255,255,0.45), transparent 55%)';
-      }
-    });
-    el.addEventListener('mouseleave', () => {
-      el.classList.add('tilt-resting');
-      el.style.transform = 'perspective(1000px) rotateX(' + restRotateX + 'deg) rotateY(' + restRotateY + 'deg)';
-      if (glare) glare.style.background = 'transparent';
-    });
-    el.style.transform = 'perspective(1000px) rotateX(' + restRotateX + 'deg) rotateY(' + restRotateY + 'deg)';
-  }
-
-  function carouselCardHTML(chef){
-
-   const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
-    const ratingHTML = chef.reviews > 0
-      ? '<span class="stars" aria-hidden="true">★★★★★</span><span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span><span class="count">(' + chef.reviews + ' avis)</span>'
-      : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
-    return (
-      '<article class="chef-card carousel-card" data-chef-id="' + chef.id + '">' +
-        badge +
-        '<div class="chef-avatar-wrap">' +
-          '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
-          '<img class="chef-avatar-photo" src="' + chef.photo + '" alt="" loading="lazy" onerror="this.style.display=\'none\';">' +
-        '</div>' +
-        '<h3>' + chef.name + '</h3>' +
-        '<p class="chef-specialty">' + chef.cuisine + '</p>' +
-        '<p class="chef-location">📍 ' + chef.location + '</p>' +
-        '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
-        '<div class="chef-rating">' + ratingHTML + '</div>' +
-        '<div class="chef-footer">' +
-          '<span class="chef-price-tag">Dès ' + chef.price + ' €<br><small>par personne</small></span>' +
-          '<button type="button" class="btn btn-outline btn-sm">Voir le profil</button>' +
-        '</div>' +
-      '</article>'
-    );
-  }
-
-  function initChefCarousel(){
-    carouselChefs = chefs.slice();
-    if (!carouselChefs.length) return;
-    const track = document.getElementById('carouselTrack');
-    track.innerHTML = carouselChefs.map(carouselCardHTML).join('');
-    const featuredIdx = carouselChefs.findIndex(c => c.featured);
-    carouselIndex = featuredIdx !== -1 ? featuredIdx : 0;
-
-   updateCarouselPositions();
-    document.querySelectorAll('.carousel-card').forEach((card, i) => {
-      card.addEventListener('click', () => {
-        if (i === carouselIndex){
-          const chef = carouselChefs[i];
-          renderChefProfile(chef);
-          showView('profile');
-        } else {
-          goToCarouselIndex(i);
-        }
-      });
-    });
-    document.getElementById('carouselPrevBtn').addEventListener('click', () => goToCarouselIndex(carouselIndex - 1));
-    document.getElementById('carouselNextBtn').addEventListener('click', () => goToCarouselIndex(carouselIndex + 1));
-    let dragStartX = null;
-    let dragging = false;
-    track.addEventListener('pointerdown', (e) => {
-      dragging = true;
-      dragStartX = e.clientX;
-    });
-    track.addEventListener('pointerup', (e) => {
-      if (!dragging) return;
-      dragging = false;
-      const deltaX = e.clientX - dragStartX;
-      if (deltaX < -40) goToCarouselIndex(carouselIndex + 1);
-      else if (deltaX > 40) goToCarouselIndex(carouselIndex - 1);
-    });
-    track.addEventListener('pointercancel', () => { dragging = false; });
-    track.setAttribute('tabindex', '0');
-    track.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') goToCarouselIndex(carouselIndex - 1);
-      if (e.key === 'ArrowRight') goToCarouselIndex(carouselIndex + 1);
-
-   });
-  }
-
-  function goToCarouselIndex(newIndex){
-    const n = carouselChefs.length;
-    carouselIndex = ((newIndex % n) + n) % n;
-    updateCarouselPositions();
-  }
-
-  function updateCarouselPositions(){
-    const cards = document.querySelectorAll('.carousel-card');
-    const n = cards.length;
-    cards.forEach((card, i) => {
-      let offset = i - carouselIndex;
-      if (offset > n / 2) offset -= n;
-      if (offset < -n / 2) offset += n;
-      const abs = Math.abs(offset);
-      let transform, opacity, zIndex, pointerEvents;
-      if (abs === 0){
-        transform = 'translate(-50%,-50%) translateX(0) translateZ(0) rotateY(0deg) scale(1)';
-        opacity = 1; zIndex = 10; pointerEvents = 'auto';
-      } else if (abs === 1){
-        transform = 'translate(-50%,-50%) translateX(' + (offset * 230) + 'px) translateZ(-140px) rotateY(' + (-offset * 38) + 'deg) scale(0.82)';
-        opacity = 0.8; zIndex = 5; pointerEvents = 'auto';
-      } else if (abs === 2){
-        transform = 'translate(-50%,-50%) translateX(' + (offset * 200) + 'px) translateZ(-280px) rotateY(' + (-offset * 44) + 'deg) scale(0.62)';
-        opacity = 0.4; zIndex = 2; pointerEvents = 'auto';
-      } else {
-        transform = 'translate(-50%,-50%) translateX(' + (offset > 0 ? 380 : -380) + 'px) translateZ(-380px) scale(0.4)';
-        opacity = 0; zIndex = 0; pointerEvents = 'none';
-      }
-      card.style.transform = transform;
-
-     card.style.opacity = opacity;
-      card.style.zIndex = zIndex;
-      card.style.pointerEvents = pointerEvents;
-      card.classList.toggle('is-active', abs === 0);
-    });
-  }
-
-  const reservationCardEl = document.getElementById('searchForm');
-  if (reservationCardEl){
-    applyTiltEffect(reservationCardEl, { maxTilt: 10, restRotateX: 2, restRotateY: -4 });
-    const wrapEl = reservationCardEl.closest('.reservation-wrap');
-    if (wrapEl) wrapEl.classList.add('tilt-card-idle');
-  }
-
-  const parallaxBlobs = document.querySelectorAll('.hero-blob');
-  if (parallaxBlobs.length){
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const scrolled = window.scrollY;
-        parallaxBlobs.forEach(blob => {
-          const speed = parseFloat(blob.dataset.speed) || 0.2;
-          blob.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
-        });
-        ticking = false;
-      });
-    }, { passive: true });
-  }
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part8.js
-Sortie
-413 /home/claude/atchef-site/part8.js
-bash
-cat > /home/claude/atchef-site/part9.js << 'CLAUDE_MARKER_END'
-  let userToken = null;
-  let userRole = null;
-  let userName = null;
-  let userEmail = null;
-  let userCookId = null;
-  let pendingResetEmail = null;
-  let pendingResetToken = null;
-
-  async function saveUserSession(){
-    try {
-      localStorage.setItem('atchefUserSession', JSON.stringify({
-        token: userToken, role: userRole, name: userName, email: userEmail, cookId: userCookId,
-      }));
-    } catch (e) { console.warn('Impossible de sauvegarder la session utilisateur :', e); }
-  }
-
-  async function loadUserSession(){
-    try {
-      const raw = localStorage.getItem('atchefUserSession');
-      if (raw){
-        const data = JSON.parse(raw);
-        userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = data.cookId;
-        updateAuthUI();
-      }
-    } catch (e) {}
-  }
-
-  async function clearUserSession(){
-    userToken = null; userRole = null; userName = null; userEmail = null; userCookId = null;
-    try { localStorage.removeItem('atchefUserSession'); } catch (e) {}
-    updateAuthUI();
-
- }
-
-  function updateAuthUI(){
-    const loggedIn = !!userToken;
-    document.querySelectorAll('.auth-nav-link').forEach(link => {
-      link.textContent = loggedIn ? (userName ? userName.split(' ')[0] : 'Mon espace') : 'Connexion';
-      link.classList.toggle('go-to-login', !loggedIn);
-      link.classList.toggle('go-to-my-space', loggedIn);
-    });
-  }
-
-  document.getElementById('userLoginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('loginError');
-    errorEl.hidden = true;
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    try {
-      const res = await fetch(BACKEND_URL + '/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: document.getElementById('loginEmail').value.trim(),
-          password: document.getElementById('loginPassword').value,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Connexion refusée');
-      userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = data.cookId || null;
-
-     await saveUserSession();
-      updateAuthUI();
-      document.getElementById('userLoginForm').reset();
-      showToast('✅ Bienvenue, ' + userName + ' !');
-      showView('my-space');
-      loadMySpace();
-    } catch (err) {
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  document.getElementById('forgotPasswordForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('forgotPasswordError');
-    const successEl = document.getElementById('forgotPasswordSuccess');
-    errorEl.hidden = true;
-    successEl.hidden = true;
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    try {
-      const res = await fetch(BACKEND_URL + '/api/auth/forgot-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: document.getElementById('forgotEmail').value.trim() }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Une erreur est survenue');
-      successEl.textContent = '✅ ' + data.message;
-
-     successEl.hidden = false;
-      document.getElementById('forgotPasswordForm').reset();
-    } catch (err) {
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  document.getElementById('resetPasswordForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('resetPasswordError');
-    errorEl.hidden = true;
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    try {
-      const res = await fetch(BACKEND_URL + '/api/auth/reset-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: pendingResetEmail,
-          token: pendingResetToken,
-          newPassword: document.getElementById('resetNewPassword').value,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Une erreur est survenue');
-      showToast('✅ ' + data.message);
-      showView('login');
-    } catch (err) {
-
-     errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  document.getElementById('hostRegisterForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('hostRegisterError');
-    errorEl.hidden = true;
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    try {
-      const res = await fetch(BACKEND_URL + '/api/auth/register-host', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: document.getElementById('hostRegisterName').value.trim(),
-          email: document.getElementById('hostRegisterEmail').value.trim(),
-          password: document.getElementById('hostRegisterPassword').value,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Erreur lors de la création du compte');
-      userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = null;
-      await saveUserSession();
-      updateAuthUI();
-      document.getElementById('hostRegisterForm').reset();
-      showToast("✅ Bienvenue sur At'Chef, " + userName + " !");
-      showView('my-space');
-
-     loadMySpace();
-    } catch (err) {
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  document.getElementById('userLogoutBtn').addEventListener('click', async () => {
-    await clearUserSession();
-    showView('home');
-  });
-
-  document.getElementById('mySpaceContent').addEventListener('click', async (e) => {
-    const btn = e.target.closest('.cancel-booking-btn');
-    if (!btn) return;
-    const bookingId = btn.dataset.bookingId;
-    if (!confirm("Confirmer l'annulation de cette réservation ? Le remboursement dépend de la date restante avant l'événement (voir notre politique d'annulation).")) return;
-    btn.disabled = true;
-    btn.textContent = 'Annulation en cours…';
-    try {
-      const res = await fetch(BACKEND_URL + '/api/bookings/' + bookingId + '/cancel', {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + userToken },
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erreur lors de l'annulation");
-      showToast('✅ Réservation annulée — ' + data.refundPercent + '% remboursé.');
-      loadMySpace();
-    } catch (err) {
-      showToast('❌ ' + err.message);
-      btn.disabled = false;
-      btn.textContent = 'Annuler cette réservation';
-
-   }
-  });
-
-  document.getElementById('mySpaceContent').addEventListener('click', (e) => {
-    const openBtn = e.target.closest('.open-review-btn');
-    if (openBtn){
-      const bookingId = openBtn.dataset.bookingId;
-      const wrap = document.getElementById('reviewForm-' + bookingId);
-      const alreadyOpen = !wrap.hidden;
-      document.querySelectorAll('.review-form-wrap').forEach(w => { w.hidden = true; w.innerHTML = ''; });
-      if (alreadyOpen) return;
-      wrap.hidden = false;
-      wrap.innerHTML =
-        '<div class="review-form">' +
-          '<p class="review-form-label">Votre note :</p>' +
-          '<div class="star-picker" data-rating="0" data-booking-id="' + bookingId + '">' +
-            [1,2,3,4,5].map(n => '<button type="button" class="star-pick-btn" data-value="' + n + '">★</button>').join('') +
-          '</div>' +
-          '<textarea class="review-comment-input" placeholder="Un commentaire (facultatif)" maxlength="500"></textarea>' +
-          '<button type="button" class="btn btn-primary btn-sm submit-review-btn" data-booking-id="' + bookingId + '">Envoyer mon avis</button>' +
-        '</div>';
-      return;
-    }
-    const starBtn = e.target.closest('.star-pick-btn');
-    if (starBtn){
-      const picker = starBtn.closest('.star-picker');
-      const value = parseInt(starBtn.dataset.value, 10);
-      picker.dataset.rating = value;
-      picker.querySelectorAll('.star-pick-btn').forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.value, 10) <= value);
-      });
-      return;
-
-   }
-  });
-
-  document.getElementById('mySpaceContent').addEventListener('click', async (e) => {
-    const submitBtn = e.target.closest('.submit-review-btn');
-    if (!submitBtn) return;
-    const bookingId = submitBtn.dataset.bookingId;
-    const wrap = document.getElementById('reviewForm-' + bookingId);
-    const picker = wrap.querySelector('.star-picker');
-    const rating = parseInt(picker.dataset.rating, 10);
-    const comment = wrap.querySelector('.review-comment-input').value.trim();
-    if (!rating){
-      showToast('⚠️ Choisissez une note (étoiles) avant d\'envoyer.');
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours…';
-    try {
-      const res = await fetch(BACKEND_URL + '/api/bookings/' + bookingId + '/review', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
-        body: JSON.stringify({ rating, comment }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi de l'avis");
-      showToast('✅ Merci pour votre avis !');
-      loadMySpace();
-    } catch (err) {
-      showToast('❌ ' + err.message);
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer mon avis';
-    }
-
- });
-
-  document.getElementById('mySpaceContent').addEventListener('click', (e) => {
-    const btn = e.target.closest('.report-issue-btn');
-    if (!btn) return;
-    document.getElementById('reportIssueBookingId').value = btn.dataset.bookingId;
-    document.getElementById('reportIssueMessage').value = '';
-    document.getElementById('reportIssuePhone').value = '';
-    document.getElementById('reportIssueError').hidden = true;
-    document.getElementById('reportIssueOverlay').hidden = false;
-    document.getElementById('reportIssueMessage').focus();
-  });
-
-  document.getElementById('reportIssueCloseBtn').addEventListener('click', () => {
-    document.getElementById('reportIssueOverlay').hidden = true;
-  });
-
-  document.getElementById('reportIssueForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('reportIssueError');
-    errorEl.hidden = true;
-    const bookingId = document.getElementById('reportIssueBookingId').value;
-    const message = document.getElementById('reportIssueMessage').value.trim();
-    const phone = document.getElementById('reportIssuePhone').value.trim();
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi en cours…';
-    try {
-      const res = await fetch(BACKEND_URL + '/api/tickets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-
-         name: userName || 'Utilisateur connecté',
-          email: userEmail || 'non renseigné',
-          role: userRole,
-          subject: '🚨 SIGNALEMENT PRIORITAIRE — Réservation #' + bookingId,
-          message: message + (phone ? '\n\nNuméro de contact immédiat : ' + phone : ''),
-          priority: 'urgent',
-          bookingId,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
-      document.getElementById('reportIssueOverlay').hidden = true;
-      showToast('✅ Signalement envoyé — notre équipe a été alertée en priorité.');
-    } catch (err) {
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer le signalement';
-    }
-  });
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part9.js
-Sortie
-308 /home/claude/atchef-site/part9.js
-bash
-cat > /home/claude/atchef-site/part10.js << 'CLAUDE_MARKER_END'
-  let currentConversationId = null;
-  let conversationPollInterval = null;
-
-  function conversationDisplayName(conv){
-    return userRole === 'cook' ? conv.hostName : conv.cookName;
-  }
-
-  async function loadConversationsList(){
-    const listEl = document.getElementById('conversationsList');
-    if (!userToken){
-      listEl.innerHTML = '<p class="admin-empty-note">Connectez-vous pour accéder à vos messages.</p>';
-      return;
-    }
-    listEl.innerHTML = '<p class="admin-empty-note">Chargement…</p>';
-    try {
-      const res = await fetch(BACKEND_URL + '/api/conversations', { headers: { 'Authorization': 'Bearer ' + userToken } });
-      if (res.status === 401){ await clearUserSession(); showView('login'); return; }
-      const conversations = await res.json();
-      if (!conversations.length){
-        listEl.innerHTML = '<p class="admin-empty-note">Aucune conversation pour le moment.</p>';
-        return;
-      }
-      listEl.innerHTML = conversations.map(conv => {
-        const lastMsg = conv.messages[conv.messages.length - 1];
-        return '<div class="conversation-item" data-conv-id="' + conv.id + '">' +
-          '<div class="conv-name">' + conversationDisplayName(conv) + '</div>' +
-          '<div class="conv-preview">' + (lastMsg ? lastMsg.text : 'Aucun message pour le moment') + '</div>' +
-        '</div>';
-      }).join('');
-      if (!currentConversationId) openConversation(conversations[0].id);
-    } catch (e) {
-
-     listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger vos conversations.</p>';
-    }
-  }
-
-  async function openConversation(id){
-    currentConversationId = id;
-    document.querySelectorAll('.conversation-item').forEach(el => {
-      el.classList.toggle('active', el.dataset.convId === String(id));
-    });
-    const threadEl = document.getElementById('conversationThread');
-    try {
-      const res = await fetch(BACKEND_URL + '/api/conversations/' + id, { headers: { 'Authorization': 'Bearer ' + userToken } });
-      if (res.status === 401){ await clearUserSession(); showView('login'); return; }
-      const conv = await res.json();
-      if (!res.ok) throw new Error(conv.error || 'Conversation introuvable');
-      threadEl.innerHTML =
-        '<div class="thread-header">' + conversationDisplayName(conv) + '</div>' +
-        '<div class="thread-messages" id="threadMessages">' +
-          conv.messages.map(m => {
-            const mine = m.sender === userRole;
-            const time = new Date(m.createdAt).toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
-            return '<div class="msg-bubble ' + (mine ? 'mine' : 'theirs') + '">' + escapeHtml(m.text) + '<span class="msg-time">' + time + '</span></div>';
-          }).join('') +
-        '</div>' +
-        '<form class="thread-send-row" id="sendMessageForm">' +
-          '<input type="text" id="messageInput" placeholder="Écrivez votre message…" required maxlength="2000">' +
-          '<button type="submit" class="btn btn-primary btn-sm">Envoyer</button>' +
-        '</form>';
-      const messagesEl = document.getElementById('threadMessages');
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-      document.getElementById('sendMessageForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-       const input = document.getElementById('messageInput');
-        const text = input.value.trim();
-        if (!text) return;
-        input.disabled = true;
-        try {
-          await fetch(BACKEND_URL + '/api/conversations/' + id + '/messages', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
-            body: JSON.stringify({ text }),
-          });
-          input.value = '';
-          await openConversation(id);
-          loadConversationsList();
-        } finally {
-          input.disabled = false;
-          document.getElementById('messageInput').focus();
-        }
-      });
-    } catch (e) {
-      threadEl.innerHTML = '<p class="admin-empty-note">' + e.message + '</p>';
-    }
-  }
-
-  document.getElementById('conversationsList').addEventListener('click', (e) => {
-    const item = e.target.closest('.conversation-item');
-    if (item) openConversation(item.dataset.convId);
-  });
-
-  setInterval(() => {
-    const messagesView = document.getElementById('view-messages');
-    if (!messagesView.hidden && currentConversationId){
-      openConversation(currentConversationId);
-
-   }
-  }, 6000);
-
-  function escapeHtml(str){
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  document.getElementById('contactCookBtn').addEventListener('click', async () => {
-    if (!userToken || userRole !== 'host'){
-      showToast('⚠️ Connectez-vous en tant qu\'hôte pour contacter un cuisinier.');
-      showView('login');
-      return;
-    }
-    if (!currentProfileChef) return;
-    try {
-      const res = await fetch(BACKEND_URL + '/api/conversations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
-        body: JSON.stringify({ cookId: currentProfileChef.id }),
-      });
-      const conv = await res.json();
-      if (!res.ok) throw new Error(conv.error || 'Erreur lors de la création de la conversation');
-      currentConversationId = null;
-      showView('messages');
-      await loadConversationsList();
-      openConversation(conv.id);
-    } catch (err) {
-      showToast('❌ ' + err.message);
-    }
-  });
-
-
-  async function loadMySpace(){
-    const titleEl = document.getElementById('mySpaceTitle');
-    const contentEl = document.getElementById('mySpaceContent');
-    titleEl.textContent = userRole === 'cook' ? 'Mon espace cuisinier' : 'Mon espace hôte';
-    contentEl.innerHTML = '<p class="admin-empty-note">Chargement…</p>';
-    try {
-      const headers = { 'Authorization': 'Bearer ' + userToken };
-      const bookingsRes = await fetch(BACKEND_URL + '/api/my/bookings', { headers });
-      if (bookingsRes.status === 401){ await clearUserSession(); showView('login'); return; }
-      const myBookings = await bookingsRes.json();
-      let html = '';
-      let profile = null;
-      if (userRole === 'cook'){
-        const profileRes = await fetch(BACKEND_URL + '/api/my/profile', { headers });
-        profile = await profileRes.json();
-        html += '<div class="my-space-section"><h2>Mon profil</h2><div class="my-profile-card">' +
-          '<p><strong>' + profile.name + '</strong> · ' + profile.cuisine + ' · ' + profile.location + '</p>' +
-          '<p style="margin-top:8px;color:var(--ink-soft);">' +
-            (profile.stripeAccountId ? '✅ Paiements configurés' : '⚠️ Paiements non configurés') +
-            ' &nbsp;·&nbsp; ' + (profile.identityVerified ? '✅ Identité vérifiée' : '⏳ Identité non vérifiée') +
-          '</p>' +
-          '<button type="button" class="btn btn-outline btn-sm" id="toggleEditProfileBtn" style="margin-top:14px;">Modifier mon profil</button>' +
-          '</div>' +
-          '<div id="cookEditProfileWrap" hidden style="margin-top:16px;">' +
-            '<form id="cookEditProfileForm" class="cook-register-form">' +
-              '<div class="booking-field">' +
-                '<label for="editBio">Bio</label>' +
-                '<textarea id="editBio" rows="4">' + (profile.bio || '') + '</textarea>' +
-              '</div>' +
-              '<div class="booking-field">' +
-                '<label for="editSpecialties">Spécialité(s) (séparées par une virgule)</label>' +
-
-               '<input type="text" id="editSpecialties" value="' + (profile.specialties || []).join(', ') + '">' +
-              '</div>' +
-              '<div class="booking-field">' +
-                '<label for="editLocation">Localisation</label>' +
-                '<input type="text" id="editLocation" value="' + (profile.location || '') + '">' +
-              '</div>' +
-              '<div class="booking-field">' +
-                '<label>Mes formules</label>' +
-                '<div id="editFormulasList"></div>' +
-                '<button type="button" class="btn btn-outline btn-sm" id="addFormulaBtn" style="margin-top:8px;">+ Ajouter une formule</button>' +
-              '</div>' +
-              '<p class="booking-error" id="editProfileError" hidden></p>' +
-              '<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>' +
-            '</form>' +
-          '</div>';
-        html += '<div class="my-space-section"><h2>Mes plats</h2>' +
-          '<p class="filter-hint">Ajoutez des photos de vos réalisations pour donner envie aux futurs hôtes — 12 photos maximum.</p>' +
-          '<div class="dish-photos-grid" id="dishPhotosGrid"></div>' +
-          '<form id="dishPhotoUploadForm" class="dish-photo-upload-form">' +
-            '<input type="file" id="dishPhotoInput" accept="image/jpeg,image/png,image/webp" required>' +
-            '<input type="text" id="dishPhotoCaption" placeholder="Légende (facultatif)" maxlength="140">' +
-            '<button type="submit" class="btn btn-primary btn-sm">Ajouter cette photo</button>' +
-          '</form>' +
-          '<p class="booking-error" id="dishPhotoError" hidden></p>' +
-        '</div>';
-        html += '<div class="my-space-section"><h2>🥗 Batch cooking : régimes proposés et prix</h2>' +
-          '<p class="filter-hint">Ces informations permettent aux hôtes de vous trouver via le filtre "Régime alimentaire" et déterminent le prix affiché pour votre formule batch cooking.</p>' +
-          '<span class="batch-cooking-status-badge' + (profile.batchCookingPrice ? '' : ' off') + '" id="batchCookingStatusBadge">' +
-            (profile.batchCookingPrice ? '✅ Formule batch cooking active — ' + profile.batchCookingPrice + '€/semaine' : '⚪ Formule batch cooking non configurée') +
-          '</span>' +
-          '<div class="regime-checkbox-grid" id="regimeCheckboxGrid"></div>' +
-          '<label style="display:block;font-size:0.82rem;font-weight:700;margin-bottom:6px;">Prix de la formule hebdomadaire (€)</label>' +
-
-         '<div class="batch-price-row">' +
-            '<input type="number" id="batchCookingPriceInput" min="1" max="1000" step="1" value="' + (profile.batchCookingPrice || '') + '" placeholder="Ex : 150">' +
-            '<button type="button" class="btn btn-primary btn-sm" id="saveBatchCookingBtn">Enregistrer</button>' +
-          '</div>' +
-          '<p class="booking-error" id="batchCookingError" hidden></p>' +
-        '</div>';
-        html += '<div class="my-space-section"><h2>Mon calendrier de disponibilité (événementiel)</h2>' +
-          '<p class="filter-hint">Cliquez sur un jour futur pour le marquer indisponible (ou le rendre à nouveau disponible). Les jours déjà réservés sont automatiquement bloqués.</p>' +
-          '<div class="mini-calendar" style="max-width:360px;">' +
-            '<div class="calendar-header">' +
-              '<button type="button" id="availPrevMonth" aria-label="Mois précédent">‹</button>' +
-              '<span id="availMonthLabel"></span>' +
-              '<button type="button" id="availNextMonth" aria-label="Mois suivant">›</button>' +
-            '</div>' +
-            '<div class="calendar-weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>' +
-            '<div class="calendar-grid" id="availabilityCalendarGrid"></div>' +
-            '<div class="calendar-legend">' +
-              '<span><i class="legend-dot available"></i> Disponible</span>' +
-              '<span><i class="legend-dot unavailable"></i> Indisponible</span>' +
-              '<span><i class="legend-dot booked"></i> Réservé</span>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-        html += '<div class="my-space-section"><h2>📅 Mes créneaux hebdomadaires (batch cooking)</h2>' +
-          '<p class="filter-hint">Définissez un modèle qui se répète chaque semaine — par exemple "tous les lundis 9h-12h". Les hôtes ne pourront réserver un abonnement batch cooking que sur ces créneaux.</p>' +
-          '<div id="weeklySlotsList"></div>' +
-          '<div class="weekly-slot-add-row">' +
-            '<div>' +
-              '<label for="weeklySlotDay">Jour</label>' +
-              '<select id="weeklySlotDay">' +
-                '<option value="lundi">Lundi</option>' +
-                '<option value="mardi">Mardi</option>' +
-
-               '<option value="mercredi">Mercredi</option>' +
-                '<option value="jeudi">Jeudi</option>' +
-                '<option value="vendredi">Vendredi</option>' +
-                '<option value="samedi">Samedi</option>' +
-                '<option value="dimanche">Dimanche</option>' +
-              '</select>' +
-            '</div>' +
-            '<div>' +
-              '<label for="weeklySlotStart">De</label>' +
-              '<input type="time" id="weeklySlotStart" value="09:00">' +
-            '</div>' +
-            '<div>' +
-              '<label for="weeklySlotEnd">À</label>' +
-              '<input type="time" id="weeklySlotEnd" value="12:00">' +
-            '</div>' +
-            '<button type="button" class="btn btn-outline btn-sm" id="addWeeklySlotBtn">+ Ajouter</button>' +
-          '</div>' +
-          '<p class="booking-error" id="weeklySlotError" hidden></p>' +
-        '</div>';
-      }
-      const todayStr = new Date().toISOString().split('T')[0];
-      const upcomingBookings = myBookings.filter(b => b.status !== 'cancelled' && b.eventDate && b.eventDate >= todayStr);
-      const historyBookings = myBookings.filter(b => b.status === 'cancelled' || !b.eventDate || b.eventDate < todayStr);
-      function bookingItemHTML(b){
-        const statusLabel = b.status === 'confirmed' ? 'Payée' : b.status === 'cancelled' ? 'Annulée' : 'En attente de paiement';
-        const canCancel = userRole === 'host' && b.status === 'confirmed' && b.eventDate >= todayStr;
-        const canReview = b.status === 'confirmed' && b.eventDate && b.eventDate <= todayStr;
-        const hostReputationHTML = (userRole === 'cook' && b.hostReviewsCount > 0)
-          ? '<span class="host-reputation-badge' + (b.hostRating < 3 ? ' low' : '') + '">★ ' + b.hostRating.toFixed(1).replace('.', ',') + ' (avis cuisiniers)</span>'
-          : (userRole === 'cook' ? '<span class="host-reputation-badge new">🆕 Premier avis pour cet hôte</span>' : '');
-        return '<div class="admin-item">' +
-          '<div class="admin-item-head">' +
-
-           '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
-            '<span class="admin-status ' + b.status + '">' + statusLabel + '</span>' +
-          '</div>' +
-          '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') +
-            (b.status === 'cancelled' && b.refundPercent !== undefined ? ' · ' + b.refundPercent + '% remboursé' : '') +
-          '</div>' +
-          (hostReputationHTML ? '<div class="admin-item-meta">' + hostReputationHTML + '</div>' : '') +
-          '<div class="admin-item-actions">' +
-            (canCancel ? '<button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button>' : '') +
-            (canReview ? '<button type="button" class="btn btn-outline btn-sm open-review-btn" data-booking-id="' + b.id + '">' + (userRole === 'cook' ? "Noter l'hôte" : 'Noter le cuisinier') + '</button>' : '') +
-            '<button type="button" class="btn btn-outline btn-sm report-issue-btn" data-booking-id="' + b.id + '" data-booking-title="' + (b.formulaName || 'Réservation') + '">🚨 Signaler un problème</button>' +
-          '</div>' +
-          '<div class="review-form-wrap" id="reviewForm-' + b.id + '" hidden></div>' +
-        '</div>';
-      }
-      html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations à venir' : 'Mes réservations à venir') + '</h2>';
-      html += upcomingBookings.length
-        ? '<div class="admin-list">' + upcomingBookings.map(bookingItemHTML).join('') + '</div>'
-        : '<p class="admin-empty-note">Aucune réservation à venir pour le moment.</p>';
-      html += '</div>';
-      html += '<div class="my-space-section"><h2>📜 Historique des repas</h2>';
-      html += historyBookings.length
-        ? '<div class="admin-list">' + historyBookings.map(bookingItemHTML).join('') + '</div>'
-        : '<p class="admin-empty-note">Votre historique est vide pour le moment.</p>';
-      html += '</div>';
-      contentEl.innerHTML = html;
-      if (userRole === 'cook'){
-        wireCookProfileEditForm(profile, headers);
-        wireDishPhotosManager(profile, headers);
-        const bookedDates = myBookings.filter(b => b.status === 'confirmed' && b.eventDate).map(b => b.eventDate);
-        wireCookAvailabilityCalendar(profile, headers, bookedDates);
-        wireBatchCookingSection(profile, headers);
-
-     }
-    } catch (e) {
-      contentEl.innerHTML = '<p class="admin-empty-note">Impossible de charger votre espace.</p>';
-    }
-  }
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part10.js
-Sortie
-292 /home/claude/atchef-site/part10.js
-bash
-cat > /home/claude/atchef-site/part11.js << 'CLAUDE_MARKER_END'
-  function wireCookProfileEditForm(profile, headers){
-    let formulaCount = 0;
-    function formulaRowHTML(formula){
-      const idx = formulaCount++;
-      return '<div class="formula-edit-row" data-row="' + idx + '">' +
-        '<input type="text" class="formula-name-input" placeholder="Nom de la formule" value="' + (formula ? formula.name : '') + '">' +
-        '<input type="number" class="formula-price-input" placeholder="Prix (€)" min="1" max="500" value="' + (formula ? formula.price : '') + '">' +
-        '<button type="button" class="remove-formula-btn" aria-label="Supprimer">✕</button>' +
-      '</div>';
-    }
-    const listEl = document.getElementById('editFormulasList');
-    listEl.innerHTML = (profile.formulas || []).map(formulaRowHTML).join('');
-    document.getElementById('toggleEditProfileBtn').addEventListener('click', () => {
-      const wrap = document.getElementById('cookEditProfileWrap');
-      wrap.hidden = !wrap.hidden;
-    });
-    document.getElementById('addFormulaBtn').addEventListener('click', () => {
-      listEl.insertAdjacentHTML('beforeend', formulaRowHTML(null));
-    });
-    listEl.addEventListener('click', (e) => {
-      const removeBtn = e.target.closest('.remove-formula-btn');
-      if (!removeBtn) return;
-      removeBtn.closest('.formula-edit-row').remove();
-    });
-    document.getElementById('cookEditProfileForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const errorEl = document.getElementById('editProfileError');
-      errorEl.hidden = true;
-      const formulas = Array.from(listEl.querySelectorAll('.formula-edit-row')).map(row => ({
-        name: row.querySelector('.formula-name-input').value.trim(),
-        price: parseFloat(row.querySelector('.formula-price-input').value),
-
-     })).filter(f => f.name && f.price > 0);
-      if (!formulas.length){
-        errorEl.textContent = '⚠️ Merci de garder au moins une formule valide (nom + prix).';
-        errorEl.hidden = false;
-        return;
-      }
-      const payload = {
-        bio: document.getElementById('editBio').value.trim(),
-        specialties: document.getElementById('editSpecialties').value.split(',').map(s => s.trim()).filter(Boolean),
-        location: document.getElementById('editLocation').value.trim(),
-        formulas,
-      };
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enregistrement…';
-      try {
-        const res = await fetch(BACKEND_URL + '/api/my/profile', {
-          method: 'PATCH',
-          headers: { ...headers, 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Erreur lors de la mise à jour');
-        showToast('✅ Profil mis à jour !');
-        loadMySpace();
-      } catch (err) {
-        errorEl.textContent = '❌ ' + err.message;
-        errorEl.hidden = false;
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enregistrer les modifications';
-      }
-    });
-
- }
-
-  function wireDishPhotosManager(profile, headers){
-    let currentPhotos = profile.dishPhotos || [];
-    function renderGrid(){
-      const grid = document.getElementById('dishPhotosGrid');
-      if (!currentPhotos.length){
-        grid.innerHTML = '<p class="admin-empty-note">Aucune photo pour le moment — ajoutez-en une ci-dessous !</p>';
-        return;
-      }
-      grid.innerHTML = currentPhotos.map((p, i) =>
-        '<div class="dish-photo-item">' +
-          '<img src="' + p.url + '" alt="' + (p.caption ? p.caption.replace(/"/g, '&quot;') : 'Plat du cuisinier') + '" loading="lazy">' +
-          (p.caption ? '<p class="dish-photo-caption">' + p.caption + '</p>' : '') +
-          '<button type="button" class="dish-photo-remove-btn" data-index="' + i + '" aria-label="Supprimer cette photo">✕</button>' +
-        '</div>'
-      ).join('');
-    }
-    renderGrid();
-    document.getElementById('dishPhotosGrid').addEventListener('click', async (e) => {
-      const btn = e.target.closest('.dish-photo-remove-btn');
-      if (!btn) return;
-      btn.disabled = true;
-      try {
-        const res = await fetch(BACKEND_URL + '/api/my/dish-photos/' + btn.dataset.index, {
-          method: 'DELETE',
-          headers: { 'Authorization': headers.Authorization },
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Erreur lors de la suppression');
-        currentPhotos = data.dishPhotos;
-        renderGrid();
-
-     } catch (err) {
-        showToast('❌ ' + err.message);
-        btn.disabled = false;
-      }
-    });
-    document.getElementById('dishPhotoUploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const errorEl = document.getElementById('dishPhotoError');
-      errorEl.hidden = true;
-      const fileInput = document.getElementById('dishPhotoInput');
-      const file = fileInput.files[0];
-      if (!file) return;
-      const formData = new FormData();
-      formData.append('photo', file);
-      formData.append('caption', document.getElementById('dishPhotoCaption').value.trim());
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Envoi en cours…';
-      try {
-        const res = await fetch(BACKEND_URL + '/api/my/dish-photos', {
-          method: 'POST',
-          headers: { 'Authorization': headers.Authorization },
-          body: formData,
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
-        currentPhotos = data.dishPhotos;
-        renderGrid();
-        fileInput.value = '';
-        document.getElementById('dishPhotoCaption').value = '';
-        showToast('✅ Photo ajoutée !');
-      } catch (err) {
-
-       errorEl.textContent = '❌ ' + err.message;
-        errorEl.hidden = false;
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Ajouter cette photo';
-      }
-    });
-  }
-
-  function wireBatchCookingSection(profile, headers){
-    const DAY_LABELS = { lundi:'Lundi', mardi:'Mardi', mercredi:'Mercredi', jeudi:'Jeudi', vendredi:'Vendredi', samedi:'Samedi', dimanche:'Dimanche' };
-    let currentRegimes = (profile.regimes || []).slice();
-    let currentSlots = (profile.weeklyAvailability || []).slice();
-
-    const regimeGrid = document.getElementById('regimeCheckboxGrid');
-    regimeGrid.innerHTML = REGIME_TAGS.map(r =>
-      '<label><input type="checkbox" class="batch-regime-checkbox" value="' + r + '"' + (currentRegimes.indexOf(r) !== -1 ? ' checked' : '') + '> ' + REGIME_LABELS[r] + '</label>'
-    ).join('');
-
-    document.getElementById('saveBatchCookingBtn').addEventListener('click', async () => {
-      const errorEl = document.getElementById('batchCookingError');
-      errorEl.hidden = true;
-      const selectedRegimes = Array.from(document.querySelectorAll('.batch-regime-checkbox:checked')).map(cb => cb.value);
-      const priceInput = document.getElementById('batchCookingPriceInput');
-      const priceVal = priceInput.value ? parseFloat(priceInput.value) : null;
-      if (priceVal !== null && (!Number.isFinite(priceVal) || priceVal <= 0)){
-        errorEl.textContent = '⚠️ Merci de saisir un prix valide, ou de laisser le champ vide si vous ne proposez pas encore le batch cooking.';
-        errorEl.hidden = false;
-        return;
-      }
-      const btn = document.getElementById('saveBatchCookingBtn');
-      btn.disabled = true;
-
-     btn.textContent = 'Enregistrement…';
-      try {
-        const res = await fetch(BACKEND_URL + '/api/my/batch-cooking', {
-          method: 'PATCH',
-          headers: { ...headers, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ regimes: selectedRegimes, batchCookingPrice: priceVal }),
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Erreur lors de la mise à jour');
-        showToast('✅ Informations batch cooking enregistrées !');
-        const badge = document.getElementById('batchCookingStatusBadge');
-        if (data.batchCookingPrice){
-          badge.classList.remove('off');
-          badge.textContent = '✅ Formule batch cooking active — ' + data.batchCookingPrice + '€/semaine';
-        } else {
-          badge.classList.add('off');
-          badge.textContent = '⚪ Formule batch cooking non configurée';
-        }
-      } catch (err) {
-        errorEl.textContent = '❌ ' + err.message;
-        errorEl.hidden = false;
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Enregistrer';
-      }
-    });
-
-    function renderSlotsList(){
-      const listEl = document.getElementById('weeklySlotsList');
-      if (!currentSlots.length){
-        listEl.innerHTML = '<p class="admin-empty-note">Aucun créneau défini pour le moment.</p>';
-        return;
-
-     }
-      listEl.innerHTML = currentSlots.map((s, i) =>
-        '<div class="weekly-slot-item">' +
-          '<span>' + DAY_LABELS[s.day] + ' · ' + s.startTime + ' – ' + s.endTime + '</span>' +
-          '<button type="button" class="weekly-slot-remove-btn" data-index="' + i + '" aria-label="Supprimer ce créneau">✕</button>' +
-        '</div>'
-      ).join('');
-    }
-    renderSlotsList();
-
-    async function saveSlots(){
-      try {
-        await fetch(BACKEND_URL + '/api/my/weekly-availability', {
-          method: 'PATCH',
-          headers: { ...headers, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ weeklyAvailability: currentSlots }),
-        });
-      } catch (err) {
-        showToast('❌ Impossible de sauvegarder ce créneau.');
-      }
-    }
-
-    document.getElementById('addWeeklySlotBtn').addEventListener('click', async () => {
-      const errorEl = document.getElementById('weeklySlotError');
-      errorEl.hidden = true;
-      const day = document.getElementById('weeklySlotDay').value;
-      const startTime = document.getElementById('weeklySlotStart').value;
-      const endTime = document.getElementById('weeklySlotEnd').value;
-      if (!startTime || !endTime || startTime >= endTime){
-        errorEl.textContent = "⚠️ L'heure de début doit précéder l'heure de fin.";
-        errorEl.hidden = false;
-        return;
-
-     }
-      currentSlots.push({ day, startTime, endTime });
-      renderSlotsList();
-      await saveSlots();
-    });
-
-    document.getElementById('weeklySlotsList').addEventListener('click', async (e) => {
-      const btn = e.target.closest('.weekly-slot-remove-btn');
-      if (!btn) return;
-      currentSlots.splice(parseInt(btn.dataset.index, 10), 1);
-      renderSlotsList();
-      await saveSlots();
-    });
-  }
-
-  function wireCookAvailabilityCalendar(profile, headers, bookedDates){
-    let viewDate = new Date();
-    let unavailableDates = (profile.unavailableDates || []).slice();
-    function renderAvailCalendar(){
-      const year = viewDate.getFullYear();
-      const month = viewDate.getMonth();
-      document.getElementById('availMonthLabel').textContent = CALENDAR_MONTH_NAMES[month] + ' ' + year;
-      const firstDay = new Date(year, month, 1);
-      const startWeekday = (firstDay.getDay() + 6) % 7;
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      const todayStr = new Date().toISOString().split('T')[0];
-      let html = '';
-      for (let i = 0; i < startWeekday; i++) html += '<span class="calendar-day empty"></span>';
-      for (let d = 1; d <= daysInMonth; d++){
-        const dateObj = new Date(year, month, d);
-        const dateStr = dateObj.getFullYear() + '-' + String(dateObj.getMonth()+1).padStart(2,'0') + '-' + String(dateObj.getDate()).padStart(2,'0');
-        const isPast = dateStr < todayStr;
-
-       const isBooked = bookedDates.indexOf(dateStr) !== -1;
-        const isMarkedUnavailable = unavailableDates.indexOf(dateStr) !== -1;
-        let cls = 'calendar-day';
-        if (isPast) cls += ' disabled';
-        else if (isBooked) cls += ' booked';
-        else if (isMarkedUnavailable) cls += ' marked-unavailable';
-        const disabledAttr = (isPast || isBooked) ? ' disabled' : '';
-        html += '<button type="button" class="' + cls + '" data-date="' + dateStr + '"' + disabledAttr + '>' + d + '</button>';
-      }
-      document.getElementById('availabilityCalendarGrid').innerHTML = html;
-    }
-    document.getElementById('availPrevMonth').addEventListener('click', () => {
-      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
-      renderAvailCalendar();
-    });
-    document.getElementById('availNextMonth').addEventListener('click', () => {
-      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
-      renderAvailCalendar();
-    });
-    document.getElementById('availabilityCalendarGrid').addEventListener('click', async (e) => {
-      const btn = e.target.closest('.calendar-day:not(.empty):not([disabled])');
-      if (!btn) return;
-      const dateStr = btn.dataset.date;
-      const idx = unavailableDates.indexOf(dateStr);
-      if (idx === -1) unavailableDates.push(dateStr);
-      else unavailableDates.splice(idx, 1);
-      renderAvailCalendar();
-      try {
-        await fetch(BACKEND_URL + '/api/my/availability', {
-          method: 'PATCH',
-          headers: { ...headers, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ unavailableDates }),
-
-       });
-      } catch (err) {
-        showToast('❌ Impossible de sauvegarder ce changement de disponibilité.');
-      }
-    });
-    renderAvailCalendar();
-  }
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part11.js
-Sortie
-294 /home/claude/atchef-site/part11.js
-bash
-cat > /home/claude/atchef-site/part12.js << 'CLAUDE_MARKER_END'
-  let adminToken = null;
-
-  function adminAuthHeaders(){
-    return { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken };
-  }
-
-  function handleAdminAuthError(){
-    adminToken = null;
-    showView('admin-login');
-    const errorEl = document.getElementById('adminLoginError');
-    errorEl.textContent = '⚠️ Votre session a expiré, merci de vous reconnecter.';
-    errorEl.hidden = false;
-  }
-
-  document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('adminLoginError');
-    errorEl.hidden = true;
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    try {
-      const res = await fetch(BACKEND_URL + '/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: document.getElementById('adminEmail').value.trim(),
-          password: document.getElementById('adminPassword').value,
-        }),
-
-     });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Connexion refusée');
-      adminToken = data.token;
-      document.getElementById('adminLoginForm').reset();
-      showView('admin-dashboard');
-      loadAdminData();
-    } catch (err) {
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  document.getElementById('adminLogoutBtn').addEventListener('click', () => {
-    adminToken = null;
-    showView('home');
-  });
-
-  document.querySelectorAll('.admin-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.admin-tab').forEach(t => t.classList.toggle('active', t === tab));
-      document.querySelectorAll('.admin-panel').forEach(p => { p.hidden = p.dataset.adminPanel !== tab.dataset.adminTab; });
-    });
-  });
-
-  async function loadAdminData(){
-    await Promise.all([loadAdminBookings(), loadAdminCooks(), loadAdminTickets()]);
-  }
-
-  async function loadAdminBookings(){
-    const listEl = document.getElementById('adminBookingsList');
-    try {
-
-     const res = await fetch(BACKEND_URL + '/api/admin/bookings', { headers: adminAuthHeaders() });
-      if (res.status === 401) return handleAdminAuthError();
-      const bookingsData = await res.json();
-      if (!bookingsData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucune réservation pour le moment.</p>'; return; }
-      listEl.innerHTML = bookingsData.map(b =>
-        '<div class="admin-item">' +
-          '<div class="admin-item-head">' +
-            '<span class="admin-item-title">Réservation #' + b.id + '</span>' +
-            '<span class="admin-status ' + b.status + '">' + (b.status === 'confirmed' ? 'Payée' : 'En attente de paiement') + '</span>' +
-          '</div>' +
-          '<div class="admin-item-meta">Cuisinier #' + b.cookId + ' · ' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') + '</div>' +
-          '<div class="admin-item-body">Allergies : ' + (b.allergies || '—') + (b.bookingType === 'cooking_only' ? ' · Ingrédients fournis par l\u2019hôte' : '') + '</div>' +
-        '</div>'
-      ).join('');
-    } catch (e) {
-      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les réservations.</p>';
-    }
-  }
-
-  async function loadAdminCooks(){
-    const listEl = document.getElementById('adminCooksList');
-    try {
-      const res = await fetch(BACKEND_URL + '/api/admin/cooks', { headers: adminAuthHeaders() });
-      if (res.status === 401) return handleAdminAuthError();
-      const cooksData = await res.json();
-      if (!cooksData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucun cuisinier.</p>'; return; }
-      listEl.innerHTML = cooksData.map(c =>
-        '<div class="admin-item">' +
-          '<div class="admin-item-head">' +
-            '<span class="admin-item-title">' + c.name + '</span>' +
-            '<span class="admin-status ' + (c.stripeAccountId ? 'resolu' : 'ouvert') + '">' + (c.stripeAccountId ? 'Paiements configurés' : 'Paiements non configurés') + '</span>' +
-          '</div>' +
-
-         '<div class="admin-item-meta">' + (c.email || '—') + ' · ' + c.cuisine + ' · ' + c.location + '</div>' +
-        '</div>'
-      ).join('');
-    } catch (e) {
-      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les cuisiniers.</p>';
-    }
-  }
-
-  async function loadAdminTickets(){
-    const listEl = document.getElementById('adminTicketsList');
-    try {
-      const res = await fetch(BACKEND_URL + '/api/admin/tickets', { headers: adminAuthHeaders() });
-      if (res.status === 401) return handleAdminAuthError();
-      const ticketsData = await res.json();
-      if (!ticketsData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucun ticket pour le moment.</p>'; return; }
-      listEl.innerHTML = ticketsData.map(t =>
-        '<div class="admin-item">' +
-          '<div class="admin-item-head">' +
-            '<span class="admin-item-title">' + t.subject + '</span>' +
-            '<span class="admin-status ' + t.status + '">' + (t.status === 'ouvert' ? 'Ouvert' : t.status === 'en_cours' ? 'En cours' : 'Résolu') + '</span>' +
-          '</div>' +
-          '<div class="admin-item-meta">' + t.name + ' (' + t.email + ') · ' + t.role + '</div>' +
-          '<div class="admin-item-body">' + t.message + '</div>' +
-          '<div class="admin-item-actions">' +
-            '<select class="ticket-status-select" data-ticket-id="' + t.id + '">' +
-              '<option value="ouvert"' + (t.status==='ouvert'?' selected':'') + '>Ouvert</option>' +
-              '<option value="en_cours"' + (t.status==='en_cours'?' selected':'') + '>En cours</option>' +
-              '<option value="resolu"' + (t.status==='resolu'?' selected':'') + '>Résolu</option>' +
-            '</select>' +
-          '</div>' +
-        '</div>'
-      ).join('');
-
-   } catch (e) {
-      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les tickets.</p>';
-    }
-  }
-
-  document.getElementById('adminTicketsList').addEventListener('change', async (e) => {
-    if (!e.target.classList.contains('ticket-status-select')) return;
-    const ticketId = e.target.dataset.ticketId;
-    const newStatus = e.target.value;
-    try {
-      await fetch(BACKEND_URL + '/api/admin/tickets/' + ticketId, {
-        method: 'PATCH',
-        headers: adminAuthHeaders(),
-        body: JSON.stringify({ status: newStatus }),
-      });
-      loadAdminTickets();
-    } catch (err) {
-      console.error(err);
-    }
-  });
-
-  document.getElementById('contactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const errorEl = document.getElementById('contactError');
-    errorEl.hidden = true;
-    const payload = {
-      name: document.getElementById('contactName').value.trim(),
-      email: document.getElementById('contactEmail').value.trim(),
-      role: document.getElementById('contactRole').value,
-      subject: document.getElementById('contactSubject').value.trim(),
-      message: document.getElementById('contactMessage').value.trim(),
-    };
-
-   if (!payload.name || !payload.email || !payload.subject || !payload.message){
-      errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
-      errorEl.hidden = false;
-      return;
-    }
-    if (!isBackendConfigured()){
-      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
-      errorEl.hidden = false;
-      return;
-    }
-    try {
-      const res = await fetch(BACKEND_URL + '/api/tickets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
-      document.getElementById('contactForm').reset();
-      showToast('✅ Votre message a bien été envoyé, nous revenons vers vous rapidement.');
-      showView('home');
-    } catch (err) {
-      errorEl.textContent = '❌ ' + err.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  syncFilterUIFromState();
-  applyFiltersAndRender();
-  loadRegisteredCooks();
-  loadUserSession();
-
-
- if (isBackendConfigured()){
-    setInterval(() => {
-      fetch(BACKEND_URL + '/api/cooks').catch(() => {});
-    }, 4 * 60 * 1000);
-  }
-
-});
-</script>
-</body>
-</html>
-CLAUDE_MARKER_END
-wc -l /home/claude/atchef-site/part12.js
-Sortie
-201 /home/claude/atchef-site/part12.js
-bash
-cd /home/claude/atchef-site
-cat part1.html part2.html part3.html part4.html part5.js part6.js part7.js part8.js part9.js part10.js part11.js part12.js > index-final.html
-wc -l index-final.html
-echo "---"
-echo "Vérification des balises de fin de fichier :"
-tail -5 index-final.html
-
-
-bash
-cd /home/claude/atchef-site
-python3 -c "
-import re
-content = open('index-final.html', encoding='utf-8').read()
-scripts = re.findall(r'<script>(.*?)</script>', content, re.S)
-print('Nombre de balises script trouvées:', len(scripts))
-combined = '\n'.join(scripts)
-open('/tmp/final_check.js', 'w', encoding='utf-8').write(combined)
-print('Longueur JS:', len(combined), 'caractères')
-"
-node --check /tmp/final_check.js && echo "✅ JS SYNTAXIQUEMENT CORRECT"
-Sortie
-Nombre de balises script trouvées: 1
-Longueur JS: 128574 caractères
-✅ JS SYNTAXIQUEMENT CORRECT
-bash
-cd /home/claude/atchef-site
-python3 -c "
-import re
-content = open('index-final.html', encoding='utf-8').read()
-
-def check(tag):
-    o = len(re.findall(r'<' + tag + r'[ >]', content))
-    c = len(re.findall(r'</' + tag + r'>', content))
-    status = 'OK' if o == c else 'MISMATCH !!'
-    print(f'{tag}: {o} ouvrantes / {c} fermantes -> {status}')
-
-for t in ['div', 'section', 'form', 'button', 'span', 'label', 'select', 'ul', 'li', 'aside', 'header', 'footer', 'main', 'nav', 'table', 'tr', 'td', 'th', 'thead', 'tbody']:
-    check(t)
-
-# Vérifie aussi les balises html/head/body
-for t in ['html', 'head', 'body', 'style', 'script']:
-    check(t)
-"
-
-Sortie
-div: 290 ouvrantes / 290 fermantes -> OK
-section: 10 ouvrantes / 10 fermantes -> OK
-form: 13 ouvrantes / 13 fermantes -> OK
-button: 86 ouvrantes / 86 fermantes -> OK
-span: 134 ouvrantes / 134 fermantes -> OK
-label: 61 ouvrantes / 61 fermantes -> OK
-select: 7 ouvrantes / 7 fermantes -> OK
-ul: 14 ouvrantes / 14 fermantes -> OK
-li: 50 ouvrantes / 50 fermantes -> OK
-aside: 2 ouvrantes / 2 fermantes -> OK
-header: 1 ouvrantes / 1 fermantes -> OK
-footer: 1 ouvrantes / 1 fermantes -> OK
-main: 1 ouvrantes / 1 fermantes -> OK
-nav: 1 ouvrantes / 1 fermantes -> OK
-table: 1 ouvrantes / 1 fermantes -> OK
-tr: 4 ouvrantes / 4 fermantes -> OK
-td: 6 ouvrantes / 6 fermantes -> OK
-th: 2 ouvrantes / 2 fermantes -> OK
-thead: 1 ouvrantes / 1 fermantes -> OK
-tbody: 1 ouvrantes / 1 fermantes -> OK
-html: 1 ouvrantes / 1 fermantes -> OK
-head: 1 ouvrantes / 1 fermantes -> OK
-body: 1 ouvrantes / 1 fermantes -> OK
-style: 1 ouvrantes / 1 fermantes -> OK
-script: 1 ouvrantes / 1 fermantes -> OK
-ash
-cd /home/claude/atchef-site
-python3 -c "
-import re
-content = open('index-final.html', encoding='utf-8').read()
-
-# Tous les IDs référencés par getElementById dans le JS
-js_ids = set(re.findall(r\"getElementById\(['\\\"]([\w-]+)['\\\"]\)\", content))
-
-# Tous les IDs réellement définis dans le HTML
-html_ids = set(re.findall(r'id=[\"\\']([\\w-]+)[\"\\']', content))
-
-missing = js_ids - html_ids
-if missing:
-    print('⚠️ IDs référencés en JS mais absents du HTML :')
-    for m in sorted(missing):
-        print(' -', m)
-else:
-    print('✅ Tous les IDs référencés par le JavaScript existent bien dans le HTML (' + str(len(js_ids)) + ' IDs vérifiés)')
-"
-
-Sortie
-✅ Tous les IDs référencés par le JavaScript existent bien dans le HTML (153 IDs vérifiés)
-
