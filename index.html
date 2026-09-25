@@ -566,14 +566,14 @@
       <div class="hero-copy">
         <span class="hero-eyebrow">Déjà disponible à Nantes</span>
         <h1>
-          Vivez l'expérience d'un chef à domicile,
+          Un cuisinier prépare vos repas de la semaine,
           <span class="marked-phrase">sans vous ruiner
             <svg class="marker-stroke" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
               <path d="M4 15 Q 40 4, 80 12 T 160 9 T 240 14 T 296 7" fill="none" stroke="#A64A34" stroke-width="6" stroke-linecap="round"/>
             </svg>
           </span>.
         </h1>
-        <p class="subtitle">At'Chef connecte les gourmands aux cuisiniers amateurs les plus talentueux de Nantes, pour un repas fait maison, authentique et convivial — directement chez vous.</p>
+        <p class="subtitle">At'Chef connecte les gourmands aux cuisiniers amateurs de Nantes pour du <strong>batch cooking sur-mesure</strong> — vegan, sportif, sans gluten... adapté à vos envies, chaque semaine ou chaque mois.</p>
         <div class="hero-ctas">
           <button type="button" class="btn btn-primary btn-lg go-to-search">Découvrir les Cuisiniers</button>
           <a href="#comment-ca-marche" data-goto-section="comment-ca-marche" class="btn btn-outline btn-lg">Comment ça marche</a>
@@ -594,19 +594,18 @@
       <div class="reservation-wrap">
         <form class="reservation-card tilt-card" id="searchForm">
           <div class="tilt-glare" aria-hidden="true"></div>
-          <p class="reservation-title">Réserver une table</p>
-          <p class="reservation-subtitle">Trouvez le cuisinier parfait pour votre soirée</p>
-          <div class="field-row">
-            <label for="dateInput">Quand ?</label>
-            <input type="date" id="dateInput" name="date">
-          </div>
-          <div class="field-row">
-            <label id="guestLabel">Combien de convives ?</label>
-            <div class="stepper" role="group" aria-labelledby="guestLabel">
-              <button type="button" data-action="decrement" aria-label="Retirer un convive">−</button>
-              <span id="guestCount" aria-live="polite">2</span>
-              <button type="button" data-action="increment" aria-label="Ajouter un convive">+</button>
-            </div>
+          <p class="reservation-title">Trouver mon cuisinier</p>
+          <p class="reservation-subtitle">Des repas de la semaine, adaptés à vos envies</p>
+          <div class="field-row select-wrap">
+            <label for="regimeSelect">Votre régime ?</label>
+            <select id="regimeSelect" name="regime">
+              <option value="">Tous les régimes</option>
+              <option value="vegan">Vegan</option>
+              <option value="vegetarien">Végétarien</option>
+              <option value="sans_gluten">Sans gluten</option>
+              <option value="sans_lactose">Sans lactose</option>
+              <option value="proteine_sportif">Sportif / protéiné</option>
+            </select>
           </div>
           <div class="field-row select-wrap">
             <label for="cuisineSelect">Quelle envie ?</label>
@@ -630,7 +629,7 @@
       <div class="section-head">
         <span class="eyebrow">Comment ça marche</span>
         <h2>Une expérience simple, pensée pour tous</h2>
-        <p class="section-subtitle">Que vous ayez envie de déguster un bon repas ou de partager votre talent culinaire, At'Chef rend l'expérience simple et sécurisée.</p>
+        <p class="section-subtitle">Des repas faits maison préparés pour toute la semaine ou tout le mois, adaptés à votre régime. At'Chef rend l'expérience simple et sécurisée.</p>
       </div>
       <div class="role-toggle">
         <div class="role-toggle-inner">
@@ -642,20 +641,20 @@
         <div class="step-card reveal">
           <span class="step-number">01</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="3"/><line x1="29" y1="29" x2="39" y2="39" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
-          <h3>Trouvez votre cuisinier</h3>
-          <p>Parcourez les profils vérifiés près de chez vous et filtrez selon la date, le nombre de convives et le type de cuisine.</p>
+          <h3>Choisissez votre régime</h3>
+          <p>Vegan, sportif, sans gluten, sans lactose… trouvez le cuisinier qui correspond à vos envies et vos besoins, près de chez vous.</p>
         </div>
         <div class="step-card reveal">
           <span class="step-number">02</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="12" width="32" height="27" rx="4" stroke="currentColor" stroke-width="3"/><line x1="8" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="3"/><line x1="16" y1="8" x2="16" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="8" x2="32" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 29 L21 34 L32 22" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Réservez en 2 minutes</h3>
-          <p>Choisissez votre menu, confirmez le nombre de convives et validez votre réservation en toute sécurité, en ligne.</p>
+          <h3>Réservez un créneau fixe</h3>
+          <p>Choisissez un jour et un horaire chaque semaine, en formule hebdomadaire ou mensuelle.</p>
         </div>
         <div class="step-card reveal">
           <span class="step-number">03</span>
           <div class="step-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="34" rx="16" ry="6" stroke="currentColor" stroke-width="3"/><path d="M17 27 C14 21, 20 17, 17 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M31 27 C28 21, 34 17, 31 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
-          <h3>Savourez votre repas</h3>
-          <p>Votre cuisinier se déplace chez vous, prépare un repas fait maison sur place et partage un moment convivial à table.</p>
+          <h3>Vos repas de la semaine, prêts</h3>
+          <p>Le cuisinier vient chez vous et prépare plusieurs repas d'un coup, prêts à réchauffer toute la semaine.</p>
         </div>
       </div>
       <div class="steps-grid" data-panel="cuisinier" hidden>
@@ -702,7 +701,7 @@
     <section class="closing-cta">
       <div class="container">
         <h2>Prêt à passer à table ?</h2>
-        <p>Rejoignez la communauté At'Chef à Nantes, que vous ayez envie de déguster un bon repas ou de partager votre talent culinaire.</p>
+        <p>Rejoignez la communauté At'Chef à Nantes, pour des repas de la semaine ou du mois, faits maison et sur-mesure.</p>
         <div class="closing-cta-buttons">
           <button type="button" class="btn btn-primary btn-lg go-to-search">Je réserve un repas</button>
           <a href="#" class="go-to-cook-register btn btn-outline-light btn-lg">Je deviens cuisinier</a>
@@ -817,10 +816,10 @@
         <p class="filter-hint" id="locationStatusHint"></p>
       </div>
       <div class="filter-group">
-        <h3>Budget par personne</h3>
-        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="low"> Moins de 20 €</label>
-        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="mid"> 20 € – 40 €</label>
-        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="high"> Plus de 40 €</label>
+        <h3>Budget par semaine</h3>
+        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="low"> Moins de 130 €</label>
+        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="mid"> 130 € – 170 €</label>
+        <label class="filter-option"><input type="checkbox" class="budget-checkbox" value="high"> Plus de 170 €</label>
       </div>
       <div class="filter-group">
         <h3>Type de cuisine</h3>
@@ -830,11 +829,6 @@
         <h3>Régime alimentaire</h3>
         <div id="regimeFilterOptions"></div>
         <p class="filter-hint">Ces filtres concernent l'offre batch cooking (repas de la semaine).</p>
-      </div>
-      <div class="filter-group">
-        <h3>Date de l'événement</h3>
-        <input type="date" class="filter-date-input" id="searchDateInput">
-        <p class="filter-hint">La disponibilité exacte de chaque cuisinier est confirmée après votre demande de réservation.</p>
       </div>
       <div class="filter-group">
         <h3>Note minimale</h3>
@@ -919,92 +913,47 @@
       <div class="booking-card" id="bookingCard">
         <div id="bookingFormWrap">
           <div class="booking-card-header">
-            <span class="booking-price-from">Dès <span id="bookingBasePrice"></span> €<small> / pers.</small></span>
+            <span class="booking-price-from">Dès <span id="bookingBasePrice"></span> €<small> / semaine</small></span>
           </div>
-          <div class="booking-field">
-            <label>Type de prestation</label>
+
+          <div class="booking-field" id="planToggleField" hidden>
+            <label>Formule</label>
             <div class="booking-type-toggle">
-              <button type="button" class="booking-type-option active" data-booking-type="formula">
-                <span class="booking-type-icon">🍽️</span>
-                <span>Formule complète<br><small>Ingrédients inclus</small></span>
+              <button type="button" class="booking-type-option active" data-plan="weekly">
+                <span class="booking-type-icon">📆</span>
+                <span>Hebdomadaire</span>
               </button>
-              <button type="button" class="booking-type-option" data-booking-type="cooking_only">
-                <span class="booking-type-icon">🧊</span>
-                <span>Vos ingrédients<br><small>Moins cher</small></span>
+              <button type="button" class="booking-type-option" data-plan="monthly">
+                <span class="booking-type-icon">🗓️</span>
+                <span>Mensuelle<br><small>Souvent plus avantageuse</small></span>
               </button>
             </div>
           </div>
-          <div class="booking-field" id="formulaSelectionField">
-            <label>Choisissez une formule</label>
-            <div class="formula-options" id="formulaOptions"></div>
+
+          <div class="booking-field" id="batchSlotField">
+            <label>Choisissez un créneau hebdomadaire <span class="required-mark">*</span></label>
+            <div id="batchSlotOptions"><p class="admin-empty-note">Chargement des créneaux…</p></div>
           </div>
-          <div class="booking-field" id="cookingOnlyField" hidden>
-            <div class="cooking-only-card">
-              <strong>Le chef cuisine avec vos ingrédients</strong>
-              <p>Vous fournissez les produits, le cuisinier s'occupe de toute la préparation et de la cuisson. Tarif réduit puisque les ingrédients ne sont pas à sa charge.</p>
-              <span class="cooking-only-price" id="cookingOnlyPriceDisplay"></span>
-            </div>
-            <label for="fridgeContentsInput" style="margin-top:14px;">Ce que vous avez à disposition (optionnel)</label>
-            <textarea id="fridgeContentsInput" rows="2" placeholder="Ex : légumes de saison, poulet, riz, épices de base…"></textarea>
+          <div class="booking-field" id="batchStartDateField" hidden>
+            <label for="batchStartDateInput">Date de la première venue <span class="required-mark">*</span></label>
+            <input type="date" id="batchStartDateInput">
+            <p class="filter-hint" id="batchStartDateHint"></p>
           </div>
-          <div class="booking-field">
-            <label>Nombre de convives</label>
-            <div class="stepper" role="group" aria-label="Nombre de convives">
-              <button type="button" id="profileGuestDec" aria-label="Retirer un convive">−</button>
-              <span id="profileGuestCount" aria-live="polite">2</span>
-              <button type="button" id="profileGuestInc" aria-label="Ajouter un convive">+</button>
-            </div>
+          <div class="price-breakdown" id="batchPriceBreakdown" hidden></div>
+          <div class="booking-field" id="batchHostEmailField" hidden>
+            <label for="batchHostEmailInput">Votre email <span class="required-mark">*</span></label>
+            <input type="email" id="batchHostEmailInput" required placeholder="vous@exemple.fr">
           </div>
-          <div class="price-breakdown" id="priceBreakdown"></div>
-          <div class="booking-field">
-            <label>Choisissez une date <span class="required-mark">*</span></label>
-            <div class="mini-calendar">
-              <div class="calendar-header">
-                <button type="button" id="calendarPrevMonth" aria-label="Mois précédent">‹</button>
-                <span id="calendarMonthLabel"></span>
-                <button type="button" id="calendarNextMonth" aria-label="Mois suivant">›</button>
-              </div>
-              <div class="calendar-weekdays">
-                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
-              </div>
-              <div class="calendar-grid" id="calendarGrid"></div>
-              <div class="calendar-legend">
-                <span><i class="legend-dot available"></i> Disponible</span>
-                <span><i class="legend-dot unavailable"></i> Indisponible</span>
-              </div>
-            </div>
-            <p class="selected-date-label" id="selectedDateLabel">Aucune date sélectionnée</p>
-          </div>
-          <div class="booking-field">
-            <label>Équipement disponible chez vous</label>
-            <div class="equipment-checklist">
-              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Four"> Four</label>
-              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Plaques de cuisson"> Plaques de cuisson</label>
-              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Réfrigérateur disponible"> Réfrigérateur disponible</label>
-              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Micro-ondes"> Micro-ondes</label>
-              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Grille-pain"> Grille-pain</label>
-              <label class="filter-option"><input type="checkbox" class="equipment-checkbox" value="Grand plan de travail"> Grand plan de travail</label>
-            </div>
-            <p class="filter-hint">Cochez ce qui est disponible chez vous : ça aide le cuisinier à préparer sa venue.</p>
-          </div>
-          <div class="booking-field">
-            <label for="allergiesInput">Allergies et restrictions alimentaires <span class="required-mark">*</span></label>
-            <textarea id="allergiesInput" rows="3" placeholder="Ex : allergie aux fruits à coque, intolérance au lactose… ou « Aucune » si sans restriction" required></textarea>
-            <p class="gdpr-notice">🔒 Ces informations relèvent de données de santé. Elles sont transmises uniquement à votre cuisinier, dans le seul but d'assurer la sécurité de votre repas, et ne sont ni conservées ni partagées à d'autres fins.</p>
-          </div>
-          <div class="booking-field">
-            <label for="hostEmailInput">Votre email <span class="required-mark">*</span></label>
-            <input type="email" id="hostEmailInput" required placeholder="vous@exemple.fr">
-          </div>
-          <div class="booking-field">
+          <div class="booking-field" id="batchIdentityField" hidden>
             <label>Vérification d'identité <span class="required-mark">*</span></label>
-            <div class="identity-box" id="identityBox">
-              <p class="identity-status-text" id="identityStatusText">🔒 Obligatoire avant de réserver, pour la sécurité de votre cuisinier. Pièce d'identité + selfie, sur une page Stripe sécurisée — At'Chef ne reçoit jamais vos documents.</p>
-              <button type="button" class="btn btn-outline btn-block btn-sm" id="verifyIdentityBtn">Vérifier mon identité</button>
+            <div class="identity-box" id="batchIdentityBox">
+              <p class="identity-status-text" id="batchIdentityStatusText">🔒 Obligatoire avant de réserver, pour la sécurité de votre cuisinier. Pièce d'identité + selfie, sur une page Stripe sécurisée — At'Chef ne reçoit jamais vos documents.</p>
+              <button type="button" class="btn btn-outline btn-block btn-sm" id="batchVerifyIdentityBtn">Vérifier mon identité</button>
             </div>
           </div>
-          <p class="booking-error" id="bookingError" hidden></p>
-          <button type="button" class="btn btn-primary btn-block" id="reserveBtn">Réserver</button>
+          <p class="booking-error" id="batchBookingError" hidden></p>
+          <button type="button" class="btn btn-primary btn-block" id="batchSubscribeBtn" hidden>S'abonner</button>
+          <p class="admin-empty-note" id="noBatchOfferNote" hidden>Ce cuisinier ne propose pas encore de formule batch cooking.</p>
         </div>
         <div class="booking-confirmation" id="bookingConfirmation" hidden></div>
       </div>
@@ -1014,6 +963,7 @@
 <div id="view-cook-register" class="app-view" hidden>
   <div class="container profile-toolbar">
     <button type="button" class="back-to-home">← Retour à l'accueil</button>
+
   </div>
   <div class="container cook-register-layout">
     <div class="cook-register-intro">
@@ -1057,14 +1007,15 @@
       </div>
       <div class="cook-register-row">
         <div class="booking-field">
-          <label for="cookFormulaName">Nom de votre 1ère formule <span class="required-mark">*</span></label>
-          <input type="text" id="cookFormulaName" required placeholder="Ex : Menu Découverte">
+          <label for="cookPriceWeekly">Prix hebdomadaire (€) <span class="required-mark">*</span></label>
+          <input type="number" id="cookPriceWeekly" required min="20" max="1000" placeholder="140">
         </div>
         <div class="booking-field">
-          <label for="cookFormulaPrice">Prix par convive (€) <span class="required-mark">*</span></label>
-          <input type="number" id="cookFormulaPrice" required min="5" max="500" placeholder="25">
+          <label for="cookPriceMonthly">Prix mensuel (€, optionnel)</label>
+          <input type="number" id="cookPriceMonthly" min="60" max="3000" placeholder="Ex : 480">
         </div>
       </div>
+      <p class="filter-hint">Vous pourrez ajuster ces tarifs et vos créneaux hebdomadaires à tout moment depuis "Mon espace".</p>
       <p class="booking-error" id="cookRegisterError" hidden></p>
       <button type="submit" class="btn btn-primary btn-block" id="cookRegisterSubmit">Créer mon profil et configurer mes paiements</button>
     </form>
@@ -1544,3 +1495,2292 @@
   </div>
 </div>
 <div class="toast" id="toast" role="status"></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const BACKEND_URL = 'https://atchef-backend.onrender.com';
+
+  function isBackendConfigured(){
+    return !BACKEND_URL.includes('VOTRE-BACKEND');
+  }
+
+  const CUISINE_TYPES = ['Française & Bistrot','Italienne','Orientale & Méditerranéenne','Asiatique','Végétarienne & Vegan','Pâtisserie & Desserts'];
+  const REGIME_TAGS = ['vegan','vegetarien','sans_gluten','sans_lactose','proteine_sportif'];
+  const REGIME_LABELS = { vegan:'Vegan', vegetarien:'Végétarien', sans_gluten:'Sans gluten', sans_lactose:'Sans lactose', proteine_sportif:'Sportif / protéiné' };
+
+  const chefs = [
+    { id:1, name:'Amélie R.', cuisine:'Française & Bistrot', location:'Nantes Centre', lat:47.2184, lng:-1.5536, quote:"La cuisine de ma grand-mère, revisitée avec des produits locaux et de saison.", rating:4.9, reviews:32, tags:['Fait maison','Sans gluten possible'], regimes:['sans_gluten'], batchCookingPriceWeekly:140, batchCookingPriceMonthly:480, weeklyAvailability:[{day:'lundi', startTime:'09:00', endTime:'12:00'}], photo:'https://i.pravatar.cc/160?img=47', gradient:'linear-gradient(135deg,#E2725B,#A64A34)', featured:true,
+      bio:"Après des années passées à cuisiner pour sa famille et ses amis, Amélie a décidé de partager sa passion pour la cuisine bretonne au plus grand nombre. Chaque plat raconte une histoire, souvent celle de sa grand-mère, dont elle perpétue les recettes avec des produits locaux et de saison.",
+      specialties:["Galettes bretonnes","Kig ha farz","Kouign-amann maison","Plats mijotés"],
+      training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa grand-mère, cuisinière dans une ferme du Finistère.",
+      testimonials:[
+        { author:"Marie D.", rating:5, date:"Juin 2026", comment:"Un repas qui sent bon l'enfance, Amélie est adorable et très professionnelle." },
+        { author:"Thomas L.", rating:5, date:"Mai 2026", comment:"Le kig ha farz était incroyable, on s'est resservi trois fois !" },
+        { author:"Camille P.", rating:4, date:"Avril 2026", comment:"Très bon moment, juste un peu de retard à l'arrivée." }
+      ]
+    },
+    { id:2, name:'Karim B.', cuisine:'Orientale & Méditerranéenne', location:'Île de Nantes', lat:47.2065, lng:-1.549, quote:"Les épices et les saveurs du Maghreb, directement à votre table.", rating:5.0, reviews:18, tags:['Végétarien','Épicé'], regimes:['vegetarien'], batchCookingPriceWeekly:155, batchCookingPriceMonthly:530, weeklyAvailability:[{day:'mardi', startTime:'14:00', endTime:'18:00'}], photo:'https://i.pravatar.cc/160?img=53', gradient:'linear-gradient(135deg,#8CA888,#4F6B4C)', featured:true,
+      bio:"Karim cuisine depuis toujours aux côtés de sa mère et de ses tantes. Il propose une cuisine du Maghreb généreuse et parfumée, pensée pour être partagée en toute convivialité autour d'un plat commun.",
+      specialties:["Tajine aux pruneaux","Couscous royal","Mezzé maison","Pâtisseries orientales"],
+      training:null, selfTaughtNote:"Autodidacte — formé aux fourneaux familiaux depuis l'enfance.",
+      testimonials:[
+        { author:"Sophie R.", rating:5, date:"Juillet 2026", comment:"Le couscous royal était somptueux, portions généreuses et Karim est très attentionné." },
+        { author:"Nicolas B.", rating:5, date:"Juin 2026", comment:"Accueil chaleureux, plats délicieux, on recommande à 100%." }
+      ]
+    },
+    { id:3, name:'Chloé L.', cuisine:'Italienne', location:'Chantenay', lat:47.2135, lng:-1.585, quote:"Pâtes fraîches faites minute et recettes transmises par ma nonna.", rating:4.8, reviews:45, tags:['Fait maison','Végétarien'], regimes:['vegetarien'], batchCookingPriceWeekly:125, batchCookingPriceMonthly:430, weeklyAvailability:[{day:'mercredi', startTime:'09:00', endTime:'12:00'}], photo:'https://i.pravatar.cc/160?img=25', gradient:'linear-gradient(135deg,#D9A441,#A64A34)', featured:true,
+      bio:"Chloé a grandi entre Nantes et l'Italie, dans la cuisine de sa nonna. Elle prépare toutes ses pâtes fraîches à la main, chaque semaine, selon les recettes transmises de génération en génération.",
+      specialties:["Tagliatelles fraîches","Tiramisu maison","Gnocchis","Sauce bolognaise mijotée 4h"],
+      training:null, selfTaughtNote:"Autodidacte — formée par sa nonna italienne dès son plus jeune âge.",
+      testimonials:[
+        { author:"Julie M.", rating:5, date:"Juillet 2026", comment:"Les meilleures pâtes fraîches mangées hors d'Italie, un vrai talent." },
+        { author:"Antoine G.", rating:5, date:"Juin 2026", comment:"Chloé est passionnée et ça se sent dans chaque assiette." },
+        { author:"Laura K.", rating:4, date:"Mai 2026", comment:"Excellent repas, tiramisu à tomber." }
+      ]
+    },
+    { id:4, name:'Thomas M.', cuisine:'Asiatique', location:'Doulon', lat:47.228, lng:-1.51, quote:"Bo bun et currys parfumés, comme lors de mes voyages en Asie du Sud-Est.", rating:4.6, reviews:27, tags:['Fait maison','Sans lactose possible'], regimes:['sans_lactose','vegetarien'], batchCookingPriceWeekly:110, batchCookingPriceMonthly:380, weeklyAvailability:[{day:'jeudi', startTime:'14:00', endTime:'18:00'}], photo:'https://i.pravatar.cc/160?img=13', gradient:'linear-gradient(135deg,#E2725B,#4F6B4C)',
+      bio:"Après plusieurs voyages prolongés en Asie du Sud-Est, Thomas s'est pris de passion pour les cuisines vietnamienne et thaïlandaise. Il aime faire découvrir des saveurs authentiques, loin des clichés, avec des produits frais.",
+      specialties:["Bo bun maison","Curry thaï vert","Nems croustillants","Bo bun végétarien"],
+      training:[{title:"Stage cuisine asiatique", detail:"École Ferrandi Paris, 2020"}],
+      testimonials:[
+        { author:"Emma V.", rating:5, date:"Juillet 2026", comment:"Un curry thaï incroyable, aussi bon que sur place en Thaïlande." },
+        { author:"Hugo D.", rating:4, date:"Juin 2026", comment:"Très bon repas, portions un peu justes pour les gros appétits." }
+      ]
+    },
+    { id:5, name:'Sofia G.', cuisine:'Végétarienne & Vegan', location:'Hauts-Pavés', lat:47.228, lng:-1.565, quote:"Des bowls colorés et gourmands, 100% végétal et de saison.", rating:4.3, reviews:15, tags:['Vegan','Sans gluten possible'], regimes:['vegan','vegetarien','sans_gluten','proteine_sportif'], batchCookingPriceWeekly:135, batchCookingPriceMonthly:460, weeklyAvailability:[{day:'vendredi', startTime:'09:00', endTime:'12:00'}], photo:'https://i.pravatar.cc/160?img=32', gradient:'linear-gradient(135deg,#8CA888,#A64A34)',
+      bio:"Sofia démontre qu'une cuisine 100% végétale peut être gourmande et créative. Diététicienne de formation, elle compose des assiettes colorées et équilibrées, en circuit court autant que possible.",
+      specialties:["Bowl quinoa & légumes rôtis","Curry de légumes","Desserts vegan","Houmous maison"],
+      training:[{title:"BTS Diététique", detail:"Nantes, 2019"}],
+      testimonials:[
+        { author:"Claire B.", rating:4, date:"Juin 2026", comment:"Très bon, léger et plein de saveurs. Parfait pour changer." },
+        { author:"Yann P.", rating:4, date:"Mai 2026", comment:"On ne sent pas du tout le manque de viande, très convaincant." }
+      ]
+    },
+    { id:6, name:'Julien D.', cuisine:'Pâtisserie & Desserts', location:'Graslin', lat:47.214, lng:-1.56, quote:"Des pâtisseries françaises comme à la sortie de l'école, en plus raffiné.", rating:4.7, reviews:22, tags:['Fait maison'], regimes:[], batchCookingPriceWeekly:150, batchCookingPriceMonthly:510, weeklyAvailability:[{day:'lundi', startTime:'14:00', endTime:'18:00'}], photo:'https://i.pravatar.cc/160?img=61', gradient:'linear-gradient(135deg,#D9A441,#7A3524)',
+      bio:"Passionné de pâtisserie depuis l'adolescence, Julien s'est formé auprès d'un chef pâtissier avant de se lancer en indépendant. Il propose des ateliers gourmands et des menus 100% sucrés pour les amateurs de belles pâtisseries.",
+      specialties:["Paris-Brest","Entremets fruits de saison","Tarte au citron meringuée","Choux à la crème"],
+      training:[{title:"CAP Pâtisserie", detail:"2017"},{title:"Stage de perfectionnement", detail:"Auprès d'un chef pâtissier nantais, 2019"}],
+      testimonials:[
+        { author:"Pauline S.", rating:5, date:"Juillet 2026", comment:"L'atelier était génial, on a adoré préparer notre dessert avec Julien." },
+        { author:"Marc T.", rating:4, date:"Juin 2026", comment:"Pâtisseries magnifiques et délicieuses, un vrai artiste." }
+      ]
+    },
+    { id:7, name:'Nadia F.', cuisine:'Orientale & Méditerranéenne', location:'Bellevue', lat:47.24, lng:-1.575, quote:"Mezzé libanais et douceurs du Levant, pour un voyage gourmand.", rating:4.9, reviews:38, tags:['Végétarien','Fait maison'], regimes:['vegetarien'], batchCookingPriceWeekly:145, batchCookingPriceMonthly:495, weeklyAvailability:[{day:'mardi', startTime:'09:00', endTime:'12:00'}], photo:'https://i.pravatar.cc/160?img=44', gradient:'linear-gradient(135deg,#E2725B,#A64A34)',
+      bio:"Originaire du Liban, Nadia partage la cuisine généreuse de son enfance : mezzé colorés, plats mijotés et douceurs orientales. Un vrai voyage culinaire vers le Levant, à quelques rues de chez vous.",
+      specialties:["Mezzé libanais","Taboulé maison","Kafta grillée","Baklava fait maison"],
+      training:null, selfTaughtNote:"Autodidacte — recettes transmises par sa mère et ses grand-mères libanaises.",
+      testimonials:[
+        { author:"Isabelle F.", rating:5, date:"Juillet 2026", comment:"Un vrai voyage au Liban, tout était délicieux et généreux." },
+        { author:"Karim D.", rating:5, date:"Juin 2026", comment:"Nadia est adorable et cuisine comme personne, on recommande vivement." },
+        { author:"Léna M.", rating:5, date:"Mai 2026", comment:"Le baklava maison est juste parfait, à refaire absolument." }
+      ]
+    },
+    { id:8, name:'Paul-Henri V.', cuisine:'Française & Bistrot', location:'Île Feydeau', lat:47.216, lng:-1.552, quote:"Une bistronomie exigeante, entre tradition et créativité.", rating:4.5, reviews:24, tags:['Fait maison'], regimes:['proteine_sportif'], batchCookingPriceWeekly:190, batchCookingPriceMonthly:640, weeklyAvailability:[{day:'mercredi', startTime:'14:00', endTime:'18:00'}], photo:'https://i.pravatar.cc/160?img=68', gradient:'linear-gradient(135deg,#4F6B4C,#241E18)',
+      bio:"Ancien second de cuisine en restaurant gastronomique, Paul-Henri a choisi de mettre son savoir-faire au service de repas plus intimistes, chez l'habitant. Une bistronomie exigeante, entre tradition française et créativité contemporaine.",
+      specialties:["Foie gras mi-cuit maison","Ris de veau","Soufflé au Grand Marnier","Accord mets & vins"],
+      training:[{title:"BTS Hôtellerie-Restauration", detail:"Nantes, 2012"},{title:"Second de cuisine", detail:"Restaurant gastronomique, 6 ans d'expérience"}],
+      testimonials:[
+        { author:"Véronique H.", rating:5, date:"Juillet 2026", comment:"Un niveau digne des meilleurs restaurants, dans le confort de la maison. Exceptionnel." },
+        { author:"Frédéric N.", rating:4, date:"Juin 2026", comment:"Très haut niveau, service impeccable, tarif en conséquence mais justifié." }
+      ]
+    },
+    { id:9, name:'Léa B.', cuisine:'Asiatique', location:'Zola', lat:47.223, lng:-1.548, quote:"Sushis et cuisine japonaise maison, dans le respect des produits.", rating:4.4, reviews:19, tags:['Sans gluten possible'], regimes:['sans_gluten','proteine_sportif'], batchCookingPriceWeekly:175, batchCookingPriceMonthly:590, weeklyAvailability:[{day:'jeudi', startTime:'09:00', endTime:'12:00'}], photo:'https://i.pravatar.cc/160?img=28', gradient:'linear-gradient(135deg,#8CA888,#7A3524)',
+      bio:"Formée aux techniques japonaises pendant plusieurs mois auprès d'un chef à Paris, Léa propose des sushis et sashimis préparés minute, dans le respect du produit et de la tradition japonaise.",
+      specialties:["Sushis maison","Sashimis","Makis californiens","Soupe miso"],
+      training:[{title:"Formation sushi", detail:"3 mois auprès d'un chef japonais, Paris, 2021"}],
+      testimonials:[
+        { author:"Chloé R.", rating:5, date:"Juin 2026", comment:"Sushis d'une fraîcheur incroyable, Léa est très minutieuse." },
+        { author:"David S.", rating:4, date:"Mai 2026", comment:"Très bon moment, un peu cher mais la qualité est là." }
+      ]
+    },
+    { id:10, name:'Marco T.', cuisine:'Italienne', location:'Malakoff', lat:47.202, lng:-1.543, quote:"Pizzas napolitaines et antipasti, la trattoria comme à la maison.", rating:4.2, reviews:12, tags:['Fait maison'], regimes:[], batchCookingPriceWeekly:115, batchCookingPriceMonthly:395, weeklyAvailability:[{day:'vendredi', startTime:'14:00', endTime:'18:00'}], photo:'https://i.pravatar.cc/160?img=15', gradient:'linear-gradient(135deg,#D9A441,#4F6B4C)',
+      bio:"Marco a grandi dans la trattoria familiale près de Naples avant de s'installer à Nantes. Il perpétue la tradition de la pizza napolitaine, pâte longue fermentation et four maison.",
+      specialties:["Pizza napolitaine","Antipasti","Tiramisu","Focaccia maison"],
+      training:null, selfTaughtNote:"Autodidacte — formé dans la trattoria familiale près de Naples.",
+      testimonials:[
+        { author:"Manon L.", rating:4, date:"Juin 2026", comment:"Très bonne pizza, pâte parfaite. Accueil sympathique." },
+        { author:"Rachid B.", rating:4, date:"Mai 2026", comment:"Bon rapport qualité prix, ambiance conviviale." }
+      ]
+    },
+    { id:11, name:'Youssef K.', cuisine:'Orientale & Méditerranéenne', location:'Bottière', lat:47.235, lng:-1.525, quote:"Couscous familial et grillades, pour un repas convivial et généreux.", rating:4.6, reviews:29, tags:['Fait maison'], regimes:['vegetarien'], batchCookingPriceWeekly:110, batchCookingPriceMonthly:380, weeklyAvailability:[{day:'samedi', startTime:'09:00', endTime:'13:00'}], photo:'https://i.pravatar.cc/160?img=51', gradient:'linear-gradient(135deg,#E2725B,#7A3524)',
+      bio:"Youssef aime recevoir autour d'un couscous familial généreux, comme il l'a toujours connu en famille. Une cuisine simple, parfumée et conviviale, pensée pour être partagée à plusieurs.",
+      specialties:["Couscous familial","Grillades marinées","Chorba","Thé à la menthe"],
+      training:null, selfTaughtNote:"Autodidacte — cuisine apprise en famille, entre l'Algérie et Nantes.",
+      testimonials:[
+        { author:"Sarah M.", rating:5, date:"Juillet 2026", comment:"Couscous délicieux et copieux, Youssef est très accueillant." },
+        { author:"Julien K.", rating:4, date:"Juin 2026", comment:"Très bon moment convivial, portions généreuses." }
+      ]
+    }
+  ];
+
+  function isTopChef(chef){ return chef.rating >= 4.5 && chef.reviews >= 20; }
+  function getChefWeeklyPrice(chef){
+    if (chef.batchCookingPriceWeekly) return chef.batchCookingPriceWeekly;
+    if (chef.batchCookingPriceMonthly) return Math.round(chef.batchCookingPriceMonthly / 4);
+    return null;
+  }
+  function getBudgetBucket(price){ if (price == null) return 'unknown'; if (price < 130) return 'low'; if (price <= 170) return 'mid'; return 'high'; }
+  const BUDGET_LABELS = { low:'Moins de 130 €/sem.', mid:'130 € – 170 €/sem.', high:'Plus de 170 €/sem.' };
+
+  function formatDateFr(dateStr){
+    try{ return new Date(dateStr + 'T00:00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' }); }
+    catch(e){ return dateStr; }
+  }
+
+  function chefCardHTML(chef, instant){
+    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
+    const tagsHTML = chef.tags.map(t => '<span>' + t + '</span>').join('');
+    const cardClass = instant ? 'chef-card' : 'chef-card reveal';
+    const ratingHTML = chef.reviews > 0
+      ? '<span class="stars" aria-hidden="true">★★★★★</span>' +
+        '<span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span>' +
+        '<span class="count">(' + chef.reviews + ' avis)</span>'
+      : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
+    return (
+      '<article class="' + cardClass + '" data-chef-id="' + chef.id + '">' +
+        badge +
+        '<div class="chef-avatar-wrap">' +
+          '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
+          '<img class="chef-avatar-photo" src="' + chef.photo + '" alt="" loading="lazy" onerror="this.style.display=\'none\';">' +
+        '</div>' +
+        '<h3>' + chef.name + '</h3>' +
+        '<p class="chef-specialty">' + chef.cuisine + '</p>' +
+        '<p class="chef-location">📍 ' + chef.location + '</p>' +
+        '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
+        '<div class="chef-rating">' + ratingHTML + '</div>' +
+        (chef.identityVerified ? '<div style="margin-bottom:14px;"><span class="identity-verified-badge">✅ Identité vérifiée</span></div>' : '') +
+        '<div class="chef-tags">' + tagsHTML + '</div>' +
+        '<div class="chef-footer">' +
+          '<span class="chef-price-tag">Dès ' + (getChefWeeklyPrice(chef) || '?') + ' €<br><small>par semaine</small></span>' +
+          '<button type="button" class="btn btn-outline btn-sm">Voir le profil</button>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function showView(name){
+    document.querySelectorAll('.app-view').forEach(v => { v.hidden = (v.id !== 'view-' + name); });
+    window.scrollTo({ top:0, behavior:'auto' });
+  }
+
+  function goToHomeSection(sectionId, role){
+    showView('home');
+    if (role) setRole(role);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+      });
+    });
+  }
+
+  let filters = { budgets:[], cuisines:[], regimes:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
+  let sortBy = 'relevance';
+  let carouselChefs = [];
+  let carouselIndex = 0;
+
+  function sortChefsList(list){
+    const sorted = list.slice();
+    if (sortBy === 'rating') sorted.sort((a,b) => b.rating - a.rating);
+    else if (sortBy === 'price-asc') sorted.sort((a,b) => (getChefWeeklyPrice(a) ?? Infinity) - (getChefWeeklyPrice(b) ?? Infinity));
+    else if (sortBy === 'price-desc') sorted.sort((a,b) => (getChefWeeklyPrice(b) ?? -Infinity) - (getChefWeeklyPrice(a) ?? -Infinity));
+    else sorted.sort((a,b) => {
+      const at = isTopChef(a) ? 1 : 0, bt = isTopChef(b) ? 1 : 0;
+      if (bt !== at) return bt - at;
+      return b.rating - a.rating;
+    });
+    return sorted;
+  }
+
+  function haversineDistanceKm(lat1, lng1, lat2, lng2){
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  }
+
+  function applyFiltersAndRender(){
+    let list = chefs.filter(c => {
+      if (filters.budgets.length && filters.budgets.indexOf(getBudgetBucket(getChefWeeklyPrice(c))) === -1) return false;
+      if (filters.cuisines.length && filters.cuisines.indexOf(c.cuisine) === -1) return false;
+      if (filters.regimes.length){
+        const chefRegimes = c.regimes || [];
+        if (!filters.regimes.some(r => chefRegimes.indexOf(r) !== -1)) return false;
+      }
+      if (c.rating < filters.minRating) return false;
+      if (filters.userLat != null && filters.radiusKm){
+        if (c.lat == null || c.lng == null) return false;
+        if (haversineDistanceKm(filters.userLat, filters.userLng, c.lat, c.lng) > filters.radiusKm) return false;
+      }
+      return true;
+    });
+    list = sortChefsList(list);
+
+    const grid = document.getElementById('resultsGrid');
+    const noResults = document.getElementById('noResults');
+    const resultsCount = document.getElementById('resultsCount');
+
+    grid.innerHTML = list.map(c => chefCardHTML(c, true)).join('');
+    noResults.hidden = list.length > 0;
+    grid.hidden = list.length === 0;
+    resultsCount.textContent = list.length + (list.length > 1 ? ' cuisiniers disponibles' : ' cuisinier disponible');
+
+    renderActiveChips();
+    updateMobileFilterCount();
+  }
+  function syncFilterUIFromState(){
+    document.querySelectorAll('.cuisine-checkbox').forEach(cb => { cb.checked = filters.cuisines.indexOf(cb.value) !== -1; });
+    document.querySelectorAll('.budget-checkbox').forEach(cb => { cb.checked = filters.budgets.indexOf(cb.value) !== -1; });
+    document.querySelectorAll('.regime-checkbox').forEach(cb => { cb.checked = filters.regimes.indexOf(cb.value) !== -1; });
+    document.querySelectorAll('input[name="ratingFilter"]').forEach(r => { r.checked = (parseFloat(r.value) === filters.minRating); });
+    const searchDateInputEl = document.getElementById('searchDateInput');
+    if (searchDateInputEl) searchDateInputEl.value = filters.date || '';
+    const locationInputEl = document.getElementById('locationInput');
+    if (locationInputEl) locationInputEl.value = filters.locationLabel || '';
+    const radiusSelectEl = document.getElementById('radiusSelect');
+    if (radiusSelectEl) radiusSelectEl.value = filters.radiusKm || '';
+    const hintEl = document.getElementById('locationStatusHint');
+    if (hintEl) hintEl.textContent = '';
+  }
+
+  function renderActiveChips(){
+    const container = document.getElementById('activeFiltersRow');
+    const chips = [];
+    filters.cuisines.forEach(c => chips.push({ label:c, remove:() => { filters.cuisines = filters.cuisines.filter(x => x !== c); } }));
+    filters.budgets.forEach(b => chips.push({ label:BUDGET_LABELS[b], remove:() => { filters.budgets = filters.budgets.filter(x => x !== b); } }));
+    filters.regimes.forEach(r => chips.push({ label:REGIME_LABELS[r] || r, remove:() => { filters.regimes = filters.regimes.filter(x => x !== r); } }));
+    if (filters.minRating > 0) chips.push({ label: filters.minRating.toFixed(1).replace('.', ',') + ' ★ et plus', remove:() => { filters.minRating = 0; } });
+    if (filters.date) chips.push({ label: formatDateFr(filters.date), remove:() => { filters.date = ''; } });
+    if (filters.userLat != null && filters.radiusKm){
+      const label = (filters.locationLabel ? filters.locationLabel : 'Ma position') + ' (' + filters.radiusKm + ' km)';
+      chips.push({ label, remove:() => { filters.userLat = null; filters.userLng = null; filters.radiusKm = null; filters.locationLabel = ''; } });
+    }
+    container.innerHTML = '';
+    if (chips.length === 0){
+      container.innerHTML = '<span class="no-active-filters">Aucun filtre actif — tous nos cuisiniers sont affichés</span>';
+      return;
+    }
+    chips.forEach(chip => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'filter-chip';
+      btn.innerHTML = chip.label + ' <span class="chip-x" aria-hidden="true">×</span>';
+      btn.setAttribute('aria-label', 'Retirer le filtre ' + chip.label);
+      btn.addEventListener('click', () => { chip.remove(); syncFilterUIFromState(); applyFiltersAndRender(); });
+      container.appendChild(btn);
+    });
+  }
+
+  function getActiveFilterCount(){
+    return filters.cuisines.length + filters.budgets.length + filters.regimes.length + (filters.minRating > 0 ? 1 : 0) + (filters.date ? 1 : 0) + ((filters.userLat != null && filters.radiusKm) ? 1 : 0);
+  }
+
+  function updateMobileFilterCount(){
+    const el = document.getElementById('mobileFilterCount');
+    if (!el) return;
+    const n = getActiveFilterCount();
+    el.textContent = n > 0 ? String(n) : '';
+  }
+
+  function resetFilters(){
+    filters = { budgets:[], cuisines:[], regimes:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
+    sortBy = 'relevance';
+    const sortSelectEl = document.getElementById('sortSelect');
+    if (sortSelectEl) sortSelectEl.value = 'relevance';
+    syncFilterUIFromState();
+    applyFiltersAndRender();
+  }
+
+  function openSearch(opts){
+    opts = opts || {};
+    filters = { budgets:[], cuisines:[], regimes:[], minRating:0, date:'', userLat:null, userLng:null, radiusKm:null, locationLabel:'' };
+    if (opts.cuisine) filters.cuisines = [opts.cuisine];
+    if (opts.date) filters.date = opts.date;
+    showView('search');
+    syncFilterUIFromState();
+    applyFiltersAndRender();
+  }
+
+  let currentProfileChef = null;
+  let batchSlots = [];
+  let selectedBatchSlotIndex = null;
+  let selectedPlan = 'weekly';
+  let batchIdentityVerified = false;
+  const DAY_LABELS_FR = { lundi:'Lundi', mardi:'Mardi', mercredi:'Mercredi', jeudi:'Jeudi', vendredi:'Vendredi', samedi:'Samedi', dimanche:'Dimanche' };
+  const DAY_JS_INDEX = { lundi:1, mardi:2, mercredi:3, jeudi:4, vendredi:5, samedi:6, dimanche:0 };
+
+  function starsHTML(rating){
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  }
+
+  async function loadRealReviews(cookId){
+    if (!isBackendConfigured()) return;
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/reviews');
+      if (!res.ok) return;
+      const reviews = await res.json();
+      if (!reviews.length) return;
+      const container = document.getElementById('profileReviews');
+      const emptyNote = container.querySelector('.no-reviews-note');
+      if (emptyNote) emptyNote.remove();
+      const realReviewsHTML = reviews.map(r => {
+        const date = new Date(r.createdAt).toLocaleDateString('fr-FR', { day:'2-digit', month:'long', year:'numeric' });
+        return '<div class="review-item"><div class="review-item-head"><span class="review-author">Hôte vérifié</span><span class="review-date">' + date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(r.rating) + '</span>' +
+          (r.comment ? '<p class="review-comment">' + r.comment.replace(/</g, '&lt;') + '</p>' : '') +
+        '</div>';
+      }).join('');
+      container.innerHTML = realReviewsHTML + container.innerHTML;
+    } catch (e) {}
+  }
+
+  function renderTrainingSection(chef){
+    const content = document.getElementById('profileTrainingContent');
+    if (chef.training && chef.training.length){
+      content.innerHTML = chef.training.map(t => '<div class="training-item"><strong>' + t.title + '</strong><span>' + t.detail + '</span></div>').join('');
+    } else {
+      content.innerHTML = '<p class="self-taught-note">🌿 ' + chef.selfTaughtNote + '</p>';
+    }
+  }
+
+  function setPlan(plan){
+    selectedPlan = plan;
+    document.querySelectorAll('[data-plan]').forEach(btn => btn.classList.toggle('active', btn.dataset.plan === plan));
+    updateBatchPriceBreakdown();
+  }
+
+  async function loadBatchSlotsForCurrentChef(){
+    const container = document.getElementById('batchSlotOptions');
+    selectedBatchSlotIndex = null;
+    document.getElementById('batchStartDateField').hidden = true;
+    document.getElementById('batchPriceBreakdown').hidden = true;
+    document.getElementById('batchHostEmailField').hidden = true;
+    document.getElementById('batchIdentityField').hidden = true;
+    document.getElementById('batchSubscribeBtn').hidden = true;
+
+    if (!currentProfileChef || !isBackendConfigured()){
+      batchSlots = currentProfileChef ? (currentProfileChef.weeklyAvailability || []) : [];
+      renderBatchSlots(container);
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks/' + currentProfileChef.id + '/weekly-availability');
+      const data = await res.json();
+      batchSlots = res.ok ? (data.weeklyAvailability || []) : [];
+    } catch (e) {
+      batchSlots = currentProfileChef.weeklyAvailability || [];
+    }
+    renderBatchSlots(container);
+  }
+
+  function renderBatchSlots(container){
+    if (!batchSlots.length){
+      container.innerHTML = '<p class="admin-empty-note">Ce cuisinier n\'a pas encore de créneau disponible.</p>';
+      return;
+    }
+    container.innerHTML = '<div class="formula-options">' + batchSlots.map((s, i) =>
+      '<label class="formula-option" data-batch-slot-index="' + i + '">' +
+        '<input type="radio" name="batchSlotChoice">' +
+        '<div class="formula-option-top"><span class="formula-option-name">' + DAY_LABELS_FR[s.day] + '</span><span class="formula-option-price">' + s.startTime + ' – ' + s.endTime + '</span></div>' +
+      '</label>'
+    ).join('') + '</div>';
+  }
+
+  function nextDateForWeekday(dayKey){
+    const targetIdx = DAY_JS_INDEX[dayKey];
+    const d = new Date();
+    d.setDate(d.getDate() + 1); // à partir de demain, pas aujourd'hui
+    while (d.getDay() !== targetIdx) d.setDate(d.getDate() + 1);
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+
+  function selectBatchSlot(index){
+    selectedBatchSlotIndex = index;
+    document.querySelectorAll('#batchSlotOptions .formula-option').forEach((el, i) => el.classList.toggle('selected', i === index));
+    const slot = batchSlots[index];
+
+    const startField = document.getElementById('batchStartDateField');
+    const startInput = document.getElementById('batchStartDateInput');
+    startField.hidden = false;
+    startInput.value = nextDateForWeekday(slot.day);
+    document.getElementById('batchStartDateHint').textContent = 'Doit tomber un ' + DAY_LABELS_FR[slot.day].toLowerCase() + ', comme le créneau choisi.';
+
+    updateBatchPriceBreakdown();
+    document.getElementById('batchHostEmailField').hidden = false;
+    document.getElementById('batchIdentityField').hidden = false;
+    document.getElementById('batchSubscribeBtn').hidden = false;
+
+    if (userRole === 'host' && userEmail){
+      document.getElementById('batchHostEmailInput').value = userEmail;
+      checkBatchIdentityStatus(userEmail);
+    }
+  }
+
+  function currentBatchCookPrice(){
+    if (!currentProfileChef) return null;
+    return selectedPlan === 'monthly' ? currentProfileChef.batchCookingPriceMonthly : currentProfileChef.batchCookingPriceWeekly;
+  }
+
+  function updateBatchPriceBreakdown(){
+    const el = document.getElementById('batchPriceBreakdown');
+    const cookPrice = currentBatchCookPrice();
+    if (!cookPrice){ el.hidden = true; return; }
+    const serviceFee = Math.round(cookPrice * 0.10 * 100) / 100;
+    const total = Math.round((cookPrice + serviceFee) * 100) / 100;
+    const periodLabel = selectedPlan === 'monthly' ? '/ mois' : '/ semaine';
+    el.innerHTML =
+      '<div class="price-breakdown-row"><span>Prestation du cuisinier (éligible crédit d\'impôt 50%)</span><span>' + cookPrice.toFixed(2).replace('.', ',') + ' €</span></div>' +
+      '<div class="price-breakdown-row"><span>Frais de service At\'Chef (non éligible)</span><span>' + serviceFee.toFixed(2).replace('.', ',') + ' €</span></div>' +
+      '<div class="price-breakdown-total"><span class="label">Total ' + periodLabel + '</span><span class="amount">' + total.toFixed(2).replace('.', ',') + ' €</span></div>' +
+      '<p class="filter-hint">Après crédit d\'impôt (50% sur la partie éligible) : environ ' + (total - cookPrice * 0.5).toFixed(2).replace('.', ',') + ' € réellement à votre charge.</p>';
+    el.hidden = false;
+  }
+
+  function resetBatchIdentityUI(){
+    batchIdentityVerified = false;
+    const box = document.getElementById('batchIdentityBox');
+    box.classList.remove('verified');
+    document.getElementById('batchIdentityStatusText').textContent = "🔒 Obligatoire avant de réserver, pour la sécurité de votre cuisinier. Pièce d'identité + selfie, sur une page Stripe sécurisée — At'Chef ne reçoit jamais vos documents.";
+    document.getElementById('batchVerifyIdentityBtn').hidden = false;
+  }
+
+  async function checkBatchIdentityStatus(email){
+    try {
+      const res = await fetch(BACKEND_URL + '/api/identity/host-status?email=' + encodeURIComponent(email));
+      const data = await res.json();
+      if (data.verified){
+        batchIdentityVerified = true;
+        document.getElementById('batchIdentityBox').classList.add('verified');
+        document.getElementById('batchIdentityStatusText').textContent = '✅ Identité vérifiée, merci !';
+        document.getElementById('batchVerifyIdentityBtn').hidden = true;
+      }
+      return data.verified;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function renderChefProfile(chef){
+    currentProfileChef = chef;
+    document.getElementById('contactCookBtn').hidden = (userRole === 'cook');
+    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const fallbackEl = document.getElementById('profileAvatarFallback');
+    fallbackEl.style.background = chef.gradient;
+    fallbackEl.textContent = initials;
+    const photoEl = document.getElementById('profileAvatarPhoto');
+    photoEl.style.display = '';
+    photoEl.src = chef.photo;
+    document.getElementById('profileName').textContent = chef.name;
+    document.getElementById('profileCuisineTag').textContent = chef.cuisine;
+    const starsEl = document.querySelector('#view-profile .profile-rating-row .stars');
+    if (chef.reviews > 0){
+      starsEl.style.display = '';
+      document.getElementById('profileScore').textContent = chef.rating.toFixed(1).replace('.', ',');
+      document.getElementById('profileReviewCount').innerHTML = '(' + chef.reviews + ' avis)';
+    } else {
+      starsEl.style.display = 'none';
+      document.getElementById('profileScore').textContent = '';
+      document.getElementById('profileReviewCount').innerHTML = '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
+    }
+    document.getElementById('profileLocation').textContent = '📍 ' + chef.location;
+    document.getElementById('profileBadgeSlot').innerHTML =
+      (isTopChef(chef) ? '<span class="chef-badge gold inline">★ Top Chef</span> ' : '') +
+      (chef.identityVerified ? '<span class="identity-verified-badge">✅ Identité vérifiée</span>' : '');
+    document.getElementById('profileBio').textContent = chef.bio;
+    document.getElementById('profileSpecialties').innerHTML = chef.specialties.map(s => '<span>' + s + '</span>').join('');
+    const dishPhotosSection = document.getElementById('profileDishPhotosSection');
+    if (chef.dishPhotos && chef.dishPhotos.length){
+      dishPhotosSection.hidden = false;
+      document.getElementById('profileDishPhotos').innerHTML = chef.dishPhotos.map(p =>
+        '<div class="dish-photo-item">' +
+          '<img src="' + p.url + '" alt="' + (p.caption ? p.caption.replace(/"/g, '&quot;') : 'Plat de ' + chef.name) + '" loading="lazy">' +
+          (p.caption ? '<p class="dish-photo-caption">' + p.caption + '</p>' : '') +
+        '</div>'
+      ).join('');
+    } else {
+      dishPhotosSection.hidden = true;
+    }
+    renderTrainingSection(chef);
+
+    const priceCards = [];
+    if (chef.batchCookingPriceWeekly) priceCards.push({ label: 'Formule hebdomadaire', price: chef.batchCookingPriceWeekly, period: '/ semaine' });
+    if (chef.batchCookingPriceMonthly) priceCards.push({ label: 'Formule mensuelle', price: chef.batchCookingPriceMonthly, period: '/ mois' });
+    document.getElementById('profileFormulasInfo').innerHTML = priceCards.length
+      ? priceCards.map(p => '<div class="formula-info-card"><h3>' + p.label + '</h3><p class="formula-info-price">' + p.price + ' € <small style="font-size:0.68rem;font-weight:600;color:var(--ink-soft);">' + p.period + '</small></p></div>').join('')
+      : '<p class="no-reviews-note">Ce cuisinier n\'a pas encore configuré ses tarifs batch cooking.</p>';
+
+    document.getElementById('profileReviews').innerHTML = chef.testimonials.length > 0
+      ? chef.testimonials.map(t =>
+          '<div class="review-item"><div class="review-item-head"><span class="review-author">' + t.author + '</span><span class="review-date">' + t.date + '</span></div><span class="review-stars" aria-hidden="true">' + starsHTML(t.rating) + '</span><p class="review-comment">' + t.comment + '</p></div>'
+        ).join('')
+      : '<p class="no-reviews-note">Aucun avis pour le moment — soyez le premier à réserver chez ce cuisinier !</p>';
+    loadRealReviews(chef.id);
+
+    const hasWeekly = !!chef.batchCookingPriceWeekly;
+    const hasMonthly = !!chef.batchCookingPriceMonthly;
+    const hasBatchOffer = hasWeekly || hasMonthly;
+
+    document.getElementById('bookingBasePrice').textContent = chef.batchCookingPriceWeekly || chef.batchCookingPriceMonthly || '—';
+    document.getElementById('bookingFormWrap').hidden = false;
+    document.getElementById('bookingConfirmation').hidden = true;
+    document.getElementById('planToggleField').hidden = !(hasWeekly && hasMonthly);
+    document.getElementById('batchSlotField').hidden = !hasBatchOffer;
+    document.getElementById('noBatchOfferNote').hidden = hasBatchOffer;
+    setPlan(hasWeekly ? 'weekly' : 'monthly');
+
+    if (hasBatchOffer){
+      loadBatchSlotsForCurrentChef();
+    } else {
+      document.getElementById('batchStartDateField').hidden = true;
+      document.getElementById('batchPriceBreakdown').hidden = true;
+      document.getElementById('batchHostEmailField').hidden = true;
+      document.getElementById('batchIdentityField').hidden = true;
+      document.getElementById('batchSubscribeBtn').hidden = true;
+    }
+    resetBatchIdentityUI();
+  }
+
+  function openChefProfile(chefId){
+    const chef = chefs.find(c => c.id === chefId);
+    if (!chef) return;
+    renderChefProfile(chef);
+    showView('profile');
+  }
+
+  let lastRegisteredCookId = null;
+
+  async function startStripeOnboarding(cookId){
+    const errorEl = document.getElementById('cookRegisterError');
+    const submitBtn = document.getElementById('cookRegisterSubmit');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks/' + cookId + '/stripe-account', { method: 'POST' });
+      if (!res.ok) throw new Error('La configuration du paiement a échoué');
+      const data = await res.json();
+      window.location.href = data.url;
+    } catch (err) {
+      console.error(err);
+      errorEl.innerHTML = '❌ Votre profil a été créé, mais la configuration du paiement a échoué. ' +
+        '<button type="button" class="btn btn-outline btn-sm" id="retryStripeBtn" style="margin-top:8px;">Réessayer</button>';
+      errorEl.hidden = false;
+      if (submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Créer mon profil et configurer mes paiements'; }
+    }
+  }
+
+  function normalizeBackendCook(bc){
+    return {
+      id: bc.id,
+      name: bc.name,
+      cuisine: bc.cuisine,
+      location: bc.location,
+      quote: bc.quote,
+      rating: bc.rating || 0,
+      reviews: bc.reviews || 0,
+      tags: bc.tags || [],
+      regimes: bc.regimes || [],
+      photo: bc.photo || '/no-photo-yet.jpg',
+      gradient: bc.gradient || 'linear-gradient(135deg,#E2725B,#A64A34)',
+      bio: bc.bio || '',
+      specialties: bc.specialties || [],
+      training: bc.training || null,
+      selfTaughtNote: bc.selfTaughtNote || '',
+      testimonials: bc.testimonials || [],
+      identityVerified: !!bc.identityVerified,
+      lat: (typeof bc.lat === 'number') ? bc.lat : null,
+      lng: (typeof bc.lng === 'number') ? bc.lng : null,
+      dishPhotos: bc.dishPhotos || [],
+      batchCookingPriceWeekly: bc.batchCookingPriceWeekly || null,
+      batchCookingPriceMonthly: bc.batchCookingPriceMonthly || null,
+      weeklyAvailability: bc.weeklyAvailability || [],
+    };
+  }
+
+  async function loadRegisteredCooks(){
+    try {
+      const res = await fetch(BACKEND_URL + '/api/cooks');
+      if (!res.ok) return;
+      const backendCooks = await res.json();
+      let addedAny = false;
+      backendCooks.forEach(bc => {
+        if (bc.id >= 1000 && !chefs.some(c => c.id === bc.id)){
+          chefs.push(normalizeBackendCook(bc));
+          addedAny = true;
+        }
+      });
+      if (addedAny) applyFiltersAndRender();
+    } catch (e) {
+      console.warn('Impossible de charger les cuisiniers inscrits via le formulaire :', e);
+    }
+  }
+
+  document.getElementById('cuisineFilterOptions').innerHTML = CUISINE_TYPES.map(c =>
+    '<label class="filter-option"><input type="checkbox" class="cuisine-checkbox" value="' + c + '"> ' + c + '</label>'
+  ).join('');
+
+  document.getElementById('regimeFilterOptions').innerHTML = REGIME_TAGS.map(r =>
+    '<label class="filter-option"><input type="checkbox" class="regime-checkbox" value="' + r + '"> ' + REGIME_LABELS[r] + '</label>'
+  ).join('');
+
+  document.getElementById('cookCuisine').innerHTML = '<option value="">Choisissez…</option>' +
+    CUISINE_TYPES.map(c => '<option value="' + c + '">' + c + '</option>').join('');
+
+  initChefCarousel();
+
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  mobileToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    mobileToggle.classList.toggle('active', isOpen);
+    mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    mobileToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  mobileMenu.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      mobileToggle.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const toast = document.getElementById('toast');
+  let toastTimeout;
+  function showToast(message){
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  const todayISO = new Date().toISOString().split('T')[0];
+
+  const searchForm = document.getElementById('searchForm');
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cuisineVal = document.getElementById('cuisineSelect').value;
+    const regimeVal = document.getElementById('regimeSelect').value;
+    openSearch({
+      cuisine: (cuisineVal && cuisineVal !== 'Toutes les cuisines') ? cuisineVal : null,
+      regime: regimeVal || null
+    });
+  });
+
+  document.getElementById('cookRegisterForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('cookRegisterError');
+    const submitBtn = document.getElementById('cookRegisterSubmit');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché : remplacez BACKEND_URL tout en haut du script par votre vraie adresse Render.";
+      errorEl.hidden = false;
+      return;
+    }
+    const payload = {
+      name: document.getElementById('cookName').value.trim(),
+      email: document.getElementById('cookEmail').value.trim(),
+      password: document.getElementById('cookPassword').value,
+      cuisine: document.getElementById('cookCuisine').value,
+      location: document.getElementById('cookLocation').value.trim(),
+      specialty: document.getElementById('cookSpecialty').value.trim(),
+      bio: document.getElementById('cookBio').value.trim(),
+      batchCookingPriceWeekly: document.getElementById('cookPriceWeekly').value,
+      batchCookingPriceMonthly: document.getElementById('cookPriceMonthly').value,
+    };
+    if (!payload.name || !payload.email || !payload.password || !payload.cuisine || !payload.location || !payload.specialty || !payload.batchCookingPriceWeekly){
+      errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (payload.password.length < 8){
+      errorEl.textContent = '⚠️ Le mot de passe doit contenir au moins 8 caractères.';
+      errorEl.hidden = false;
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Création de votre profil…';
+    try {
+      const regRes = await fetch(BACKEND_URL + '/api/cooks/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const regData = await regRes.json();
+      if (!regRes.ok) throw new Error(regData.error || 'Erreur lors de la création du profil');
+      lastRegisteredCookId = regData.cookId;
+      if (regData.token){
+        userToken = regData.token;
+        userRole = 'cook';
+        userName = payload.name;
+        userEmail = payload.email;
+        userCookId = regData.cookId;
+        await saveUserSession();
+        updateAuthUI();
+      }
+      submitBtn.textContent = 'Redirection vers Stripe…';
+      await startStripeOnboarding(lastRegisteredCookId);
+    } catch (err) {
+      console.error(err);
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Créer mon profil et configurer mes paiements';
+    }
+  });
+
+  const roleButtons = document.querySelectorAll('.role-toggle-inner button');
+  const panels = document.querySelectorAll('.steps-grid');
+  function setRole(role){
+    roleButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.role === role));
+    panels.forEach(panel => { panel.hidden = panel.dataset.panel !== role; });
+  }
+  roleButtons.forEach(btn => btn.addEventListener('click', () => setRole(btn.dataset.role)));
+
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterMsg = document.getElementById('newsletterMsg');
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector('input[type="email"]');
+    if (input.value){
+      newsletterMsg.textContent = '✅ Merci ! Vous êtes inscrit(e) à la newsletter.';
+      input.value = '';
+    }
+  });
+
+  document.getElementById('cuisineFilterOptions').addEventListener('change', (e) => {
+    if (!e.target.classList.contains('cuisine-checkbox')) return;
+    filters.cuisines = Array.from(document.querySelectorAll('.cuisine-checkbox:checked')).map(cb => cb.value);
+    applyFiltersAndRender();
+  });
+
+  document.getElementById('regimeFilterOptions').addEventListener('change', (e) => {
+    if (!e.target.classList.contains('regime-checkbox')) return;
+    filters.regimes = Array.from(document.querySelectorAll('.regime-checkbox:checked')).map(cb => cb.value);
+    applyFiltersAndRender();
+  });
+
+  document.querySelectorAll('.budget-checkbox').forEach(cb => {
+    cb.addEventListener('change', () => {
+      filters.budgets = Array.from(document.querySelectorAll('.budget-checkbox:checked')).map(c => c.value);
+      applyFiltersAndRender();
+    });
+  });
+
+  const useMyLocationBtn = document.getElementById('useMyLocationBtn');
+  if (useMyLocationBtn){
+    useMyLocationBtn.addEventListener('click', () => {
+      const hint = document.getElementById('locationStatusHint');
+      if (!navigator.geolocation){
+        hint.textContent = "⚠️ Votre navigateur ne supporte pas la géolocalisation.";
+        return;
+      }
+      hint.textContent = '📍 Localisation en cours…';
+      useMyLocationBtn.disabled = true;
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          filters.userLat = pos.coords.latitude;
+          filters.userLng = pos.coords.longitude;
+          filters.locationLabel = 'Ma position';
+          if (!filters.radiusKm) filters.radiusKm = 10;
+          document.getElementById('locationInput').value = '';
+          document.getElementById('radiusSelect').value = String(filters.radiusKm);
+          hint.textContent = '📍 Position détectée';
+          useMyLocationBtn.disabled = false;
+          applyFiltersAndRender();
+        },
+        () => {
+          hint.textContent = "⚠️ Impossible d'accéder à votre position (vérifiez les autorisations de votre navigateur).";
+          useMyLocationBtn.disabled = false;
+        }
+      );
+    });
+  }
+
+  const locationInput = document.getElementById('locationInput');
+  if (locationInput){
+    locationInput.addEventListener('change', async () => {
+      const query = locationInput.value.trim();
+      const hint = document.getElementById('locationStatusHint');
+      if (!query){
+        filters.userLat = null; filters.userLng = null; filters.locationLabel = '';
+        hint.textContent = '';
+        applyFiltersAndRender();
+        return;
+      }
+      if (!isBackendConfigured()){
+        hint.textContent = "⚙️ Le backend n'est pas encore branché.";
+        return;
+      }
+      hint.textContent = '🔎 Recherche du lieu…';
+      try {
+        const res = await fetch(BACKEND_URL + '/api/geocode?q=' + encodeURIComponent(query));
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Lieu introuvable');
+        filters.userLat = data.lat;
+        filters.userLng = data.lng;
+        filters.locationLabel = query;
+        if (!filters.radiusKm){
+          filters.radiusKm = 10;
+          document.getElementById('radiusSelect').value = '10';
+        }
+        hint.textContent = '📍 Lieu trouvé';
+        applyFiltersAndRender();
+      } catch (err) {
+        hint.textContent = '⚠️ ' + err.message;
+      }
+    });
+  }
+
+  const radiusSelect = document.getElementById('radiusSelect');
+  if (radiusSelect){
+    radiusSelect.addEventListener('change', () => {
+      filters.radiusKm = radiusSelect.value ? parseFloat(radiusSelect.value) : null;
+      applyFiltersAndRender();
+    });
+  }
+
+  document.querySelectorAll('input[name="ratingFilter"]').forEach(r => {
+    r.addEventListener('change', () => {
+      filters.minRating = parseFloat(r.value);
+      applyFiltersAndRender();
+    });
+  });
+
+  if (searchDateInputEl){
+    searchDateInputEl.addEventListener('change', () => {
+      filters.date = searchDateInputEl.value;
+      applyFiltersAndRender();
+    });
+  }
+
+  const sortSelectEl = document.getElementById('sortSelect');
+  sortSelectEl.addEventListener('change', () => {
+    sortBy = sortSelectEl.value;
+    applyFiltersAndRender();
+  });
+
+  const filtersPanel = document.getElementById('filtersPanel');
+  const filtersBackdrop = document.getElementById('filtersBackdrop');
+  function openFiltersDrawer(){ filtersPanel.classList.add('open'); filtersBackdrop.classList.add('open'); }
+  function closeFiltersDrawer(){ filtersPanel.classList.remove('open'); filtersBackdrop.classList.remove('open'); }
+
+  document.querySelectorAll('.booking-type-option[data-plan]').forEach(btn => {
+    btn.addEventListener('click', () => setPlan(btn.dataset.plan));
+  });
+
+  document.getElementById('batchSlotOptions').addEventListener('click', (e) => {
+    const option = e.target.closest('[data-batch-slot-index]');
+    if (!option) return;
+    selectBatchSlot(parseInt(option.dataset.batchSlotIndex, 10));
+  });
+
+  document.getElementById('batchStartDateInput').addEventListener('change', (e) => {
+    const errorEl = document.getElementById('batchBookingError');
+    errorEl.hidden = true;
+    if (selectedBatchSlotIndex == null) return;
+    const slot = batchSlots[selectedBatchSlotIndex];
+    const chosenDate = new Date(e.target.value + 'T00:00:00');
+    if (chosenDate.getDay() !== DAY_JS_INDEX[slot.day]){
+      errorEl.textContent = '⚠️ Cette date ne tombe pas un ' + DAY_LABELS_FR[slot.day].toLowerCase() + '.';
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('batchVerifyIdentityBtn').addEventListener('click', async () => {
+    const email = document.getElementById('batchHostEmailInput').value.trim();
+    const errorEl = document.getElementById('batchBookingError');
+    errorEl.hidden = true;
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      errorEl.textContent = '⚠️ Merci de renseigner un email valide avant de vérifier votre identité.';
+      errorEl.hidden = false;
+      return;
+    }
+    const btn = document.getElementById('batchVerifyIdentityBtn');
+    btn.disabled = true;
+    btn.textContent = 'Vérification…';
+    try {
+      await checkBatchIdentityStatus(email);
+      if (!batchIdentityVerified){
+        const res = await fetch(BACKEND_URL + '/api/identity/verify-host', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erreur lors du démarrage de la vérification');
+        if (data.alreadyVerified){
+          batchIdentityVerified = true;
+          document.getElementById('batchIdentityBox').classList.add('verified');
+          document.getElementById('batchIdentityStatusText').textContent = '✅ Identité vérifiée, merci !';
+          btn.hidden = true;
+        } else {
+          window.location.href = data.url;
+        }
+      }
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Vérifier mon identité';
+    }
+  });
+
+  document.getElementById('batchSubscribeBtn').addEventListener('click', async () => {
+    const errorEl = document.getElementById('batchBookingError');
+    errorEl.hidden = true;
+
+    if (selectedBatchSlotIndex == null){
+      errorEl.textContent = '⚠️ Merci de choisir un créneau.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (!userToken || userRole !== 'host'){
+      errorEl.textContent = '⚠️ Connectez-vous en tant qu\'hôte pour vous abonner.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (!batchIdentityVerified){
+      errorEl.textContent = '⚠️ Merci de vérifier votre identité avant de vous abonner.';
+      errorEl.hidden = false;
+      return;
+    }
+    const startDate = document.getElementById('batchStartDateInput').value;
+    const slot = batchSlots[selectedBatchSlotIndex];
+    if (!startDate || new Date(startDate + 'T00:00:00').getDay() !== DAY_JS_INDEX[slot.day]){
+      errorEl.textContent = '⚠️ La date de première venue doit tomber un ' + DAY_LABELS_FR[slot.day].toLowerCase() + '.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+
+    const btn = document.getElementById('batchSubscribeBtn');
+    btn.disabled = true;
+    btn.textContent = 'Abonnement en cours…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/subscriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+        body: JSON.stringify({
+          cookId: currentProfileChef.id,
+          dayOfWeek: slot.day,
+          startTime: slot.startTime,
+          endTime: slot.endTime,
+          startDate: startDate,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'abonnement");
+      showToast('✅ Abonnement batch cooking confirmé !');
+      btn.textContent = "S'abonner";
+      btn.disabled = false;
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+      btn.disabled = false;
+      btn.textContent = "S'abonner";
+    }
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('payment') === 'success') {
+    showToast('✅ Paiement réussi ! Votre réservation est confirmée.');
+    window.history.replaceState({}, '', window.location.pathname);
+  } else if (urlParams.get('payment') === 'cancelled') {
+    showToast('❌ Paiement annulé, vous pouvez réessayer quand vous voulez.');
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+
+  if (urlParams.get('onboarding') === 'complete') {
+    showToast('✅ Votre profil cuisinier est prêt ! Vous êtes visible dans les recherches.');
+    window.history.replaceState({}, '', window.location.pathname);
+    loadRegisteredCooks();
+  } else if (urlParams.get('onboarding') === 'refresh') {
+    const refreshCookId = urlParams.get('cookId');
+    window.history.replaceState({}, '', window.location.pathname);
+    if (refreshCookId) startStripeOnboarding(refreshCookId);
+  }
+
+  if (urlParams.get('identity') === 'complete') {
+    const identityEmail = urlParams.get('email');
+    window.history.replaceState({}, '', window.location.pathname);
+    if (identityEmail && isBackendConfigured()){
+      checkBatchIdentityStatus(identityEmail).then(verified => {
+        showToast(verified
+          ? '✅ Identité vérifiée ! Vous pouvez maintenant vous abonner.'
+          : '⏳ Vérification en cours de traitement, réessayez dans un instant sur la page du cuisinier.');
+      });
+    }
+  }
+
+  if (urlParams.get('resetToken')) {
+    pendingResetToken = urlParams.get('resetToken');
+    pendingResetEmail = urlParams.get('email');
+    window.history.replaceState({}, '', window.location.pathname);
+    showView('reset-password');
+  }
+
+  document.addEventListener('click', (e) => {
+    const toastTarget = e.target.closest('[data-toast]');
+    if (toastTarget){ e.preventDefault(); showToast(toastTarget.getAttribute('data-toast')); return; }
+    const chefCardTarget = e.target.closest('.chef-card[data-chef-id]');
+    if (chefCardTarget){ openChefProfile(parseInt(chefCardTarget.dataset.chefId, 10)); return; }
+    const searchTarget = e.target.closest('.go-to-search');
+    if (searchTarget){ e.preventDefault(); openSearch({ cuisine: searchTarget.dataset.cuisine || null }); return; }
+    const cookRegisterTarget = e.target.closest('.go-to-cook-register');
+    if (cookRegisterTarget){ e.preventDefault(); showView('cook-register'); return; }
+    const contactTarget = e.target.closest('.go-to-contact');
+    if (contactTarget){ e.preventDefault(); showView('contact'); return; }
+    const cguTarget = e.target.closest('.go-to-cgu');
+    if (cguTarget){ e.preventDefault(); showView('cgu'); return; }
+    const cancellationTarget = e.target.closest('.go-to-cancellation');
+    if (cancellationTarget){ e.preventDefault(); showView('cancellation'); return; }
+    const privacyTarget = e.target.closest('.go-to-privacy');
+    if (privacyTarget){ e.preventDefault(); showView('privacy'); return; }
+    const safetyCharterTarget = e.target.closest('.go-to-safety-charter');
+    if (safetyCharterTarget){ e.preventDefault(); showView('safety-charter'); return; }
+    const adminLoginTarget = e.target.closest('.go-to-admin-login');
+    if (adminLoginTarget){ e.preventDefault(); showView('admin-login'); return; }
+    const loginTarget = e.target.closest('.go-to-login');
+    if (loginTarget){ e.preventDefault(); showView('login'); return; }
+    const forgotPasswordTarget = e.target.closest('.go-to-forgot-password');
+    if (forgotPasswordTarget){ e.preventDefault(); showView('forgot-password'); return; }
+    const hostRegisterTarget = e.target.closest('.go-to-host-register');
+    if (hostRegisterTarget){ e.preventDefault(); showView('host-register'); return; }
+    const mySpaceTarget = e.target.closest('.go-to-my-space');
+    if (mySpaceTarget){ e.preventDefault(); showView('my-space'); loadMySpace(); return; }
+    const messagesTarget = e.target.closest('.go-to-messages');
+    if (messagesTarget){ e.preventDefault(); showView('messages'); loadConversationsList(); return; }
+    const retryStripeTarget = e.target.closest('#retryStripeBtn');
+    if (retryStripeTarget){ if (lastRegisteredCookId) startStripeOnboarding(lastRegisteredCookId); return; }
+    const roleTarget = e.target.closest('[data-goto-role]');
+    if (roleTarget){ e.preventDefault(); goToHomeSection('comment-ca-marche', roleTarget.dataset.gotoRole); return; }
+    const sectionTarget = e.target.closest('[data-goto-section]');
+    if (sectionTarget){ e.preventDefault(); goToHomeSection(sectionTarget.dataset.gotoSection); return; }
+    const backHomeTarget = e.target.closest('.back-to-home');
+    if (backHomeTarget){ e.preventDefault(); showView('home'); return; }
+    const backSearchTarget = e.target.closest('.back-to-search');
+    if (backSearchTarget){ e.preventDefault(); showView('search'); return; }
+    const logoTarget = e.target.closest('.logo');
+    if (logoTarget){ e.preventDefault(); showView('home'); return; }
+    const mobileFilterToggleTarget = e.target.closest('.mobile-filters-toggle');
+    if (mobileFilterToggleTarget){ openFiltersDrawer(); return; }
+    const closeFilterTarget = e.target.closest('.filters-panel-close, .filters-apply-mobile');
+    if (closeFilterTarget){ closeFiltersDrawer(); return; }
+    if (e.target.id === 'filtersBackdrop'){ closeFiltersDrawer(); return; }
+    const resetTarget = e.target.closest('.reset-filters-link');
+    if (resetTarget){ resetFilters(); return; }
+    const newBookingTarget = e.target.closest('#newBookingBtn');
+    if (newBookingTarget){
+      document.getElementById('bookingConfirmation').hidden = true;
+      document.getElementById('bookingFormWrap').hidden = false;
+      return;
+    }
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  function applyTiltEffect(el, opts){
+    opts = opts || {};
+    const maxTilt = opts.maxTilt || 10;
+    const restRotateX = opts.restRotateX || 0;
+    const restRotateY = opts.restRotateY || 0;
+    const lift = opts.lift || 0;
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches){
+      el.style.transform = 'perspective(1000px) rotateX(' + restRotateX + 'deg) rotateY(' + restRotateY + 'deg)';
+      return;
+    }
+    const glare = el.querySelector('.tilt-glare');
+    el.addEventListener('mousemove', (e) => {
+      el.classList.remove('tilt-resting');
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -maxTilt;
+      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * maxTilt;
+      el.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(' + (-lift) + 'px)';
+      if (glare){
+        const px = (x / rect.width) * 100;
+        const py = (y / rect.height) * 100;
+        glare.style.background = 'radial-gradient(circle at ' + px + '% ' + py + '%, rgba(255,255,255,0.45), transparent 55%)';
+      }
+    });
+    el.addEventListener('mouseleave', () => {
+      el.classList.add('tilt-resting');
+      el.style.transform = 'perspective(1000px) rotateX(' + restRotateX + 'deg) rotateY(' + restRotateY + 'deg)';
+      if (glare) glare.style.background = 'transparent';
+    });
+    el.style.transform = 'perspective(1000px) rotateX(' + restRotateX + 'deg) rotateY(' + restRotateY + 'deg)';
+  }
+
+  function carouselCardHTML(chef){
+    const initials = chef.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+    const badge = isTopChef(chef) ? '<span class="chef-badge gold">★ Top Chef</span>' : '';
+    const ratingHTML = chef.reviews > 0
+      ? '<span class="stars" aria-hidden="true">★★★★★</span><span class="score">' + chef.rating.toFixed(1).replace('.', ',') + '</span><span class="count">(' + chef.reviews + ' avis)</span>'
+      : '<span class="new-cook-badge">🌱 Nouveau cuisinier</span>';
+    return (
+      '<article class="chef-card carousel-card" data-chef-id="' + chef.id + '">' +
+        badge +
+        '<div class="chef-avatar-wrap">' +
+          '<div class="chef-avatar-fallback" style="background:' + chef.gradient + ';" aria-hidden="true">' + initials + '</div>' +
+          '<img class="chef-avatar-photo" src="' + chef.photo + '" alt="" loading="lazy" onerror="this.style.display=\'none\';">' +
+        '</div>' +
+        '<h3>' + chef.name + '</h3>' +
+        '<p class="chef-specialty">' + chef.cuisine + '</p>' +
+        '<p class="chef-location">📍 ' + chef.location + '</p>' +
+        '<p class="chef-quote">« ' + chef.quote + ' »</p>' +
+        '<div class="chef-rating">' + ratingHTML + '</div>' +
+        '<div class="chef-footer">' +
+          '<span class="chef-price-tag">Dès ' + (getChefWeeklyPrice(chef) || '?') + ' €<br><small>par semaine</small></span>' +
+          '<button type="button" class="btn btn-outline btn-sm">Voir le profil</button>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function initChefCarousel(){
+    carouselChefs = chefs.slice();
+    if (!carouselChefs.length) return;
+    const track = document.getElementById('carouselTrack');
+    track.innerHTML = carouselChefs.map(carouselCardHTML).join('');
+    const featuredIdx = carouselChefs.findIndex(c => c.featured);
+    carouselIndex = featuredIdx !== -1 ? featuredIdx : 0;
+    updateCarouselPositions();
+    document.querySelectorAll('.carousel-card').forEach((card, i) => {
+      card.addEventListener('click', () => {
+        if (i === carouselIndex){
+          const chef = carouselChefs[i];
+          renderChefProfile(chef);
+          showView('profile');
+        } else {
+          goToCarouselIndex(i);
+        }
+      });
+    });
+    document.getElementById('carouselPrevBtn').addEventListener('click', () => goToCarouselIndex(carouselIndex - 1));
+    document.getElementById('carouselNextBtn').addEventListener('click', () => goToCarouselIndex(carouselIndex + 1));
+    let dragStartX = null;
+    let dragging = false;
+    track.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      dragStartX = e.clientX;
+    });
+    track.addEventListener('pointerup', (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const deltaX = e.clientX - dragStartX;
+      if (deltaX < -40) goToCarouselIndex(carouselIndex + 1);
+      else if (deltaX > 40) goToCarouselIndex(carouselIndex - 1);
+    });
+    track.addEventListener('pointercancel', () => { dragging = false; });
+    track.setAttribute('tabindex', '0');
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goToCarouselIndex(carouselIndex - 1);
+      if (e.key === 'ArrowRight') goToCarouselIndex(carouselIndex + 1);
+    });
+  }
+
+  function goToCarouselIndex(newIndex){
+    const n = carouselChefs.length;
+    carouselIndex = ((newIndex % n) + n) % n;
+    updateCarouselPositions();
+  }
+
+  function updateCarouselPositions(){
+    const cards = document.querySelectorAll('.carousel-card');
+    const n = cards.length;
+    cards.forEach((card, i) => {
+      let offset = i - carouselIndex;
+      if (offset > n / 2) offset -= n;
+      if (offset < -n / 2) offset += n;
+      const abs = Math.abs(offset);
+      let transform, opacity, zIndex, pointerEvents;
+      if (abs === 0){
+        transform = 'translate(-50%,-50%) translateX(0) translateZ(0) rotateY(0deg) scale(1)';
+        opacity = 1; zIndex = 10; pointerEvents = 'auto';
+      } else if (abs === 1){
+        transform = 'translate(-50%,-50%) translateX(' + (offset * 230) + 'px) translateZ(-140px) rotateY(' + (-offset * 38) + 'deg) scale(0.82)';
+        opacity = 0.8; zIndex = 5; pointerEvents = 'auto';
+      } else if (abs === 2){
+        transform = 'translate(-50%,-50%) translateX(' + (offset * 200) + 'px) translateZ(-280px) rotateY(' + (-offset * 44) + 'deg) scale(0.62)';
+        opacity = 0.4; zIndex = 2; pointerEvents = 'auto';
+      } else {
+        transform = 'translate(-50%,-50%) translateX(' + (offset > 0 ? 380 : -380) + 'px) translateZ(-380px) scale(0.4)';
+        opacity = 0; zIndex = 0; pointerEvents = 'none';
+      }
+      card.style.transform = transform;
+      card.style.opacity = opacity;
+      card.style.zIndex = zIndex;
+      card.style.pointerEvents = pointerEvents;
+      card.classList.toggle('is-active', abs === 0);
+    });
+  }
+
+  const reservationCardEl = document.getElementById('searchForm');
+  if (reservationCardEl){
+    applyTiltEffect(reservationCardEl, { maxTilt: 10, restRotateX: 2, restRotateY: -4 });
+    const wrapEl = reservationCardEl.closest('.reservation-wrap');
+    if (wrapEl) wrapEl.classList.add('tilt-card-idle');
+  }
+
+  const parallaxBlobs = document.querySelectorAll('.hero-blob');
+  if (parallaxBlobs.length){
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+        parallaxBlobs.forEach(blob => {
+          const speed = parseFloat(blob.dataset.speed) || 0.2;
+          blob.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
+        });
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+  let userToken = null;
+  let userRole = null;
+  let userName = null;
+  let userEmail = null;
+  let userCookId = null;
+  let pendingResetEmail = null;
+  let pendingResetToken = null;
+
+  async function saveUserSession(){
+    try {
+      localStorage.setItem('atchefUserSession', JSON.stringify({
+        token: userToken, role: userRole, name: userName, email: userEmail, cookId: userCookId,
+      }));
+    } catch (e) { console.warn('Impossible de sauvegarder la session utilisateur :', e); }
+  }
+
+  async function loadUserSession(){
+    try {
+      const raw = localStorage.getItem('atchefUserSession');
+      if (raw){
+        const data = JSON.parse(raw);
+        userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = data.cookId;
+        updateAuthUI();
+      }
+    } catch (e) {}
+  }
+
+  async function clearUserSession(){
+    userToken = null; userRole = null; userName = null; userEmail = null; userCookId = null;
+    try { localStorage.removeItem('atchefUserSession'); } catch (e) {}
+    updateAuthUI();
+  }
+
+  function updateAuthUI(){
+    const loggedIn = !!userToken;
+    document.querySelectorAll('.auth-nav-link').forEach(link => {
+      link.textContent = loggedIn ? (userName ? userName.split(' ')[0] : 'Mon espace') : 'Connexion';
+      link.classList.toggle('go-to-login', !loggedIn);
+      link.classList.toggle('go-to-my-space', loggedIn);
+    });
+  }
+
+  document.getElementById('userLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('loginError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById('loginEmail').value.trim(),
+          password: document.getElementById('loginPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Connexion refusée');
+      userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = data.cookId || null;
+      await saveUserSession();
+      updateAuthUI();
+      document.getElementById('userLoginForm').reset();
+      showToast('✅ Bienvenue, ' + userName + ' !');
+      showView('my-space');
+      loadMySpace();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('forgotPasswordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('forgotPasswordError');
+    const successEl = document.getElementById('forgotPasswordSuccess');
+    errorEl.hidden = true;
+    successEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: document.getElementById('forgotEmail').value.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Une erreur est survenue');
+      successEl.textContent = '✅ ' + data.message;
+      successEl.hidden = false;
+      document.getElementById('forgotPasswordForm').reset();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('resetPasswordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('resetPasswordError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: pendingResetEmail,
+          token: pendingResetToken,
+          newPassword: document.getElementById('resetNewPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Une erreur est survenue');
+      showToast('✅ ' + data.message);
+      showView('login');
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('hostRegisterForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('hostRegisterError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/auth/register-host', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('hostRegisterName').value.trim(),
+          email: document.getElementById('hostRegisterEmail').value.trim(),
+          password: document.getElementById('hostRegisterPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur lors de la création du compte');
+      userToken = data.token; userRole = data.role; userName = data.name; userEmail = data.email; userCookId = null;
+      await saveUserSession();
+      updateAuthUI();
+      document.getElementById('hostRegisterForm').reset();
+      showToast("✅ Bienvenue sur At'Chef, " + userName + " !");
+      showView('my-space');
+      loadMySpace();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('userLogoutBtn').addEventListener('click', async () => {
+    await clearUserSession();
+    showView('home');
+  });
+
+  document.getElementById('mySpaceContent').addEventListener('click', async (e) => {
+    const btn = e.target.closest('.cancel-booking-btn');
+    if (!btn) return;
+    const bookingId = btn.dataset.bookingId;
+    if (!confirm("Confirmer l'annulation de cette réservation ? Le remboursement dépend de la date restante avant l'événement (voir notre politique d'annulation).")) return;
+    btn.disabled = true;
+    btn.textContent = 'Annulation en cours…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/bookings/' + bookingId + '/cancel', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + userToken },
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'annulation");
+      showToast('✅ Réservation annulée — ' + data.refundPercent + '% remboursé.');
+      loadMySpace();
+    } catch (err) {
+      showToast('❌ ' + err.message);
+      btn.disabled = false;
+      btn.textContent = 'Annuler cette réservation';
+    }
+  });
+
+  document.getElementById('mySpaceContent').addEventListener('click', (e) => {
+    const openBtn = e.target.closest('.open-review-btn');
+    if (openBtn){
+      const bookingId = openBtn.dataset.bookingId;
+      const wrap = document.getElementById('reviewForm-' + bookingId);
+      const alreadyOpen = !wrap.hidden;
+      document.querySelectorAll('.review-form-wrap').forEach(w => { w.hidden = true; w.innerHTML = ''; });
+      if (alreadyOpen) return;
+      wrap.hidden = false;
+      wrap.innerHTML =
+        '<div class="review-form">' +
+          '<p class="review-form-label">Votre note :</p>' +
+          '<div class="star-picker" data-rating="0" data-booking-id="' + bookingId + '">' +
+            [1,2,3,4,5].map(n => '<button type="button" class="star-pick-btn" data-value="' + n + '">★</button>').join('') +
+          '</div>' +
+          '<textarea class="review-comment-input" placeholder="Un commentaire (facultatif)" maxlength="500"></textarea>' +
+          '<button type="button" class="btn btn-primary btn-sm submit-review-btn" data-booking-id="' + bookingId + '">Envoyer mon avis</button>' +
+        '</div>';
+      return;
+    }
+    const starBtn = e.target.closest('.star-pick-btn');
+    if (starBtn){
+      const picker = starBtn.closest('.star-picker');
+      const value = parseInt(starBtn.dataset.value, 10);
+      picker.dataset.rating = value;
+      picker.querySelectorAll('.star-pick-btn').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.value, 10) <= value);
+      });
+      return;
+    }
+  });
+
+  document.getElementById('mySpaceContent').addEventListener('click', async (e) => {
+    const submitBtn = e.target.closest('.submit-review-btn');
+    if (!submitBtn) return;
+    const bookingId = submitBtn.dataset.bookingId;
+    const wrap = document.getElementById('reviewForm-' + bookingId);
+    const picker = wrap.querySelector('.star-picker');
+    const rating = parseInt(picker.dataset.rating, 10);
+    const comment = wrap.querySelector('.review-comment-input').value.trim();
+    if (!rating){
+      showToast('⚠️ Choisissez une note (étoiles) avant d\'envoyer.');
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/bookings/' + bookingId + '/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+        body: JSON.stringify({ rating, comment }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi de l'avis");
+      showToast('✅ Merci pour votre avis !');
+      loadMySpace();
+    } catch (err) {
+      showToast('❌ ' + err.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer mon avis';
+    }
+  });
+
+  document.getElementById('mySpaceContent').addEventListener('click', (e) => {
+    const btn = e.target.closest('.report-issue-btn');
+    if (!btn) return;
+    document.getElementById('reportIssueBookingId').value = btn.dataset.bookingId;
+    document.getElementById('reportIssueMessage').value = '';
+    document.getElementById('reportIssuePhone').value = '';
+    document.getElementById('reportIssueError').hidden = true;
+    document.getElementById('reportIssueOverlay').hidden = false;
+    document.getElementById('reportIssueMessage').focus();
+  });
+
+  document.getElementById('reportIssueCloseBtn').addEventListener('click', () => {
+    document.getElementById('reportIssueOverlay').hidden = true;
+  });
+
+  document.getElementById('reportIssueForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('reportIssueError');
+    errorEl.hidden = true;
+    const bookingId = document.getElementById('reportIssueBookingId').value;
+    const message = document.getElementById('reportIssueMessage').value.trim();
+    const phone = document.getElementById('reportIssuePhone').value.trim();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: userName || 'Utilisateur connecté',
+          email: userEmail || 'non renseigné',
+          role: userRole,
+          subject: '🚨 SIGNALEMENT PRIORITAIRE — Réservation #' + bookingId,
+          message: message + (phone ? '\n\nNuméro de contact immédiat : ' + phone : ''),
+          priority: 'urgent',
+          bookingId,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
+      document.getElementById('reportIssueOverlay').hidden = true;
+      showToast('✅ Signalement envoyé — notre équipe a été alertée en priorité.');
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le signalement';
+    }
+  });
+  let currentConversationId = null;
+  let conversationPollInterval = null;
+
+  function conversationDisplayName(conv){
+    return userRole === 'cook' ? conv.hostName : conv.cookName;
+  }
+
+  async function loadConversationsList(){
+    const listEl = document.getElementById('conversationsList');
+    if (!userToken){
+      listEl.innerHTML = '<p class="admin-empty-note">Connectez-vous pour accéder à vos messages.</p>';
+      return;
+    }
+    listEl.innerHTML = '<p class="admin-empty-note">Chargement…</p>';
+    try {
+      const res = await fetch(BACKEND_URL + '/api/conversations', { headers: { 'Authorization': 'Bearer ' + userToken } });
+      if (res.status === 401){ await clearUserSession(); showView('login'); return; }
+      const conversations = await res.json();
+      if (!conversations.length){
+        listEl.innerHTML = '<p class="admin-empty-note">Aucune conversation pour le moment.</p>';
+        return;
+      }
+      listEl.innerHTML = conversations.map(conv => {
+        const lastMsg = conv.messages[conv.messages.length - 1];
+        return '<div class="conversation-item" data-conv-id="' + conv.id + '">' +
+          '<div class="conv-name">' + conversationDisplayName(conv) + '</div>' +
+          '<div class="conv-preview">' + (lastMsg ? lastMsg.text : 'Aucun message pour le moment') + '</div>' +
+        '</div>';
+      }).join('');
+      if (!currentConversationId) openConversation(conversations[0].id);
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger vos conversations.</p>';
+    }
+  }
+
+  async function openConversation(id){
+    currentConversationId = id;
+    document.querySelectorAll('.conversation-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.convId === String(id));
+    });
+    const threadEl = document.getElementById('conversationThread');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/conversations/' + id, { headers: { 'Authorization': 'Bearer ' + userToken } });
+      if (res.status === 401){ await clearUserSession(); showView('login'); return; }
+      const conv = await res.json();
+      if (!res.ok) throw new Error(conv.error || 'Conversation introuvable');
+      threadEl.innerHTML =
+        '<div class="thread-header">' + conversationDisplayName(conv) + '</div>' +
+        '<div class="thread-messages" id="threadMessages">' +
+          conv.messages.map(m => {
+            const mine = m.sender === userRole;
+            const time = new Date(m.createdAt).toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+            return '<div class="msg-bubble ' + (mine ? 'mine' : 'theirs') + '">' + escapeHtml(m.text) + '<span class="msg-time">' + time + '</span></div>';
+          }).join('') +
+        '</div>' +
+        '<form class="thread-send-row" id="sendMessageForm">' +
+          '<input type="text" id="messageInput" placeholder="Écrivez votre message…" required maxlength="2000">' +
+          '<button type="submit" class="btn btn-primary btn-sm">Envoyer</button>' +
+        '</form>';
+      const messagesEl = document.getElementById('threadMessages');
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      document.getElementById('sendMessageForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = document.getElementById('messageInput');
+        const text = input.value.trim();
+        if (!text) return;
+        input.disabled = true;
+        try {
+          await fetch(BACKEND_URL + '/api/conversations/' + id + '/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+            body: JSON.stringify({ text }),
+          });
+          input.value = '';
+          await openConversation(id);
+          loadConversationsList();
+        } finally {
+          input.disabled = false;
+          document.getElementById('messageInput').focus();
+        }
+      });
+    } catch (e) {
+      threadEl.innerHTML = '<p class="admin-empty-note">' + e.message + '</p>';
+    }
+  }
+
+  document.getElementById('conversationsList').addEventListener('click', (e) => {
+    const item = e.target.closest('.conversation-item');
+    if (item) openConversation(item.dataset.convId);
+  });
+
+  setInterval(() => {
+    const messagesView = document.getElementById('view-messages');
+    if (!messagesView.hidden && currentConversationId){
+      openConversation(currentConversationId);
+    }
+  }, 6000);
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  document.getElementById('contactCookBtn').addEventListener('click', async () => {
+    if (!userToken || userRole !== 'host'){
+      showToast('⚠️ Connectez-vous en tant qu\'hôte pour contacter un cuisinier.');
+      showView('login');
+      return;
+    }
+    if (!currentProfileChef) return;
+    try {
+      const res = await fetch(BACKEND_URL + '/api/conversations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken },
+        body: JSON.stringify({ cookId: currentProfileChef.id }),
+      });
+      const conv = await res.json();
+      if (!res.ok) throw new Error(conv.error || 'Erreur lors de la création de la conversation');
+      currentConversationId = null;
+      showView('messages');
+      await loadConversationsList();
+      openConversation(conv.id);
+    } catch (err) {
+      showToast('❌ ' + err.message);
+    }
+  });
+
+  async function loadMySpace(){
+    const titleEl = document.getElementById('mySpaceTitle');
+    const contentEl = document.getElementById('mySpaceContent');
+    titleEl.textContent = userRole === 'cook' ? 'Mon espace cuisinier' : 'Mon espace hôte';
+    contentEl.innerHTML = '<p class="admin-empty-note">Chargement…</p>';
+    try {
+      const headers = { 'Authorization': 'Bearer ' + userToken };
+      const bookingsRes = await fetch(BACKEND_URL + '/api/my/bookings', { headers });
+      if (bookingsRes.status === 401){ await clearUserSession(); showView('login'); return; }
+      const myBookings = await bookingsRes.json();
+      let html = '';
+      let profile = null;
+      if (userRole === 'cook'){
+        const profileRes = await fetch(BACKEND_URL + '/api/my/profile', { headers });
+        profile = await profileRes.json();
+        html += '<div class="my-space-section"><h2>Mon profil</h2><div class="my-profile-card">' +
+          '<p><strong>' + profile.name + '</strong> · ' + profile.cuisine + ' · ' + profile.location + '</p>' +
+          '<p style="margin-top:8px;color:var(--ink-soft);">' +
+            (profile.stripeAccountId ? '✅ Paiements configurés' : '⚠️ Paiements non configurés') +
+            ' &nbsp;·&nbsp; ' + (profile.identityVerified ? '✅ Identité vérifiée' : '⏳ Identité non vérifiée') +
+          '</p>' +
+          '<button type="button" class="btn btn-outline btn-sm" id="toggleEditProfileBtn" style="margin-top:14px;">Modifier mon profil</button>' +
+          '</div>' +
+          '<div id="cookEditProfileWrap" hidden style="margin-top:16px;">' +
+            '<form id="cookEditProfileForm" class="cook-register-form">' +
+              '<div class="booking-field">' +
+                '<label for="editBio">Bio</label>' +
+                '<textarea id="editBio" rows="4">' + (profile.bio || '') + '</textarea>' +
+              '</div>' +
+              '<div class="booking-field">' +
+                '<label for="editSpecialties">Spécialité(s) (séparées par une virgule)</label>' +
+                '<input type="text" id="editSpecialties" value="' + (profile.specialties || []).join(', ') + '">' +
+              '</div>' +
+              '<div class="booking-field">' +
+                '<label for="editLocation">Localisation</label>' +
+                '<input type="text" id="editLocation" value="' + (profile.location || '') + '">' +
+              '</div>' +
+              '<div class="booking-field">' +
+                '<label>Mes formules</label>' +
+                '<div id="editFormulasList"></div>' +
+                '<button type="button" class="btn btn-outline btn-sm" id="addFormulaBtn" style="margin-top:8px;">+ Ajouter une formule</button>' +
+              '</div>' +
+              '<p class="booking-error" id="editProfileError" hidden></p>' +
+              '<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>' +
+            '</form>' +
+          '</div>';
+        html += '<div class="my-space-section"><h2>Mes plats</h2>' +
+          '<p class="filter-hint">Ajoutez des photos de vos réalisations pour donner envie aux futurs hôtes — 12 photos maximum.</p>' +
+          '<div class="dish-photos-grid" id="dishPhotosGrid"></div>' +
+          '<form id="dishPhotoUploadForm" class="dish-photo-upload-form">' +
+            '<input type="file" id="dishPhotoInput" accept="image/jpeg,image/png,image/webp" required>' +
+            '<input type="text" id="dishPhotoCaption" placeholder="Légende (facultatif)" maxlength="140">' +
+            '<button type="submit" class="btn btn-primary btn-sm">Ajouter cette photo</button>' +
+          '</form>' +
+          '<p class="booking-error" id="dishPhotoError" hidden></p>' +
+        '</div>';
+        html += '<div class="my-space-section"><h2>🥗 Batch cooking : régimes proposés et prix</h2>' +
+          '<p class="filter-hint">Ces informations permettent aux hôtes de vous trouver via le filtre "Régime alimentaire" et déterminent les prix affichés sur votre profil. Vous pouvez ne renseigner qu\'une seule formule.</p>' +
+          '<span class="batch-cooking-status-badge' + ((profile.batchCookingPriceWeekly || profile.batchCookingPriceMonthly) ? '' : ' off') + '" id="batchCookingStatusBadge">' +
+            ((profile.batchCookingPriceWeekly || profile.batchCookingPriceMonthly) ? '✅ Profil visible dans les recherches' : '⚪ Aucun tarif configuré — profil non réservable') +
+          '</span>' +
+          '<div class="regime-checkbox-grid" id="regimeCheckboxGrid"></div>' +
+          '<div class="cook-register-row">' +
+            '<div class="booking-field">' +
+              '<label for="batchCookingWeeklyInput">Prix hebdomadaire (€)</label>' +
+              '<input type="number" id="batchCookingWeeklyInput" min="1" max="1000" step="1" value="' + (profile.batchCookingPriceWeekly || '') + '" placeholder="Ex : 140">' +
+            '</div>' +
+            '<div class="booking-field">' +
+              '<label for="batchCookingMonthlyInput">Prix mensuel (€)</label>' +
+              '<input type="number" id="batchCookingMonthlyInput" min="1" max="3000" step="1" value="' + (profile.batchCookingPriceMonthly || '') + '" placeholder="Ex : 480">' +
+            '</div>' +
+          '</div>' +
+          '<button type="button" class="btn btn-primary btn-sm" id="saveBatchCookingBtn">Enregistrer</button>' +
+          '<p class="booking-error" id="batchCookingError" hidden></p>' +
+        '</div>';
+        html += '<div class="my-space-section"><h2>📅 Mes créneaux hebdomadaires (batch cooking)</h2>' +
+          '<p class="filter-hint">Définissez un modèle qui se répète chaque semaine — par exemple "tous les lundis 9h-12h". Les hôtes ne pourront réserver un abonnement batch cooking que sur ces créneaux.</p>' +
+          '<div id="weeklySlotsList"></div>' +
+          '<div class="weekly-slot-add-row">' +
+            '<div>' +
+              '<label for="weeklySlotDay">Jour</label>' +
+              '<select id="weeklySlotDay">' +
+                '<option value="lundi">Lundi</option>' +
+                '<option value="mardi">Mardi</option>' +
+                '<option value="mercredi">Mercredi</option>' +
+                '<option value="jeudi">Jeudi</option>' +
+                '<option value="vendredi">Vendredi</option>' +
+                '<option value="samedi">Samedi</option>' +
+                '<option value="dimanche">Dimanche</option>' +
+              '</select>' +
+            '</div>' +
+            '<div>' +
+              '<label for="weeklySlotStart">De</label>' +
+              '<input type="time" id="weeklySlotStart" value="09:00">' +
+            '</div>' +
+            '<div>' +
+              '<label for="weeklySlotEnd">À</label>' +
+              '<input type="time" id="weeklySlotEnd" value="12:00">' +
+            '</div>' +
+            '<button type="button" class="btn btn-outline btn-sm" id="addWeeklySlotBtn">+ Ajouter</button>' +
+          '</div>' +
+          '<p class="booking-error" id="weeklySlotError" hidden></p>' +
+        '</div>';
+      }
+      const todayStr = new Date().toISOString().split('T')[0];
+      const upcomingBookings = myBookings.filter(b => b.status !== 'cancelled' && b.eventDate && b.eventDate >= todayStr);
+      const historyBookings = myBookings.filter(b => b.status === 'cancelled' || !b.eventDate || b.eventDate < todayStr);
+      function bookingItemHTML(b){
+        const statusLabel = b.status === 'confirmed' ? 'Payée' : b.status === 'cancelled' ? 'Annulée' : 'En attente de paiement';
+        const canCancel = userRole === 'host' && b.status === 'confirmed' && b.eventDate >= todayStr;
+        const canReview = b.status === 'confirmed' && b.eventDate && b.eventDate <= todayStr;
+        const hostReputationHTML = (userRole === 'cook' && b.hostReviewsCount > 0)
+          ? '<span class="host-reputation-badge' + (b.hostRating < 3 ? ' low' : '') + '">★ ' + b.hostRating.toFixed(1).replace('.', ',') + ' (avis cuisiniers)</span>'
+          : (userRole === 'cook' ? '<span class="host-reputation-badge new">🆕 Premier avis pour cet hôte</span>' : '');
+        return '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">' + (b.formulaName || 'Réservation') + '</span>' +
+            '<span class="admin-status ' + b.status + '">' + statusLabel + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') +
+            (b.status === 'cancelled' && b.refundPercent !== undefined ? ' · ' + b.refundPercent + '% remboursé' : '') +
+          '</div>' +
+          (hostReputationHTML ? '<div class="admin-item-meta">' + hostReputationHTML + '</div>' : '') +
+          '<div class="admin-item-actions">' +
+            (canCancel ? '<button type="button" class="btn btn-outline btn-sm cancel-booking-btn" data-booking-id="' + b.id + '">Annuler cette réservation</button>' : '') +
+            (canReview ? '<button type="button" class="btn btn-outline btn-sm open-review-btn" data-booking-id="' + b.id + '">' + (userRole === 'cook' ? "Noter l'hôte" : 'Noter le cuisinier') + '</button>' : '') +
+            '<button type="button" class="btn btn-outline btn-sm report-issue-btn" data-booking-id="' + b.id + '" data-booking-title="' + (b.formulaName || 'Réservation') + '">🚨 Signaler un problème</button>' +
+          '</div>' +
+          '<div class="review-form-wrap" id="reviewForm-' + b.id + '" hidden></div>' +
+        '</div>';
+      }
+      html += '<div class="my-space-section"><h2>' + (userRole === 'cook' ? 'Réservations à venir' : 'Mes réservations à venir') + '</h2>';
+      html += upcomingBookings.length
+        ? '<div class="admin-list">' + upcomingBookings.map(bookingItemHTML).join('') + '</div>'
+        : '<p class="admin-empty-note">Aucune réservation à venir pour le moment.</p>';
+      html += '</div>';
+      html += '<div class="my-space-section"><h2>📜 Historique des repas</h2>';
+      html += historyBookings.length
+        ? '<div class="admin-list">' + historyBookings.map(bookingItemHTML).join('') + '</div>'
+        : '<p class="admin-empty-note">Votre historique est vide pour le moment.</p>';
+      html += '</div>';
+      contentEl.innerHTML = html;
+      if (userRole === 'cook'){
+        wireCookProfileEditForm(profile, headers);
+        wireDishPhotosManager(profile, headers);
+        wireBatchCookingSection(profile, headers);
+      }
+    } catch (e) {
+      contentEl.innerHTML = '<p class="admin-empty-note">Impossible de charger votre espace.</p>';
+    }
+  }
+  function wireCookProfileEditForm(profile, headers){
+    let formulaCount = 0;
+    function formulaRowHTML(formula){
+      const idx = formulaCount++;
+      return '<div class="formula-edit-row" data-row="' + idx + '">' +
+        '<input type="text" class="formula-name-input" placeholder="Nom de la formule" value="' + (formula ? formula.name : '') + '">' +
+        '<input type="number" class="formula-price-input" placeholder="Prix (€)" min="1" max="500" value="' + (formula ? formula.price : '') + '">' +
+        '<button type="button" class="remove-formula-btn" aria-label="Supprimer">✕</button>' +
+      '</div>';
+    }
+    const listEl = document.getElementById('editFormulasList');
+    listEl.innerHTML = (profile.formulas || []).map(formulaRowHTML).join('');
+    document.getElementById('toggleEditProfileBtn').addEventListener('click', () => {
+      const wrap = document.getElementById('cookEditProfileWrap');
+      wrap.hidden = !wrap.hidden;
+    });
+    document.getElementById('addFormulaBtn').addEventListener('click', () => {
+      listEl.insertAdjacentHTML('beforeend', formulaRowHTML(null));
+    });
+    listEl.addEventListener('click', (e) => {
+      const removeBtn = e.target.closest('.remove-formula-btn');
+      if (!removeBtn) return;
+      removeBtn.closest('.formula-edit-row').remove();
+    });
+    document.getElementById('cookEditProfileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errorEl = document.getElementById('editProfileError');
+      errorEl.hidden = true;
+      const formulas = Array.from(listEl.querySelectorAll('.formula-edit-row')).map(row => ({
+        name: row.querySelector('.formula-name-input').value.trim(),
+        price: parseFloat(row.querySelector('.formula-price-input').value),
+      })).filter(f => f.name && f.price > 0);
+      if (!formulas.length){
+        errorEl.textContent = '⚠️ Merci de garder au moins une formule valide (nom + prix).';
+        errorEl.hidden = false;
+        return;
+      }
+      const payload = {
+        bio: document.getElementById('editBio').value.trim(),
+        specialties: document.getElementById('editSpecialties').value.split(',').map(s => s.trim()).filter(Boolean),
+        location: document.getElementById('editLocation').value.trim(),
+        formulas,
+      };
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enregistrement…';
+      try {
+        const res = await fetch(BACKEND_URL + '/api/my/profile', {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erreur lors de la mise à jour');
+        showToast('✅ Profil mis à jour !');
+        loadMySpace();
+      } catch (err) {
+        errorEl.textContent = '❌ ' + err.message;
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enregistrer les modifications';
+      }
+    });
+  }
+
+  function wireDishPhotosManager(profile, headers){
+    let currentPhotos = profile.dishPhotos || [];
+    function renderGrid(){
+      const grid = document.getElementById('dishPhotosGrid');
+      if (!currentPhotos.length){
+        grid.innerHTML = '<p class="admin-empty-note">Aucune photo pour le moment — ajoutez-en une ci-dessous !</p>';
+        return;
+      }
+      grid.innerHTML = currentPhotos.map((p, i) =>
+        '<div class="dish-photo-item">' +
+          '<img src="' + p.url + '" alt="' + (p.caption ? p.caption.replace(/"/g, '&quot;') : 'Plat du cuisinier') + '" loading="lazy">' +
+          (p.caption ? '<p class="dish-photo-caption">' + p.caption + '</p>' : '') +
+          '<button type="button" class="dish-photo-remove-btn" data-index="' + i + '" aria-label="Supprimer cette photo">✕</button>' +
+        '</div>'
+      ).join('');
+    }
+    renderGrid();
+    document.getElementById('dishPhotosGrid').addEventListener('click', async (e) => {
+      const btn = e.target.closest('.dish-photo-remove-btn');
+      if (!btn) return;
+      btn.disabled = true;
+      try {
+        const res = await fetch(BACKEND_URL + '/api/my/dish-photos/' + btn.dataset.index, {
+          method: 'DELETE',
+          headers: { 'Authorization': headers.Authorization },
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erreur lors de la suppression');
+        currentPhotos = data.dishPhotos;
+        renderGrid();
+      } catch (err) {
+        showToast('❌ ' + err.message);
+        btn.disabled = false;
+      }
+    });
+    document.getElementById('dishPhotoUploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errorEl = document.getElementById('dishPhotoError');
+      errorEl.hidden = true;
+      const fileInput = document.getElementById('dishPhotoInput');
+      const file = fileInput.files[0];
+      if (!file) return;
+      const formData = new FormData();
+      formData.append('photo', file);
+      formData.append('caption', document.getElementById('dishPhotoCaption').value.trim());
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+      try {
+        const res = await fetch(BACKEND_URL + '/api/my/dish-photos', {
+          method: 'POST',
+          headers: { 'Authorization': headers.Authorization },
+          body: formData,
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
+        currentPhotos = data.dishPhotos;
+        renderGrid();
+        fileInput.value = '';
+        document.getElementById('dishPhotoCaption').value = '';
+        showToast('✅ Photo ajoutée !');
+      } catch (err) {
+        errorEl.textContent = '❌ ' + err.message;
+        errorEl.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Ajouter cette photo';
+      }
+    });
+  }
+
+  function wireBatchCookingSection(profile, headers){
+    const DAY_LABELS = { lundi:'Lundi', mardi:'Mardi', mercredi:'Mercredi', jeudi:'Jeudi', vendredi:'Vendredi', samedi:'Samedi', dimanche:'Dimanche' };
+    let currentRegimes = (profile.regimes || []).slice();
+    let currentSlots = (profile.weeklyAvailability || []).slice();
+
+    const regimeGrid = document.getElementById('regimeCheckboxGrid');
+    regimeGrid.innerHTML = REGIME_TAGS.map(r =>
+      '<label><input type="checkbox" class="batch-regime-checkbox" value="' + r + '"' + (currentRegimes.indexOf(r) !== -1 ? ' checked' : '') + '> ' + REGIME_LABELS[r] + '</label>'
+    ).join('');
+
+    document.getElementById('saveBatchCookingBtn').addEventListener('click', async () => {
+      const errorEl = document.getElementById('batchCookingError');
+      errorEl.hidden = true;
+      const selectedRegimes = Array.from(document.querySelectorAll('.batch-regime-checkbox:checked')).map(cb => cb.value);
+      const weeklyInput = document.getElementById('batchCookingWeeklyInput');
+      const monthlyInput = document.getElementById('batchCookingMonthlyInput');
+      const weeklyVal = weeklyInput.value ? parseFloat(weeklyInput.value) : null;
+      const monthlyVal = monthlyInput.value ? parseFloat(monthlyInput.value) : null;
+      if ((weeklyVal !== null && (!Number.isFinite(weeklyVal) || weeklyVal <= 0)) || (monthlyVal !== null && (!Number.isFinite(monthlyVal) || monthlyVal <= 0))){
+        errorEl.textContent = '⚠️ Merci de saisir des prix valides, ou de laisser un champ vide si vous ne proposez pas cette formule.';
+        errorEl.hidden = false;
+        return;
+      }
+      const btn = document.getElementById('saveBatchCookingBtn');
+      btn.disabled = true;
+      btn.textContent = 'Enregistrement…';
+      try {
+        const res = await fetch(BACKEND_URL + '/api/my/batch-cooking', {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ regimes: selectedRegimes, batchCookingPriceWeekly: weeklyVal, batchCookingPriceMonthly: monthlyVal }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erreur lors de la mise à jour');
+        showToast('✅ Informations batch cooking enregistrées !');
+        const badge = document.getElementById('batchCookingStatusBadge');
+        const hasAnyPrice = data.batchCookingPriceWeekly || data.batchCookingPriceMonthly;
+        badge.classList.toggle('off', !hasAnyPrice);
+        badge.textContent = hasAnyPrice ? '✅ Profil visible dans les recherches' : '⚪ Aucun tarif configuré — profil non réservable';
+      } catch (err) {
+        errorEl.textContent = '❌ ' + err.message;
+        errorEl.hidden = false;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Enregistrer';
+      }
+    });
+
+    function renderSlotsList(){
+      const listEl = document.getElementById('weeklySlotsList');
+      if (!currentSlots.length){
+        listEl.innerHTML = '<p class="admin-empty-note">Aucun créneau défini pour le moment.</p>';
+        return;
+      }
+      listEl.innerHTML = currentSlots.map((s, i) =>
+        '<div class="weekly-slot-item">' +
+          '<span>' + DAY_LABELS[s.day] + ' · ' + s.startTime + ' – ' + s.endTime + '</span>' +
+          '<button type="button" class="weekly-slot-remove-btn" data-index="' + i + '" aria-label="Supprimer ce créneau">✕</button>' +
+        '</div>'
+      ).join('');
+    }
+    renderSlotsList();
+
+    async function saveSlots(){
+      try {
+        await fetch(BACKEND_URL + '/api/my/weekly-availability', {
+          method: 'PATCH',
+          headers: { ...headers, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ weeklyAvailability: currentSlots }),
+        });
+      } catch (err) {
+        showToast('❌ Impossible de sauvegarder ce créneau.');
+      }
+    }
+
+    document.getElementById('addWeeklySlotBtn').addEventListener('click', async () => {
+      const errorEl = document.getElementById('weeklySlotError');
+      errorEl.hidden = true;
+      const day = document.getElementById('weeklySlotDay').value;
+      const startTime = document.getElementById('weeklySlotStart').value;
+      const endTime = document.getElementById('weeklySlotEnd').value;
+      if (!startTime || !endTime || startTime >= endTime){
+        errorEl.textContent = "⚠️ L'heure de début doit précéder l'heure de fin.";
+        errorEl.hidden = false;
+        return;
+      }
+      currentSlots.push({ day, startTime, endTime });
+      renderSlotsList();
+      await saveSlots();
+    });
+
+    document.getElementById('weeklySlotsList').addEventListener('click', async (e) => {
+      const btn = e.target.closest('.weekly-slot-remove-btn');
+      if (!btn) return;
+      currentSlots.splice(parseInt(btn.dataset.index, 10), 1);
+      renderSlotsList();
+      await saveSlots();
+    });
+  }
+
+  let adminToken = null;
+
+  function adminAuthHeaders(){
+    return { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken };
+  }
+
+  function handleAdminAuthError(){
+    adminToken = null;
+    showView('admin-login');
+    const errorEl = document.getElementById('adminLoginError');
+    errorEl.textContent = '⚠️ Votre session a expiré, merci de vous reconnecter.';
+    errorEl.hidden = false;
+  }
+
+  document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('adminLoginError');
+    errorEl.hidden = true;
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById('adminEmail').value.trim(),
+          password: document.getElementById('adminPassword').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Connexion refusée');
+      adminToken = data.token;
+      document.getElementById('adminLoginForm').reset();
+      showView('admin-dashboard');
+      loadAdminData();
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById('adminLogoutBtn').addEventListener('click', () => {
+    adminToken = null;
+    showView('home');
+  });
+
+  document.querySelectorAll('.admin-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.admin-panel').forEach(p => { p.hidden = p.dataset.adminPanel !== tab.dataset.adminTab; });
+    });
+  });
+
+  async function loadAdminData(){
+    await Promise.all([loadAdminBookings(), loadAdminCooks(), loadAdminTickets()]);
+  }
+
+  async function loadAdminBookings(){
+    const listEl = document.getElementById('adminBookingsList');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/bookings', { headers: adminAuthHeaders() });
+      if (res.status === 401) return handleAdminAuthError();
+      const bookingsData = await res.json();
+      if (!bookingsData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucune réservation pour le moment.</p>'; return; }
+      listEl.innerHTML = bookingsData.map(b =>
+        '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">Réservation #' + b.id + '</span>' +
+            '<span class="admin-status ' + b.status + '">' + (b.status === 'confirmed' ? 'Payée' : 'En attente de paiement') + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">Cuisinier #' + b.cookId + ' · ' + b.guestCount + ' convive(s) · ' + (b.eventDate || 'date non précisée') + '</div>' +
+          '<div class="admin-item-body">Allergies : ' + (b.allergies || '—') + (b.bookingType === 'cooking_only' ? ' · Ingrédients fournis par l\u2019hôte' : '') + '</div>' +
+        '</div>'
+      ).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les réservations.</p>';
+    }
+  }
+
+  async function loadAdminCooks(){
+    const listEl = document.getElementById('adminCooksList');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/cooks', { headers: adminAuthHeaders() });
+      if (res.status === 401) return handleAdminAuthError();
+      const cooksData = await res.json();
+      if (!cooksData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucun cuisinier.</p>'; return; }
+      listEl.innerHTML = cooksData.map(c =>
+        '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">' + c.name + '</span>' +
+            '<span class="admin-status ' + (c.stripeAccountId ? 'resolu' : 'ouvert') + '">' + (c.stripeAccountId ? 'Paiements configurés' : 'Paiements non configurés') + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">' + (c.email || '—') + ' · ' + c.cuisine + ' · ' + c.location + '</div>' +
+        '</div>'
+      ).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les cuisiniers.</p>';
+    }
+  }
+
+  async function loadAdminTickets(){
+    const listEl = document.getElementById('adminTicketsList');
+    try {
+      const res = await fetch(BACKEND_URL + '/api/admin/tickets', { headers: adminAuthHeaders() });
+      if (res.status === 401) return handleAdminAuthError();
+      const ticketsData = await res.json();
+      if (!ticketsData.length){ listEl.innerHTML = '<p class="admin-empty-note">Aucun ticket pour le moment.</p>'; return; }
+      listEl.innerHTML = ticketsData.map(t =>
+        '<div class="admin-item">' +
+          '<div class="admin-item-head">' +
+            '<span class="admin-item-title">' + t.subject + '</span>' +
+            '<span class="admin-status ' + t.status + '">' + (t.status === 'ouvert' ? 'Ouvert' : t.status === 'en_cours' ? 'En cours' : 'Résolu') + '</span>' +
+          '</div>' +
+          '<div class="admin-item-meta">' + t.name + ' (' + t.email + ') · ' + t.role + '</div>' +
+          '<div class="admin-item-body">' + t.message + '</div>' +
+          '<div class="admin-item-actions">' +
+            '<select class="ticket-status-select" data-ticket-id="' + t.id + '">' +
+              '<option value="ouvert"' + (t.status==='ouvert'?' selected':'') + '>Ouvert</option>' +
+              '<option value="en_cours"' + (t.status==='en_cours'?' selected':'') + '>En cours</option>' +
+              '<option value="resolu"' + (t.status==='resolu'?' selected':'') + '>Résolu</option>' +
+            '</select>' +
+          '</div>' +
+        '</div>'
+      ).join('');
+    } catch (e) {
+      listEl.innerHTML = '<p class="admin-empty-note">Impossible de charger les tickets.</p>';
+    }
+  }
+
+  document.getElementById('adminTicketsList').addEventListener('change', async (e) => {
+    if (!e.target.classList.contains('ticket-status-select')) return;
+    const ticketId = e.target.dataset.ticketId;
+    const newStatus = e.target.value;
+    try {
+      await fetch(BACKEND_URL + '/api/admin/tickets/' + ticketId, {
+        method: 'PATCH',
+        headers: adminAuthHeaders(),
+        body: JSON.stringify({ status: newStatus }),
+      });
+      loadAdminTickets();
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('contactError');
+    errorEl.hidden = true;
+    const payload = {
+      name: document.getElementById('contactName').value.trim(),
+      email: document.getElementById('contactEmail').value.trim(),
+      role: document.getElementById('contactRole').value,
+      subject: document.getElementById('contactSubject').value.trim(),
+      message: document.getElementById('contactMessage').value.trim(),
+    };
+    if (!payload.name || !payload.email || !payload.subject || !payload.message){
+      errorEl.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
+      errorEl.hidden = false;
+      return;
+    }
+    if (!isBackendConfigured()){
+      errorEl.textContent = "⚙️ Le backend n'est pas encore branché.";
+      errorEl.hidden = false;
+      return;
+    }
+    try {
+      const res = await fetch(BACKEND_URL + '/api/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi");
+      document.getElementById('contactForm').reset();
+      showToast('✅ Votre message a bien été envoyé, nous revenons vers vous rapidement.');
+      showView('home');
+    } catch (err) {
+      errorEl.textContent = '❌ ' + err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  syncFilterUIFromState();
+  applyFiltersAndRender();
+  loadRegisteredCooks();
+  loadUserSession();
+
+  if (isBackendConfigured()){
+    setInterval(() => {
+      fetch(BACKEND_URL + '/api/cooks').catch(() => {});
+    }, 4 * 60 * 1000);
+  }
+
+});
+</script>
+</body>
+</html>
